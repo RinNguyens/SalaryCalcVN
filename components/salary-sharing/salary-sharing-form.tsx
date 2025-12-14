@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -121,12 +122,12 @@ const salaryShareSchema = z.object({
   shareInComparisons: z.boolean(),
   shareInStatistics: z.boolean(),
   allowContact: z.boolean(),
-  contactEmail: z.string().email().optional().or(z.literal('')),
+  contactEmail: z.string().optional(),
   agreeToTerms: z.boolean().refine(val => val === true, 'You must agree to the terms'),
   verificationMethod: z.enum(['email', 'linkedin', 'paystub', 'none']),
 });
 
-type FormData = z.infer<typeof salaryShareSchema>;
+type SalaryFormData = z.infer<typeof salaryShareSchema>;
 
 interface SalarySharingFormProps {
   onSubmit: (data: SalaryShareForm) => void;
@@ -139,8 +140,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
   const [selectedSoftSkills, setSelectedSoftSkills] = useState<string[]>([]);
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
 
-  const form = useForm<FormData>({
-    resolver: zodResolver(salaryShareSchema),
+  const form = useForm<SalaryFormData>({
     defaultValues: {
       companyType: 'local',
       baseSalary: 0,
@@ -185,7 +185,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       shareInComparisons: true,
       shareInStatistics: true,
       allowContact: false,
-      contactEmail: '',
+      contactEmail: undefined,
       agreeToTerms: false,
       verificationMethod: 'email',
     },
@@ -259,9 +259,18 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
     }
   };
 
-  const handleSubmit = (data: FormData) => {
+  const handleSubmit = (data: SalaryFormData) => {
+    // Validate with Zod schema
+    const validationResult = salaryShareSchema.safeParse(data);
+
+    if (!validationResult.success) {
+      // Handle validation errors
+      console.error('Validation errors:', validationResult.error);
+      return;
+    }
+
     if (currentStep === steps.length - 1) {
-      onSubmit(data as SalaryShareForm);
+      onSubmit(validationResult.data as SalaryShareForm);
     } else {
       nextStep();
     }
@@ -1080,12 +1089,12 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                     <Label className="text-white">{label}</Label>
                   </div>
                   <Controller
-                    name={field as keyof FormData}
+                    name={field as keyof SalaryFormData}
                     control={form.control}
                     render={({ field: controllerField }) => (
                       <div className="space-y-2">
                         <Slider
-                          value={[controllerField.value]}
+                          value={[Number(controllerField.value) || 1]}
                           onValueChange={(value) => controllerField.onChange(value[0])}
                           max={10}
                           min={1}

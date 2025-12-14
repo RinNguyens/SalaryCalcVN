@@ -321,7 +321,7 @@ export default function CalculatorPage() {
           transition={{ delay: 1 }}
         >
           <p>
-            Tính toán theo quy định thuế TNCN và bảo hiểm 2024-2025
+            Tính toán theo quy định thuế TNCN và bảo hiểm 2026
           </p>
         </motion.div>
       </div>

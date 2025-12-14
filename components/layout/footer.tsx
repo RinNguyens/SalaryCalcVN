@@ -33,8 +33,8 @@ const footerLinks = {
     { href: '/cookies', label: 'Chính sách Cookie', icon: Shield },
   ],
   social: [
-    { href: 'https://github.com', label: 'GitHub', icon: Github },
-    { href: 'mailto:contact@salarycalc.vn', label: 'Email', icon: Mail },
+    { href: 'https://github.com/RinNguyens', label: 'GitHub', icon: Github },
+    { href: 'mailto:Rinchan98.py@gmail.com', label: 'Email', icon: Mail },
   ],
 };
 
@@ -204,11 +204,11 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <p className="text-white/60 text-sm">
-                © 2024 SalaryCalc VN. Tất cả quyền được bảo lưu.
+                © 2026 SalaryCalc VN. Tất cả quyền được bảo lưu.
               </p>
 
               <div className="flex items-center gap-4">
-                <span className="text-white/40 text-xs">Made with ❤️ in Vietnam</span>
+                <span className="text-white/40 text-xs">Made with ❤️ in Vietnam (Rin)</span>
               </div>
             </motion.div>
           </div>

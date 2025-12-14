@@ -655,7 +655,7 @@ export function Footer() {
         {/* Regular Footer Content */}
         <div className="text-center text-white/60 text-sm">
           <p>Made with ❤️ in Vietnam</p>
-          <p className="mt-2">© 2024 SalaryCalc VN. All rights reserved.</p>
+          <p className="mt-2">© 2026 SalaryCalc VN. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -3,7 +3,7 @@
  * For production, this should be replaced with a proper database
  */
 
-import type { SalaryShare, SalaryStatistics, ShareVerification } from '@/types/salary-sharing';
+import type { SalaryShare, SalaryShareForm, SalaryStatistics, ShareVerification } from '@/types/salary-sharing';
 
 const STORAGE_KEYS = {
   SALARY_SHARES: 'salary_calc_vn_shares',
@@ -27,7 +27,7 @@ export function generateVerificationToken(): string {
 }
 
 // Save salary share to local storage
-export function saveSalaryShare(data: Partial<SalaryShare> | SalaryShareForm): SalaryShare {
+export function saveSalaryShare(data: SalaryShareForm): SalaryShare {
   const shares = getAllSalaryShares();
 
   const newShare: SalaryShare = {
