@@ -1,0 +1,526 @@
+'use client';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Slider } from '@/components/ui/slider';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { GlassCard } from '@/components/shared/glass-card';
+import {
+  Heart,
+  Car,
+  Phone,
+  Wifi,
+  Dumbbell,
+  Utensils,
+  Home,
+  Calculator,
+  TrendingUp,
+  Info
+} from 'lucide-react';
+import { calculateBenefitsValue, BENEFIT_BENCHMARKS } from '@/lib/calculations/benefits-valuation';
+import { formatCurrency } from '@/lib/utils/format-currency';
+// import type { BenefitsPackage } from '@/types/job-offer';
+
+interface BenefitsCalculatorProps {
+  onBenefitsChange?: (benefits: BenefitsPackage) => void;
+  initialBenefits?: Partial<BenefitsPackage>;
+}
+
+/*
+export function BenefitsCalculator({ onBenefitsChange, initialBenefits }: BenefitsCalculatorProps) {
+  const [benefits, setBenefits] = useState<BenefitsPackage>({
+    health: {
+      insurance: false,
+      coverage: 'self',
+      value: 0,
+    },
+    dental: {
+      coverage: false,
+      value: 0,
+    },
+    vision: {
+      coverage: false,
+      value: 0,
+    },
+    meals: {
+      lunch: false,
+      dinner: false,
+      value: 0,
+      daysPerWeek: 5,
+    },
+    transport: {
+      parking: false,
+      shuttle: false,
+      allowance: 0,
+    },
+    phone: {
+      allowance: 0,
+      provided: false,
+    },
+    internet: {
+      allowance: 0,
+      provided: false,
+    },
+    wellness: {
+      gym: false,
+      value: 0,
+      activities: [],
+    },
+    equipment: {
+      laptop: false,
+      monitor: false,
+      homeOffice: false,
+      budget: 0,
+    },
+    other: [],
+    ...initialBenefits,
+  });
+
+  const [selectedIndustry, setSelectedIndustry] = useState<'tech' | 'finance' | 'general'>('general');
+
+  const benefitsValue = calculateBenefitsValue(mapToJobOfferBenefits(benefits));
+
+  function mapToJobOfferBenefits(benefits: BenefitsPackage) {
+    // Convert the benefits format to match the calculation function
+    return {
+      healthInsurance: {
+        value: benefits.health.value,
+        coverage: benefits.health.coverage,
+      },
+      mealAllowance: {
+        value: benefits.meals.value,
+        frequency: 'daily' as const,
+      },
+      transport: {
+        value: benefits.transport.allowance,
+        type: 'allowance' as const,
+      },
+      phone: benefits.phone.allowance,
+      internet: benefits.internet.allowance,
+      gym: benefits.wellness.value,
+      other: benefits.other,
+    };
+  }
+
+  const updateBenefit = (category: keyof BenefitsPackage, field: string, value: any) => {
+    const updated = {
+      ...benefits,
+      [category]: {
+        ...benefits[category],
+        [field]: value,
+      },
+    };
+    setBenefits(updated);
+    onBenefitsChange?.(updated);
+  };
+
+  const applyIndustryBenchmark = () => {
+    const benchmark = BENEFIT_BENCHMARKS[selectedIndustry];
+    const updated: BenefitsPackage = {
+      ...benefits,
+      health: {
+        insurance: true,
+        coverage: 'family',
+        value: benchmark.healthInsurance.family,
+      },
+      meals: {
+        lunch: true,
+        dinner: false,
+        value: benchmark.mealAllowance.daily,
+        daysPerWeek: 5,
+      },
+      transport: {
+        parking: true,
+        shuttle: false,
+        allowance: benchmark.transport.parking,
+      },
+      phone: {
+        allowance: benchmark.phone,
+        provided: true,
+      },
+      internet: {
+        allowance: benchmark.internet,
+        provided: true,
+      },
+      wellness: {
+        gym: true,
+        value: benchmark.gym,
+        activities: ['Gym membership'],
+      },
+    };
+    setBenefits(updated);
+    onBenefitsChange?.(updated);
+  };
+
+  const addOtherBenefit = () => {
+    const updated = {
+      ...benefits,
+      other: [...benefits.other, { name: '', value: 0 }],
+    };
+    setBenefits(updated);
+  };
+
+  const updateOtherBenefit = (index: number, field: 'name' | 'value', value: string | number) => {
+    const updated = {
+      ...benefits,
+      other: benefits.other.map((benefit, i) =>
+        i === index ? { ...benefit, [field]: value } : benefit
+      ),
+    };
+    setBenefits(updated);
+    onBenefitsChange?.(updated);
+  };
+
+  const removeOtherBenefit = (index: number) => {
+    const updated = {
+      ...benefits,
+      other: benefits.other.filter((_, i) => i !== index),
+    };
+    setBenefits(updated);
+    onBenefitsChange?.(updated);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Summary Card */}
+      <GlassCard className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold text-white flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Tổng giá trị phúc lợi
+          </h3>
+          <Badge className="bg-purple-500 text-white">
+            {formatCurrency(benefitsValue.annualTotal)}/năm
+          </Badge>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+          <div>
+            <p className="text-white/60">Hàng tháng</p>
+            <p className="text-white font-semibold">
+              {formatCurrency(benefitsValue.monthlyTotal)}
+            </p>
+          </div>
+          <div>
+            <p className="text-white/60">Không thuế</p>
+            <p className="text-green-400 font-semibold">
+              {formatCurrency(benefitsValue.nonTaxableBenefits)}
+            </p>
+          </div>
+          <div>
+            <p className="text-white/60">Có thuế</p>
+            <p className="text-yellow-400 font-semibold">
+              {formatCurrency(benefitsValue.taxableBenefits)}
+            </p>
+          </div>
+          <div>
+            <p className="text-white/60">Tương đương lương</p>
+            <p className="text-white font-semibold">
+              {formatCurrency(benefitsValue.monthlyTotal)}
+            </p>
+          </div>
+        </div>
+      </GlassCard>
+
+      {/* Industry Benchmark */}
+      <GlassCard className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-white">Chuẩn ngành</h3>
+          <Select value={selectedIndustry} onValueChange={(value: any) => setSelectedIndustry(value)}>
+            <SelectTrigger className="w-40 bg-white/10 border-white/20 text-white">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="tech">Công nghệ</SelectItem>
+              <SelectItem value="finance">Tài chính</SelectItem>
+              <SelectItem value="general">Thông thường</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <Button
+          onClick={applyIndustryBenchmark}
+          className="w-full bg-purple-500/20 border-purple-500/30 text-white hover:bg-purple-500/30"
+        >
+          Áp dụng chuẩn ngành {selectedIndustry === 'tech' ? 'công nghệ' :
+                              selectedIndustry === 'finance' ? 'tài chính' : 'thông thường'}
+        </Button>
+      </GlassCard>
+
+      {/* Benefits Form */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Health Benefits */}
+        <GlassCard className="p-6">
+          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <Heart className="h-5 w-5 text-red-400" />
+            Sức khỏe
+          </h4>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.health.insurance}
+                onCheckedChange={(checked) =>
+                  updateBenefit('health', 'insurance', checked)
+                }
+              />
+              <Label className="text-white">Bảo hiểm sức khỏe</Label>
+            </div>
+            {benefits.health.insurance && (
+              <>
+                <Select
+                  value={benefits.health.coverage}
+                  onValueChange={(value) =>
+                    updateBenefit('health', 'coverage', value)
+                  }
+                >
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="self">Chỉ mình</SelectItem>
+                    <SelectItem value="self+spouse">Mình và vợ/chồng</SelectItem>
+                    <SelectItem value="family">Gia đình</SelectItem>
+                  </SelectContent>
+                </Select>
+                <div>
+                  <Label className="text-white text-sm">Giá trị/tháng</Label>
+                  <Input
+                    type="number"
+                    value={benefits.health.value}
+                    onChange={(e) =>
+                      updateBenefit('health', 'value', parseInt(e.target.value) || 0)
+                    }
+                    className="bg-white/10 border-white/20 text-white mt-1"
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </GlassCard>
+
+        {/* Meal Benefits */}
+        <GlassCard className="p-6">
+          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <Utensils className="h-5 w-5 text-orange-400" />
+            Ăn uống
+          </h4>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.meals.lunch}
+                onCheckedChange={(checked) =>
+                  updateBenefit('meals', 'lunch', checked)
+                }
+              />
+              <Label className="text-white">Ăn trưa</Label>
+            </div>
+            {benefits.meals.lunch && (
+              <>
+                <div>
+                  <Label className="text-white text-sm">
+                    Giá trị/bữa: {formatCurrency(benefits.meals.value)}
+                  </Label>
+                  <Slider
+                    value={[benefits.meals.value]}
+                    onValueChange={([value]) =>
+                      updateBenefit('meals', 'value', value)
+                    }
+                    max={150000}
+                    min={0}
+                    step={10000}
+                    className="mt-2"
+                  />
+                </div>
+                <div>
+                  <Label className="text-white text-sm">
+                    Số ngày/tuần: {benefits.meals.daysPerWeek}
+                  </Label>
+                  <Slider
+                    value={[benefits.meals.daysPerWeek]}
+                    onValueChange={([value]) =>
+                      updateBenefit('meals', 'daysPerWeek', value)
+                    }
+                    max={7}
+                    min={1}
+                    step={1}
+                    className="mt-2"
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </GlassCard>
+
+        {/* Transport Benefits */}
+        <GlassCard className="p-6">
+          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <Car className="h-5 w-5 text-blue-400" />
+            Di chuyển
+          </h4>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.transport.parking}
+                onCheckedChange={(checked) =>
+                  updateBenefit('transport', 'parking', checked)
+                }
+              />
+              <Label className="text-white">Đỗ xe</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.transport.shuttle}
+                onCheckedChange={(checked) =>
+                  updateBenefit('transport', 'shuttle', checked)
+                }
+              />
+              <Label className="text-white">Xe đưa đón</Label>
+            </div>
+            <div>
+              <Label className="text-white text-sm">Phụ cấp/tháng</Label>
+              <Input
+                type="number"
+                value={benefits.transport.allowance}
+                onChange={(e) =>
+                  updateBenefit('transport', 'allowance', parseInt(e.target.value) || 0)
+                }
+                className="bg-white/10 border-white/20 text-white mt-1"
+              />
+            </div>
+          </div>
+        </GlassCard>
+
+        {/* Work from Home Benefits */}
+        <GlassCard className="p-6">
+          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <Home className="h-5 w-5 text-green-400" />
+            Làm việc tại nhà
+          </h4>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.phone.provided}
+                onCheckedChange={(checked) =>
+                  updateBenefit('phone', 'provided', checked)
+                }
+              />
+              <Label className="text-white">Cung cấp điện thoại</Label>
+            </div>
+            <div>
+              <Label className="text-white text-sm">Phụ cấp điện thoại/tháng</Label>
+              <Input
+                type="number"
+                value={benefits.phone.allowance}
+                onChange={(e) =>
+                  updateBenefit('phone', 'allowance', parseInt(e.target.value) || 0)
+                }
+                className="bg-white/10 border-white/20 text-white mt-1"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={benefits.internet.provided}
+                onCheckedChange={(checked) =>
+                  updateBenefit('internet', 'provided', checked)
+                }
+              />
+              <Label className="text-white">Cung cấp internet</Label>
+            </div>
+            <div>
+              <Label className="text-white text-sm">Phụ cấp internet/tháng</Label>
+              <Input
+                type="number"
+                value={benefits.internet.allowance}
+                onChange={(e) =>
+                  updateBenefit('internet', 'allowance', parseInt(e.target.value) || 0)
+                }
+                className="bg-white/10 border-white/20 text-white mt-1"
+              />
+            </div>
+          </div>
+        </GlassCard>
+      </div>
+
+      {/* Other Benefits */}
+      <GlassCard className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h4 className="text-lg font-semibold text-white">Phúc lợi khác</h4>
+          <Button
+            onClick={addOtherBenefit}
+            size="sm"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+          >
+            Thêm
+          </Button>
+        </div>
+        <div className="space-y-3">
+          {benefits.other.map((benefit, index) => (
+            <div key={index} className="flex gap-2">
+              <Input
+                placeholder="Tên phúc lợi"
+                value={benefit.name}
+                onChange={(e) => updateOtherBenefit(index, 'name', e.target.value)}
+                className="bg-white/10 border-white/20 text-white flex-1"
+              />
+              <Input
+                type="number"
+                placeholder="Giá trị/tháng"
+                value={benefit.value}
+                onChange={(e) => updateOtherBenefit(index, 'value', parseInt(e.target.value) || 0)}
+                className="bg-white/10 border-white/20 text-white w-40"
+              />
+              <Button
+                onClick={() => removeOtherBenefit(index)}
+                size="sm"
+                variant="outline"
+                className="bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30"
+              >
+                Xóa
+              </Button>
+            </div>
+          ))}
+        </div>
+      </GlassCard>
+
+      {/* Benefits Breakdown */}
+      <GlassCard className="p-6">
+        <h3 className="text-lg font-semibold text-white mb-4">Chi tiết giá trị</h3>
+        <div className="space-y-3">
+          {benefitsValue.breakdown.map((item, index) => (
+            <div key={index} className="flex justify-between items-center">
+              <div>
+                <p className="text-white font-medium">{item.category}</p>
+                <p className="text-white/60 text-sm">{item.description}</p>
+                {item.isTaxable && (
+                  <Badge variant="outline" className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30 text-xs mt-1">
+                    Có thuế
+                  </Badge>
+                )}
+              </div>
+              <div className="text-right">
+                <p className="text-white font-semibold">
+                  {formatCurrency(item.annualValue)}/năm
+                </p>
+                <p className="text-white/60 text-sm">
+                  {formatCurrency(item.monthlyValue)}/tháng
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </GlassCard>
+    </div>
+  );
+}*/

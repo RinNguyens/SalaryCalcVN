@@ -1,0 +1,266 @@
+import type { JobOffer, BenefitsPackage } from '@/types/job-offer';
+
+export interface BenefitValuation {
+  category: string;
+  monthlyValue: number;
+  annualValue: number;
+  description: string;
+  isTaxable: boolean;
+}
+
+export interface TotalBenefitsValue {
+  monthlyTotal: number;
+  annualTotal: number;
+  taxableBenefits: number;
+  nonTaxableBenefits: number;
+  breakdown: BenefitValuation[];
+}
+
+/*
+export function calculateBenefitsValue(benefits: BenefitsPackage): TotalBenefitsValue {
+  const breakdown: BenefitValuation[] = [];
+
+  // Health Insurance
+  const healthMonthly = benefits.healthInsurance.value;
+  const healthAnnual = healthMonthly * 12;
+  breakdown.push({
+    category: 'Bảo hiểm sức khỏe',
+    monthlyValue: healthMonthly,
+    annualValue: healthAnnual,
+    description: `Bảo hiểm ${benefits.healthInsurance.coverage === 'family' ? 'gia đình' :
+                   benefits.healthInsurance.coverage === 'self+spouse' ? 'vợ/chồng' : 'cá nhân'}`,
+    isTaxable: false,
+  });
+
+  // Meal Allowance
+  const mealDaysPerMonth = 22; // Average working days
+  const mealMultiplier = benefits.mealAllowance.frequency === 'daily' ? mealDaysPerMonth : 1;
+  const mealMonthly = benefits.mealAllowance.value * mealMultiplier;
+  const mealAnnual = mealMonthly * 12;
+  breakdown.push({
+    category: 'Ăn trưa',
+    monthlyValue: mealMonthly,
+    annualValue: mealAnnual,
+    description: benefits.mealAllowance.frequency === 'daily' ? `${benefits.mealAllowance.value.toLocaleString('vi-VN')} đ/ngày` : 'Hỗ trợ cố định',
+    isTaxable: mealMonthly > 730000, // Taxable if exceeds 730k/month (Vietnam tax law)
+  });
+
+  // Transport Allowance
+  const transportMonthly = benefits.transport.value;
+  const transportAnnual = transportMonthly * 12;
+  breakdown.push({
+    category: 'Hỗ trợ đi lại',
+    monthlyValue: transportMonthly,
+    annualValue: transportAnnual,
+    description: benefits.transport.type === 'shuttle' ? 'Xe đưa đón' :
+                 benefits.transport.type === 'parking' ? 'Trông xe' : 'Phụ cấp',
+    isTaxable: false, // Transport allowance is generally non-taxable in Vietnam
+  });
+
+  // Phone Allowance
+  const phoneMonthly = benefits.phone;
+  const phoneAnnual = phoneMonthly * 12;
+  breakdown.push({
+    category: 'Điện thoại',
+    monthlyValue: phoneMonthly,
+    annualValue: phoneAnnual,
+    description: phoneMonthly > 0 ? 'Phụ cấp điện thoại' : 'Không có',
+    isTaxable: false, // Generally considered non-taxable if for work purposes
+  });
+
+  // Internet Allowance
+  const internetMonthly = benefits.internet;
+  const internetAnnual = internetMonthly * 12;
+  breakdown.push({
+    category: 'Internet',
+    monthlyValue: internetMonthly,
+    annualValue: internetAnnual,
+    description: internetMonthly > 0 ? 'Phụ cấp internet' : 'Không có',
+    isTaxable: false, // Generally non-taxable for work-from-home
+  });
+
+  // Gym/Wellness
+  const gymMonthly = benefits.gym;
+  const gymAnnual = gymMonthly * 12;
+  breakdown.push({
+    category: 'Phòng gym/Sức khỏe',
+    monthlyValue: gymMonthly,
+    annualValue: gymAnnual,
+    description: gymMonthly > 0 ? 'Phụ cấp thể chất' : 'Không có',
+    isTaxable: false,
+  });
+
+  // Other Benefits
+  benefits.other.forEach(benefit => {
+    breakdown.push({
+      category: benefit.name,
+      monthlyValue: benefit.value,
+      annualValue: benefit.value * 12,
+      description: benefit.name,
+      isTaxable: false,
+    });
+  });
+
+  // Calculate totals
+  const monthlyTotal = breakdown.reduce((sum, b) => sum + b.monthlyValue, 0);
+  const annualTotal = breakdown.reduce((sum, b) => sum + b.annualValue, 0);
+  const taxableBenefits = breakdown
+    .filter(b => b.isTaxable)
+    .reduce((sum, b) => sum + b.annualValue, 0);
+  const nonTaxableBenefits = annualTotal - taxableBenefits;
+
+  return {
+    monthlyTotal,
+    annualTotal,
+    taxableBenefits,
+    nonTaxableBenefits,
+    breakdown,
+  };
+}
+*/
+
+export function calculateRemoteWorkValue(
+  remoteDaysPerWeek: number,
+  workingDaysPerWeek: number,
+  commuteCost: number,
+  timeSavedPerDay: number = 60 // minutes
+): {
+  monthlySavings: number;
+  annualSavings: number;
+  timeSaved: {
+    daily: number;
+    weekly: number;
+    monthly: number;
+    yearly: number;
+  };
+} {
+  const remoteWorkRatio = remoteDaysPerWeek / workingDaysPerWeek;
+
+  // Monetary savings from not commuting
+  const monthlySavings = commuteCost * remoteWorkRatio * 4.33; // Average weeks per month
+  const annualSavings = monthlySavings * 12;
+
+  // Time savings
+  const timeSaved = {
+    daily: timeSavedPerDay * remoteDaysPerWeek,
+    weekly: timeSavedPerDay * remoteDaysPerWeek,
+    monthly: timeSavedPerDay * remoteDaysPerWeek * 4.33,
+    yearly: timeSavedPerDay * remoteDaysPerWeek * 52,
+  };
+
+  return {
+    monthlySavings,
+    annualSavings,
+    timeSaved,
+  };
+}
+
+export function getBenefitDefaults(): BenefitsPackage {
+  return {
+    health: {
+      insurance: false,
+      coverage: 'self',
+      value: 0,
+    },
+    dental: {
+      coverage: false,
+      value: 0,
+    },
+    vision: {
+      coverage: false,
+      value: 0,
+    },
+    meals: {
+      lunch: false,
+      dinner: false,
+      value: 0,
+      daysPerWeek: 0,
+    },
+    transport: {
+      parking: false,
+      shuttle: false,
+      allowance: 0,
+    },
+    phone: {
+      allowance: 0,
+      provided: false,
+    },
+    internet: {
+      allowance: 0,
+      provided: false,
+    },
+    wellness: {
+      gym: false,
+      value: 0,
+      activities: [],
+    },
+    equipment: {
+      laptop: false,
+      monitor: false,
+      homeOffice: false,
+      budget: 0,
+    },
+    other: [],
+  };
+}
+
+// Industry benchmarks for benefits (in VND)
+export const BENEFIT_BENCHMARKS = {
+  tech: {
+    healthInsurance: {
+      self: 500000,
+      'self+spouse': 1000000,
+      family: 2000000,
+    },
+    mealAllowance: {
+      daily: 50000,
+      monthly: 1000000,
+    },
+    transport: {
+      parking: 500000,
+      fuel: 1000000,
+      public: 300000,
+    },
+    phone: 300000,
+    internet: 500000,
+    gym: 800000,
+  },
+  finance: {
+    healthInsurance: {
+      self: 700000,
+      'self+spouse': 1500000,
+      family: 3000000,
+    },
+    mealAllowance: {
+      daily: 60000,
+      monthly: 1200000,
+    },
+    transport: {
+      parking: 700000,
+      fuel: 1500000,
+      public: 400000,
+    },
+    phone: 500000,
+    internet: 600000,
+    gym: 1000000,
+  },
+  general: {
+    healthInsurance: {
+      self: 300000,
+      'self+spouse': 600000,
+      family: 1200000,
+    },
+    mealAllowance: {
+      daily: 30000,
+      monthly: 600000,
+    },
+    transport: {
+      parking: 300000,
+      fuel: 500000,
+      public: 200000,
+    },
+    phone: 200000,
+    internet: 300000,
+    gym: 500000,
+  },
+} as const;
