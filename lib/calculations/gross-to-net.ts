@@ -21,7 +21,7 @@ export function calculateNetFromGross(input: SalaryInput): SalaryResult {
   );
 
   // Step 5: Calculate tax
-  const tax = calculateTax(taxableIncome);
+  const tax = calculateTax(taxableIncome, year);
 
   // Step 6: Net salary
   const netSalary = grossSalary - insurance.total - tax.tax;

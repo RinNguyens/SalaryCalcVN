@@ -1,4 +1,4 @@
-export const TAX_BRACKETS = [
+export const TAX_BRACKETS_2025 = [
   {
     max: 5_000_000,
     rate: 0.05,
@@ -42,6 +42,42 @@ export const TAX_BRACKETS = [
     label: 'Bậc 7: >80 triệu'
   },
 ] as const;
+
+export const TAX_BRACKETS_2026 = [
+  {
+    max: 10_000_000,
+    rate: 0.05,
+    deduction: 0,
+    label: 'Bậc 1: ≤10 triệu'
+  },
+  {
+    max: 30_000_000,
+    rate: 0.10,
+    deduction: 500_000,
+    label: 'Bậc 2: 10-30 triệu'
+  },
+  {
+    max: 50_000_000,
+    rate: 0.20,
+    deduction: 3_500_000,
+    label: 'Bậc 3: 30-50 triệu'
+  },
+  {
+    max: 100_000_000,
+    rate: 0.30,
+    deduction: 8_500_000,
+    label: 'Bậc 4: 50-100 triệu'
+  },
+  {
+    max: Infinity,
+    rate: 0.35,
+    deduction: 13_500_000,
+    label: 'Bậc 5: >100 triệu'
+  },
+] as const;
+
+// Default to 2025 brackets for backward compatibility
+export const TAX_BRACKETS = TAX_BRACKETS_2025;
 
 export const DEDUCTIONS = {
   CURRENT: {

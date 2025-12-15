@@ -1,10 +1,10 @@
-import { TAX_BRACKETS, getDeductions } from '@/lib/constants/tax-brackets';
+import { TAX_BRACKETS_2025, TAX_BRACKETS_2026, getDeductions } from '@/lib/constants/tax-brackets';
 import type { TaxBreakdown, DeductionBreakdown } from '@/types/salary';
 
 /**
  * Calculate personal income tax using progressive brackets
  */
-export function calculateTax(taxableIncome: number): TaxBreakdown {
+export function calculateTax(taxableIncome: number, year?: number): TaxBreakdown {
   if (taxableIncome <= 0) {
     return {
       taxableIncome: 0,
@@ -15,11 +15,15 @@ export function calculateTax(taxableIncome: number): TaxBreakdown {
     };
   }
 
-  const bracketIndex = TAX_BRACKETS.findIndex(
+  // Select tax brackets based on year
+  const currentYear = year || new Date().getFullYear();
+  const selectedTAX_BRACKETS = currentYear >= 2026 ? TAX_BRACKETS_2026 : TAX_BRACKETS_2025;
+
+  const bracketIndex = selectedTAX_BRACKETS.findIndex(
     (bracket) => taxableIncome <= bracket.max
   );
 
-  const bracket = TAX_BRACKETS[bracketIndex];
+  const bracket = selectedTAX_BRACKETS[bracketIndex];
 
   // Use quick calculation formula
   const tax = Math.round(taxableIncome * bracket.rate - bracket.deduction);

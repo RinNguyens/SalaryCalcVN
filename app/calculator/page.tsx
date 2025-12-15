@@ -12,6 +12,9 @@ import { TaxChart } from '@/components/calculator/tax-chart';
 import { SalaryBreakdownChart } from '@/components/calculator/salary-breakdown-chart';
 import { InsuranceBreakdown } from '@/components/calculator/insurance-breakdown';
 import { ResultSkeleton } from '@/components/shared/result-skeleton';
+import { TaxBreakdown } from '@/components/calculator/tax-breakdown';
+import { TaxComparison } from '@/components/calculator/tax-comparison';
+import { InteractiveTaxSlider } from '@/components/calculator/interactive-tax-slider';
 import { AnnualInputForm } from '@/components/annual-compensation/annual-input-form';
 import { AnnualResultCard } from '@/components/annual-compensation/annual-result-card';
 import { GrowthInputForm } from '@/components/salary-growth/growth-input-form';
@@ -225,6 +228,15 @@ export default function CalculatorPage() {
                     <TaxChart result={result} />
                     <SalaryBreakdownChart result={result} />
                   </div>
+
+                  {/* Tax Breakdown */}
+                  <TaxBreakdown
+                    taxableIncome={result.monthlyBreakdown.taxableIncome}
+                    totalTax={result.monthlyBreakdown.tax}
+                  />
+
+                  {/* Tax Comparison (only show if there are savings) */}
+                  <TaxComparison taxableIncome={result.monthlyBreakdown.taxableIncome} />
 
                   {/* Insurance Breakdown */}
                   <InsuranceBreakdown result={result} />
