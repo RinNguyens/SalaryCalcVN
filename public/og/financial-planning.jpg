@@ -1,0 +1,80 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#grad1)" opacity="0.1"/>
+
+  <!-- Pie chart representation -->
+  <g transform="translate(200, 180)">
+    <!-- 50% Needs -->
+    <path d="M 0,0 L 100,0 A 100,100 0 0,1 0,100 z" fill="#3B82F6" opacity="0.7"/>
+    <!-- 30% Wants -->
+    <path d="M 0,0 L 0,100 A 100,100 0 0,1 -95.1,-30.9 z" fill="#10B981" opacity="0.7"/>
+    <!-- 20% Savings -->
+    <path d="M 0,0 L -95.1,-30.9 A 100,100 0 0,1 100,0 z" fill="#F59E0B" opacity="0.7"/>
+
+    <!-- Center circle -->
+    <circle cx="0" cy="0" r="40" fill="white" opacity="0.9"/>
+    <text x="0" y="0" text-anchor="middle" fill="#1F2937" font-size="14" font-weight="bold" font-family="Arial">50-30-20</text>
+    <text x="0" y="15" text-anchor="middle" fill="#6B7280" font-size="12" font-family="Arial">RULE</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(400, 100)">
+    <rect x="0" y="0" width="320" height="120" rx="8" fill="white" opacity="0.95"/>
+    <text x="160" y="25" text-anchor="middle" fill="#1F2937" font-size="16" font-weight="bold" font-family="Arial">Phân bổ thu nhập</text>
+
+    <!-- 50% -->
+    <rect x="20" y="40" width="20" height="15" rx="3" fill="#3B82F6"/>
+    <text x="50" y="50" fill="#3B82F6" font-size="14" font-weight="bold">50% Needs</text>
+    <text x="130" y="50" fill="#6B7280" font-size="12">Nhu cầu thiết yếu</text>
+
+    <!-- 30% -->
+    <rect x="20" y="65" width="20" height="15" rx="3" fill="#10B981"/>
+    <text x="50" y="75" fill="#10B981" font-size="14" font-weight="bold">30% Wants</text>
+    <text x="130" y="75" fill="#6B7280" font-size="12">Mong muốn</text>
+
+    <!-- 20% -->
+    <rect x="20" y="90" width="20" height="15" rx="3" fill="#F59E0B"/>
+    <text x="50" y="100" fill="#F59E0B" font-size="14" font-weight="bold">20% Savings</text>
+    <text x="130" y="100" fill="#6B7280" font-size="12">Tiết kiệm</text>
+  </g>
+
+  <!-- Money bags -->
+  <g transform="translate(100, 100)">
+    <g transform="translate(0, 0)">
+      <ellipse cx="25" cy="30" rx="25" ry="20" fill="#3B82F6" opacity="0.3"/>
+      <text x="25" y="35" text-anchor="middle" fill="#3B82F6" font-size="12" font-weight="bold">50%</text>
+    </g>
+    <g transform="translate(0, 60)">
+      <ellipse cx="25" cy="30" rx="15" ry="12" fill="#10B981" opacity="0.3"/>
+      <text x="25" y="35" text-anchor="middle" fill="#10B981" font-size="12" font-weight="bold">30%</text>
+    </g>
+    <g transform="translate(0, 100)">
+      <ellipse cx="25" cy="30" rx="10" ry="8" fill="#F59E0B" opacity="0.3"/>
+      <text x="25" y="35" text-anchor="middle" fill="#F59E0B" font-size="12" font-weight="bold">20%</text>
+    </g>
+  </g>
+
+  <!-- Benefits box -->
+  <g transform="translate(400, 250)">
+    <rect x="0" y="0" width="320" height="100" rx="8" fill="#10B981" opacity="0.1"/>
+    <text x="160" y="25" text-anchor="middle" fill="#10B981" font-size="16" font-weight="bold" font-family="Arial">Lợi ích</text>
+    <text x="30" y="50" fill="#6B7280" font-size="13">✓ Quỹ khẩn cấp 6 tháng</text>
+    <text x="30" y="70" fill="#6B7280" font-size="13">✓ Hưu trí vững chắc</text>
+    <text x="170" y="50" fill="#6B7280" font-size="13">✓ Đầu tư hiệu quả</text>
+    <text x="170" y="70" fill="#6B7280" font-size="13">✓ Mua nhà, xe</text>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="white" font-size="28" font-weight="bold" font-family="Arial">
+    Quản Lý Tài Chính 50-30-20
+  </text>
+</svg>
