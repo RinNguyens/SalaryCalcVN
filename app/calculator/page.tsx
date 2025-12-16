@@ -25,6 +25,8 @@ import { calculateAnnualCompensation } from '@/lib/calculations/annual-compensat
 import { calculateSalaryGrowth } from '@/lib/calculations/salary-growth';
 import { saveCalculation } from '@/lib/storage/local-storage';
 import { generateSalaryInsights } from '@/lib/insights/salary-insights';
+import { AIAssistant } from '@/components/calculator/ai-assistant';
+import { convertToCalculatorResult } from '@/lib/utils/ai-helper';
 import type { SalaryResult, AnnualCompensation, SalaryGrowthProjection, BonusInput, SalaryGrowthInput } from '@/types/salary';
 import type { SalaryFormValues } from '@/lib/validators/salary-schema';
 
@@ -240,6 +242,21 @@ export default function CalculatorPage() {
 
                   {/* Insurance Breakdown */}
                   <InsuranceBreakdown result={result} />
+
+                  {/* AI Assistant */}
+                  {lastInput && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                    >
+                      <AIAssistant
+                        result={convertToCalculatorResult(result, lastInput.dependents)}
+                        variant="panel"
+                        className="h-[600px]"
+                      />
+                    </motion.div>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>

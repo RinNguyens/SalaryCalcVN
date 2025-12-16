@@ -268,3 +268,41 @@ export interface BenchmarkComparison {
   gapToMedian: number;
   recommendations: string[];
 }
+
+// AI Assistant types
+export interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+  suggestions?: string[];
+}
+
+export interface CalculatorResult {
+  // Basic salary info
+  gross: number;
+  net: number;
+  tax: number;
+  insurance: number;
+
+  // Deductions
+  dependents: number;
+  taxableIncome: number;
+
+  // Tax details
+  taxTier: number;
+  effectiveRate: number;
+
+  // 2026 comparison
+  tax2026?: number;
+  savings2026?: number;
+
+  // Breakdown
+  breakdown: {
+    bhxh: number;
+    bhyt: number;
+    bhtn: number;
+    personalDeduction: number;
+    dependentDeduction: number;
+  };
+}
