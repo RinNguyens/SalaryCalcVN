@@ -33,6 +33,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'recharts'],
   },
 
+  // Turbopack configuration
+  turbopack: {},
+
   // Webpack configuration
   webpack: (config, { dev, isServer }) => {
     // Optimize for production

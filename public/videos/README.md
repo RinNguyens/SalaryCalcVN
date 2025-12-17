@@ -1,6 +1,6 @@
 # Videos Directory
 
-This directory contains demo videos and thumbnails for SalaryCalc VN.
+This directory contains demo videos and thumbnails for SalaryLens.
 
 ## Structure
 
@@ -41,7 +41,7 @@ videos/
 
 ## Next Steps
 
-1. Create demo video following storyboard in `.claude/docs/SalaryCalcVN-Video-Demo-System.md`
+1. Create demo video following storyboard in `.claude/docs/SalaryLens-Video-Demo-System.md`
 2. Generate thumbnail image
 3. Optimize video for web
 4. Upload to directory

@@ -1,6 +1,6 @@
-# SalaryCalc VN
+# 🎯 SalaryLens - Crystal Clear Salary Insights
 
-Công cụ tính lương Gross ↔ Net chính xác cho thị trường Việt Nam với UI Glass Effect hiện đại.
+> Công cụ tính lương thông minh với AI cho người lao động Việt Nam
 
 ## 🚀 Quick Start
 
@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 ## 🗂️ Project Structure
 
 ```
-salary-calc-vn/
+salarylens/
 ├── app/                     # Next.js app directory
 │   ├── calculator/         # Main calculator page
 │   ├── comparison/         # Salary comparison
@@ -114,8 +114,17 @@ salary-calc-vn/
 
 ## 📚 Documentation
 
-For detailed implementation guide, see `SalaryCalcVN.md`.
+For detailed implementation guide, see the `.claude/docs` directory.
 
 ## 📝 License
 
-Private Project
+MIT License - see LICENSE file for details
+
+## 📧 Contact
+
+- Website: [salarylens.com](https://salarylens.com)
+- Email: support@salarylens.com
+
+---
+
+Made with ❤️ by SalaryLens Team

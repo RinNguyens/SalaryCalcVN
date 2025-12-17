@@ -109,7 +109,7 @@ export function DonateModal({ onClose }: DonateModalProps) {
               </motion.div>
               <div>
                 <h2 className="text-2xl font-bold text-white">
-                  Support SalaryCalc VN
+                  Support SalaryLens
                 </h2>
                 <p className="text-white/70 text-sm">
                   Help keep this tool free & awesome!
