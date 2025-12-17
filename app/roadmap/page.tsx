@@ -46,7 +46,7 @@ export default function RoadmapPage() {
         {/* Header */}
         <div className="text-center">
           <h1 className="text-4xl font-bold text-slate-900 mb-2">
-            🚀 SalaryCalc VN Feature Roadmap
+            🚀 SalaryLens Feature Roadmap
           </h1>
           <p className="text-lg text-slate-600">
             Building the ultimate salary calculator for Vietnamese professionals

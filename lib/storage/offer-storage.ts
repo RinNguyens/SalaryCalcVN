@@ -1,7 +1,7 @@
 import type { OfferComparison, JobOffer } from '@/types/job-offer';
 
-const STORAGE_KEY = 'salarycalc-offer-comparisons';
-const OFFERS_KEY = 'salarycalc-job-offers';
+const STORAGE_KEY = 'salarylens-offer-comparisons';
+const OFFERS_KEY = 'salarylens-job-offers';
 
 export function saveOfferComparison(comparison: OfferComparison): void {
   if (typeof window === 'undefined') return;

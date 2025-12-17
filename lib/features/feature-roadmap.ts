@@ -1,5 +1,5 @@
 /**
- * Feature Roadmap & Implementation Tracking for SalaryCalcVN
+ * Feature Roadmap & Implementation Tracking for SalaryLens
  * Based on priority matrix from advanced features document
  */
 

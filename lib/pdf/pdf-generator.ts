@@ -35,7 +35,7 @@ export async function generatePDF(
   // Add header
   pdf.setFontSize(24);
   pdf.setTextColor(102, 126, 234);
-  pdf.text('SalaryCalc VN', pageWidth / 2, 20, { align: 'center' });
+  pdf.text('SalaryLens', pageWidth / 2, 20, { align: 'center' });
 
   pdf.setFontSize(12);
   pdf.setTextColor(100);
@@ -199,7 +199,7 @@ export async function generatePDF(
   pdf.setFontSize(8);
   pdf.setTextColor(150);
   pdf.text(
-    toAsciiSafe('Tạo bởi SalaryCalc VN - Công cụ tính lương chính xác'),
+    toAsciiSafe('Tạo bởi SalaryLens - Công cụ tính lương chính xác'),
     pageWidth / 2,
     pageHeight - 10,
     { align: 'center' }

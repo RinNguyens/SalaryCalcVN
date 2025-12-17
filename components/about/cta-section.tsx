@@ -30,7 +30,7 @@ export function CTASection() {
 
             {/* Description */}
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Tham gia <strong className="text-white">50,000+</strong> người lao động đang sử dụng SalaryCalc VN
+              Tham gia <strong className="text-white">50,000+</strong> người lao động đang sử dụng SalaryLens
             </p>
 
             {/* Features */}

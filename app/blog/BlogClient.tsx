@@ -59,7 +59,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Blog <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">SalaryCalc VN</span>
+              Blog <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">SalaryLens</span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">

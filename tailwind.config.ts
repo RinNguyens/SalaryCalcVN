@@ -11,6 +11,14 @@ export default {
   theme: {
   	extend: {
   		colors: {
+  			// SalaryLens Brand Colors
+  			brand: {
+  				primary: '#1E40AF',      // Deep Blue
+  				secondary: '#10B981',    // Emerald
+  				accent: '#8B5CF6',       // Purple
+  				dark: '#0F172A',         // Slate 900
+  				light: '#F8FAFC',        // Slate 50
+  			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',

@@ -98,7 +98,7 @@ export function WhyChooseUs() {
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            🏆 Tại sao chọn SalaryCalc VN?
+            🏆 Tại sao chọn SalaryLens?
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             6 lý do khiến chúng tôi khác biệt và được tin tưởng bởi 50,000+ người dùng
@@ -164,7 +164,7 @@ export function WhyChooseUs() {
               <strong>Đã đủ thuyết phục chưa?</strong> 😊
             </p>
             <p className="text-white/80 mb-6">
-              Tham gia 50,000+ người lao động đang tin tưởng SalaryCalc VN
+              Tham gia 50,000+ người lao động đang tin tưởng SalaryLens
             </p>
             <a
               href="/calculator"

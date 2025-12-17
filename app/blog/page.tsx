@@ -2,10 +2,10 @@ import { getAllPosts, getFeaturedPosts, getCategories } from '@/lib/mdx';
 import { BlogClient } from './BlogClient';
 
 export const metadata = {
-  title: 'Blog SalaryCalc VN - Kiến thức về lương, thuế và đàm phán',
+  title: 'Blog SalaryLens - Kiến thức về lương, thuế và đàm phán',
   description: 'Tổng hợp bài viết hữu ích về cách tính lương, tối ưu thuế, kỹ năng đàm phán và quản lý tài chính cá nhân cho người đi làm Việt Nam.',
   openGraph: {
-    title: 'Blog SalaryCalc VN - Kiến thức tài chính cho người đi làm',
+    title: 'Blog SalaryLens - Kiến thức tài chính cho người đi làm',
     description: 'Cẩm nang toàn diện về lương, thuế và đàm phán công việc',
     images: ['/og/blog.jpg'],
   },

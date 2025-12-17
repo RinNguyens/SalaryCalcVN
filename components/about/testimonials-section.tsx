@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     role: 'Marketing Manager',
     company: 'Grab Vietnam',
     avatar: '',
-    content: 'Đàm phán lương dễ dàng hơn nhiều khi biết chính xác mình sẽ nhận được bao nhiêu. Giao diện đẹp, tính năng export PDF cũng rất tiện. Thanks SalaryCalc!',
+    content: 'Đàm phán lương dễ dàng hơn nhiều khi biết chính xác mình sẽ nhận được bao nhiêu. Giao diện đẹp, tính năng export PDF cũng rất tiện. Thanks SalaryLens!',
     rating: 5,
     date: '2024-12-01',
     verified: true,
@@ -59,7 +59,7 @@ const testimonials: Testimonial[] = [
     role: 'Product Designer',
     company: 'Tiki',
     avatar: '',
-    content: 'UI/UX của tool này quá đỉnh! Dễ dùng, màu sắc đẹp, và thông tin rất chi tiết. Mình đã share cho cả team design để học hỏi. Cảm ơn team SalaryCalc!',
+    content: 'UI/UX của tool này quá đỉnh! Dễ dùng, màu sắc đẹp, và thông tin rất chi tiết. Mình đã share cho cả team design để học hỏi. Cảm ơn team SalaryLens!',
     rating: 5,
     date: '2024-11-20',
     verified: true,
@@ -201,7 +201,7 @@ function TestimonialCard({
 }) {
   return (
     <GlassCard
-      variant="medium"
+      variant="default"
       className={`${compact ? 'p-4' : 'p-6'} h-full flex flex-col hover:scale-105 transition-transform`}
     >
       {/* Header */}
@@ -248,7 +248,7 @@ function TestimonialCard({
 
       {/* Content */}
       <p className={`text-white/80 leading-relaxed flex-1 ${compact ? 'text-sm' : 'text-base'}`}>
-        "{testimonial.content}"
+        &ldquo;{testimonial.content}&rdquo;
       </p>
 
       {/* Date */}
@@ -268,7 +268,7 @@ function TestimonialCard({
 // Stat Card Component
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <GlassCard variant="medium" className="p-6 text-center">
+    <GlassCard variant="default" className="p-6 text-center">
       <div className="text-3xl font-bold text-white mb-2">
         {value}
       </div>
