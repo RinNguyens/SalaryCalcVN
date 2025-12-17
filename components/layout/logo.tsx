@@ -59,7 +59,7 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-4/5 h-4/5 rounded-full bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-lg">
             <span className="text-white font-bold" style={{ fontSize: fontSize * 0.8 }}>
-              ₫
+              🛡️
             </span>
           </div>
         </div>
@@ -79,7 +79,7 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
               className="font-normal text-white/90"
               style={{ fontSize: fontSize * 0.95 }}
             >
-              Calc
+              Lens
             </span>
           </div>
           <span
