@@ -201,7 +201,7 @@ function TestimonialCard({
 }) {
   return (
     <GlassCard
-      variant="medium"
+      variant="default"
       className={`${compact ? 'p-4' : 'p-6'} h-full flex flex-col hover:scale-105 transition-transform`}
     >
       {/* Header */}
@@ -248,7 +248,7 @@ function TestimonialCard({
 
       {/* Content */}
       <p className={`text-white/80 leading-relaxed flex-1 ${compact ? 'text-sm' : 'text-base'}`}>
-        "{testimonial.content}"
+        &ldquo;{testimonial.content}&rdquo;
       </p>
 
       {/* Date */}
@@ -268,7 +268,7 @@ function TestimonialCard({
 // Stat Card Component
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <GlassCard variant="medium" className="p-6 text-center">
+    <GlassCard variant="default" className="p-6 text-center">
       <div className="text-3xl font-bold text-white mb-2">
         {value}
       </div>
