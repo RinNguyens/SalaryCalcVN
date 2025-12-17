@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Coffee, X, Heart, CreditCard, Smartphone, Building2, QrCode } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/glass-card';
 import { PAYMENT_CONFIG, generateMomoLink, generateZaloPayLink, usdToVnd, formatCurrency } from '@/utils/payment';
@@ -13,7 +14,7 @@ interface DonateModalProps {
 
 export function DonateModal({ onClose }: DonateModalProps) {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(3);
-  const [selectedMethod, setSelectedMethod] = useState<string>('buymeacoffee');
+  const [selectedMethod, setSelectedMethod] = useState<string>('momo');
   const [showQR, setShowQR] = useState(false);
 
   const amounts = [
@@ -24,14 +25,6 @@ export function DonateModal({ onClose }: DonateModalProps) {
   ];
 
   const paymentMethods = [
-    {
-      id: 'buymeacoffee',
-      name: 'Buy Me a Coffee',
-      icon: Coffee,
-      url: PAYMENT_CONFIG.buymeacoffee,
-      color: 'from-amber-500 to-orange-500',
-      flag: '🌍',
-    },
     {
       id: 'momo',
       name: 'Momo',
@@ -233,20 +226,45 @@ export function DonateModal({ onClose }: DonateModalProps) {
                 Scan QR Code
               </h3>
 
-              {/* QR Code Placeholder */}
-              <div className="bg-white p-4 rounded-xl mb-4 inline-block">
+              {/* QR Code Image */}
+              <div className="bg-white p-6 rounded-xl mb-4 inline-block">
                 {selectedMethod === 'bank' ? (
-                  <div className="space-y-3">
-                    <QrCode className="h-48 w-48 text-gray-400 mx-auto" />
-                    <div className="text-left text-sm text-gray-700 space-y-1">
+                  <div className="space-y-4">
+                    <div className="relative w-72 h-72 mx-auto">
+                      <Image
+                        src={PAYMENT_CONFIG.bank.qrCodeUrl}
+                        alt="Bank Transfer QR Code"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="text-left text-sm text-gray-700 space-y-1 mt-4">
                       <p><strong>Bank:</strong> {PAYMENT_CONFIG.bank.bank}</p>
                       <p><strong>Account:</strong> {PAYMENT_CONFIG.bank.accountNumber}</p>
                       <p><strong>Name:</strong> {PAYMENT_CONFIG.bank.accountName}</p>
                       <p><strong>Amount:</strong> {formatCurrency(usdToVnd(selectedAmount || 5), 'VND')}</p>
                     </div>
                   </div>
+                ) : selectedMethod === 'momo' ? (
+                  <div className="relative w-72 h-72 mx-auto">
+                    <Image
+                      src={PAYMENT_CONFIG.momo.qrCodeUrl}
+                      alt="Momo QR Code"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ) : selectedMethod === 'zalopay' ? (
+                  <div className="relative w-72 h-72 mx-auto">
+                    <Image
+                      src={PAYMENT_CONFIG.zalopay.qrCodeUrl}
+                      alt="ZaloPay QR Code"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 ) : (
-                  <QrCode className="h-48 w-48 text-gray-400" />
+                  <QrCode className="h-72 w-72 text-gray-400" />
                 )}
               </div>
 

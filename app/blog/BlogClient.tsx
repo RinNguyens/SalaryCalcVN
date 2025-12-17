@@ -208,7 +208,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                   type="email"
                   placeholder="Nhập email của bạn"
                   required
-                  className="flex-1 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="flex-1 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
                 <button
                   type="submit"
@@ -218,7 +218,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                 </button>
               </form>
 
-              <p className="text-gray-500 text-sm mt-4">
+              <p className="text-gray-300 text-sm mt-4">
                 Cam kết không spam. Hủy đăng ký bất cứ lúc nào.
               </p>
             </div>
