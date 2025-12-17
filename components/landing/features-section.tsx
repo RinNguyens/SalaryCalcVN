@@ -209,7 +209,7 @@ export function FeaturesSection() {
           isOpen={isDemoOpen}
           onClose={() => setIsDemoOpen(false)}
           videoUrl="/videos/salary-calc-demo.mp4"
-          title="SalaryCalc VN - Demo Overview"
+          title="SalaryLens - Demo Overview"
           description="Tìm hiểu cách sử dụng công cụ tính lương trong 2 phút"
           thumbnail="/videos/demo-thumbnail.jpg"
           autoPlay

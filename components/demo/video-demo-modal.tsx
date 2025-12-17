@@ -19,7 +19,7 @@ export function VideoDemoModal({
   isOpen,
   onClose,
   videoUrl,
-  title = 'SalaryCalc VN Demo',
+  title = 'SalaryLens Demo',
   description = 'Xem cách sử dụng công cụ tính lương',
   thumbnail,
   autoPlay = true,

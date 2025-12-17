@@ -1,6 +1,6 @@
 import type { SalaryEstimateRequest, SalaryEstimate } from '@/types/salary-estimator';
 
-const STORAGE_KEY = 'salarycalc-estimations';
+const STORAGE_KEY = 'salarylens-estimations';
 
 export interface SavedEstimation {
   id: string;

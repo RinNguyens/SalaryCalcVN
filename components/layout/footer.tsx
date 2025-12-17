@@ -204,7 +204,7 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <p className="text-white/60 text-sm">
-                © 2026 SalaryCalc VN. Tất cả quyền được bảo lưu.
+                © 2026 SalaryLens. Tất cả quyền được bảo lưu.
               </p>
 
               <div className="flex items-center gap-4">

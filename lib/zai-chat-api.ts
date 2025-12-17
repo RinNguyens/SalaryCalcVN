@@ -76,7 +76,7 @@ export class ZAIChatAPI {
 
   /**
    * Vietnamese Salary Assistant System Prompt
-   * Optimized cho SalaryCalc VN
+   * Optimized cho SalaryLens
    */
   private readonly SYSTEM_PROMPT = `Bạn là trợ lý AI chuyên nghiệp về lương và tài chính cá nhân cho người lao động Việt Nam.
 

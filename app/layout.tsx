@@ -9,21 +9,25 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
-  title: "SalaryCalc VN - Tính lương Gross Net chính xác cho Việt Nam",
+  title: "SalaryLens - Crystal Clear Salary Insights",
   description:
-    "Công cụ tính chuyển đổi lương Gross sang Net và ngược lại. Tính toán chính xác thuế TNCN và bảo hiểm theo quy định 2024-2025.",
+    "Công cụ tính lương thông minh với AI. Phân tích thu nhập, tối ưu thuế, và tư vấn tài chính cho người Việt Nam.",
   keywords: [
     "tính lương",
+    "salary calculator",
+    "vietnam salary",
+    "tax calculator",
+    "salarylens",
+    "lương net",
+    "thu nhập",
     "gross to net",
-    "net to gross",
     "thuế TNCN",
     "bảo hiểm xã hội",
-    "lương thực nhận",
   ],
-  authors: [{ name: "SalaryCalc VN" }],
+  authors: [{ name: "SalaryLens Team" }],
   openGraph: {
-    title: "SalaryCalc VN - Tính lương Gross Net",
-    description: "Công cụ tính lương miễn phí cho người lao động Việt Nam",
+    title: "SalaryLens - Crystal Clear Salary Insights",
+    description: "Công cụ tính lương thông minh với AI cho người lao động Việt Nam",
     type: "website",
     locale: "vi_VN",
   },

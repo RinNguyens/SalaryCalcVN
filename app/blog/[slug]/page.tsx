@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${post.title} | SalaryCalc VN Blog`,
+    title: `${post.title} | SalaryLens Blog`,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               Tính lương Net chính xác trong 30 giây
             </h2>
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Sử dụng công cụ tính lương miễn phí của SalaryCalc VN để biết chính xác thu nhập thực nhận của bạn
+              Sử dụng công cụ tính lương miễn phí của SalaryLens để biết chính xác thu nhập thực nhận của bạn
             </p>
             <Link
               href="/"

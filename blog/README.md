@@ -1,6 +1,6 @@
-# SalaryCalc VN Blog System
+# SalaryLens Blog System
 
-Blog system cho SalaryCalc VN với 5 bài viết chất lượng cao về tài chính và đàm phán lương.
+Blog system cho SalaryLens với 5 bài viết chất lượng cao về tài chính và đàm phán lương.
 
 ## 📁 Cấu trúc
 
@@ -68,7 +68,7 @@ lib/
 title: 'Tiêu đề bài viết'
 description: 'Mô tả ngắn'
 date: 'YYYY-MM-DD'
-author: 'SalaryCalc Team'
+author: 'SalaryLens Team'
 category: 'Tên category'
 tags: ['tag1', 'tag2', 'tag3']
 featured: true/false
@@ -140,4 +140,4 @@ Views và engagement được track qua:
 
 ---
 
-Blog này giúp **establish expertise** và **improve SEO** cho SalaryCalc VN! 📝✨
+Blog này giúp **establish expertise** và **improve SEO** cho SalaryLens! 📝✨
