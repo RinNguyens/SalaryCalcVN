@@ -168,10 +168,10 @@ export function VideoDemoModal({
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-1">
+                  <h3 className="text-2xl font-bold text-black mb-1">
                     {title}
                   </h3>
-                  <p className="text-white/70 text-sm">
+                  <p className="text-black/70 text-sm">
                     {description}
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export function VideoDemoModal({
                   onClick={handleClose}
                   className="
                     rounded-full bg-white/10 hover:bg-white/20
-                    text-white border-2 border-white/20
+                    text-black border-2 border-white/20
                     hover:border-white/30
                   "
                 >
@@ -229,7 +229,7 @@ export function VideoDemoModal({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Play className="h-12 w-12 text-white ml-2" fill="white" />
+                    <Play className="h-12 w-12 text-black ml-2" fill="white" />
                   </motion.button>
                 </motion.div>
               )}
@@ -249,7 +249,7 @@ export function VideoDemoModal({
                         variant="ghost"
                         size="icon"
                         onClick={togglePlay}
-                        className="text-white hover:bg-white/20"
+                        className="text-black hover:bg-white/20"
                       >
                         {isPlaying ? (
                           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -266,7 +266,7 @@ export function VideoDemoModal({
                         variant="ghost"
                         size="icon"
                         onClick={toggleMute}
-                        className="text-white hover:bg-white/20"
+                        className="text-black hover:bg-white/20"
                       >
                         {isMuted ? (
                           <VolumeX className="h-6 w-6" />
@@ -290,7 +290,7 @@ export function VideoDemoModal({
                         variant="ghost"
                         size="icon"
                         onClick={toggleFullscreen}
-                        className="text-white hover:bg-white/20"
+                        className="text-black hover:bg-white/20"
                       >
                         {isFullscreen ? (
                           <Minimize className="h-6 w-6" />
@@ -311,7 +311,7 @@ export function VideoDemoModal({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="flex items-center justify-between text-sm text-white/60">
+              <div className="flex items-center justify-between text-sm text-black/60">
                 <span>
                   💡 Tips: Nhấn <kbd className="px-2 py-1 rounded bg-white/10">Space</kbd> để play/pause,{' '}
                   <kbd className="px-2 py-1 rounded bg-white/10">F</kbd> fullscreen,{' '}

@@ -310,7 +310,7 @@ export function getInsightColor(type: SalaryInsight['type']): string {
     positive: 'text-green-600',
     neutral: 'text-blue-600',
     warning: 'text-orange-600',
-    info: 'text-gray-600',
+    info: 'text-slate-600',
   };
   return colors[type] || colors.neutral;
 }
@@ -323,7 +323,7 @@ export function getInsightBgColor(type: SalaryInsight['type']): string {
     positive: 'bg-green-50 border-green-200',
     neutral: 'bg-blue-50 border-blue-200',
     warning: 'bg-orange-50 border-orange-200',
-    info: 'bg-gray-50 border-gray-200',
+    info: 'bg-slate-50 border-slate-200',
   };
   return colors[type] || colors.neutral;
 }

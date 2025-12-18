@@ -19,10 +19,10 @@ export function ShareIcons({ url, title }: ShareIconsProps) {
 
   return (
     <div className="flex items-center gap-4">
-      <span className="text-gray-400 mr-2">Chia sẻ:</span>
+      <span className="text-slate-400 mr-2">Chia sẻ:</span>
       <button
         onClick={() => handleShare('facebook')}
-        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors"
+        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-black rounded-full flex items-center justify-center transition-colors"
         aria-label="Share on Facebook"
       >
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ export function ShareIcons({ url, title }: ShareIconsProps) {
 
       <button
         onClick={() => handleShare('twitter')}
-        className="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center transition-colors"
+        className="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-black rounded-full flex items-center justify-center transition-colors"
         aria-label="Share on Twitter"
       >
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ export function ShareIcons({ url, title }: ShareIconsProps) {
 
       <button
         onClick={() => handleShare('linkedin')}
-        className="w-10 h-10 bg-blue-700 hover:bg-blue-800 text-white rounded-full flex items-center justify-center transition-colors"
+        className="w-10 h-10 bg-blue-700 hover:bg-blue-800 text-black rounded-full flex items-center justify-center transition-colors"
         aria-label="Share on LinkedIn"
       >
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@ export function ShareIcons({ url, title }: ShareIconsProps) {
 
       <button
         onClick={() => handleShare('email')}
-        className="w-10 h-10 bg-gray-600 hover:bg-gray-700 text-white rounded-full flex items-center justify-center transition-colors"
+        className="w-10 h-10 bg-gray-600 hover:bg-gray-700 text-black rounded-full flex items-center justify-center transition-colors"
         aria-label="Share via Email"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export function ShareIcons({ url, title }: ShareIconsProps) {
           navigator.clipboard.writeText(url);
           alert('Đã sao chép link vào clipboard!');
         }}
-        className="w-10 h-10 bg-gray-700 hover:bg-gray-600 text-white rounded-full flex items-center justify-center transition-colors"
+        className="w-10 h-10 bg-gray-700 hover:bg-gray-600 text-black rounded-full flex items-center justify-center transition-colors"
         aria-label="Copy link"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

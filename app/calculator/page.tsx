@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { History, Calculator, Calendar, TrendingUp } from 'lucide-react';
+import { PastelBackground } from '@/components/layout/pastel-background';
+import { PastelGlassCard } from '@/components/ui/pastel-glass-card';
+import { PastelGlassButton } from '@/components/ui/pastel-glass-button';
 import { SalaryInputForm } from '@/components/calculator/salary-input-form';
 import { ResultCard } from '@/components/calculator/result-card';
 import { TaxChart } from '@/components/calculator/tax-chart';
@@ -88,36 +91,10 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-4 md:p-8">
-      {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"
-          animate={{
-            y: [0, 100, 0],
-            x: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl"
-          animate={{
-            y: [0, -80, 0],
-            x: [0, -60, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      </div>
+    <div className="min-h-screen relative">
+      <PastelBackground />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 p-4 md:p-8">
         {/* Header */}
         <motion.div
           className="text-center mb-12"
@@ -127,36 +104,45 @@ export default function CalculatorPage() {
         >
           <div className="flex justify-end mb-4">
             <Link href="/history">
-              <Button
-                variant="outline"
-                className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              <PastelGlassButton
+                variant="secondary"
+                size="sm"
+                icon={<History className="h-4 w-4" />}
               >
-                <History className="h-4 w-4" />
                 Lịch sử
-              </Button>
+              </PastelGlassButton>
             </Link>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            Salary<span className="text-yellow-300">Calc</span> VN
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            SalaryLens
           </h1>
-          <p className="text-white/80 text-lg md:text-xl">
-            Công cụ tính lương Gross ↔ Net chính xác cho Việt Nam
+          <p className="text-slate-700 text-lg md:text-xl">
+            Crystal Clear Salary Insights
           </p>
         </motion.div>
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
-            <TabsTrigger value="monthly" className="gap-2">
+          <TabsList className="grid w-full grid-cols-3 mb-6 bg-dark-bg-secondary/80 backdrop-blur-xl border border-dark-border rounded-2xl shadow-2xl p-1">
+            <TabsTrigger
+              value="monthly"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+            >
               <Calculator className="h-4 w-4" />
               Lương tháng
             </TabsTrigger>
-            <TabsTrigger value="annual" className="gap-2">
+            <TabsTrigger
+              value="annual"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+            >
               <Calendar className="h-4 w-4" />
               Thu nhập năm
             </TabsTrigger>
-            <TabsTrigger value="growth" className="gap-2">
+            <TabsTrigger
+              value="growth"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+            >
               <TrendingUp className="h-4 w-4" />
               Tăng trưởng
             </TabsTrigger>
@@ -170,10 +156,12 @@ export default function CalculatorPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <SalaryInputForm
-                  onCalculate={handleCalculate}
-                  isLoading={isCalculating}
-                />
+                <PastelGlassCard glow="blue">
+                  <SalaryInputForm
+                    onCalculate={handleCalculate}
+                    isLoading={isCalculating}
+                  />
+                </PastelGlassCard>
               </motion.div>
 
               <AnimatePresence mode="wait">
@@ -185,7 +173,9 @@ export default function CalculatorPage() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ResultSkeleton />
+                    <PastelGlassCard>
+                      <ResultSkeleton />
+                    </PastelGlassCard>
                   </motion.div>
                 ) : result ? (
                   <motion.div
@@ -205,11 +195,11 @@ export default function CalculatorPage() {
                     exit={{ opacity: 0 }}
                     className="flex items-center justify-center"
                   >
-                    <div className="glass-subtle rounded-2xl p-8 text-center">
-                      <p className="text-white/70 text-lg">
+                    <PastelGlassCard className="text-center">
+                      <p className="text-dark-secondary-text text-lg">
                         Nhập thông tin và nhấn tính toán để xem kết quả
                       </p>
-                    </div>
+                    </PastelGlassCard>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -271,13 +261,15 @@ export default function CalculatorPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <AnnualInputForm
-                    monthlySalary={result.gross}
-                    dependents={lastInput?.dependents || 0}
-                    region={lastInput?.region || 'I'}
-                    onCalculate={handleAnnualCalculate}
-                    isLoading={isCalculating}
-                  />
+                  <PastelGlassCard glow="purple">
+                    <AnnualInputForm
+                      monthlySalary={result.gross}
+                      dependents={lastInput?.dependents || 0}
+                      region={lastInput?.region || 'I'}
+                      onCalculate={handleAnnualCalculate}
+                      isLoading={isCalculating}
+                    />
+                  </PastelGlassCard>
                 </motion.div>
 
                 <AnimatePresence>
@@ -297,12 +289,13 @@ export default function CalculatorPage() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="glass-subtle rounded-2xl p-12 text-center"
               >
-                <Calendar className="h-16 w-16 text-white/50 mx-auto mb-4" />
-                <p className="text-white/70 text-lg">
-                  Vui lòng tính lương tháng trước để xem thu nhập năm
-                </p>
+                <PastelGlassCard className="p-12 text-center">
+                  <Calendar className="h-16 w-16 text-dark-muted-text mx-auto mb-4" />
+                  <p className="text-dark-secondary-text text-lg">
+                    Vui lòng tính lương tháng trước để xem thu nhập năm
+                  </p>
+                </PastelGlassCard>
               </motion.div>
             )}
           </TabsContent>
@@ -315,15 +308,17 @@ export default function CalculatorPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <GrowthInputForm
-                  onCalculate={handleGrowthCalculate}
-                  isLoading={isCalculating}
-                  defaultValues={lastInput ? {
-                    currentSalary: result?.gross || lastInput.salary,
-                    dependents: lastInput.dependents,
-                    region: lastInput.region,
-                  } : undefined}
-                />
+                <PastelGlassCard glow="pink">
+                  <GrowthInputForm
+                    onCalculate={handleGrowthCalculate}
+                    isLoading={isCalculating}
+                    defaultValues={lastInput ? {
+                      currentSalary: result?.gross || lastInput.salary,
+                      dependents: lastInput.dependents,
+                      region: lastInput.region,
+                    } : undefined}
+                  />
+                </PastelGlassCard>
               </motion.div>
 
               <AnimatePresence>
@@ -344,7 +339,7 @@ export default function CalculatorPage() {
 
         {/* Footer */}
         <motion.div
-          className="mt-12 text-center text-white/60 text-sm"
+          className="mt-12 text-center text-dark-muted-text text-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}

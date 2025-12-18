@@ -78,18 +78,18 @@ export function SalaryInputForm({
                 name="salary"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Lương Gross (VNĐ)
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="20,000,000"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       Tổng lương trước thuế và bảo hiểm
                     </FormDescription>
                     <FormMessage />
@@ -102,18 +102,18 @@ export function SalaryInputForm({
                 name="dependents"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Số người phụ thuộc
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       4.4 triệu/người/tháng
                     </FormDescription>
                     <FormMessage />
@@ -126,13 +126,13 @@ export function SalaryInputForm({
                 name="region"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Vùng</FormLabel>
+                    <FormLabel className="text-black">Vùng</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                       </FormControl>
@@ -154,18 +154,18 @@ export function SalaryInputForm({
                 name="exemptions"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Miễn thuế (VNĐ)
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       VD: Phụ cấp ăn trưa, đi lại
                     </FormDescription>
                     <FormMessage />
@@ -197,18 +197,18 @@ export function SalaryInputForm({
                 name="salary"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Lương Net mong muốn (VNĐ)
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="15,000,000"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       Số tiền thực nhận sau thuế và bảo hiểm
                     </FormDescription>
                     <FormMessage />
@@ -221,18 +221,18 @@ export function SalaryInputForm({
                 name="dependents"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Số người phụ thuộc
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       4.4 triệu/người/tháng
                     </FormDescription>
                     <FormMessage />
@@ -245,13 +245,13 @@ export function SalaryInputForm({
                 name="region"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">Vùng</FormLabel>
+                    <FormLabel className="text-black">Vùng</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                       </FormControl>
@@ -273,18 +273,18 @@ export function SalaryInputForm({
                 name="exemptions"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white">
+                    <FormLabel className="text-black">
                       Miễn thuế (VNĐ)
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription className="text-white/70">
+                    <FormDescription className="text-black/70">
                       VD: Phụ cấp ăn trưa, đi lại
                     </FormDescription>
                     <FormMessage />

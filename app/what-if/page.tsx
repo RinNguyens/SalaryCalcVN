@@ -57,7 +57,7 @@ export default function WhatIfPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-4 md:p-8">
+    <div className="min-h-screen  p-4 md:p-8">
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -95,7 +95,7 @@ export default function WhatIfPage() {
             <Link href="/calculator">
               <Button
                 variant="outline"
-                className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to Calculator
@@ -106,7 +106,7 @@ export default function WhatIfPage() {
               <Button
                 onClick={handleSaveScenario}
                 variant="outline"
-                className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
                 disabled={!baseResult}
               >
                 <Save className="h-4 w-4" />
@@ -115,7 +115,7 @@ export default function WhatIfPage() {
               <Button
                 onClick={handleExport}
                 variant="outline"
-                className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
                 disabled={!baseResult}
               >
                 <Download className="h-4 w-4" />
@@ -125,10 +125,10 @@ export default function WhatIfPage() {
           </div>
 
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-2">
               What-If Analysis
             </h1>
-            <p className="text-white/80 text-lg">
+            <p className="text-black/80 text-lg">
               Compare different salary scenarios and see how changes affect your take-home pay
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function WhatIfPage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <p className="text-white/70 text-lg">
+                  <p className="text-black/70 text-lg">
                     Add variations using the &quot;Add Variation&quot; button to start comparing scenarios
                   </p>
                 </motion.div>

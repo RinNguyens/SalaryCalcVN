@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PastelBackground } from '@/components/layout/pastel-background';
 import { ContactHero } from '@/components/contact/contact-hero';
 import { ContactForm } from '@/components/contact/contact-form';
 import { ContactMethods } from '@/components/contact/contact-methods';
@@ -17,12 +18,15 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
-      {/* Hero Section */}
-      <ContactHero />
+    <div className="min-h-screen relative">
+      <PastelBackground />
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <ContactHero />
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>
@@ -40,6 +44,7 @@ export default function ContactPage() {
         <div className="mt-20">
           <ContactFAQ />
         </div>
+      </div>
       </div>
     </div>
   );

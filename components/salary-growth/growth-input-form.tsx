@@ -103,11 +103,11 @@ export function GrowthInputForm({
   return (
     <GlassCard variant="strong" className="p-6">
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-white mb-2 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-black mb-2 flex items-center gap-2">
           <TrendingUp className="h-5 w-5" />
           Dự báo tăng trưởng lương
         </h3>
-        <p className="text-white/80 text-sm">
+        <p className="text-black/80 text-sm">
           Xem dự phóng thu nhập trong 1-10 năm tới
         </p>
       </div>
@@ -121,12 +121,12 @@ export function GrowthInputForm({
               name="currentSalary"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Lương hiện tại (Gross/tháng)</FormLabel>
+                  <FormLabel className="text-black">Lương hiện tại (Gross/tháng)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
                       placeholder="20,000,000"
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
@@ -142,7 +142,7 @@ export function GrowthInputForm({
               name="yearsOfExperience"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white flex items-center gap-2">
+                  <FormLabel className="text-black flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
                     Kinh nghiệm (năm)
                   </FormLabel>
@@ -150,12 +150,12 @@ export function GrowthInputForm({
                     <Input
                       type="number"
                       placeholder="3"
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
                   </FormControl>
-                  <FormDescription className="text-white/70">
+                  <FormDescription className="text-black/70">
                     Số năm kinh nghiệm làm việc
                   </FormDescription>
                   <FormMessage />
@@ -170,7 +170,7 @@ export function GrowthInputForm({
             name="annualRaise"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center justify-between">
+                <FormLabel className="text-black flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <Target className="h-4 w-4" />
                     Tăng lương hàng năm
@@ -189,7 +189,7 @@ export function GrowthInputForm({
                     className="mt-2"
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Tỷ lệ tăng lương trung bình hàng năm (mặt bằng chung: 6-10%)
                 </FormDescription>
                 <FormMessage />
@@ -203,7 +203,7 @@ export function GrowthInputForm({
             name="targetYears"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center justify-between">
+                <FormLabel className="text-black flex items-center justify-between">
                   <span>Dự báo trong</span>
                   <Badge variant="secondary" className="bg-white/20">
                     {targetYears} năm
@@ -219,7 +219,7 @@ export function GrowthInputForm({
                     className="mt-2"
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Số năm muốn dự báo tăng trưởng
                 </FormDescription>
                 <FormMessage />
@@ -234,17 +234,17 @@ export function GrowthInputForm({
               name="dependents"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Người phụ thuộc</FormLabel>
+                  <FormLabel className="text-black">Người phụ thuộc</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
                       placeholder="0"
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
                   </FormControl>
-                  <FormDescription className="text-white/70">
+                  <FormDescription className="text-black/70">
                     Số người phụ thuộc (giảm trừ thuế)
                   </FormDescription>
                   <FormMessage />
@@ -258,10 +258,10 @@ export function GrowthInputForm({
               name="region"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Vùng</FormLabel>
+                  <FormLabel className="text-black">Vùng</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                     </FormControl>
@@ -286,13 +286,13 @@ export function GrowthInputForm({
               name="industry"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white flex items-center gap-2">
+                  <FormLabel className="text-black flex items-center gap-2">
                     <Briefcase className="h-4 w-4" />
                     Ngành nghề
                   </FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Chọn ngành nghề" />
                       </SelectTrigger>
                     </FormControl>
@@ -305,7 +305,7 @@ export function GrowthInputForm({
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormDescription className="text-white/70">
+                  <FormDescription className="text-black/70">
                     Ngành nghề của bạn (tùy chọn)
                   </FormDescription>
                   <FormMessage />
@@ -319,10 +319,10 @@ export function GrowthInputForm({
               name="position"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Vị trí</FormLabel>
+                  <FormLabel className="text-black">Vị trí</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Chọn vị trí" />
                       </SelectTrigger>
                     </FormControl>
@@ -335,7 +335,7 @@ export function GrowthInputForm({
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormDescription className="text-white/70">
+                  <FormDescription className="text-black/70">
                     Vị trí công việc hiện tại
                   </FormDescription>
                   <FormMessage />
@@ -347,17 +347,17 @@ export function GrowthInputForm({
           {/* Quick Summary */}
           <Card className="glass-subtle">
             <CardContent className="p-4">
-              <h4 className="text-white font-semibold mb-2">Tóm tắt dự báo</h4>
+              <h4 className="text-black font-semibold mb-2">Tóm tắt dự báo</h4>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="text-white/70">Năm bắt đầu:</span>
-                  <span className="text-white ml-2">
+                  <span className="text-black/70">Năm bắt đầu:</span>
+                  <span className="text-black ml-2">
                     {new Date().getFullYear()} (hiện tại {form.watch('yearsOfExperience')} năm Kinh nghiệm)
                   </span>
                 </div>
                 <div>
-                  <span className="text-white/70">Năm kết thúc:</span>
-                  <span className="text-white ml-2">
+                  <span className="text-black/70">Năm kết thúc:</span>
+                  <span className="text-black ml-2">
                     {new Date().getFullYear() + targetYears} (sau {targetYears} năm sẽ có {form.watch('yearsOfExperience') + targetYears} năm Kinh nghiệm)
                   </span>
                 </div>

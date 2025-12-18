@@ -17,7 +17,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-black/90 border border-white/20 rounded-lg p-3 shadow-xl">
-        <p className="text-white font-semibold mb-2">{label}</p>
+        <p className="text-black font-semibold mb-2">{label}</p>
         {payload.map((entry: any, index: number) => {
           const colors: Record<string, string> = {
             'Lương Gross': '#8b5cf6',
@@ -66,7 +66,7 @@ export function SalaryBreakdownChart({ result }: SalaryBreakdownChartProps) {
 
   return (
     <GlassCard variant="default" className="p-6">
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-black mb-4">
         Phân bổ lương Gross
       </h3>
 
@@ -94,7 +94,7 @@ export function SalaryBreakdownChart({ result }: SalaryBreakdownChartProps) {
           <Legend
             wrapperStyle={{ paddingTop: '20px' }}
             formatter={(value) => (
-              <span className="text-white text-sm">{value}</span>
+              <span className="text-black text-sm">{value}</span>
             )}
             iconType="circle"
           />
@@ -125,46 +125,46 @@ export function SalaryBreakdownChart({ result }: SalaryBreakdownChartProps) {
         <div className="text-center p-3 bg-white/5 rounded-lg">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.gross }}></div>
-            <p className="text-xs text-white/90 font-medium">Lương Gross</p>
+            <p className="text-xs text-black/90 font-medium">Lương Gross</p>
           </div>
-          <p className="text-sm font-bold text-white">
+          <p className="text-sm font-bold text-black">
             {formatCurrency(result.gross)}
           </p>
-          <p className="text-xs text-white/60 mt-1">100%</p>
+          <p className="text-xs text-black/60 mt-1">100%</p>
         </div>
         <div className="text-center p-3 bg-white/5 rounded-lg">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.insurance }}></div>
-            <p className="text-xs text-white/90 font-medium">Bảo hiểm</p>
+            <p className="text-xs text-black/90 font-medium">Bảo hiểm</p>
           </div>
-          <p className="text-sm font-bold text-white">
+          <p className="text-sm font-bold text-black">
             {formatCurrency(result.insurance.total)}
           </p>
-          <p className="text-xs text-white/60 mt-1">
+          <p className="text-xs text-black/60 mt-1">
             {((result.insurance.total / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
         <div className="text-center p-3 bg-white/5 rounded-lg">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.tax }}></div>
-            <p className="text-xs text-white/90 font-medium">Thuế TNCN</p>
+            <p className="text-xs text-black/90 font-medium">Thuế TNCN</p>
           </div>
-          <p className="text-sm font-bold text-white">
+          <p className="text-sm font-bold text-black">
             {formatCurrency(result.tax.tax)}
           </p>
-          <p className="text-xs text-white/60 mt-1">
+          <p className="text-xs text-black/60 mt-1">
             {((result.tax.tax / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
         <div className="text-center p-3 bg-white/5 rounded-lg">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.net }}></div>
-            <p className="text-xs text-white/90 font-medium">Lương Net</p>
+            <p className="text-xs text-black/90 font-medium">Lương Net</p>
           </div>
           <p className="text-sm font-bold text-green-400">
             {formatCurrency(result.net)}
           </p>
-          <p className="text-xs text-white/60 mt-1">
+          <p className="text-xs text-black/60 mt-1">
             {((result.net / result.gross) * 100).toFixed(1)}%
           </p>
         </div>

@@ -238,7 +238,7 @@ export function DonateModal({ onClose }: DonateModalProps) {
                         className="object-contain"
                       />
                     </div>
-                    <div className="text-left text-sm text-gray-700 space-y-1 mt-4">
+                    <div className="text-left text-sm text-slate-700 space-y-1 mt-4">
                       <p><strong>Bank:</strong> {PAYMENT_CONFIG.bank.bank}</p>
                       <p><strong>Account:</strong> {PAYMENT_CONFIG.bank.accountNumber}</p>
                       <p><strong>Name:</strong> {PAYMENT_CONFIG.bank.accountName}</p>
@@ -264,7 +264,7 @@ export function DonateModal({ onClose }: DonateModalProps) {
                     />
                   </div>
                 ) : (
-                  <QrCode className="h-72 w-72 text-gray-400" />
+                  <QrCode className="h-72 w-72 text-slate-400" />
                 )}
               </div>
 

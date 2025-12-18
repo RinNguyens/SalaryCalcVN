@@ -51,7 +51,7 @@ export function ScenarioComparisonChart({
       const data = payload[0].payload;
       return (
         <div className="bg-gray-900/95 backdrop-blur-md border border-white/20 rounded-lg p-3 shadow-xl">
-          <p className="text-white font-semibold mb-2">{data.name}</p>
+          <p className="text-black font-semibold mb-2">{data.name}</p>
           <div className="space-y-1 text-sm">
             <p className="text-purple-300">
               Gross: {formatCurrency(data.gross)}
@@ -72,7 +72,7 @@ export function ScenarioComparisonChart({
 
   return (
     <GlassCard className="p-6" id="scenario-comparison-chart">
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-black mb-4">
         Scenario Comparison
       </h3>
 
@@ -129,15 +129,15 @@ export function ScenarioComparisonChart({
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
         <div className="text-center">
-          <p className="text-white/70 text-xs mb-1">Base Net</p>
-          <p className="text-white font-mono text-sm">
+          <p className="text-black/70 text-xs mb-1">Base Net</p>
+          <p className="text-black font-mono text-sm">
             {formatCurrency(baseResult.net)}
           </p>
         </div>
         {variations.length > 0 && (
           <>
             <div className="text-center">
-              <p className="text-white/70 text-xs mb-1">Highest Net</p>
+              <p className="text-black/70 text-xs mb-1">Highest Net</p>
               <p className="text-green-400 font-mono text-sm">
                 {formatCurrency(
                   Math.max(
@@ -148,7 +148,7 @@ export function ScenarioComparisonChart({
               </p>
             </div>
             <div className="text-center">
-              <p className="text-white/70 text-xs mb-1">Lowest Net</p>
+              <p className="text-black/70 text-xs mb-1">Lowest Net</p>
               <p className="text-orange-400 font-mono text-sm">
                 {formatCurrency(
                   Math.min(
@@ -159,8 +159,8 @@ export function ScenarioComparisonChart({
               </p>
             </div>
             <div className="text-center">
-              <p className="text-white/70 text-xs mb-1">Difference</p>
-              <p className="text-white font-mono text-sm">
+              <p className="text-black/70 text-xs mb-1">Difference</p>
+              <p className="text-black font-mono text-sm">
                 {formatCurrency(
                   Math.max(
                     baseResult.net,

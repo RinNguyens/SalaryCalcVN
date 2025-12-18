@@ -14,14 +14,14 @@ export const GlassInput = forwardRef<HTMLInputElement, GlassInputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-700 mb-2">
             {label}
           </label>
         )}
 
         <div className="relative">
           {icon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
               {icon}
             </div>
           )}
@@ -41,7 +41,7 @@ export const GlassInput = forwardRef<HTMLInputElement, GlassInputProps>(
               'transition-all duration-200',
 
               // Placeholder
-              'placeholder:text-gray-400',
+              'placeholder:text-slate-400',
 
               // Error state
               error && 'border-red-500/50 focus:ring-red-500/50',

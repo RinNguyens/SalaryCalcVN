@@ -49,7 +49,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
         {/* Category badge */}
         <div className="absolute top-4 left-4">
-          <span className="inline-block px-3 py-1.5 bg-purple-500/90 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+          <span className="inline-block px-3 py-1.5 bg-purple-500/90 text-black text-xs font-medium rounded-full backdrop-blur-sm">
             {post.category}
           </span>
         </div>
@@ -57,7 +57,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         {/* Featured badge */}
         {post.featured && (
           <div className="absolute top-4 right-4">
-            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-xs font-medium rounded-full backdrop-blur-sm">
               <span>⭐</span> Nổi bật
             </span>
           </div>
@@ -67,7 +67,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
       {/* Content */}
       <div className="p-5">
         {/* Meta info */}
-        <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
+        <div className="flex items-center gap-4 text-sm text-slate-400 mb-3">
           <div className="flex items-center gap-1">
             <CalendarIcon className="w-4 h-4" />
             <span>{new Date(post.date).toLocaleDateString('vi-VN', {
@@ -82,14 +82,14 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className={`font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2 ${
+        <h3 className={`font-bold text-black mb-3 group-hover:text-purple-400 transition-colors line-clamp-2 ${
           featured ? 'text-xl md:text-2xl' : 'text-lg'
         }`}>
           {post.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-400 mb-4 line-clamp-2 text-sm leading-relaxed">
+        <p className="text-slate-400 mb-4 line-clamp-2 text-sm leading-relaxed">
           {post.description}
         </p>
 
@@ -99,13 +99,13 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             {post.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 bg-white/5 text-xs text-gray-300 rounded-lg hover:bg-white/10 transition-colors"
+                className="px-2.5 py-1 bg-white/5 text-xs text-slate-300 rounded-lg hover:bg-white/10 transition-colors"
               >
                 #{tag}
               </span>
             ))}
             {post.tags.length > 2 && (
-              <span className="px-2.5 py-1 bg-white/5 text-xs text-gray-300 rounded-lg">
+              <span className="px-2.5 py-1 bg-white/5 text-xs text-slate-300 rounded-lg">
                 +{post.tags.length - 2}
               </span>
             )}

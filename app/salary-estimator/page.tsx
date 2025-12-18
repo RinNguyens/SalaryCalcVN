@@ -117,7 +117,7 @@ export default function SalaryEstimatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-4 md:p-8">
+    <div className="min-h-screen  p-4 md:p-8">
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -154,10 +154,10 @@ export default function SalaryEstimatorPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
             Ước tính<span className="text-yellow-300"> Lương</span>
           </h1>
-          <p className="text-white/80 text-lg md:text-xl">
+          <p className="text-black/80 text-lg md:text-xl">
             Tính lương dựa trên kỹ năng, kinh nghiệm và thị trường
           </p>
         </motion.div>
@@ -180,8 +180,8 @@ export default function SalaryEstimatorPage() {
                 <motion.div
                   className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
                     activeTab === step.id
-                      ? 'bg-white/20 text-white'
-                      : 'bg-white/10 text-white/60'
+                      ? 'bg-white/20 text-black'
+                      : 'bg-white/10 text-black/60'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -195,7 +195,7 @@ export default function SalaryEstimatorPage() {
                   <span className="hidden sm:inline">{step.label}</span>
                 </motion.div>
                 {index < 3 && (
-                  <div className="hidden sm:block text-white/40">→</div>
+                  <div className="hidden sm:block text-black/40">→</div>
                 )}
               </div>
             ))}
@@ -252,8 +252,8 @@ export default function SalaryEstimatorPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
-                <Calculator className="h-16 w-16 text-white/50 mx-auto mb-4" />
-                <p className="text-white/70 text-lg">
+                <Calculator className="h-16 w-16 text-black/50 mx-auto mb-4" />
+                <p className="text-black/70 text-lg">
                   Vui lòng hoàn thành thông tin để nhận kết quả ước tính lương
                 </p>
               </motion.div>
@@ -279,7 +279,7 @@ export default function SalaryEstimatorPage() {
                     setActiveTab(tabs[currentIndex - 1]);
                   }
                 }}
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="bg-white/10 border-white/20 text-black hover:bg-white/20"
               >
                 Quay lại
               </Button>
@@ -316,7 +316,7 @@ export default function SalaryEstimatorPage() {
                     setActiveTab(tabs[currentIndex + 1]);
                   }
                 }}
-                className="gap-2 bg-white/20 border-white/30 text-white hover:bg-white/30"
+                className="gap-2 bg-white/20 border-white/30 text-black hover:bg-white/30"
               >
                 Tiếp tục
                 <TrendingUp className="h-4 w-4" />
@@ -333,7 +333,7 @@ export default function SalaryEstimatorPage() {
           transition={{ delay: 0.5 }}
         >
           <GlassCard className="p-6 inline-block">
-            <p className="text-white/80 text-sm">
+            <p className="text-black/80 text-sm">
               <span className="font-semibold">💡 Mẹo:</span> Càng nhiều kỹ năng và chi tiết bạn cung cấp,
               kết quả ước tính càng chính xác
             </p>

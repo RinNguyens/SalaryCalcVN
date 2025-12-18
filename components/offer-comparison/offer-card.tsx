@@ -74,7 +74,7 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
       }`} onClick={onSelect}>
         {/* Selection Indicator */}
         {isSelected && (
-          <div className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 rounded-full p-1">
+          <div className="absolute -top-3 -right-3 bg-yellow-400 text-slate-900 rounded-full p-1">
             <Check className="h-4 w-4" />
           </div>
         )}
@@ -84,15 +84,15 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
           <div className="space-y-2">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white">{offer.companyName}</h3>
-                <p className="text-white/80">{offer.position}</p>
+                <h3 className="text-xl font-bold text-black">{offer.companyName}</h3>
+                <p className="text-black/80">{offer.position}</p>
               </div>
-              <Badge variant="secondary" className="bg-white/10 text-white">
+              <Badge variant="secondary" className="bg-white/10 text-black">
                 {offer.currency}
               </Badge>
             </div>
 
-            <div className="flex items-center gap-2 text-white/70 text-sm">
+            <div className="flex items-center gap-2 text-black/70 text-sm">
               <MapPin className="h-4 w-4" />
               {offer.location}
             </div>
@@ -104,9 +104,9 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
               <span className="text-3xl font-bold text-yellow-300">
                 {formatCurrency(totalCompMonthly, offer.currency)}
               </span>
-              <span className="text-white/70 text-sm">/tháng</span>
+              <span className="text-black/70 text-sm">/tháng</span>
             </div>
-            <div className="text-white/60 text-sm">
+            <div className="text-black/60 text-sm">
               Tổng thu nhập: {formatCurrency(totalComp, offer.currency)}/năm
             </div>
           </div>
@@ -114,21 +114,21 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
           {/* Key Details */}
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-white/70">
+              <div className="flex items-center gap-2 text-black/70">
                 <Clock className="h-4 w-4" />
                 {offer.workLife.workingDays} ngày/tuần
               </div>
-              <div className="flex items-center gap-2 text-white/70">
+              <div className="flex items-center gap-2 text-black/70">
                 <Calendar className="h-4 w-4" />
                 {offer.workLife.leaveDays.annual} ngày nghỉ
               </div>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-white/70">
+              <div className="flex items-center gap-2 text-black/70">
                 <Car className="h-4 w-4" />
                 {offer.commute.distance}km
               </div>
-              <div className="text-white/70">
+              <div className="text-black/70">
                 {offer.workLife.remote.daysPerWeek} ngày remote
               </div>
             </div>
@@ -137,17 +137,17 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
           {/* Benefits Badges */}
           <div className="flex flex-wrap gap-2">
             {offer.benefits.healthInsurance.value > 0 && (
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 text-xs">
+              <Badge variant="outline" className="bg-white/10 text-black border-white/20 text-xs">
                 BHYT
               </Badge>
             )}
             {offer.benefits.mealAllowance.value > 0 && (
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 text-xs">
+              <Badge variant="outline" className="bg-white/10 text-black border-white/20 text-xs">
                 Ăn trưa
               </Badge>
             )}
             {offer.bonuses.stock && (
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 text-xs">
+              <Badge variant="outline" className="bg-white/10 text-black border-white/20 text-xs">
                 Cổ phiếu
               </Badge>
             )}
@@ -158,7 +158,7 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
             <Button
               size="sm"
               variant="outline"
-              className="flex-1 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="flex-1 bg-white/10 border-white/20 text-black hover:bg-white/20"
               onClick={(e) => {
                 e.stopPropagation();
                 onEdit();
@@ -169,7 +169,7 @@ export function OfferCard({ offer, isSelected, onSelect, onEdit, onDelete }: Off
             <Button
               size="sm"
               variant="outline"
-              className="flex-1 bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30"
+              className="flex-1 bg-red-500/20 border-red-500/30 text-red-600 hover:bg-red-500/30"
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete();

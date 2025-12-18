@@ -59,7 +59,11 @@
 }
 
 @layer utilities {
-  /* Glass Effect Utilities */
+  /* Pastel Glass Utilities */
+  .glass-pastel {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-glass;
+  }
+
   .glass {
     @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl;
   }
@@ -76,6 +80,23 @@
     @apply backdrop-blur-xl bg-white/20 border border-white/30 shadow-2xl;
   }
 
+  /* Text Gradients */
+  .text-gradient-purple-blue {
+    @apply bg-gradient-to-r from-brand-purple-600 via-brand-blue-600 to-brand-pink-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-blue-cyan {
+    @apply bg-gradient-to-r from-brand-blue-600 to-brand-cyan-600 bg-clip-text text-transparent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-blue {
+    @apply bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent;
+  }
+
   /* Gradient Backgrounds */
   .gradient-bg {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -89,15 +110,6 @@
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   }
 
-  /* Gradient Text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent;
-  }
-
-  .gradient-text-blue {
-    @apply bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent;
-  }
-
   /* Glow Effect */
   .glow {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -105,6 +117,20 @@
 
   .glow-strong {
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-pastel::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-pastel::-webkit-scrollbar-track {
+    @apply bg-white/30 backdrop-blur-xl rounded-full;
+  }
+
+  .scrollbar-pastel::-webkit-scrollbar-thumb {
+    @apply bg-brand-blue-400/50 rounded-full hover:bg-brand-blue-500/60;
   }
 }
 

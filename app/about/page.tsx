@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 import { WhyChooseUs } from '@/components/about/why-choose-us';
 import { TestimonialsSection } from '@/components/about/testimonials-section';
 import { CTASection } from '@/components/about/cta-section';
+import { PastelBackground } from '@/components/layout/pastel-background';
+import { BackgroundElements } from '@/components/ui/background-elements';
 
 export const metadata: Metadata = {
   title: 'Về chúng tôi | SalaryLens - Công cụ tính lương #1 Việt Nam',
@@ -19,13 +21,15 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Simple for now */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+      <PastelBackground />
+      <BackgroundElements />
+      {/* Hero Section */}
+      <section className="relative py-32 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-black mb-6">
             Về SalaryLens
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-xl text-black/80 max-w-2xl mx-auto">
             Công cụ tính lương Gross ↔ Net chính xác, miễn phí và dễ dàng nhất cho người lao động Việt Nam
           </p>
         </div>

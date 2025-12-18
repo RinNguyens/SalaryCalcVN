@@ -287,7 +287,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 0: // Company & Position
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Company Information</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Company Information</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -297,7 +297,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
                       <SelectContent>
@@ -319,7 +319,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select company size" />
                       </SelectTrigger>
                       <SelectContent>
@@ -340,7 +340,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="companyLocation"
                   {...form.register('companyLocation')}
                   placeholder="e.g., Ho Chi Minh City"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -351,7 +351,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -368,7 +368,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Position Information</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Position Information</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -377,7 +377,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="positionTitle"
                   {...form.register('positionTitle')}
                   placeholder="e.g., Senior Software Engineer"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -388,7 +388,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select level" />
                       </SelectTrigger>
                       <SelectContent>
@@ -409,7 +409,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="positionDepartment"
                   {...form.register('positionDepartment')}
                   placeholder="e.g., Engineering"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -419,7 +419,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="positionField"
                   {...form.register('positionField')}
                   placeholder="e.g., Software Development"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             </div>
@@ -429,7 +429,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 1: // Compensation
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Base Salary</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Base Salary</h3>
 
             <div>
               <Label htmlFor="baseSalary">Monthly Base Salary (VND) *</Label>
@@ -438,10 +438,10 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                 type="number"
                 {...form.register('baseSalary', { valueAsNumber: true })}
                 placeholder="0"
-                className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                className="bg-white/10 border-white/20 text-black placeholder-white/50"
               />
               {form.watch('baseSalary') > 0 && (
-                <p className="text-white/60 text-sm mt-1">
+                <p className="text-black/60 text-sm mt-1">
                   {formatCurrency(form.watch('baseSalary'))}
                 </p>
               )}
@@ -449,7 +449,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Bonuses (Annual)</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Bonuses (Annual)</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -459,7 +459,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('performanceBonus', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -470,7 +470,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('signingBonus', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -481,7 +481,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('thirteenthMonth', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -492,14 +492,14 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('otherBonuses', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             </div>
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Benefits (Monthly)</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Benefits (Monthly)</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -509,7 +509,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('healthInsurance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -520,7 +520,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('mealAllowance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -531,7 +531,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('transportAllowance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -542,7 +542,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('phoneAllowance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -553,7 +553,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('internetAllowance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -564,7 +564,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('gymAllowance', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -575,7 +575,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('learningBudget', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -586,17 +586,17 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   type="number"
                   {...form.register('otherBenefits', { valueAsNumber: true })}
                   placeholder="0"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             </div>
 
             <GlassCard className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20">
-              <h4 className="text-lg font-semibold text-white mb-2">Total Monthly Compensation</h4>
+              <h4 className="text-lg font-semibold text-black mb-2">Total Monthly Compensation</h4>
               <p className="text-3xl font-bold text-green-300">
                 {formatCurrency(totalCompensation)}
               </p>
-              <p className="text-white/60 text-sm mt-1">
+              <p className="text-black/60 text-sm mt-1">
                 Base + Average Monthly Bonuses + Benefits
               </p>
             </GlassCard>
@@ -606,7 +606,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 2: // Experience
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Work Experience</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Work Experience</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -623,9 +623,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                         step={1}
                         className="mt-2"
                       />
-                      <div className="flex justify-between text-sm text-white/60">
+                      <div className="flex justify-between text-sm text-black/60">
                         <span>0</span>
-                        <span className="text-white font-semibold">{field.value} years</span>
+                        <span className="text-black font-semibold">{field.value} years</span>
                         <span>50</span>
                       </div>
                     </div>
@@ -647,9 +647,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                         step={1}
                         className="mt-2"
                       />
-                      <div className="flex justify-between text-sm text-white/60">
+                      <div className="flex justify-between text-sm text-black/60">
                         <span>0</span>
-                        <span className="text-white font-semibold">{field.value} years</span>
+                        <span className="text-black font-semibold">{field.value} years</span>
                         <span>50</span>
                       </div>
                     </div>
@@ -671,9 +671,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                         step={1}
                         className="mt-2"
                       />
-                      <div className="flex justify-between text-sm text-white/60">
+                      <div className="flex justify-between text-sm text-black/60">
                         <span>0</span>
-                        <span className="text-white font-semibold">{field.value} years</span>
+                        <span className="text-black font-semibold">{field.value} years</span>
                         <span>50</span>
                       </div>
                     </div>
@@ -695,9 +695,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                         step={1}
                         className="mt-2"
                       />
-                      <div className="flex justify-between text-sm text-white/60">
+                      <div className="flex justify-between text-sm text-black/60">
                         <span>0</span>
-                        <span className="text-white font-semibold">{field.value} years</span>
+                        <span className="text-black font-semibold">{field.value} years</span>
                         <span>50</span>
                       </div>
                     </div>
@@ -708,7 +708,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Education</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Education</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -718,7 +718,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select education level" />
                       </SelectTrigger>
                       <SelectContent>
@@ -739,7 +739,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="educationField"
                   {...form.register('educationField')}
                   placeholder="e.g., Computer Science"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             </div>
@@ -755,7 +755,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   />
                 )}
               />
-              <Label className="text-white">
+              <Label className="text-black">
                 My degree is relevant to my current position
               </Label>
             </div>
@@ -765,7 +765,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 3: // Skills
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Technical Skills</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Technical Skills</h3>
 
             <div className="flex flex-wrap gap-2">
               {COMMON_TECHNICAL_SKILLS.map((skill) => (
@@ -774,8 +774,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   variant={selectedTechnicalSkills.includes(skill) ? "default" : "outline"}
                   className={`cursor-pointer ${
                     selectedTechnicalSkills.includes(skill)
-                      ? "bg-blue-500 text-white"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-blue-500 text-black"
+                      : "bg-white/10 text-black hover:bg-white/20"
                   }`}
                   onClick={() => {
                     setSelectedTechnicalSkills((prev) =>
@@ -798,7 +798,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Soft Skills</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Soft Skills</h3>
 
             <div className="flex flex-wrap gap-2">
               {COMMON_SOFT_SKILLS.map((skill) => (
@@ -807,8 +807,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   variant={selectedSoftSkills.includes(skill) ? "default" : "outline"}
                   className={`cursor-pointer ${
                     selectedSoftSkills.includes(skill)
-                      ? "bg-green-500 text-white"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-green-500 text-black"
+                      : "bg-white/10 text-black hover:bg-white/20"
                   }`}
                   onClick={() => {
                     setSelectedSoftSkills((prev) =>
@@ -831,7 +831,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Languages</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Languages</h3>
 
             <div className="flex flex-wrap gap-2">
               {COMMON_LANGUAGES.map((language) => (
@@ -840,8 +840,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   variant={selectedLanguages.includes(language) ? "default" : "outline"}
                   className={`cursor-pointer ${
                     selectedLanguages.includes(language)
-                      ? "bg-purple-500 text-white"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-purple-500 text-black"
+                      : "bg-white/10 text-black hover:bg-white/20"
                   }`}
                   onClick={() => {
                     setSelectedLanguages((prev) =>
@@ -864,14 +864,14 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Certifications</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Certifications</h3>
 
             <div>
               <Label htmlFor="certifications">Professional Certifications</Label>
               <Textarea
                 id="certifications"
                 placeholder="List your professional certifications (one per line)"
-                className="bg-white/10 border-white/20 text-white placeholder-white/50 mt-2"
+                className="bg-white/10 border-white/20 text-black placeholder-white/50 mt-2"
                 rows={4}
                 onChange={(e) => {
                   const certifications = e.target.value
@@ -887,7 +887,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 4: // Work Details
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Work Arrangement</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Work Arrangement</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -897,7 +897,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={(value) => field.onChange(parseInt(value))} value={field.value.toString()}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -919,7 +919,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={(value) => field.onChange(parseInt(value))} value={field.value.toString()}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -941,7 +941,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={(value) => field.onChange(parseInt(value))} value={field.value.toString()}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -963,7 +963,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select frequency" />
                       </SelectTrigger>
                       <SelectContent>
@@ -989,14 +989,14 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   />
                 )}
               />
-              <Label className="text-white">
+              <Label className="text-black">
                 Overtime is paid
               </Label>
             </div>
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Career Growth</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Career Growth</h3>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -1005,7 +1005,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="lastPromotion"
                   {...form.register('lastPromotion')}
                   placeholder="e.g., 6 months ago"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -1015,7 +1015,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="nextPromotionExpected"
                   {...form.register('nextPromotionExpected')}
                   placeholder="e.g., in 1 year"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -1025,7 +1025,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="reviewCycle"
                   {...form.register('reviewCycle')}
                   placeholder="e.g., Every 6 months"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -1036,7 +1036,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Select progression" />
                       </SelectTrigger>
                       <SelectContent>
@@ -1062,7 +1062,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   />
                 )}
               />
-              <Label className="text-white">
+              <Label className="text-black">
                 Company provides training opportunities
               </Label>
             </div>
@@ -1072,7 +1072,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       case 5: // Satisfaction
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Job Satisfaction (1-10)</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Job Satisfaction (1-10)</h3>
 
             <div className="space-y-4">
               {[
@@ -1085,8 +1085,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
               ].map(({ field, label, icon: Icon }) => (
                 <div key={field} className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Icon className="h-4 w-4 text-white/60" />
-                    <Label className="text-white">{label}</Label>
+                    <Icon className="h-4 w-4 text-black/60" />
+                    <Label className="text-black">{label}</Label>
                   </div>
                   <Controller
                     name={field as keyof SalaryFormData}
@@ -1101,9 +1101,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                           step={1}
                           className="mt-2"
                         />
-                        <div className="flex justify-between text-sm text-white/60">
+                        <div className="flex justify-between text-sm text-black/60">
                           <span>1</span>
-                          <span className="text-white font-semibold">{controllerField.value}</span>
+                          <span className="text-black font-semibold">{controllerField.value}</span>
                           <span>10</span>
                         </div>
                       </div>
@@ -1122,8 +1122,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
               <div className="flex items-start gap-3">
                 <Shield className="h-6 w-6 text-blue-300 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Privacy & Anonymity</h3>
-                  <p className="text-white/80 text-sm">
+                  <h3 className="text-lg font-semibold text-black mb-2">Privacy & Anonymity</h3>
+                  <p className="text-black/80 text-sm">
                     Your identity will be completely anonymous. We only store aggregated data
                     for salary comparison purposes. Personal information is never shared.
                   </p>
@@ -1131,7 +1131,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
               </div>
             </GlassCard>
 
-            <h3 className="text-xl font-semibold text-white mb-4">Sharing Settings</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Sharing Settings</h3>
 
             <div className="space-y-4">
               <div className="flex items-start space-x-2">
@@ -1146,8 +1146,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   )}
                 />
                 <div>
-                  <Label className="text-white">Make my salary data public</Label>
-                  <p className="text-white/60 text-sm">
+                  <Label className="text-black">Make my salary data public</Label>
+                  <p className="text-black/60 text-sm">
                     Others can see my anonymized salary data in comparisons
                   </p>
                 </div>
@@ -1165,8 +1165,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   )}
                 />
                 <div>
-                  <Label className="text-white">Include in salary comparisons</Label>
-                  <p className="text-white/60 text-sm">
+                  <Label className="text-black">Include in salary comparisons</Label>
+                  <p className="text-black/60 text-sm">
                     My data can be used for anonymous salary comparisons
                   </p>
                 </div>
@@ -1184,8 +1184,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   )}
                 />
                 <div>
-                  <Label className="text-white">Include in statistics</Label>
-                  <p className="text-white/60 text-sm">
+                  <Label className="text-black">Include in statistics</Label>
+                  <p className="text-black/60 text-sm">
                     My anonymized data contributes to industry statistics
                   </p>
                 </div>
@@ -1203,8 +1203,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   )}
                 />
                 <div>
-                  <Label className="text-white">Allow anonymous contact</Label>
-                  <p className="text-white/60 text-sm">
+                  <Label className="text-black">Allow anonymous contact</Label>
+                  <p className="text-black/60 text-sm">
                     Others can send messages through our anonymous system
                   </p>
                 </div>
@@ -1218,7 +1218,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                     type="email"
                     {...form.register('contactEmail')}
                     placeholder="your@email.com"
-                    className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                    className="bg-white/10 border-white/20 text-black placeholder-white/50"
                   />
                 </div>
               )}
@@ -1226,9 +1226,9 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
 
             <Separator className="bg-white/20" />
 
-            <h3 className="text-xl font-semibold text-white mb-4">Verification (Optional)</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">Verification (Optional)</h3>
 
-            <p className="text-white/80 text-sm mb-4">
+            <p className="text-black/80 text-sm mb-4">
               Verification helps ensure data accuracy. You can choose to verify your salary data
               to increase credibility in the community.
             </p>
@@ -1238,7 +1238,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
               control={form.control}
               render={({ field }) => (
                 <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-black">
                     <SelectValue placeholder="Select verification method" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1278,7 +1278,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   id="verificationEmail"
                   type="email"
                   placeholder="Enter work email for verification"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             )}
@@ -1298,8 +1298,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   )}
                 />
                 <div>
-                  <Label className="text-white">I agree to the terms and conditions</Label>
-                  <p className="text-white/60 text-sm">
+                  <Label className="text-black">I agree to the terms and conditions</Label>
+                  <p className="text-black/60 text-sm">
                     I confirm that the information provided is accurate and true.
                     I understand that false submissions may be removed.
                   </p>
@@ -1326,8 +1326,8 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between mb-2">
-          <span className="text-white/60 text-sm">Step {currentStep + 1} of {steps.length}</span>
-          <span className="text-white/60 text-sm">{Math.round(((currentStep + 1) / steps.length) * 100)}%</span>
+          <span className="text-black/60 text-sm">Step {currentStep + 1} of {steps.length}</span>
+          <span className="text-black/60 text-sm">{Math.round(((currentStep + 1) / steps.length) * 100)}%</span>
         </div>
         <Progress value={((currentStep + 1) / steps.length) * 100} className="h-2" />
       </div>
@@ -1343,14 +1343,14 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
           <div className="flex justify-center mb-4">
             <div className="p-3 bg-white/10 rounded-full">
               {React.createElement(steps[currentStep].icon, {
-                className: "h-8 w-8 text-white",
+                className: "h-8 w-8 text-black",
               })}
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             {steps[currentStep].title}
           </h2>
-          <p className="text-white/60">
+          <p className="text-black/60">
             {steps[currentStep].description}
           </p>
         </motion.div>
@@ -1376,7 +1376,7 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
                   variant="outline"
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-50"
+                  className="bg-white/10 border-white/20 text-black hover:bg-white/20 disabled:opacity-50"
                 >
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Previous
@@ -1407,10 +1407,10 @@ export function SalarySharingForm({ onSubmit, onCancel }: SalarySharingFormProps
       {/* Privacy Notice */}
       <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
         <div className="flex items-start gap-3">
-          <Lock className="h-5 w-5 text-white/60 mt-0.5" />
+          <Lock className="h-5 w-5 text-black/60 mt-0.5" />
           <div>
-            <h4 className="text-white font-semibold mb-1">Your Privacy Matters</h4>
-            <p className="text-white/60 text-sm">
+            <h4 className="text-black font-semibold mb-1">Your Privacy Matters</h4>
+            <p className="text-black/60 text-sm">
               All personal information is anonymized before sharing. We never share your name,
               email, or any identifiable information. Data is used solely for salary comparison
               and market research purposes.

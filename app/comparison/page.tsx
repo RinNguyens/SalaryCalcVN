@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 
 export default function ComparisonPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-4 md:p-8">
+    <div className="min-h-screen  p-4 md:p-8">
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -35,17 +35,17 @@ export default function ComparisonPage() {
           <Link href="/calculator">
             <Button
               variant="outline"
-              className="mb-4 gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="mb-4 gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
             >
               <ArrowLeft className="h-4 w-4" />
               Quay lại calculator
             </Button>
           </Link>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-2">
             So sánh mức lương
           </h1>
-          <p className="text-white/80">
+          <p className="text-black/80">
             So sánh nhiều mức lương để tìm mức tối ưu
           </p>
         </motion.div>
@@ -67,10 +67,10 @@ export default function ComparisonPage() {
           className="mt-6"
         >
           <div className="glass-subtle rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">
+            <h3 className="text-lg font-semibold text-black mb-3">
               💡 Mẹo sử dụng
             </h3>
-            <ul className="space-y-2 text-white/80 text-sm">
+            <ul className="space-y-2 text-black/80 text-sm">
               <li>• So sánh tối đa 5 mức lương cùng lúc</li>
               <li>• Thay đổi vùng và số người phụ thuộc cho mỗi mức lương</li>
               <li>• Bảng kết quả hiển thị chi tiết breakdown cho từng mức</li>

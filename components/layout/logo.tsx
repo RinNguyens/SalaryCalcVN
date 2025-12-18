@@ -15,7 +15,7 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
     lg: { width: 180, height: 50, iconSize: 40, fontSize: 20 },
   };
 
-  const { width, height, iconSize, fontSize } = sizes[size];
+  const { iconSize, fontSize } = sizes[size];
 
   return (
     <motion.div
@@ -58,7 +58,7 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
         {/* Front circle with symbol */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-4/5 h-4/5 rounded-full bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold" style={{ fontSize: fontSize * 0.8 }}>
+            <span className="text-black font-bold" style={{ fontSize: fontSize * 0.8 }}>
               🛡️
             </span>
           </div>
@@ -70,20 +70,20 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
         <div className="flex flex-col">
           <div className="flex items-baseline gap-0.5">
             <span
-              className="font-bold text-white"
+              className="font-bold text-black"
               style={{ fontSize }}
             >
               Salary
             </span>
             <span
-              className="font-normal text-white/90"
+              className="font-normal text-black/90"
               style={{ fontSize: fontSize * 0.95 }}
             >
               Lens
             </span>
           </div>
           <span
-            className="text-white/70 font-medium tracking-wider"
+            className="text-black/70 font-medium tracking-wider"
             style={{ fontSize: fontSize * 0.5 }}
           >
             VIETNAM

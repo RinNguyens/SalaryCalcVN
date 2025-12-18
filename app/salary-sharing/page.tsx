@@ -118,7 +118,7 @@ export default function SalarySharingPage() {
           <Button
             variant="outline"
             onClick={() => setShowForm(false)}
-            className="mb-4 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="mb-4 bg-white/10 border-white/20 text-black hover:bg-white/20"
           >
             ← Back to Overview
           </Button>
@@ -137,23 +137,23 @@ export default function SalarySharingPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className="text-5xl font-bold text-black mb-4">
             Anonymous Salary Sharing
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-xl text-black/80 max-w-2xl mx-auto">
             Share your salary anonymously and compare with real market data from professionals in Vietnam
           </p>
           <div className="flex justify-center gap-4 mt-8">
             <Button
               onClick={() => setShowForm(true)}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8"
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-black px-8"
             >
               <Plus className="h-4 w-4 mr-2" />
               Share Your Salary
             </Button>
             <Button
               variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="bg-white/10 border-white/20 text-black hover:bg-white/20"
             >
               <Eye className="h-4 w-4 mr-2" />
               Browse Data
@@ -172,40 +172,40 @@ export default function SalarySharingPage() {
             <motion.div variants={itemVariants}>
               <GlassCard className="p-6 text-center">
                 <Users className="h-12 w-12 text-blue-300 mx-auto mb-3" />
-                <h3 className="text-3xl font-bold text-white mb-1">
+                <h3 className="text-3xl font-bold text-black mb-1">
                   {statistics.totalShares.toLocaleString()}
                 </h3>
-                <p className="text-white/60">Total Shares</p>
+                <p className="text-black/60">Total Shares</p>
               </GlassCard>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <GlassCard className="p-6 text-center">
                 <CheckCircle2 className="h-12 w-12 text-green-300 mx-auto mb-3" />
-                <h3 className="text-3xl font-bold text-white mb-1">
+                <h3 className="text-3xl font-bold text-black mb-1">
                   {statistics.verifiedShares.toLocaleString()}
                 </h3>
-                <p className="text-white/60">Verified</p>
+                <p className="text-black/60">Verified</p>
               </GlassCard>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <GlassCard className="p-6 text-center">
                 <TrendingUp className="h-12 w-12 text-purple-300 mx-auto mb-3" />
-                <h3 className="text-3xl font-bold text-white mb-1">
+                <h3 className="text-3xl font-bold text-black mb-1">
                   {formatCurrency(statistics.benefitsStats.averageBenefitsValue)}
                 </h3>
-                <p className="text-white/60">Avg Benefits</p>
+                <p className="text-black/60">Avg Benefits</p>
               </GlassCard>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <GlassCard className="p-6 text-center">
                 <Award className="h-12 w-12 text-yellow-300 mx-auto mb-3" />
-                <h3 className="text-3xl font-bold text-white mb-1">
+                <h3 className="text-3xl font-bold text-black mb-1">
                   {statistics.satisfactionStats.overallAverage.toFixed(1)}/10
                 </h3>
-                <p className="text-white/60">Avg Satisfaction</p>
+                <p className="text-black/60">Avg Satisfaction</p>
               </GlassCard>
             </motion.div>
           </motion.div>
@@ -216,19 +216,19 @@ export default function SalarySharingPage() {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black/60 h-4 w-4" />
                 <Input
                   placeholder="Search positions, companies..."
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="pl-10 bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
             </div>
 
             <div className="flex gap-2">
               <Select value={filters.industry} onValueChange={(value) => setFilters({ ...filters, industry: value })}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white w-48">
+                <SelectTrigger className="bg-white/10 border-white/20 text-black w-48">
                   <SelectValue placeholder="Industry" />
                 </SelectTrigger>
                 <SelectContent>
@@ -242,7 +242,7 @@ export default function SalarySharingPage() {
               </Select>
 
               <Select value={filters.companySize} onValueChange={(value) => setFilters({ ...filters, companySize: value })}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white w-48">
+                <SelectTrigger className="bg-white/10 border-white/20 text-black w-48">
                   <SelectValue placeholder="Company Size" />
                 </SelectTrigger>
                 <SelectContent>
@@ -261,19 +261,19 @@ export default function SalarySharingPage() {
         {/* Main Content Tabs */}
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-4 bg-white/10 border-white/20">
-            <TabsTrigger value="overview" className="text-white data-[state=active]:bg-white/20">
+            <TabsTrigger value="overview" className="text-black data-[state=active]:bg-white/20">
               <BarChart3 className="h-4 w-4 mr-2" />
               Overview
             </TabsTrigger>
-            <TabsTrigger value="positions" className="text-white data-[state=active]:bg-white/20">
+            <TabsTrigger value="positions" className="text-black data-[state=active]:bg-white/20">
               <Users className="h-4 w-4 mr-2" />
               Positions
             </TabsTrigger>
-            <TabsTrigger value="industries" className="text-white data-[state=active]:bg-white/20">
+            <TabsTrigger value="industries" className="text-black data-[state=active]:bg-white/20">
               <Building className="h-4 w-4 mr-2" />
               Industries
             </TabsTrigger>
-            <TabsTrigger value="locations" className="text-white data-[state=active]:bg-white/20">
+            <TabsTrigger value="locations" className="text-black data-[state=active]:bg-white/20">
               <MapPin className="h-4 w-4 mr-2" />
               Locations
             </TabsTrigger>
@@ -284,7 +284,7 @@ export default function SalarySharingPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Top Positions */}
                 <GlassCard className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                  <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
                     <Award className="h-5 w-5" />
                     Highest Paying Positions
                   </h3>
@@ -295,14 +295,14 @@ export default function SalarySharingPage() {
                       .map(([position, stats], index) => (
                         <div key={position} className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <span className="text-white/60 w-6">{index + 1}</span>
-                            <span className="text-white">{position}</span>
+                            <span className="text-black/60 w-6">{index + 1}</span>
+                            <span className="text-black">{position}</span>
                           </div>
                           <div className="text-right">
-                            <p className="text-white font-semibold">
+                            <p className="text-black font-semibold">
                               {formatCurrency(stats.averageSalary)}
                             </p>
-                            <p className="text-white/60 text-xs">
+                            <p className="text-black/60 text-xs">
                               {stats.count} shares
                             </p>
                           </div>
@@ -313,7 +313,7 @@ export default function SalarySharingPage() {
 
                 {/* Industry Overview */}
                 <GlassCard className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                  <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
                     <PieChart className="h-5 w-5" />
                     Industry Overview
                   </h3>
@@ -323,12 +323,12 @@ export default function SalarySharingPage() {
                       .slice(0, 5)
                       .map(([industry, stats]) => (
                         <div key={industry} className="flex items-center justify-between">
-                          <span className="text-white">{industry}</span>
+                          <span className="text-black">{industry}</span>
                           <div className="text-right">
-                            <p className="text-white font-semibold">
+                            <p className="text-black font-semibold">
                               {formatCurrency(stats.averageSalary)}
                             </p>
-                            <p className="text-white/60 text-xs">
+                            <p className="text-black/60 text-xs">
                               {stats.count} shares
                             </p>
                           </div>
@@ -341,19 +341,19 @@ export default function SalarySharingPage() {
 
             {/* Recent Shares */}
             <GlassCard className="p-6">
-              <h3 className="text-xl font-semibold text-white mb-4">Recent Salary Shares</h3>
+              <h3 className="text-xl font-semibold text-black mb-4">Recent Salary Shares</h3>
               <div className="space-y-4">
                 {shares.slice(0, 10).map((share, index) => (
                   <div key={share.id} className="border-b border-white/10 pb-4 last:border-0">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-white font-semibold">{share.position.title}</h4>
-                        <p className="text-white/60">{share.companyInfo.industry} • {share.companyInfo.location}</p>
+                        <h4 className="text-black font-semibold">{share.position.title}</h4>
+                        <p className="text-black/60">{share.companyInfo.industry} • {share.companyInfo.location}</p>
                         <div className="flex items-center gap-4 mt-2">
-                          <Badge variant="outline" className="bg-white/10 text-white">
+                          <Badge variant="outline" className="bg-white/10 text-black">
                             {share.companyInfo.size}
                           </Badge>
-                          <Badge variant="outline" className="bg-white/10 text-white">
+                          <Badge variant="outline" className="bg-white/10 text-black">
                             {share.experience.totalYears} years exp
                           </Badge>
                         </div>
@@ -362,7 +362,7 @@ export default function SalarySharingPage() {
                         <p className="text-xl font-bold text-green-300">
                           {formatCurrency(share.compensation.totalCompensation)}
                         </p>
-                        <p className="text-white/60 text-sm">total/month</p>
+                        <p className="text-black/60 text-sm">total/month</p>
                       </div>
                     </div>
                   </div>
@@ -374,7 +374,7 @@ export default function SalarySharingPage() {
           <TabsContent value="positions" className="space-y-6">
             {statistics && (
               <GlassCard className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Salary by Position</h3>
+                <h3 className="text-xl font-semibold text-black mb-6">Salary by Position</h3>
                 <div className="space-y-4">
                   {Object.entries(statistics.positionStats)
                     .sort(([, a], [, b]) => b.averageSalary - a.averageSalary)
@@ -383,8 +383,8 @@ export default function SalarySharingPage() {
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between">
                             <div>
-                              <h4 className="text-white font-semibold">{position}</h4>
-                              <p className="text-white/60 text-sm">
+                              <h4 className="text-black font-semibold">{position}</h4>
+                              <p className="text-black/60 text-sm">
                                 {stats.count} data points • Range: {stats.salaryRange}
                               </p>
                             </div>
@@ -392,7 +392,7 @@ export default function SalarySharingPage() {
                               <p className="text-2xl font-bold text-green-300">
                                 {formatCurrency(stats.averageSalary)}
                               </p>
-                              <p className="text-white/60 text-sm">
+                              <p className="text-black/60 text-sm">
                                 Median: {formatCurrency(stats.medianSalary)}
                               </p>
                             </div>
@@ -408,38 +408,38 @@ export default function SalarySharingPage() {
           <TabsContent value="industries" className="space-y-6">
             {statistics && (
               <GlassCard className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Salary by Industry</h3>
+                <h3 className="text-xl font-semibold text-black mb-6">Salary by Industry</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {Object.entries(statistics.industryStats).map(([industry, stats]) => (
                     <Card key={industry} className="bg-white/5 border-white/10">
                       <CardContent className="p-4">
-                        <h4 className="text-white font-semibold mb-3">{industry}</h4>
+                        <h4 className="text-black font-semibold mb-3">{industry}</h4>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-white/60">Average Salary</span>
-                            <span className="text-white font-semibold">
+                            <span className="text-black/60">Average Salary</span>
+                            <span className="text-black font-semibold">
                               {formatCurrency(stats.averageSalary)}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-white/60">Median Salary</span>
-                            <span className="text-white">
+                            <span className="text-black/60">Median Salary</span>
+                            <span className="text-black">
                               {formatCurrency(stats.medianSalary)}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-white/60">Data Points</span>
-                            <span className="text-white">{stats.count}</span>
+                            <span className="text-black/60">Data Points</span>
+                            <span className="text-black">{stats.count}</span>
                           </div>
                         </div>
                         {stats.topPositions.length > 0 && (
                           <div className="mt-3 pt-3 border-t border-white/10">
-                            <p className="text-white/60 text-sm mb-2">Top Positions:</p>
+                            <p className="text-black/60 text-sm mb-2">Top Positions:</p>
                             <div className="space-y-1">
                               {stats.topPositions.slice(0, 3).map((pos) => (
                                 <div key={pos.position} className="flex justify-between text-sm">
-                                  <span className="text-white/80">{pos.position}</span>
-                                  <span className="text-white">{formatCurrency(pos.salary)}</span>
+                                  <span className="text-black/80">{pos.position}</span>
+                                  <span className="text-black">{formatCurrency(pos.salary)}</span>
                                 </div>
                               ))}
                             </div>
@@ -456,37 +456,37 @@ export default function SalarySharingPage() {
           <TabsContent value="locations" className="space-y-6">
             {statistics && (
               <GlassCard className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Salary by Location</h3>
+                <h3 className="text-xl font-semibold text-black mb-6">Salary by Location</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {Object.entries(statistics.locationStats).map(([location, stats]) => (
                     <Card key={location} className="bg-white/5 border-white/10">
                       <CardContent className="p-4">
                         <div className="flex items-center gap-2 mb-3">
-                          <MapPin className="h-4 w-4 text-white/60" />
-                          <h4 className="text-white font-semibold">{location}</h4>
+                          <MapPin className="h-4 w-4 text-black/60" />
+                          <h4 className="text-black font-semibold">{location}</h4>
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-white/60">Average</span>
-                            <span className="text-white font-semibold">
+                            <span className="text-black/60">Average</span>
+                            <span className="text-black font-semibold">
                               {formatCurrency(stats.averageSalary)}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-white/60">Median</span>
-                            <span className="text-white">
+                            <span className="text-black/60">Median</span>
+                            <span className="text-black">
                               {formatCurrency(stats.medianSalary)}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-white/60">CoL Index</span>
-                            <span className="text-white">
+                            <span className="text-black/60">CoL Index</span>
+                            <span className="text-black">
                               {(stats.costOfLivingIndex * 100).toFixed(0)}%
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-white/60">Real Wage</span>
-                            <span className="text-white">
+                            <span className="text-black/60">Real Wage</span>
+                            <span className="text-black">
                               {stats.realWageIndex.toFixed(2)}x
                             </span>
                           </div>
@@ -510,9 +510,9 @@ export default function SalarySharingPage() {
           <GlassCard className="p-6 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Shield className="h-6 w-6 text-blue-300" />
-              <h3 className="text-xl font-semibold text-white">Privacy Guaranteed</h3>
+              <h3 className="text-xl font-semibold text-black">Privacy Guaranteed</h3>
             </div>
-            <p className="text-white/80">
+            <p className="text-black/80">
               All salary data is anonymized and aggregated. We never share personal information.
               Your contribution helps build transparency in the Vietnamese job market.
             </p>

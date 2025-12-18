@@ -736,7 +736,7 @@ import { HeroSection } from '@/components/landing/hero-section';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+    <div className="min-h-screen ">
       <HeroSection />
       {/* Other sections */}
     </div>

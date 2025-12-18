@@ -62,7 +62,7 @@ export function TaxChart({ result }: TaxChartProps) {
 
   return (
     <GlassCard variant="default" className="p-6">
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-black mb-4">
         Phân bổ lương Gross
       </h3>
 
@@ -91,7 +91,7 @@ export function TaxChart({ result }: TaxChartProps) {
             }}
           />
           <Legend
-            formatter={(value) => <span className="text-white">{value}</span>}
+            formatter={(value) => <span className="text-black">{value}</span>}
             wrapperStyle={{ paddingTop: '20px' }}
           />
         </PieChart>
@@ -100,22 +100,22 @@ export function TaxChart({ result }: TaxChartProps) {
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
         <div>
           <div className="w-3 h-3 rounded-full bg-green-500 mx-auto mb-1"></div>
-          <p className="text-xs text-white/70">Net</p>
-          <p className="text-sm font-semibold text-white">
+          <p className="text-xs text-black/70">Net</p>
+          <p className="text-sm font-semibold text-black">
             {((result.net / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
         <div>
           <div className="w-3 h-3 rounded-full bg-blue-500 mx-auto mb-1"></div>
-          <p className="text-xs text-white/70">Bảo hiểm</p>
-          <p className="text-sm font-semibold text-white">
+          <p className="text-xs text-black/70">Bảo hiểm</p>
+          <p className="text-sm font-semibold text-black">
             {((result.insurance.total / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
         <div>
           <div className="w-3 h-3 rounded-full bg-orange-500 mx-auto mb-1"></div>
-          <p className="text-xs text-white/70">Thuế</p>
-          <p className="text-sm font-semibold text-white">
+          <p className="text-xs text-black/70">Thuế</p>
+          <p className="text-sm font-semibold text-black">
             {((result.tax.tax / result.gross) * 100).toFixed(1)}%
           </p>
         </div>

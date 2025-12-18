@@ -41,14 +41,14 @@ export default function Home() {
           {/* Badge */}
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full
-                       bg-white/10 backdrop-blur-md border border-white/20 mb-6
+                       bg-white/70 backdrop-blur-md border border-white/70 mb-6
                        text-center"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
             <Sparkles className="h-4 w-4 text-yellow-400" />
-            <span className="text-white/90 text-sm font-medium">
+            <span className=" text-slate-700 text-sm font-medium">
               #1 Công cụ tính lương tại Việt Nam
             </span>
           </motion.div>
@@ -59,7 +59,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-6xl md:text-7xl font-bold text-black mb-6">
               Công cụ tính lương{' '}
               <LayoutTextFlip
                 words={['miễn phí', 'chính xác', 'nhanh chóng', 'dễ dàng']}
@@ -68,7 +68,7 @@ export default function Home() {
                 textClassName="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"
               />
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-black/80 mb-8 leading-relaxed max-w-3xl mx-auto">
               Chính xác nhất cho người lao động Việt Nam
             </p>
 
@@ -77,8 +77,8 @@ export default function Home() {
               <Button
                 size="lg"
                 className="
-                  bg-gradient-to-r from-purple-600 to-pink-600
-                  hover:from-purple-700 hover:to-pink-700
+                  bg-gradient-to-r from-purple-400 to-pink-400
+                hover:from-purple-400 hover:to-pink-400
                   text-white font-bold text-lg
                   px-10 py-6
                   shadow-2xl hover:shadow-purple-500/50
@@ -145,14 +145,14 @@ export default function Home() {
 
           {/* Additional Info Bar */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-8 text-white/80 text-sm"
+            className="flex flex-wrap items-center justify-center gap-8 text-black/80 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
             <UserAvatars users={userReviews} count={2500} />
             <div className="flex items-center gap-2">
-              <Activity className="h-4 w-4 text-green-400" />
+              <Activity className="h-4 w-4 text-green-600" />
               <span>Live updates</span>
             </div>
             <div className="flex items-center gap-2">

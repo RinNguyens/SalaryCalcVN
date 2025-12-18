@@ -112,7 +112,7 @@ export default function JobOfferComparisonPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-4 md:p-8">
+    <div className="min-h-screen  p-4 md:p-8">
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -149,10 +149,10 @@ export default function JobOfferComparisonPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
             So sánh Thư<span className="text-yellow-300"> mời</span>
           </h1>
-          <p className="text-white/80 text-lg md:text-xl">
+          <p className="text-black/80 text-lg md:text-xl">
             Phân tích và so sánh các lời mời làm việc một cách toàn diện
           </p>
         </motion.div>
@@ -189,7 +189,7 @@ export default function JobOfferComparisonPage() {
               >
                 <Button
                   onClick={() => setShowForm(true)}
-                  className="gap-2 bg-white/20 border-white/30 text-white hover:bg-white/30"
+                  className="gap-2 bg-white/20 border-white/30 text-black hover:bg-white/30"
                 >
                   <Plus className="h-4 w-4" />
                   Thêm thư mời
@@ -213,16 +213,16 @@ export default function JobOfferComparisonPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                 >
-                  <GitCompare className="h-16 w-16 text-white/50 mx-auto mb-4" />
-                  <h3 className="text-white text-xl font-semibold mb-2">
+                  <GitCompare className="h-16 w-16 text-black/50 mx-auto mb-4" />
+                  <h3 className="text-black text-xl font-semibold mb-2">
                     Chưa có thư mời nào
                   </h3>
-                  <p className="text-white/70 mb-6">
+                  <p className="text-black/70 mb-6">
                     Thêm thư mời đầu tiên để bắt đầu so sánh
                   </p>
                   <Button
                     onClick={() => setShowForm(true)}
-                    className="bg-white/20 border-white/30 text-white hover:bg-white/30"
+                    className="bg-white/20 border-white/30 text-black hover:bg-white/30"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Thêm thư mời
@@ -261,8 +261,8 @@ export default function JobOfferComparisonPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <BarChart3 className="h-16 w-16 text-white/50 mx-auto mb-4" />
-                <p className="text-white/70">
+                <BarChart3 className="h-16 w-16 text-black/50 mx-auto mb-4" />
+                <p className="text-black/70">
                   Vui lòng chọn ít nhất 2 thư mời để so sánh
                 </p>
               </motion.div>
@@ -283,8 +283,8 @@ export default function JobOfferComparisonPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <Settings className="h-16 w-16 text-white/50 mx-auto mb-4" />
-                <p className="text-white/70">
+                <Settings className="h-16 w-16 text-black/50 mx-auto mb-4" />
+                <p className="text-black/70">
                   Hoàn thành so sánh để xem phân tích sâu
                 </p>
               </motion.div>
@@ -298,10 +298,10 @@ export default function JobOfferComparisonPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <h3 className="text-white text-xl font-semibold mb-6">
+              <h3 className="text-black text-xl font-semibold mb-6">
                 Tùy chỉnh ưu tiên của bạn
               </h3>
-              <p className="text-white/70 mb-6">
+              <p className="text-black/70 mb-6">
                 Điều chỉnh trọng số cho từng yếu tố để nhận kết quả so sánh phù hợp nhất
               </p>
               {/* Priority settings component will go here */}

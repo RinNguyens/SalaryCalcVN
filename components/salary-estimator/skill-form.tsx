@@ -141,19 +141,19 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
   return (
     <motion.div variants={containerVariants} initial="hidden" animate="visible">
       <GlassCard className="p-8">
-        <h2 className="text-2xl font-bold text-white mb-6">
+        <h2 className="text-2xl font-bold text-black mb-6">
           Chọn kỹ năng của bạn
         </h2>
 
         {/* Selected Skills */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-white mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Kỹ năng đã chọn ({skills.length})
           </h3>
           {skills.length === 0 ? (
             <div className="glass-subtle rounded-xl p-8 text-center">
-              <Code className="h-12 w-12 text-white/50 mx-auto mb-3" />
-              <p className="text-white/60">
+              <Code className="h-12 w-12 text-black/50 mx-auto mb-3" />
+              <p className="text-black/60">
                 Chưa có kỹ năng nào được chọn. Hãy bắt đầu thêm kỹ năng bên dưới.
               </p>
             </div>
@@ -172,8 +172,8 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                         return Icon ? <Icon className="h-5 w-5 text-purple-300" /> : null;
                       })()}
                       <div>
-                        <h4 className="text-white font-medium">{skill.name}</h4>
-                        <p className="text-white/60 text-sm">
+                        <h4 className="text-black font-medium">{skill.name}</h4>
+                        <p className="text-black/60 text-sm">
                           {categoryLabels[skill.category]} • {skill.yearsExperience} năm kinh nghiệm
                         </p>
                       </div>
@@ -185,7 +185,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                           updateSkill(skill.id, { proficiency: value })
                         }
                       >
-                        <SelectTrigger className="w-32 bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="w-32 bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -203,20 +203,20 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                             updateSkill(skill.id, { isPrimary: !!checked })
                           }
                         />
-                        <Label className="text-white/80 text-sm">Chính</Label>
+                        <Label className="text-black/80 text-sm">Chính</Label>
                       </div>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => removeSkill(skill.id)}
-                        className="bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30"
+                        className="bg-red-500/20 border-red-500/30 text-red-600 hover:bg-red-500/30"
                       >
                         <X className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
                   <div className="mt-3">
-                    <Label className="text-white/80 text-sm">
+                    <Label className="text-black/80 text-sm">
                       Kinh nghiệm: {skill.yearsExperience} năm
                     </Label>
                     <Slider
@@ -239,12 +239,12 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
         {/* Search and Filter */}
         <div className="mb-6 space-y-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black/50" />
             <Input
               placeholder="Tìm kiếm kỹ năng..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white/10 border-white/20 text-black placeholder:text-black/50"
             />
           </div>
 
@@ -253,7 +253,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
               variant={selectedCategory === 'all' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setSelectedCategory('all')}
-              className={selectedCategory === 'all' ? 'bg-purple-500 text-white' : 'bg-white/10 border-white/20 text-white hover:bg-white/20'}
+              className={selectedCategory === 'all' ? 'bg-purple-500 text-black' : 'bg-white/10 border-white/20 text-black hover:bg-white/20'}
             >
               Tất cả
             </Button>
@@ -263,7 +263,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                 variant={selectedCategory === category ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedCategory(category as SkillCategory)}
-                className={selectedCategory === category ? 'bg-purple-500 text-white' : 'bg-white/10 border-white/20 text-white hover:bg-white/20'}
+                className={selectedCategory === category ? 'bg-purple-500 text-black' : 'bg-white/10 border-white/20 text-black hover:bg-white/20'}
               >
                 {label}
               </Button>
@@ -273,7 +273,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
 
         {/* Available Skills */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-white mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Kỹ năng có sẵn
           </h3>
           <div className="grid gap-3 max-h-96 overflow-y-auto">
@@ -300,9 +300,9 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                     <div className="flex items-center gap-3">
                       {Icon && <Icon className="h-5 w-5 text-purple-300" />}
                       <div>
-                        <h4 className="text-white font-medium">{skill.name}</h4>
+                        <h4 className="text-black font-medium">{skill.name}</h4>
                         <div className="flex items-center gap-2 text-sm">
-                          <span className="text-white/60">
+                          <span className="text-black/60">
                             {categoryLabels[skill.category]}
                           </span>
                           <span className={`font-medium ${demandColors[skill.demand]}`}>
@@ -323,7 +323,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                       }}
                       disabled={isAdded}
                     >
-                      <SelectTrigger className="w-40 bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="w-40 bg-white/10 border-white/20 text-black">
                         <SelectValue placeholder="Thêm kỹ năng" />
                       </SelectTrigger>
                       <SelectContent>
@@ -358,7 +358,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <p className="text-white/80 text-sm">
+          <p className="text-black/80 text-sm">
             <span className="font-semibold">💡 Mẹo:</span> Chọn kỹ năng chính (primary) là kỹ năng bạn làm tốt nhất
             và có nhiều kinh nghiệm nhất. Điều này giúp tính toán chính xác hơn.
           </p>

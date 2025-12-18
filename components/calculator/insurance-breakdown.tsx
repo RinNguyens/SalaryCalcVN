@@ -44,12 +44,12 @@ export function InsuranceBreakdown({ result }: InsuranceBreakdownProps) {
   return (
     <GlassCard variant="default" className="p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white">
+        <h3 className="text-lg font-semibold text-black">
           Chi tiết bảo hiểm
         </h3>
         <div className="text-right">
-          <p className="text-xs text-white/70">Tổng cộng</p>
-          <p className="text-lg font-bold text-white">
+          <p className="text-xs text-black/70">Tổng cộng</p>
+          <p className="text-lg font-bold text-black">
             {formatCurrency(result.insurance.total)}
           </p>
         </div>
@@ -79,20 +79,20 @@ export function InsuranceBreakdown({ result }: InsuranceBreakdownProps) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className={`p-1.5 rounded-lg ${item.color} bg-opacity-20`}>
-                    <Icon className="h-4 w-4 text-white" />
+                    <Icon className="h-4 w-4 text-black" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-black">
                       {item.name}
                     </p>
-                    <p className="text-xs text-white/60">{item.description}</p>
+                    <p className="text-xs text-black/60">{item.description}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-white">
+                  <p className="text-sm font-bold text-black">
                     {formatCurrency(item.value)}
                   </p>
-                  <p className="text-xs text-white/60">{item.percentage}%</p>
+                  <p className="text-xs text-black/60">{item.percentage}%</p>
                 </div>
               </div>
               <Progress value={progressValue} className="h-2" />
@@ -104,26 +104,26 @@ export function InsuranceBreakdown({ result }: InsuranceBreakdownProps) {
       <div className="mt-6 pt-4 border-t border-white/20">
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <p className="text-white/70 mb-1">Lương tính BH</p>
-            <p className="text-white font-semibold">
+            <p className="text-black/70 mb-1">Lương tính BH</p>
+            <p className="text-black font-semibold">
               {formatCurrency(cappedSalary)}
             </p>
           </div>
           <div>
-            <p className="text-white/70 mb-1">Tổng đóng/tháng</p>
-            <p className="text-white font-semibold">
+            <p className="text-black/70 mb-1">Tổng đóng/tháng</p>
+            <p className="text-black font-semibold">
               {formatCurrency(result.insurance.total)}
             </p>
           </div>
           <div>
-            <p className="text-white/70 mb-1">Tổng đóng/năm</p>
-            <p className="text-white font-semibold">
+            <p className="text-black/70 mb-1">Tổng đóng/năm</p>
+            <p className="text-black font-semibold">
               {formatCurrency(result.insurance.total * 12)}
             </p>
           </div>
           <div>
-            <p className="text-white/70 mb-1">Tỷ lệ/Gross</p>
-            <p className="text-white font-semibold">
+            <p className="text-black/70 mb-1">Tỷ lệ/Gross</p>
+            <p className="text-black font-semibold">
               {((result.insurance.total / result.gross) * 100).toFixed(2)}%
             </p>
           </div>

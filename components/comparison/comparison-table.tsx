@@ -67,7 +67,7 @@ export function ComparisonTable() {
 
   return (
     <GlassCard className="p-6">
-      <h2 className="text-2xl font-bold text-white mb-6">So sánh mức lương</h2>
+      <h2 className="text-2xl font-bold text-black mb-6">So sánh mức lương</h2>
 
       {/* Input Section */}
       <div className="space-y-4 mb-6">
@@ -81,7 +81,7 @@ export function ComparisonTable() {
                   handleUpdateSalary(index, 'gross', Number(e.target.value))
                 }
                 placeholder="Lương Gross"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
               />
             </div>
             <div className="md:col-span-3">
@@ -91,7 +91,7 @@ export function ComparisonTable() {
                   handleUpdateSalary(index, 'region', value as Region)
                 }
               >
-                <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                <SelectTrigger className="bg-white/10 border-white/20 text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -111,7 +111,7 @@ export function ComparisonTable() {
                   handleUpdateSalary(index, 'dependents', Number(e.target.value))
                 }
                 placeholder="Số người phụ thuộc"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
               />
             </div>
             <div className="md:col-span-1 flex items-center">
@@ -120,7 +120,7 @@ export function ComparisonTable() {
                   onClick={() => handleRemoveSalary(index)}
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:text-red-400 hover:bg-white/10"
+                  className="text-black hover:text-red-600 hover:bg-white/10"
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -135,7 +135,7 @@ export function ComparisonTable() {
           onClick={handleAddSalary}
           disabled={salaries.length >= 5}
           variant="outline"
-          className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+          className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
         >
           <Plus className="h-4 w-4" />
           Thêm mức lương
@@ -152,7 +152,7 @@ export function ComparisonTable() {
       {/* Results Table */}
       {results.length > 0 && (
         <div className="overflow-x-auto">
-          <table className="w-full text-white text-sm">
+          <table className="w-full text-black text-sm">
             <thead>
               <tr className="border-b border-white/20">
                 <th className="text-left py-3 px-2 sticky left-0 bg-gradient-to-r from-purple-600/50 to-transparent">
@@ -227,11 +227,11 @@ export function ComparisonTable() {
                 ))}
               </tr>
               <tr className="border-b border-white/10">
-                <td className="py-3 px-2 text-xs text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+                <td className="py-3 px-2 text-xs text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
                   Thuế suất
                 </td>
                 {results.map((r, i) => (
-                  <td key={i} className="text-right py-3 px-2 text-xs text-white/70">
+                  <td key={i} className="text-right py-3 px-2 text-xs text-black/70">
                     {(r.tax.effectiveRate * 100).toFixed(2)}%
                   </td>
                 ))}
@@ -247,11 +247,11 @@ export function ComparisonTable() {
                 ))}
               </tr>
               <tr className="border-t border-white/10">
-                <td className="py-3 px-2 text-xs text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+                <td className="py-3 px-2 text-xs text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
                   % của Gross
                 </td>
                 {results.map((r, i) => (
-                  <td key={i} className="text-right py-3 px-2 text-xs text-white/70">
+                  <td key={i} className="text-right py-3 px-2 text-xs text-black/70">
                     {((r.net / r.gross) * 100).toFixed(1)}%
                   </td>
                 ))}

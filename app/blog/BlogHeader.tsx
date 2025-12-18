@@ -64,12 +64,12 @@ export function BlogHeader() {
                   href={item.href}
                   className={`
                     px-4 py-2 rounded-lg
-                    text-white/80 hover:text-white
+                    text-black/80 hover:text-black
                     hover:bg-white/10
                     transition-all duration-200
                     flex items-center gap-2
                     font-medium
-                    ${item.href === '/blog' ? 'bg-white/10 text-white' : ''}
+                    ${item.href === '/blog' ? 'bg-white/10 text-black' : ''}
                   `}
                 >
                   <item.icon className="h-4 w-4" />
@@ -84,7 +84,7 @@ export function BlogHeader() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full bg-white/10 hover:bg-white/20 text-white"
+                className="rounded-full bg-white/10 hover:bg-white/20 text-black"
                 onClick={() => {
                   const searchInput = document.querySelector('input[placeholder="Tìm kiếm bài viết..."]') as HTMLInputElement;
                   searchInput?.focus();
@@ -98,7 +98,7 @@ export function BlogHeader() {
                 className="
                   bg-gradient-to-r from-purple-500 to-pink-600
                   hover:from-purple-600 hover:to-pink-700
-                  text-white font-medium
+                  text-black font-medium
                   shadow-lg hover:shadow-xl
                   transition-all duration-200
                 "
@@ -112,7 +112,7 @@ export function BlogHeader() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden text-white"
+              className="md:hidden text-black"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -140,12 +140,12 @@ export function BlogHeader() {
                       href={item.href}
                       className={`
                         px-4 py-3 rounded-lg
-                        text-white/80 hover:text-white
+                        text-black/80 hover:text-black
                         bg-white/5 hover:bg-white/10
                         transition-all duration-200
                         flex items-center gap-3
                         font-medium
-                        ${item.href === '/blog' ? 'bg-white/10 text-white' : ''}
+                        ${item.href === '/blog' ? 'bg-white/10 text-black' : ''}
                       `}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -158,7 +158,7 @@ export function BlogHeader() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="flex-1 bg-white/10 hover:bg-white/20 text-white"
+                      className="flex-1 bg-white/10 hover:bg-white/20 text-black"
                       onClick={() => {
                         const searchInput = document.querySelector('input[placeholder="Tìm kiếm bài viết..."]') as HTMLInputElement;
                         searchInput?.focus();
@@ -173,7 +173,7 @@ export function BlogHeader() {
                     className="
                       w-full mt-2
                       bg-gradient-to-r from-purple-500 to-pink-600
-                      text-white font-medium
+                      text-black font-medium
                     "
                     onClick={() => {
                       window.location.href = '/calculator';

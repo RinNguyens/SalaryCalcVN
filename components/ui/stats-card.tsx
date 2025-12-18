@@ -39,18 +39,18 @@ export function StatsCard({
       whileHover={{ y: -5 }}
       className="h-full"
     >
-      <GlassCard variant="subtle" className="p-6 text-center h-full">
+      <GlassCard variant="default" className="p-6 text-center h-full">
         <div className="text-purple-400 mb-3 flex justify-center">
           <div className="p-3 rounded-lg bg-white/10">
             {icon}
           </div>
         </div>
 
-        <div className="text-3xl font-bold text-white mb-2">
+        <div className="text-3xl font-bold text-black mb-2">
           <AnimatedCounter end={value} suffix={suffix} />
         </div>
 
-        <div className="text-sm text-white/60 mb-4">{label}</div>
+        <div className="text-sm text-black/60 mb-4">{label}</div>
 
         {trend && (
           <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${

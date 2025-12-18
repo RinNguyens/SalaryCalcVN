@@ -37,16 +37,16 @@ export function ContactFAQ() {
   return (
     <div>
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm mb-4">
           <HelpCircle className="w-4 h-4" />
           <span>Câu hỏi thường gặp</span>
         </div>
 
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl font-bold text-black mb-4">
           Có Thể Bạn Đang Tìm Câu Trả Lời
         </h2>
 
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-slate-400 max-w-2xl mx-auto">
           Xem các câu hỏi phổ biến bên dưới. Nếu không tìm thấy câu trả lời, đừng ngần ngại liên hệ với chúng tôi!
         </p>
       </div>
@@ -58,17 +58,17 @@ export function ContactFAQ() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+            className="bg-white rounded-xl border border-slate-300 overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 transition"
             >
-              <span className="font-semibold text-gray-900">
+              <span className="font-semibold text-slate-900">
                 {faq.question}
               </span>
               <ChevronDown
-                className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform ${
+                className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}
               />
@@ -82,7 +82,7 @@ export function ContactFAQ() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+                  <div className="px-6 pb-5 text-slate-600 leading-relaxed">
                     {faq.answer}
                   </div>
                 </motion.div>
@@ -94,12 +94,12 @@ export function ContactFAQ() {
 
       {/* Still have questions */}
       <div className="mt-12 text-center">
-        <p className="text-gray-600 mb-4">
+        <p className="text-slate-400 mb-4">
           Vẫn chưa tìm thấy câu trả lời?
         </p>
         <a
           href="#contact-form"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-black rounded-lg hover:bg-blue-700 transition"
         >
           <MessageCircle className="w-5 h-5" />
           <span>Gửi câu hỏi cho chúng tôi</span>

@@ -242,7 +242,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-black/20 backdrop-blur-xl border-white/20">
         <motion.div variants={modalVariants}>
           <DialogHeader>
-            <DialogTitle className="text-white text-xl">
+            <DialogTitle className="text-black text-xl">
               {offer ? 'Chỉnh sửa thư mời' : 'Thêm thư mời mới'}
             </DialogTitle>
           </DialogHeader>
@@ -260,47 +260,47 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
               <TabsContent value="basic" className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-white">
+                    <Label htmlFor="companyName" className="text-black">
                       Tên công ty *
                     </Label>
                     <Input
                       id="companyName"
                       {...form.register('companyName')}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="position" className="text-white">
+                    <Label htmlFor="position" className="text-black">
                       Vị trí *
                     </Label>
                     <Input
                       id="position"
                       {...form.register('position')}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="location" className="text-white">
+                    <Label htmlFor="location" className="text-black">
                       Địa điểm *
                     </Label>
                     <Input
                       id="location"
                       {...form.register('location')}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white/10 border-white/20 text-black"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="currency" className="text-white">
+                    <Label htmlFor="currency" className="text-black">
                       Tiền tệ
                     </Label>
                     <Select
                       value={form.watch('currency')}
                       onValueChange={(value) => form.setValue('currency', value as 'VND' | 'USD')}
                     >
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -312,14 +312,14 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="baseSalary" className="text-white">
+                  <Label htmlFor="baseSalary" className="text-black">
                     Lương cơ bản hàng tháng ({form.watch('currency')})
                   </Label>
                   <Input
                     id="baseSalary"
                     type="number"
                     {...form.register('baseSalary', { valueAsNumber: true })}
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-black"
                   />
                 </div>
               </TabsContent>
@@ -327,32 +327,32 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
               {/* Bonus & Equity Tab */}
               <TabsContent value="bonus" className="space-y-4">
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Thưởng hàng năm</h3>
+                  <h3 className="text-black font-semibold">Thưởng hàng năm</h3>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-white">Thưởng hiệu suất</Label>
+                      <Label className="text-black">Thưởng hiệu suất</Label>
                       <Input
                         type="number"
                         {...form.register('bonuses.performance', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="0"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Thưởng ký hợp đồng</Label>
+                      <Label className="text-black">Thưởng ký hợp đồng</Label>
                       <Input
                         type="number"
                         {...form.register('bonuses.signing', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="0"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Lương tháng 13</Label>
+                      <Label className="text-black">Lương tháng 13</Label>
                       <Input
                         type="number"
                         {...form.register('bonuses.13thMonth' as any, { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="0"
                       />
                     </div>
@@ -377,21 +377,21 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                         }
                       }}
                     />
-                    <Label className="text-white">Có cổ phiếu/ESOP</Label>
+                    <Label className="text-black">Có cổ phiếu/ESOP</Label>
                   </div>
 
                   {form.watch('bonuses.stock') && (
                     <div className="space-y-4 ml-6">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label className="text-white">Loại</Label>
+                          <Label className="text-black">Loại</Label>
                           <Select
                             value={form.watch('bonuses.stock.type')}
                             onValueChange={(value) =>
                               form.setValue('bonuses.stock.type', value as any)
                             }
                           >
-                            <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                            <SelectTrigger className="bg-white/10 border-white/20 text-black">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -402,19 +402,19 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                           </Select>
                         </div>
                         <div className="space-y-2">
-                          <Label className="text-white">Giá trị hàng năm</Label>
+                          <Label className="text-black">Giá trị hàng năm</Label>
                           <Input
                             type="number"
                             {...form.register('bonuses.stock.value', { valueAsNumber: true })}
-                            className="bg-white/10 border-white/20 text-white"
+                            className="bg-white/10 border-white/20 text-black"
                           />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-white">Vesting schedule</Label>
+                        <Label className="text-black">Vesting schedule</Label>
                         <Input
                           {...form.register('bonuses.stock.vesting')}
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-black"
                           placeholder="4 năm với 1 năm cliff"
                         />
                       </div>
@@ -426,26 +426,26 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
               {/* Benefits Tab */}
               <TabsContent value="benefits" className="space-y-4">
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Bảo hiểm & Sức khỏe</h3>
+                  <h3 className="text-black font-semibold">Bảo hiểm & Sức khỏe</h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label className="text-white">Giá trị BH sức khỏe/tháng</Label>
+                        <Label className="text-black">Giá trị BH sức khỏe/tháng</Label>
                         <Input
                           type="number"
                           {...form.register('benefits.healthInsurance.value', { valueAsNumber: true })}
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-black"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-white">Phạm vi bảo hiểm</Label>
+                        <Label className="text-black">Phạm vi bảo hiểm</Label>
                         <Select
                           value={form.watch('benefits.healthInsurance.coverage')}
                           onValueChange={(value) =>
                             form.setValue('benefits.healthInsurance.coverage', value as any)
                           }
                         >
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectTrigger className="bg-white/10 border-white/20 text-black">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -462,25 +462,25 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                 <Separator className="bg-white/20" />
 
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Trợ cấp hàng tháng</h3>
+                  <h3 className="text-black font-semibold">Trợ cấp hàng tháng</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-white">Ăn trưa</Label>
+                      <Label className="text-black">Ăn trưa</Label>
                       <Input
                         type="number"
                         {...form.register('benefits.mealAllowance.value', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Tần suất</Label>
+                      <Label className="text-black">Tần suất</Label>
                       <Select
                         value={form.watch('benefits.mealAllowance.frequency')}
                         onValueChange={(value) =>
                           form.setValue('benefits.mealAllowance.frequency', value as any)
                         }
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -490,35 +490,35 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Đi lại</Label>
+                      <Label className="text-black">Đi lại</Label>
                       <Input
                         type="number"
                         {...form.register('benefits.transport.value', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Điện thoại</Label>
+                      <Label className="text-black">Điện thoại</Label>
                       <Input
                         type="number"
                         {...form.register('benefits.phone', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Internet</Label>
+                      <Label className="text-black">Internet</Label>
                       <Input
                         type="number"
                         {...form.register('benefits.internet', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Phòng gym</Label>
+                      <Label className="text-black">Phòng gym</Label>
                       <Input
                         type="number"
                         {...form.register('benefits.gym', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                   </div>
@@ -528,10 +528,10 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
               {/* Work-Life Tab */}
               <TabsContent value="worklife" className="space-y-4">
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Giờ làm việc</h3>
+                  <h3 className="text-black font-semibold">Giờ làm việc</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-white">Số ngày làm việc/tuần</Label>
+                      <Label className="text-black">Số ngày làm việc/tuần</Label>
                       <div className="px-3">
                         <Slider
                           value={[form.watch('workLife.workingDays')]}
@@ -543,7 +543,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                           step={1}
                           className="w-full"
                         />
-                        <div className="flex justify-between text-white/60 text-sm mt-1">
+                        <div className="flex justify-between text-black/60 text-sm mt-1">
                           <span>1</span>
                           <span>{form.watch('workLife.workingDays')} ngày</span>
                           <span>7</span>
@@ -551,7 +551,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Số giờ làm việc/ngày</Label>
+                      <Label className="text-black">Số giờ làm việc/ngày</Label>
                       <div className="px-3">
                         <Slider
                           value={[form.watch('workLife.workingHours')]}
@@ -563,7 +563,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                           step={0.5}
                           className="w-full"
                         />
-                        <div className="flex justify-between text-white/60 text-sm mt-1">
+                        <div className="flex justify-between text-black/60 text-sm mt-1">
                           <span>4</span>
                           <span>{form.watch('workLife.workingHours')} giờ</span>
                           <span>12</span>
@@ -576,10 +576,10 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                 <Separator className="bg-white/20" />
 
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Làm việc từ xa</h3>
+                  <h3 className="text-black font-semibold">Làm việc từ xa</h3>
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label className="text-white">Số ngày remote/tuần</Label>
+                      <Label className="text-black">Số ngày remote/tuần</Label>
                       <div className="px-3">
                         <Slider
                           value={[form.watch('workLife.remote.daysPerWeek')]}
@@ -591,7 +591,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                           step={1}
                           className="w-full"
                         />
-                        <div className="flex justify-between text-white/60 text-sm mt-1">
+                        <div className="flex justify-between text-black/60 text-sm mt-1">
                           <span>0</span>
                           <span>{form.watch('workLife.remote.daysPerWeek')} ngày</span>
                           <span>5</span>
@@ -599,14 +599,14 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Mức độ linh hoạt</Label>
+                      <Label className="text-black">Mức độ linh hoạt</Label>
                       <Select
                         value={form.watch('workLife.remote.flexibility')}
                         onValueChange={(value) =>
                           form.setValue('workLife.remote.flexibility', value as any)
                         }
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -622,22 +622,22 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                 <Separator className="bg-white/20" />
 
                 <div className="space-y-4">
-                  <h3 className="text-white font-semibold">Ngày nghỉ</h3>
+                  <h3 className="text-black font-semibold">Ngày nghỉ</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-white">Nghỉ phép năm</Label>
+                      <Label className="text-black">Nghỉ phép năm</Label>
                       <Input
                         type="number"
                         {...form.register('workLife.leaveDays.annual', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Nghỉ ốm</Label>
+                      <Label className="text-black">Nghỉ ốm</Label>
                       <Input
                         type="number"
                         {...form.register('workLife.leaveDays.sick', { valueAsNumber: true })}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                       />
                     </div>
                   </div>
@@ -651,7 +651,7 @@ export function OfferForm({ offer, onSubmit, onCancel }: OfferFormProps) {
                 type="button"
                 variant="outline"
                 onClick={onCancel}
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="bg-white/10 border-white/20 text-black hover:bg-white/20"
               >
                 <X className="h-4 w-4 mr-2" />
                 Hủy

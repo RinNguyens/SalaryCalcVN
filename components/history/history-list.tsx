@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GlassCard } from '@/components/shared/glass-card';
-import { Button } from '@/components/ui/button';
+import { PastelGlassCard } from '@/components/ui/pastel-glass-card';
+import { PastelGlassButton } from '@/components/ui/pastel-glass-button';
 import { Badge } from '@/components/ui/badge';
 import { getHistory, deleteHistory, clearHistory } from '@/lib/storage/local-storage';
 import { formatCurrency } from '@/lib/calculations/gross-to-net';
@@ -57,44 +57,43 @@ export function HistoryList() {
 
   if (history.length === 0) {
     return (
-      <GlassCard className="p-8 text-center">
-        <p className="text-white/70">Chưa có lịch sử tính toán</p>
-        <p className="text-white/50 text-sm mt-2">
+      <PastelGlassCard className="p-8 text-center">
+        <p className="text-dark-secondary-text">Chưa có lịch sử tính toán</p>
+        <p className="text-dark-muted-text text-sm mt-2">
           Các tính toán của bạn sẽ được lưu tự động
         </p>
-      </GlassCard>
+      </PastelGlassCard>
     );
   }
 
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">
+        <h2 className="text-2xl font-bold text-dark-text">
           Lịch sử ({history.length})
         </h2>
-        <Button
+        <PastelGlassButton
           onClick={handleClearAll}
-          variant="outline"
+          variant="danger"
           size="sm"
-          className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+          icon={<Trash2 className="h-4 w-4" />}
         >
-          <Trash2 className="h-4 w-4" />
           Xóa tất cả
-        </Button>
+        </PastelGlassButton>
       </div>
 
       {history.map((item) => (
-        <GlassCard key={item.id} className="p-4 hover:bg-white/15 transition-all">
+        <PastelGlassCard key={item.id} className="p-4 hover:scale-[1.01] transition-transform">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <Badge
                   variant={item.mode === 'gross-to-net' ? 'default' : 'secondary'}
-                  className="bg-white/20 text-white border-white/30"
+                  className="bg-chart-purple/20 text-chart-purple border-chart-purple/30"
                 >
                   {item.mode === 'gross-to-net' ? 'Gross → Net' : 'Net → Gross'}
                 </Badge>
-                <div className="flex items-center gap-1 text-white/60 text-sm">
+                <div className="flex items-center gap-1 text-dark-muted-text text-sm">
                   <Calendar className="h-3 w-3" />
                   {new Date(item.timestamp).toLocaleDateString('vi-VN', {
                     day: '2-digit',
@@ -106,17 +105,17 @@ export function HistoryList() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-white flex-wrap">
+              <div className="flex items-center gap-2 text-dark-text flex-wrap">
                 <span className="font-mono text-sm md:text-base">
                   {formatCurrency(item.result.gross)}
                 </span>
-                <ArrowRight className="h-4 w-4" />
-                <span className="font-mono font-semibold text-sm md:text-base text-green-400">
+                <ArrowRight className="h-4 w-4 text-chart-green" />
+                <span className="font-mono font-semibold text-sm md:text-base text-chart-green">
                   {formatCurrency(item.result.net)}
                 </span>
               </div>
 
-              <div className="mt-2 text-sm text-white/70">
+              <div className="mt-2 text-sm text-dark-muted-text">
                 <span>Thuế: {formatCurrency(item.result.tax.tax)}</span>
                 <span className="mx-2">•</span>
                 <span>BH: {formatCurrency(item.result.insurance.total)}</span>
@@ -130,25 +129,25 @@ export function HistoryList() {
             </div>
 
             <div className="flex gap-2">
-              <Button
+              <PastelGlassButton
                 onClick={() => handleExport(item)}
                 variant="ghost"
                 size="icon"
-                className="text-white hover:text-green-400 hover:bg-white/10"
+                className="text-dark-secondary-text hover:text-chart-green"
               >
                 <Download className="h-4 w-4" />
-              </Button>
-              <Button
+              </PastelGlassButton>
+              <PastelGlassButton
                 onClick={() => handleDelete(item.id)}
                 variant="ghost"
                 size="icon"
-                className="text-white hover:text-red-400 hover:bg-white/10"
+                className="text-dark-secondary-text hover:text-red-600"
               >
                 <Trash2 className="h-4 w-4" />
-              </Button>
+              </PastelGlassButton>
             </div>
           </div>
-        </GlassCard>
+        </PastelGlassCard>
       ))}
     </div>
   );

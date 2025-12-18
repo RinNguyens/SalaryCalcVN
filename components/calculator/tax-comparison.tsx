@@ -34,11 +34,11 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-start gap-3">
             <div className="p-2 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500">
-              <TrendingDown className="h-5 w-5 text-white" />
+              <TrendingDown className="h-5 w-5 text-black" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-lg font-bold text-black">
                   Tiết kiệm với biểu thuế mới 2026
                 </h3>
                 <Badge className="bg-green-500/20 text-green-400 border-green-400/30 text-xs">
@@ -46,7 +46,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
                   Mới
                 </Badge>
               </div>
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-black/70">
                 So sánh thuế theo biểu 7 bậc (2025) và 5 bậc (2026)
               </p>
             </div>
@@ -67,14 +67,14 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
                 <span className="text-red-400 font-bold text-sm">7</span>
               </div>
               <div>
-                <div className="text-xs text-white/60">Biểu thuế 2025</div>
-                <div className="text-xs text-white/50">7 bậc (cũ)</div>
+                <div className="text-xs text-black/60">Biểu thuế 2025</div>
+                <div className="text-xs text-black/50">7 bậc (cũ)</div>
               </div>
             </div>
-            <div className="text-3xl font-bold text-white mb-1">
+            <div className="text-3xl font-bold text-black mb-1">
               {formatCurrency(comparison.tax2025)}
             </div>
-            <div className="text-xs text-white/60">Thuế/tháng</div>
+            <div className="text-xs text-black/60">Thuế/tháng</div>
           </motion.div>
 
           {/* 2026 Tax */}
@@ -93,7 +93,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
                 <div className="text-xs text-green-400/70">5 bậc (mới)</div>
               </div>
             </div>
-            <div className="text-3xl font-bold text-white mb-1">
+            <div className="text-3xl font-bold text-black mb-1">
               {formatCurrency(comparison.tax2026)}
             </div>
             <div className="text-xs text-green-400">Thuế/tháng</div>
@@ -109,7 +109,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
         >
           <div className="flex items-center justify-between mb-4">
             <div>
-              <div className="text-sm font-medium text-white/80 mb-1">
+              <div className="text-sm font-medium text-black/80 mb-1">
                 💰 Tiết kiệm mỗi tháng
               </div>
               <div className="text-3xl font-bold text-green-400">
@@ -117,10 +117,10 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm font-medium text-white/80 mb-1">
+              <div className="text-sm font-medium text-black/80 mb-1">
                 📅 Tiết kiệm mỗi năm
               </div>
-              <div className="text-2xl font-bold text-white">
+              <div className="text-2xl font-bold text-black">
                 {formatCurrency(comparison.savingsPerYear)}
               </div>
             </div>
@@ -128,7 +128,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
 
           <div className="pt-4 border-t border-white/10">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-white/70">Giảm so với biểu cũ</span>
+              <span className="text-sm text-black/70">Giảm so với biểu cũ</span>
               <span className="text-sm font-bold text-green-400">
                 -{formatPercentage(comparison.savingsPercentage)}
               </span>
@@ -140,10 +140,10 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
         <div className="flex gap-3 p-4 rounded-lg bg-blue-500/10 border border-blue-400/30">
           <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm text-white/80 mb-2">
-              <strong className="text-white">Tại sao tiết kiệm?</strong>
+            <p className="text-sm text-black/80 mb-2">
+              <strong className="text-black">Tại sao tiết kiệm?</strong>
             </p>
-            <p className="text-sm text-white/70 leading-relaxed">
+            <p className="text-sm text-black/70 leading-relaxed">
               Biểu thuế 5 bậc có hiệu lực từ 01/01/2026. Thu nhập trên 32M chỉ chịu thuế
               tối đa 25% thay vì 25-35% như biểu cũ. Đây là chính sách giảm gánh nặng thuế
               cho người có thu nhập cao.

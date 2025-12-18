@@ -42,8 +42,8 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
       const data = payload[0].payload;
       return (
         <div className="bg-black/90 p-3 rounded-lg border border-white/20">
-          <p className="text-white font-semibold">{`Năm ${label}`}</p>
-          {data.age && <p className="text-white/70 text-sm">{`Tuổi: ${data.age}`}</p>}
+          <p className="text-black font-semibold">{`Năm ${label}`}</p>
+          {data.age && <p className="text-black/70 text-sm">{`Tuổi: ${data.age}`}</p>}
           <p className="text-green-400">{`Gross: ${formatCurrency(data.gross)}`}</p>
           <p className="text-blue-400">{`Net: ${formatCurrency(data.net)}`}</p>
         </div>
@@ -59,23 +59,23 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
         {/* Current vs Final */}
         <GlassCard variant="strong" className="p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Calendar className="h-4 w-4 text-white" />
-            <h4 className="text-white font-semibold">Dự báo {projections.length} năm</h4>
+            <Calendar className="h-4 w-4 text-black" />
+            <h4 className="text-black font-semibold">Dự báo {projections.length} năm</h4>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-white/70">Hiện tại:</span>
-              <span className="text-white">{formatCurrency(currentYear.gross)}</span>
+              <span className="text-black/70">Hiện tại:</span>
+              <span className="text-black">{formatCurrency(currentYear.gross)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-white/70">Tương lai:</span>
+              <span className="text-black/70">Tương lai:</span>
               <span className="text-green-400">
                 {formatCurrency(projections[projections.length - 1].gross)}
               </span>
             </div>
             <div className="pt-2 border-t border-white/20">
               <div className="flex justify-between">
-                <span className="text-white/70">Tăng trưởng:</span>
+                <span className="text-black/70">Tăng trưởng:</span>
                 <Badge className={totalGrowth.percentage > 50 ? 'bg-green-500/20' : 'bg-blue-500/20'}>
                   +{totalGrowth.percentage.toFixed(0)}%
                 </Badge>
@@ -88,13 +88,13 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
         <GlassCard variant="default" className="p-4">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="h-4 w-4 text-green-400" />
-            <h4 className="text-white font-semibold">Tăng trưởng tổng</h4>
+            <h4 className="text-black font-semibold">Tăng trưởng tổng</h4>
           </div>
           <div className="text-center py-2">
             <p className="text-2xl font-bold text-green-400">
               +{formatCurrency(totalGrowth.gross)}
             </p>
-            <p className="text-white/60 text-sm mt-1">
+            <p className="text-black/60 text-sm mt-1">
               Gross hàng tháng
             </p>
           </div>
@@ -102,7 +102,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
             <p className="text-lg text-blue-400">
               +{formatCurrency(totalGrowth.net)}
             </p>
-            <p className="text-white/60 text-sm">
+            <p className="text-black/60 text-sm">
               Net hàng tháng
             </p>
           </div>
@@ -112,13 +112,13 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
         <GlassCard variant="default" className="p-4">
           <div className="flex items-center gap-2 mb-2">
             <Target className="h-4 w-4 text-blue-400" />
-            <h4 className="text-white font-semibold">Trung bình/năm</h4>
+            <h4 className="text-black font-semibold">Trung bình/năm</h4>
           </div>
           <div className="text-center py-2">
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl font-bold text-black">
               {averageAnnualGrowth.percentage}%
             </p>
-            <p className="text-white/60 text-sm mt-1">
+            <p className="text-black/60 text-sm mt-1">
               Tăng trưởng hàng năm
             </p>
           </div>
@@ -126,7 +126,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
             <p className="text-lg text-green-400">
               +{formatCurrency(averageAnnualGrowth.net)}
             </p>
-            <p className="text-white/60 text-sm">
+            <p className="text-black/60 text-sm">
               Thêm Net/năm
             </p>
           </div>
@@ -135,7 +135,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
 
       {/* Growth Chart */}
       <GlassCard variant="strong" className="p-6">
-        <h4 className="text-lg font-semibold text-white mb-4">Biểu đồ tăng trưởng lương</h4>
+        <h4 className="text-lg font-semibold text-black mb-4">Biểu đồ tăng trưởng lương</h4>
 
         <ResponsiveContainer width="100%" height={350}>
           <AreaChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -184,7 +184,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
 
       {/* Year-by-Year Breakdown */}
       <GlassCard variant="default" className="p-6">
-        <h4 className="text-lg font-semibold text-white mb-4">Chi tiết theo năm</h4>
+        <h4 className="text-lg font-semibold text-black mb-4">Chi tiết theo năm</h4>
 
         <div className="space-y-3">
           {[currentYear, ...projections].map((year, index) => (
@@ -198,14 +198,14 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
                     >
                       {index === 0 ? 'Hiện tại' : `Năm ${index}`}
                     </Badge>
-                    <span className="text-white font-mono">{year.year}</span>
+                    <span className="text-black font-mono">{year.year}</span>
                     {year.age && (
-                      <span className="text-white/60 text-sm">(Tuổi: {year.age})</span>
+                      <span className="text-black/60 text-sm">(Tuổi: {year.age})</span>
                     )}
                   </div>
 
                   <div className="text-right">
-                    <div className="text-white">
+                    <div className="text-black">
                       {formatCurrency(year.gross)}
                       <span className="text-green-400 ml-2">
                         {index > 0 && `+${(projections[index - 1].raise || 0)}%`}
@@ -223,7 +223,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
       {/* Insights */}
       {insights.length > 0 && (
         <GlassCard variant="default" className="p-6">
-          <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <h4 className="text-lg font-semibold text-black mb-4 flex items-center gap-2">
             <Award className="h-5 w-5" />
             Gợi ý & Đánh giá
           </h4>
@@ -241,9 +241,9 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
                       <h5 className={`font-semibold ${getInsightColor(insight.type)}`}>
                         {insight.title}
                       </h5>
-                      <p className="text-white/80 text-sm mt-1">{insight.description}</p>
+                      <p className="text-black/80 text-sm mt-1">{insight.description}</p>
                       {insight.recommendation && (
-                        <p className="text-white/70 text-xs mt-2 italic">
+                        <p className="text-black/70 text-xs mt-2 italic">
                           💡 {insight.recommendation}
                         </p>
                       )}
@@ -258,13 +258,13 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
 
       {/* Career Advice */}
       <GlassCard variant="subtle" className="p-6">
-        <h4 className="text-lg font-semibold text-white mb-4">Lời khuyên phát triển sự nghiệp</h4>
+        <h4 className="text-lg font-semibold text-black mb-4">Lời khuyên phát triển sự nghiệp</h4>
 
         <div className="grid md:grid-cols-2 gap-4">
           <Card className="bg-blue-500/10 border-blue-500/20">
             <CardContent className="p-4">
               <h5 className="text-blue-400 font-semibold mb-2">Ngắn hạn (1-2 năm)</h5>
-              <ul className="text-white/80 text-sm space-y-1">
+              <ul className="text-black/80 text-sm space-y-1">
                 <li>• Nâng cao kỹ năng chuyên môn</li>
                 <li>• Lấy chứng chỉ chuyên ngành liên quan</li>
                 <li>• Xây dựng mạng lưới quan hệ</li>
@@ -275,7 +275,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
           <Card className="bg-purple-500/10 border-purple-500/20">
             <CardContent className="p-4">
               <h5 className="text-purple-400 font-semibold mb-2">Dài hạn (3-5 năm)</h5>
-              <ul className="text-white/80 text-sm space-y-1">
+              <ul className="text-black/80 text-sm space-y-1">
                 <li>• Phát triển kỹ năng quản lý</li>
                 <li>• Cân nhắc chuyển ngành/địa điểm</li>
                 <li>• Xây dựng thương hiệu cá nhân</li>

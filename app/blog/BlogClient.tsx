@@ -58,26 +58,26 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
               5+ bài viết chuyên sâu về tài chính
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Blog <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">SalaryLens</span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
               Cẩm nang toàn diện về tính lương, đàm phán, và tối ưu thuế cho người đi làm Việt Nam
             </p>
 
             {/* Quick Stats */}
-            <div className="flex flex-wrap justify-center gap-8 text-gray-400">
+            <div className="flex flex-wrap justify-center gap-8 text-slate-400">
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-white">{allPosts.length}</span>
+                <span className="text-2xl font-bold text-black">{allPosts.length}</span>
                 <span>Bài viết</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-white">{categories.length}</span>
+                <span className="text-2xl font-bold text-black">{categories.length}</span>
                 <span>Chủ đề</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-white">10K+</span>
+                <span className="text-2xl font-bold text-black">10K+</span>
                 <span>Đọc giả</span>
               </div>
             </div>
@@ -92,10 +92,10 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
           <div className="max-w-2xl mx-auto">
             <SearchBar onSearch={(query) => setSearchQuery(query)} />
             {(searchQuery || selectedCategory) && (
-              <p className="text-center text-gray-400 mt-4">
-                Tìm thấy <span className="text-white font-semibold">{postCount}</span> bài viết
+              <p className="text-center text-slate-400 mt-4">
+                Tìm thấy <span className="text-black font-semibold">{postCount}</span> bài viết
                 {selectedCategory && (
-                  <> trong chủ đề <span className="text-white font-semibold">{selectedCategory}</span></>
+                  <> trong chủ đề <span className="text-black font-semibold">{selectedCategory}</span></>
                 )}
               </p>
             )}
@@ -117,7 +117,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <SparklesIcon className="w-6 h-6 text-yellow-500" />
-                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                <h2 className="text-2xl md:text-3xl font-bold text-black">
                   Bài viết nổi bật
                 </h2>
                 <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-sm rounded-full">
@@ -139,11 +139,11 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
         {/* All Posts */}
         <section>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-black">
               {searchQuery || selectedCategory ? 'Kết quả' : 'Tất cả bài viết'}
             </h2>
             {postCount > 0 && (
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-slate-400">
                 {postCount} bài viết
               </span>
             )}
@@ -158,11 +158,11 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
           ) : (
             <div className="text-center py-20">
               <div className="max-w-md mx-auto">
-                <MagnifyingGlassIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <MagnifyingGlassIcon className="w-16 h-16 text-slate-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-black mb-2">
                   Không tìm thấy bài viết
                 </h3>
-                <p className="text-gray-400 mb-6">
+                <p className="text-slate-400 mb-6">
                   Thử tìm kiếm với từ khóa khác hoặc chọn chủ đề khác nhé
                 </p>
                 <button
@@ -170,7 +170,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                     setSearchQuery('');
                     setSelectedCategory(null);
                   }}
-                  className="px-6 py-2 bg-purple-500 hover:bg-purple-600 text-white font-medium rounded-full transition-colors"
+                  className="px-6 py-2 bg-purple-500 hover:bg-purple-600 text-black font-medium rounded-full transition-colors"
                 >
                   Xóa bộ lọc
                 </button>
@@ -188,11 +188,11 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                 <span>📧</span> Đăng ký miễn phí
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 Đăng ký nhận bài viết mới
               </h2>
 
-              <p className="text-gray-300 mb-8 text-lg">
+              <p className="text-slate-300 mb-8 text-lg">
                 Nhận ngay cẩm nang tài chính và các tips đàm phán lương hiệu quả qua email hàng tuần
               </p>
 
@@ -208,17 +208,17 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                   type="email"
                   placeholder="Nhập email của bạn"
                   required
-                  className="flex-1 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="flex-1 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-black placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+                  className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-black font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
                 >
                   Đăng ký
                 </button>
               </form>
 
-              <p className="text-gray-300 text-sm mt-4">
+              <p className="text-slate-300 text-sm mt-4">
                 Cam kết không spam. Hủy đăng ký bất cứ lúc nào.
               </p>
             </div>

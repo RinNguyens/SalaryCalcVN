@@ -83,7 +83,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+    <section className="py-20 px-4 ">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -94,13 +94,13 @@ export function WhyChooseUs() {
         >
           <div className="flex justify-center mb-6">
             <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
-              <Sparkles className="h-12 w-12 text-white" />
+              <Sparkles className="h-12 w-12 text-black" />
             </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             🏆 Tại sao chọn SalaryLens?
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-xl text-black/80 max-w-2xl mx-auto">
             6 lý do khiến chúng tôi khác biệt và được tin tưởng bởi 50,000+ người dùng
           </p>
         </motion.div>
@@ -121,16 +121,16 @@ export function WhyChooseUs() {
               >
                 {/* Icon */}
                 <div className={`p-4 rounded-xl bg-gradient-to-br ${reason.color} w-fit mb-4 group-hover:scale-110 transition-transform`}>
-                  <reason.icon className="h-8 w-8 text-white" />
+                  <reason.icon className="h-8 w-8 text-black" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {reason.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/80 leading-relaxed mb-4">
+                <p className="text-black/80 leading-relaxed mb-4">
                   {reason.description}
                 </p>
 
@@ -139,7 +139,7 @@ export function WhyChooseUs() {
                   {reason.features.map((feature, idx) => (
                     <li
                       key={idx}
-                      className="flex items-start gap-2 text-sm text-white/70"
+                      className="flex items-start gap-2 text-sm text-black/70"
                     >
                       <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
@@ -160,10 +160,10 @@ export function WhyChooseUs() {
           className="text-center mt-12"
         >
           <GlassCard variant="strong" className="p-8 max-w-2xl mx-auto">
-            <p className="text-xl text-white mb-4">
+            <p className="text-xl text-black mb-4">
               <strong>Đã đủ thuyết phục chưa?</strong> 😊
             </p>
-            <p className="text-white/80 mb-6">
+            <p className="text-black/80 mb-6">
               Tham gia 50,000+ người lao động đang tin tưởng SalaryLens
             </p>
             <a

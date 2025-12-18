@@ -88,10 +88,10 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
       {/* Priority Settings */}
       <motion.div variants={itemVariants}>
         <GlassCard className="p-6">
-          <h3 className="text-xl font-semibold text-white mb-6">
+          <h3 className="text-xl font-semibold text-black mb-6">
             Điều chỉnh ưu tiên của bạn
           </h3>
-          <p className="text-white/70 mb-6">
+          <p className="text-black/70 mb-6">
             Thay đổi trọng số để xem kết quả phù hợp hơn với nhu cầu của bạn
           </p>
 
@@ -99,11 +99,11 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
             {Object.entries(priorities).map(([key, value]) => (
               <div key={key} className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label className="text-white flex items-center gap-2">
+                  <Label className="text-black flex items-center gap-2">
                     <span className="text-xl">{getPriorityIcon(key as keyof UserPriorities)}</span>
                     {getPriorityLabel(key as keyof UserPriorities)}
                   </Label>
-                  <Badge variant="outline" className="bg-white/10 text-white">
+                  <Badge variant="outline" className="bg-white/10 text-black">
                     {value}/10
                   </Badge>
                 </div>
@@ -120,7 +120,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
           </div>
 
           <div className="mt-6 p-4 glass-subtle rounded-xl">
-            <p className="text-white/70 text-sm">
+            <p className="text-black/70 text-sm">
               💡 Mẹo: Đặt mức độ ưu tiên cao hơn cho những yếu tố quan trọng nhất với bạn lúc này.
               Ví dụ: Nếu bạn có gia đình, work-life balance có thể quan trọng hơn lương.
             </p>
@@ -132,7 +132,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
       {insights.length > 0 && (
         <motion.div variants={itemVariants}>
           <GlassCard className="p-6">
-            <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+            <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-yellow-400" />
               Insights quan trọng
             </h3>
@@ -156,7 +156,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
                   ) : (
                     <Target className="h-5 w-5 text-blue-400 mt-0.5" />
                   )}
-                  <p className="text-white/90">{insight}</p>
+                  <p className="text-black/90">{insight}</p>
                 </div>
               ))}
             </div>
@@ -167,7 +167,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
       {/* Score Breakdown */}
       <motion.div variants={itemVariants}>
         <GlassCard className="p-6">
-          <h3 className="text-xl font-semibold text-white mb-6">
+          <h3 className="text-xl font-semibold text-black mb-6">
             Phân tích điểm số
           </h3>
 
@@ -175,8 +175,8 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
             {result.rankings.overall.map((ranking: any) => (
               <div key={ranking.offer.id} className="glass-subtle rounded-xl p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-white font-medium">{ranking.offer.companyName}</h4>
-                  <Badge className={ranking.rank === 1 ? 'bg-yellow-400 text-gray-900' : 'bg-white/10 text-white'}>
+                  <h4 className="text-black font-medium">{ranking.offer.companyName}</h4>
+                  <Badge className={ranking.rank === 1 ? 'bg-yellow-400 text-slate-900' : 'bg-white/10 text-black'}>
                     #{ranking.rank}
                   </Badge>
                 </div>
@@ -214,7 +214,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
         <GlassCard className="p-6 bg-gradient-to-br from-yellow-500/20 to-orange-500/20">
           <div className="flex items-center gap-3 mb-4">
             <TrendingUp className="h-6 w-6 text-yellow-400" />
-            <h3 className="text-xl font-semibold text-white">
+            <h3 className="text-xl font-semibold text-black">
               Lời khuyên cuối cùng
             </h3>
           </div>
@@ -222,7 +222,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
           <div className="prose prose-invert max-w-none">
             {result.recommendation.reasoning.split('\n').map((paragraph, index) => (
               paragraph && (
-                <p key={index} className="text-white/90 mb-2">
+                <p key={index} className="text-black/90 mb-2">
                   {paragraph}
                 </p>
               )
@@ -230,7 +230,7 @@ export function ComparisonInsights({ result, priorities, onPrioritiesChange }: C
           </div>
 
           <div className="mt-6 p-4 glass-subtle rounded-xl">
-            <p className="text-white/70 text-sm">
+            <p className="text-black/70 text-sm">
               📝 Lưu ý: Đây chỉ là phân tích dựa trên số liệu. Hãy xem xét các yếu tố khác như văn hóa công ty,
               cơ hội học hỏi, và định hướng phát triển cá nhân trước khi ra quyết định cuối cùng.
             </p>
@@ -258,8 +258,8 @@ function ScoreBar({ label, score, color }: ScoreBarProps) {
   return (
     <div className="space-y-1">
       <div className="flex justify-between text-sm">
-        <span className="text-white/70">{label}</span>
-        <span className="text-white font-medium">{score.toFixed(1)}</span>
+        <span className="text-black/70">{label}</span>
+        <span className="text-black font-medium">{score.toFixed(1)}</span>
       </div>
       <div className="w-full bg-white/10 rounded-full h-2">
         <div

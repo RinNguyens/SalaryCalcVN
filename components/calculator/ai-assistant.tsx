@@ -155,7 +155,7 @@ export function AIAssistant({
           onClick={() => setIsMinimized(false)}
           className="rounded-full w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-500 shadow-lg hover:shadow-xl"
         >
-          <Bot className="h-8 w-8 text-white" />
+          <Bot className="h-8 w-8 text-black" />
         </Button>
       </motion.div>
     );
@@ -170,11 +170,11 @@ export function AIAssistant({
       <div className="flex items-center justify-between p-4 border-b border-white/10">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 animate-pulse">
-            <Bot className="h-5 w-5 text-white" />
+            <Bot className="h-5 w-5 text-black" />
           </div>
           <div>
-            <h3 className="font-bold text-white">AI Salary Assistant</h3>
-            <p className="text-xs text-white/60 flex items-center gap-1">
+            <h3 className="font-bold text-black">AI Salary Assistant</h3>
+            <p className="text-xs text-black/60 flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
               Powered by Z.AI
             </p>
@@ -188,7 +188,7 @@ export function AIAssistant({
                 size="sm"
                 variant="ghost"
                 onClick={() => setIsMinimized(true)}
-                className="text-white/60 hover:text-white"
+                className="text-black/60 hover:text-black"
               >
                 <Minimize2 className="h-4 w-4" />
               </Button>
@@ -196,7 +196,7 @@ export function AIAssistant({
                 size="sm"
                 variant="ghost"
                 onClick={onClose}
-                className="text-white/60 hover:text-white"
+                className="text-black/60 hover:text-black"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -230,7 +230,7 @@ export function AIAssistant({
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Hỏi mình bất cứ điều gì về lương..."
-            className="flex-1 bg-white/5 border-white/10 text-white placeholder:text-white/40"
+            className="flex-1 bg-white/5 border-white/10 text-black placeholder:text-black/40"
             disabled={isLoading}
           />
           <Button
@@ -246,7 +246,7 @@ export function AIAssistant({
           </Button>
         </div>
 
-        <p className="text-xs text-white/40 mt-2">
+        <p className="text-xs text-black/40 mt-2">
           AI có thể mắc lỗi. Hãy kiểm tra thông tin quan trọng.
         </p>
       </div>
@@ -277,7 +277,7 @@ function MessageBubble({
       {!isUser && (
         <div className="flex-shrink-0">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-            <Bot className="h-4 w-4 text-white" />
+            <Bot className="h-4 w-4 text-black" />
           </div>
         </div>
       )}
@@ -291,8 +291,8 @@ function MessageBubble({
           className={cn(
             'p-3 text-sm',
             isUser
-              ? 'bg-gradient-to-br from-purple-600 to-pink-500 text-white'
-              : 'text-white/90'
+              ? 'bg-gradient-to-br from-purple-600 to-pink-500 text-black'
+              : 'text-black/90'
           )}
         >
           <div className="whitespace-pre-wrap leading-relaxed">
@@ -309,7 +309,7 @@ function MessageBubble({
                 size="sm"
                 variant="outline"
                 onClick={() => onSuggestionClick(suggestion)}
-                className="text-xs bg-white/5 border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
+                className="text-xs bg-white/5 border-white/20 text-black/70 hover:bg-white/10 hover:text-black"
               >
                 <Sparkles className="h-3 w-3 mr-1" />
                 {suggestion}
@@ -318,7 +318,7 @@ function MessageBubble({
           </div>
         )}
 
-        <p className="text-xs text-white/40 px-1">
+        <p className="text-xs text-black/40 px-1">
           {message.timestamp.toLocaleTimeString('vi-VN', {
             hour: '2-digit',
             minute: '2-digit',
@@ -328,7 +328,7 @@ function MessageBubble({
 
       {isUser && (
         <div className="flex-shrink-0">
-          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
+          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-black font-bold text-sm">
             U
           </div>
         </div>
@@ -346,7 +346,7 @@ function TypingIndicator() {
       className="flex gap-3"
     >
       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-        <Bot className="h-4 w-4 text-white" />
+        <Bot className="h-4 w-4 text-black" />
       </div>
 
       <GlassCard variant="strong" className="p-3">

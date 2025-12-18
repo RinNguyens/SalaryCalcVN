@@ -127,7 +127,7 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold text-black mb-4">
             ✨ Tính năng chính
           </h2>
         </motion.div>
@@ -160,8 +160,8 @@ export function FeaturesSection() {
             <Button
               size="lg"
               className="
-                bg-gradient-to-r from-purple-600 to-pink-600
-                hover:from-purple-700 hover:to-pink-700
+                bg-gradient-to-r from-purple-400 to-pink-400
+                hover:from-purple-400 hover:to-pink-400
                 text-white font-bold text-lg
                 px-8 py-6
                 shadow-2xl
@@ -199,7 +199,7 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="text-white/60 text-sm">
+          <p className="text-black/60 text-sm">
             ✓ Tính toán theo quy định thuế TNCN và bảo hiểm 2026
           </p>
         </motion.div>
@@ -226,9 +226,9 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
       className="
         group relative block h-full
         p-6 rounded-2xl
-        bg-white/5 backdrop-blur-sm
+        bg-white/70 backdrop-blur-sm
         border-2 border-white/10
-        hover:border-white/30
+        hover:border-white/15
         hover:bg-white/10
         transition-all duration-300
         cursor-pointer
@@ -273,24 +273,24 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
       </div>
 
       {/* Title */}
-      <h4 className="text-xl font-bold text-white mb-1">
+      <h4 className="text-xl font-bold text-black mb-1">
         {feature.title}
       </h4>
 
       {/* Subtitle */}
-      <p className="text-sm text-white/60 mb-3 font-medium">
+      <p className="text-sm text-black/60 mb-3 font-medium">
         {feature.subtitle}
       </p>
 
       {/* Description */}
-      <p className="text-white/80 text-sm mb-4 leading-relaxed">
+      <p className="text-black/80 text-sm mb-4 leading-relaxed">
         {feature.description}
       </p>
 
       {/* Highlights */}
       <ul className="space-y-2 mb-4">
         {feature.highlights.map((highlight, idx) => (
-          <li key={idx} className="flex items-start gap-2 text-xs text-white/70">
+          <li key={idx} className="flex items-start gap-2 text-xs text-black/70">
             <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
             <span>{highlight}</span>
           </li>
@@ -298,7 +298,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
       </ul>
 
       {/* Arrow Icon */}
-      <div className="flex items-center text-white/60 group-hover:text-white text-sm font-medium">
+      <div className="flex items-center text-black/60 group-hover:text-black text-sm font-medium">
         Tìm hiểu thêm
         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
       </div>

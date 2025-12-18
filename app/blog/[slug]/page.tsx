@@ -86,22 +86,22 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className="max-w-4xl mx-auto">
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-purple-500/90 text-white text-sm font-medium rounded-full">
+              <span className="inline-block px-4 py-2 bg-purple-500/90 text-black text-sm font-medium rounded-full">
                 {post.category}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
               {post.title}
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
               {post.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 text-gray-400">
+            <div className="flex flex-wrap items-center gap-6 text-slate-400">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-black font-semibold">
                   S
                 </div>
                 <span>{post.author}</span>
@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Link
                   key={tag}
                   href={`/blog?tag=${tag}`}
-                  className="px-3 py-1 bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white rounded-full text-sm transition-colors"
+                  className="px-3 py-1 bg-white/10 text-slate-300 hover:bg-white/20 hover:text-black rounded-full text-sm transition-colors"
                 >
                   #{tag}
                 </Link>
@@ -151,15 +151,15 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Call to Action */}
         <section className="mt-20">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Tính lương Net chính xác trong 30 giây
             </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
               Sử dụng công cụ tính lương miễn phí của SalaryLens để biết chính xác thu nhập thực nhận của bạn
             </p>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-black font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
             >
               Dùng thử ngay
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -69,10 +69,10 @@ export function AnnualInputForm({
   return (
     <GlassCard variant="strong" className="p-6">
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-white mb-2">
+        <h3 className="text-xl font-semibold text-black mb-2">
           Thu nhập hàng năm
         </h3>
-        <p className="text-white/80 text-sm">
+        <p className="text-black/80 text-sm">
           Thêm các khoản thưởng và bonus để tính tổng thu nhập năm
         </p>
       </div>
@@ -82,8 +82,8 @@ export function AnnualInputForm({
         <Card className="glass-subtle">
           <CardContent className="p-4">
             <div className="flex justify-between items-center">
-              <span className="text-white/70">Lương tháng hiện tại</span>
-              <span className="text-white font-mono font-semibold">
+              <span className="text-black/70">Lương tháng hiện tại</span>
+              <span className="text-black font-mono font-semibold">
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
                   currency: 'VND',
@@ -91,12 +91,12 @@ export function AnnualInputForm({
               </span>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <span className="text-white/70">Vùng</span>
+              <span className="text-black/70">Vùng</span>
               <Badge variant="secondary">Vùng {region}</Badge>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <span className="text-white/70">Người phụ thuộc</span>
-              <span className="text-white">{dependents}</span>
+              <span className="text-black/70">Người phụ thuộc</span>
+              <span className="text-black">{dependents}</span>
             </div>
           </CardContent>
         </Card>
@@ -110,7 +110,7 @@ export function AnnualInputForm({
             name="month13Salary"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center gap-2">
+                <FormLabel className="text-black flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   Lương tháng 13
                 </FormLabel>
@@ -118,12 +118,12 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập lương tháng 13"
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-black"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Mặc định bằng lương tháng thường, có BHXH và tính thuế bình thường
                 </FormDescription>
                 <FormMessage />
@@ -137,7 +137,7 @@ export function AnnualInputForm({
             name="kpiBonus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center gap-2">
+                <FormLabel className="text-black flex items-center gap-2">
                   <Target className="h-4 w-4" />
                   Thưởng KPI
                 </FormLabel>
@@ -145,12 +145,12 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập thưởng KPI"
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-black"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Thưởng theo KPI, chịu thuế 10% (không đóng BHXH)
                 </FormDescription>
                 <FormMessage />
@@ -164,7 +164,7 @@ export function AnnualInputForm({
             name="performanceBonus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center gap-2">
+                <FormLabel className="text-black flex items-center gap-2">
                   <TrendingUp className="h-4 w-4" />
                   Thưởng hiệu suất
                 </FormLabel>
@@ -172,12 +172,12 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập thưởng hiệu suất"
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-black"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Thưởng theo hiệu suất công việc, chịu thuế 10%
                 </FormDescription>
                 <FormMessage />
@@ -191,7 +191,7 @@ export function AnnualInputForm({
             name="otherBonus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white flex items-center gap-2">
+                <FormLabel className="text-black flex items-center gap-2">
                   <Gift className="h-4 w-4" />
                   Thưởng khác
                 </FormLabel>
@@ -199,12 +199,12 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập các khoản thưởng khác"
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-black"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
                 </FormControl>
-                <FormDescription className="text-white/70">
+                <FormDescription className="text-black/70">
                   Các khoản thưởng khác (thưởng tháng 13 thêm, thưởng dự án...)
                 </FormDescription>
                 <FormMessage />

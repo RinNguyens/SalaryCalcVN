@@ -72,7 +72,7 @@ export function Footer() {
                 </motion.div>
 
                 <motion.p
-                  className="text-white/80 mb-6 max-w-sm"
+                  className="text-black/80 mb-6 max-w-sm"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -99,7 +99,7 @@ export function Footer() {
                         bg-white/10 hover:bg-white/20
                         backdrop-blur-sm border border-white/20
                         flex items-center justify-center
-                        text-white/80 hover:text-white
+                        text-black/80 hover:text-black
                         transition-all duration-200
                       "
                     >
@@ -116,7 +116,7 @@ export function Footer() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-white font-semibold mb-4">Sản phẩm</h3>
+                <h3 className="text-black font-semibold mb-4">Sản phẩm</h3>
                 <ul className="space-y-3">
                   {footerLinks.product.map((link) => (
                     <li key={link.href}>
@@ -124,7 +124,7 @@ export function Footer() {
                         href={link.href}
                         className="
                           flex items-center gap-2
-                          text-white/70 hover:text-white
+                          text-black/70 hover:text-black
                           transition-colors duration-200
                         "
                       >
@@ -143,7 +143,7 @@ export function Footer() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-white font-semibold mb-4">Công ty</h3>
+                <h3 className="text-black font-semibold mb-4">Công ty</h3>
                 <ul className="space-y-3">
                   {footerLinks.company.map((link) => (
                     <li key={link.href}>
@@ -151,7 +151,7 @@ export function Footer() {
                         href={link.href}
                         className="
                           flex items-center gap-2
-                          text-white/70 hover:text-white
+                          text-black/70 hover:text-black
                           transition-colors duration-200
                         "
                       >
@@ -170,7 +170,7 @@ export function Footer() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-white font-semibold mb-4">Pháp lý</h3>
+                <h3 className="text-black font-semibold mb-4">Pháp lý</h3>
                 <ul className="space-y-3">
                   {footerLinks.legal.map((link) => (
                     <li key={link.href}>
@@ -178,7 +178,7 @@ export function Footer() {
                         href={link.href}
                         className="
                           flex items-center gap-2
-                          text-white/70 hover:text-white
+                          text-black/70 hover:text-black
                           transition-colors duration-200
                         "
                       >
@@ -203,12 +203,12 @@ export function Footer() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <p className="text-white/60 text-sm">
+              <p className="text-black/60 text-sm">
                 © 2026 SalaryLens. Tất cả quyền được bảo lưu.
               </p>
 
               <div className="flex items-center gap-4">
-                <span className="text-white/40 text-xs">Made with ❤️ in Vietnam (Rin)</span>
+                <span className="text-black/40 text-xs">Made with ❤️ in Vietnam (Rin)</span>
               </div>
             </motion.div>
           </div>

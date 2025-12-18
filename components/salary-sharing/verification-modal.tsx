@@ -118,8 +118,8 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
       return (
         <div className="text-center py-8">
           <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white mb-2">Verified!</h3>
-          <p className="text-white/80">
+          <h3 className="text-2xl font-bold text-black mb-2">Verified!</h3>
+          <p className="text-black/80">
             Your salary data has been successfully verified and is now public.
           </p>
         </div>
@@ -132,10 +132,10 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
           <div className="space-y-6">
             <div className="text-center">
               <Mail className="h-12 w-12 text-blue-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 Email Verification
               </h3>
-              <p className="text-white/60">
+              <p className="text-black/60">
                 Enter your work email to receive a verification code
               </p>
             </div>
@@ -150,7 +150,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="company@domain.com"
-                    className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                    className="bg-white/10 border-white/20 text-black placeholder-white/50"
                   />
                 </div>
 
@@ -172,7 +172,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
             ) : (
               <div className="space-y-4">
                 <div className="p-4 bg-green-500/20 rounded-lg border border-green-500/30">
-                  <p className="text-green-300 text-sm">
+                  <p className="text-green-600 text-sm">
                     ✅ Verification code sent to {email}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
                     value={verificationCode}
                     onChange={(e) => setVerificationCode(e.target.value)}
                     placeholder="Enter 6-digit code"
-                    className="bg-white/10 border-white/20 text-white placeholder-white/50 text-center text-lg"
+                    className="bg-white/10 border-white/20 text-black placeholder-white/50 text-center text-lg"
                     maxLength={6}
                   />
                 </div>
@@ -207,7 +207,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
                 <Button
                   variant="outline"
                   onClick={() => setIsCodeSent(false)}
-                  className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20"
+                  className="w-full bg-white/10 border-white/20 text-black hover:bg-white/20"
                 >
                   Use Different Email
                 </Button>
@@ -221,10 +221,10 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
           <div className="space-y-6">
             <div className="text-center">
               <Linkedin className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 LinkedIn Verification
               </h3>
-              <p className="text-white/60">
+              <p className="text-black/60">
                 Provide your LinkedIn profile URL for verification
               </p>
             </div>
@@ -237,7 +237,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
                   value={linkedinUrl}
                   onChange={(e) => setLinkedinUrl(e.target.value)}
                   placeholder="https://linkedin.com/in/yourprofile"
-                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
+                  className="bg-white/10 border-white/20 text-black placeholder-white/50"
                 />
               </div>
 
@@ -271,24 +271,24 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
           <div className="space-y-6">
             <div className="text-center">
               <FileText className="h-12 w-12 text-green-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 Paystub Verification
               </h3>
-              <p className="text-white/60">
+              <p className="text-black/60">
                 Upload a recent paystub for private verification
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="border-2 border-dashed border-white/20 rounded-lg p-8 text-center">
-                <FileText className="h-12 w-12 text-white/40 mx-auto mb-4" />
-                <p className="text-white/60 mb-2">
+                <FileText className="h-12 w-12 text-black/40 mx-auto mb-4" />
+                <p className="text-black/60 mb-2">
                   Click to upload or drag and drop
                 </p>
-                <p className="text-white/40 text-sm">
+                <p className="text-black/40 text-sm">
                   PDF, PNG, or JPG (max 5MB)
                 </p>
-                <Button variant="outline" className="mt-4 bg-white/10 border-white/20 text-white hover:bg-white/20">
+                <Button variant="outline" className="mt-4 bg-white/10 border-white/20 text-black hover:bg-white/20">
                   Choose File
                 </Button>
               </div>
@@ -328,7 +328,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
       <DialogContent className="max-w-md bg-black/20 backdrop-blur-xl border-white/20">
         <motion.div variants={modalVariants} initial="hidden" animate="visible" exit="exit">
           <DialogHeader>
-            <DialogTitle className="text-white text-xl">
+            <DialogTitle className="text-black text-xl">
               Verify Your Salary Data
             </DialogTitle>
           </DialogHeader>
@@ -352,7 +352,7 @@ export function VerificationModal({ isOpen, onClose, shareId, method, onVerified
               <Button
                 variant="ghost"
                 onClick={onClose}
-                className="w-full mt-4 text-white/60 hover:text-white"
+                className="w-full mt-4 text-black/60 hover:text-black"
               >
                 Cancel
               </Button>

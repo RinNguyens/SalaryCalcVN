@@ -93,13 +93,13 @@ export function TaxBreakdown({
       >
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-gradient-to-br from-orange-500 to-red-500">
-            <TrendingUp className="h-5 w-5 text-white" />
+            <TrendingUp className="h-5 w-5 text-black" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">
+            <h3 className="text-lg font-bold text-black group-hover:text-yellow-400 transition-colors">
               Phân tích thuế theo bậc lũy tiến
             </h3>
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-black/60">
               Biểu thuế 5 bậc năm 2026 (mới)
             </p>
           </div>
@@ -109,7 +109,7 @@ export function TaxBreakdown({
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="h-5 w-5 text-white/60 group-hover:text-white/80 transition-colors" />
+          <ChevronDown className="h-5 w-5 text-black/60 group-hover:text-black/80 transition-colors" />
         </motion.div>
       </div>
 
@@ -170,10 +170,10 @@ export function TaxBreakdown({
           <div className="flex gap-3">
             <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm text-white/80 mb-2">
-                <strong className="text-white">Thuế lũy tiến là gì?</strong>
+              <p className="text-sm text-black/80 mb-2">
+                <strong className="text-black">Thuế lũy tiến là gì?</strong>
               </p>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-sm text-black/70 leading-relaxed">
                 Thuế TNCN được tính theo từng bậc. Thu nhập càng cao, phần vượt mức
                 mới bị đánh thuế cao hơn. Ví dụ: Thu nhập 15M sẽ chịu 5% cho 5M đầu,
                 10% cho 5M tiếp theo, và 15% cho 5M cuối cùng.
@@ -268,16 +268,16 @@ function TaxTierCard({ tier, isActive, delay }: TaxTierCardProps) {
           {/* Tier Info */}
           <div className="flex items-center gap-3">
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white text-sm shadow-lg"
+              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-black text-sm shadow-lg"
               style={{ backgroundColor: tier.color }}
             >
               {tier.tier}
             </div>
             <div>
-              <div className="text-sm font-bold text-white">
+              <div className="text-sm font-bold text-black">
                 {tier.name}: {(tier.rate * 100).toFixed(0)}%
               </div>
-              <div className="text-xs text-white/60">
+              <div className="text-xs text-black/60">
                 {formatRange(tier.min, tier.max)}
               </div>
             </div>
@@ -287,15 +287,15 @@ function TaxTierCard({ tier, isActive, delay }: TaxTierCardProps) {
           <div className="text-right">
             {isActive ? (
               <>
-                <div className="text-base font-bold text-white">
+                <div className="text-base font-bold text-black">
                   {formatCurrency(tier.amount)}
                 </div>
-                <div className="text-xs text-white/60">
+                <div className="text-xs text-black/60">
                   trên {formatCurrency(tier.incomeInTier, true)}
                 </div>
               </>
             ) : (
-              <div className="text-xs text-white/40 font-medium">
+              <div className="text-xs text-black/40 font-medium">
                 Chưa đạt bậc này
               </div>
             )}
@@ -314,7 +314,7 @@ function TaxTierCard({ tier, isActive, delay }: TaxTierCardProps) {
                 transition={{ duration: 0.5, delay: delay + 0.2, ease: 'easeOut' }}
               />
             </div>
-            <div className="mt-1 text-xs text-white/50 text-right">
+            <div className="mt-1 text-xs text-black/50 text-right">
               {tier.percentage.toFixed(1)}% tổng thu nhập
             </div>
           </div>
@@ -342,7 +342,7 @@ function TaxVisualization({ taxPerTier, totalTax }: TaxVisualizationProps) {
 
   return (
     <div className="p-6 rounded-lg bg-white/5 border border-white/10">
-      <h4 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
+      <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
         <TrendingUp className="h-4 w-4" />
         Phân bổ thuế theo bậc
       </h4>
@@ -370,8 +370,8 @@ function TaxVisualization({ taxPerTier, totalTax }: TaxVisualizationProps) {
 
           {/* Center Text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="text-xs text-white/60 mb-1">Tổng thuế</div>
-            <div className="text-xl font-bold text-white">
+            <div className="text-xs text-black/60 mb-1">Tổng thuế</div>
+            <div className="text-xl font-bold text-black">
               {formatCurrency(totalTax, true)}
             </div>
           </div>
@@ -389,15 +389,15 @@ function TaxVisualization({ taxPerTier, totalTax }: TaxVisualizationProps) {
                     style={{ backgroundColor: tier.color }}
                   />
                   <div>
-                    <div className="text-sm font-medium text-white">
+                    <div className="text-sm font-medium text-black">
                       {tier.name}
                     </div>
-                    <div className="text-xs text-white/60">
+                    <div className="text-xs text-black/60">
                       {percentage.toFixed(1)}% tổng thuế
                     </div>
                   </div>
                 </div>
-                <div className="text-sm font-bold text-white text-right">
+                <div className="text-sm font-bold text-black text-right">
                   {formatCurrency(tier.amount)}
                 </div>
               </div>
@@ -462,9 +462,9 @@ function StatCard({ label, value, icon, color, tooltip }: StatCardProps) {
         <div className={`p-1.5 rounded-md bg-gradient-to-br ${colorMap[color]}`}>
           {icon}
         </div>
-        <span className="text-xs text-white/60">{label}</span>
+        <span className="text-xs text-black/60">{label}</span>
       </div>
-      <div className="text-lg font-bold text-white">
+      <div className="text-lg font-bold text-black">
         {value}
       </div>
     </div>

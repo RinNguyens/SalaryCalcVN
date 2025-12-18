@@ -166,12 +166,12 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
     <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
       {/* Experience Summary */}
       <GlassCard className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-6">
+        <h3 className="text-xl font-semibold text-black mb-6">
           Tóm tắt kinh nghiệm
         </h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <Label className="text-white mb-2 block">
+            <Label className="text-black mb-2 block">
               Tổng số năm kinh nghiệm: {experienceData.totalYears} năm
             </Label>
             <Slider
@@ -184,7 +184,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
             />
           </div>
           <div>
-            <Label className="text-white mb-2 block">
+            <Label className="text-black mb-2 block">
               Số năm kinh nghiệm liên quan: {experienceData.relevantYears} năm
             </Label>
             <Slider
@@ -197,7 +197,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
             />
           </div>
           <div>
-            <Label className="text-white mb-2 block">
+            <Label className="text-black mb-2 block">
               Số năm kinh nghiệm quản lý: {experienceData.managementYears} năm
             </Label>
             <Slider
@@ -210,7 +210,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
             />
           </div>
           <div>
-            <Label className="text-white mb-2 block">
+            <Label className="text-black mb-2 block">
               Số năm làm việc ở nước ngoài: {experienceData.overseasYears} năm
             </Label>
             <Slider
@@ -228,13 +228,13 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
       {/* Work History */}
       <GlassCard className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold text-black">
             Lịch sử làm việc
           </h3>
           <Button
             onClick={addWorkExperience}
             size="sm"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-black hover:bg-white/20"
           >
             <Plus className="h-4 w-4 mr-2" />
             Thêm kinh nghiệm
@@ -243,8 +243,8 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
 
         {workHistory.length === 0 ? (
           <div className="glass-subtle rounded-xl p-8 text-center">
-            <Briefcase className="h-12 w-12 text-white/50 mx-auto mb-3" />
-            <p className="text-white/60">
+            <Briefcase className="h-12 w-12 text-black/50 mx-auto mb-3" />
+            <p className="text-black/60">
               Chưa có kinh nghiệm làm việc nào. Thêm để tăng độ chính xác.
             </p>
           </div>
@@ -259,30 +259,30 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1 grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label className="text-white mb-1 block">Chức danh</Label>
+                      <Label className="text-black mb-1 block">Chức danh</Label>
                       <Input
                         value={exp.title}
                         onChange={(e) => updateWorkExperience(index, 'title', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="Ví dụ: Senior Developer"
                       />
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">Công ty</Label>
+                      <Label className="text-black mb-1 block">Công ty</Label>
                       <Input
                         value={exp.company}
                         onChange={(e) => updateWorkExperience(index, 'company', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="Ví dụ: FPT Software"
                       />
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">Ngành</Label>
+                      <Label className="text-black mb-1 block">Ngành</Label>
                       <Select
                         value={exp.industry}
                         onValueChange={(value) => updateWorkExperience(index, 'industry', value)}
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue placeholder="Chọn ngành" />
                         </SelectTrigger>
                         <SelectContent>
@@ -299,14 +299,14 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                       </Select>
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">Cấp bậc</Label>
+                      <Label className="text-black mb-1 block">Cấp bậc</Label>
                       <Select
                         value={exp.level}
                         onValueChange={(value: ExperienceLevel) =>
                           updateWorkExperience(index, 'level', value)
                         }
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -323,7 +323,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                       </Select>
                     </div>
                     <div className="md:col-span-2">
-                      <Label className="text-white mb-1 block">
+                      <Label className="text-black mb-1 block">
                         Số năm làm việc: {exp.years} năm
                       </Label>
                       <Slider
@@ -340,7 +340,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                     size="sm"
                     variant="outline"
                     onClick={() => removeWorkExperience(index)}
-                    className="bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30 ml-4"
+                    className="bg-red-500/20 border-red-500/30 text-red-600 hover:bg-red-500/30 ml-4"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -348,11 +348,11 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
 
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <Label className="text-white font-medium">Thành tựu</Label>
+                    <Label className="text-black font-medium">Thành tựu</Label>
                     <Button
                       size="sm"
                       onClick={() => addAchievement(index)}
-                      className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                      className="bg-white/10 border-white/20 text-black hover:bg-white/20"
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       Thêm
@@ -363,14 +363,14 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                       <Input
                         value={achievement}
                         onChange={(e) => updateAchievement(index, achIndex, e.target.value)}
-                        className="bg-white/10 border-white/20 text-white flex-1"
+                        className="bg-white/10 border-white/20 text-black flex-1"
                         placeholder="Mô tả thành tựu của bạn..."
                       />
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => removeAchievement(index, achIndex)}
-                        className="bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30"
+                        className="bg-red-500/20 border-red-500/30 text-red-600 hover:bg-red-500/30"
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -386,13 +386,13 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
       {/* Education */}
       <GlassCard className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-xl font-semibold text-black">
             Học vấn
           </h3>
           <Button
             onClick={addEducation}
             size="sm"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-black hover:bg-white/20"
           >
             <Plus className="h-4 w-4 mr-2" />
             Thêm học vấn
@@ -401,8 +401,8 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
 
         {education.length === 0 ? (
           <div className="glass-subtle rounded-xl p-8 text-center">
-            <GraduationCap className="h-12 w-12 text-white/50 mx-auto mb-3" />
-            <p className="text-white/60">
+            <GraduationCap className="h-12 w-12 text-black/50 mx-auto mb-3" />
+            <p className="text-black/60">
               Thêm thông tin học vấn để tăng uy tín và mức lương dự kiến.
             </p>
           </div>
@@ -417,12 +417,12 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1 grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label className="text-white mb-1 block">Bằng cấp</Label>
+                      <Label className="text-black mb-1 block">Bằng cấp</Label>
                       <Select
                         value={edu.type}
                         onValueChange={(value: any) => updateEducation(index, 'type', value)}
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -435,25 +435,25 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                       </Select>
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">Lĩnh vực</Label>
+                      <Label className="text-black mb-1 block">Lĩnh vực</Label>
                       <Input
                         value={edu.field}
                         onChange={(e) => updateEducation(index, 'field', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="Ví dụ: Computer Science"
                       />
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">Trường</Label>
+                      <Label className="text-black mb-1 block">Trường</Label>
                       <Input
                         value={edu.school}
                         onChange={(e) => updateEducation(index, 'school', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="Ví dụ: Đại học Bách khoa Hà Nội"
                       />
                     </div>
                     <div>
-                      <Label className="text-white mb-1 block">GPA (tùy chọn)</Label>
+                      <Label className="text-black mb-1 block">GPA (tùy chọn)</Label>
                       <Input
                         type="number"
                         step="0.1"
@@ -461,7 +461,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                         max="4"
                         value={edu.gpa || ''}
                         onChange={(e) => updateEducation(index, 'gpa', parseFloat(e.target.value))}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-black"
                         placeholder="3.5"
                       />
                     </div>
@@ -470,7 +470,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                     size="sm"
                     variant="outline"
                     onClick={() => removeEducation(index)}
-                    className="bg-red-500/20 border-red-500/30 text-red-300 hover:bg-red-500/30 ml-4"
+                    className="bg-red-500/20 border-red-500/30 text-red-600 hover:bg-red-500/30 ml-4"
                   >
                     <X className="h-4 w-4" />
                   </Button>

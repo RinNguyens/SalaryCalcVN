@@ -41,7 +41,7 @@ export function ContactMethods() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <h2 className="text-2xl font-bold text-black mb-6">
         Cách Liên Hệ Khác
       </h2>
 
@@ -53,21 +53,21 @@ export function ContactMethods() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all"
+            className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all"
           >
             <div className={`w-12 h-12 rounded-lg bg-${method.color}-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
               <method.icon className={`w-6 h-6 text-${method.color}-600`} />
             </div>
 
-            <h3 className="font-semibold text-gray-900 mb-1">
+            <h3 className="font-semibold text-slate-900 mb-1">
               {method.title}
             </h3>
 
-            <p className="text-blue-600 font-medium mb-1">
+            <p className="text-indigo-600 font-medium mb-1">
               {method.value}
             </p>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-slate-500">
               {method.description}
             </p>
           </motion.a>
@@ -82,26 +82,26 @@ export function ContactMethods() {
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-slate-900 mb-3">
               Giờ Làm Việc
             </h3>
 
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Thứ 2 - Thứ 6:</span>
-                <span className="font-medium text-gray-900">9:00 - 18:00</span>
+                <span className="text-slate-600">Thứ 2 - Thứ 6:</span>
+                <span className="font-medium text-slate-900">9:00 - 18:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Thứ 7:</span>
-                <span className="font-medium text-gray-900">9:00 - 12:00</span>
+                <span className="text-slate-600">Thứ 7:</span>
+                <span className="font-medium text-slate-900">9:00 - 12:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Chủ nhật:</span>
-                <span className="font-medium text-gray-900">Nghỉ</span>
+                <span className="text-slate-600">Chủ nhật:</span>
+                <span className="font-medium text-slate-900">Nghỉ</span>
               </div>
             </div>
 
-            <p className="text-xs text-gray-500 mt-3">
+            <p className="text-xs text-slate-500 mt-3">
               ⚡ Thời gian phản hồi trung bình: <strong>2-4 giờ</strong>
             </p>
           </div>

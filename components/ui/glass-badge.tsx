@@ -14,7 +14,7 @@ export function GlassBadge({
   className,
 }: GlassBadgeProps) {
   const variants = {
-    default: 'bg-gray-500/10 text-gray-700 border-gray-500/20',
+    default: 'bg-slate-500/10 text-slate-700 border-slate-500/20',
     primary: 'bg-blue-500/10 text-blue-700 border-blue-500/20',
     success: 'bg-green-500/10 text-green-700 border-green-500/20',
     warning: 'bg-yellow-500/10 text-yellow-700 border-yellow-500/20',

@@ -31,7 +31,7 @@ export function ScenarioSummaryTable({
 
     if (Math.abs(diff) < 1000) {
       return (
-        <span className="flex items-center gap-1 text-white/60">
+        <span className="flex items-center gap-1 text-black/60">
           <Minus className="h-3 w-3" />
           <span className="text-xs">0%</span>
         </span>
@@ -57,11 +57,11 @@ export function ScenarioSummaryTable({
 
   return (
     <GlassCard className="p-6 overflow-x-auto">
-      <h3 className="text-lg font-semibold text-white mb-4">
+      <h3 className="text-lg font-semibold text-black mb-4">
         Detailed Comparison
       </h3>
 
-      <table className="w-full text-sm text-white">
+      <table className="w-full text-sm text-black">
         <thead>
           <tr className="border-b border-white/20">
             <th className="text-left py-3 px-2 sticky left-0 bg-gradient-to-r from-purple-600/50 to-transparent">
@@ -174,13 +174,13 @@ export function ScenarioSummaryTable({
 
           {/* Effective Tax Rate */}
           <tr className="border-b border-white/10">
-            <td className="py-3 px-2 text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+            <td className="py-3 px-2 text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
               Effective Tax Rate
             </td>
             {allScenarios.map((scenario, index) => (
               <td
                 key={index}
-                className="text-right py-3 px-2 text-white/90 font-mono"
+                className="text-right py-3 px-2 text-black/90 font-mono"
               >
                 {(scenario.result.tax.effectiveRate * 100).toFixed(2)}%
               </td>
@@ -189,13 +189,13 @@ export function ScenarioSummaryTable({
 
           {/* Take-Home Percentage */}
           <tr className="border-b border-white/10">
-            <td className="py-3 px-2 text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+            <td className="py-3 px-2 text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
               Take-Home %
             </td>
             {allScenarios.map((scenario, index) => (
               <td
                 key={index}
-                className="text-right py-3 px-2 text-white/90 font-mono"
+                className="text-right py-3 px-2 text-black/90 font-mono"
               >
                 {((scenario.result.net / scenario.result.gross) * 100).toFixed(
                   1
@@ -207,7 +207,7 @@ export function ScenarioSummaryTable({
 
           {/* Tax Bracket */}
           <tr className="border-b border-white/10">
-            <td className="py-3 px-2 text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+            <td className="py-3 px-2 text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
               Tax Bracket
             </td>
             {allScenarios.map((scenario, index) => (
@@ -244,13 +244,13 @@ export function ScenarioSummaryTable({
           </tr>
 
           <tr className="border-b border-white/10">
-            <td className="py-3 px-2 text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+            <td className="py-3 px-2 text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
               Tax/Year
             </td>
             {allScenarios.map((scenario, index) => (
               <td
                 key={index}
-                className="text-right font-mono py-3 px-2 text-white/90"
+                className="text-right font-mono py-3 px-2 text-black/90"
               >
                 {formatCurrency(scenario.result.yearlyProjection.totalTax)}
               </td>
@@ -258,13 +258,13 @@ export function ScenarioSummaryTable({
           </tr>
 
           <tr className="border-b border-white/10">
-            <td className="py-3 px-2 text-white/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
+            <td className="py-3 px-2 text-black/70 sticky left-0 bg-gradient-to-r from-purple-600/30 to-transparent">
               Insurance/Year
             </td>
             {allScenarios.map((scenario, index) => (
               <td
                 key={index}
-                className="text-right font-mono py-3 px-2 text-white/90"
+                className="text-right font-mono py-3 px-2 text-black/90"
               >
                 {formatCurrency(scenario.result.yearlyProjection.totalInsurance)}
               </td>

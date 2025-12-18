@@ -164,7 +164,7 @@ describe('getInsightColor', () => {
     expect(getInsightColor('positive')).toBe('text-green-600')
     expect(getInsightColor('neutral')).toBe('text-blue-600')
     expect(getInsightColor('warning')).toBe('text-orange-600')
-    expect(getInsightColor('info')).toBe('text-gray-600')
+    expect(getInsightColor('info')).toBe('text-slate-600')
   })
 })
 
@@ -173,6 +173,6 @@ describe('getInsightBgColor', () => {
     expect(getInsightBgColor('positive')).toBe('bg-green-50 border-green-200')
     expect(getInsightBgColor('neutral')).toBe('bg-blue-50 border-blue-200')
     expect(getInsightBgColor('warning')).toBe('bg-orange-50 border-orange-200')
-    expect(getInsightBgColor('info')).toBe('bg-gray-50 border-gray-200')
+    expect(getInsightBgColor('info')).toBe('bg-slate-50 border-slate-200')
   })
 })

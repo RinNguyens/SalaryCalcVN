@@ -55,8 +55,8 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
       <GlassCard variant="strong" className="p-6" glow>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Calendar className="h-5 w-5 text-white" />
-            <h3 className="text-lg font-semibold text-white">
+            <Calendar className="h-5 w-5 text-black" />
+            <h3 className="text-lg font-semibold text-black">
               Tổng thu nhập năm
             </h3>
           </div>
@@ -68,28 +68,28 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Gross Yearly */}
           <div className="text-center">
-            <p className="text-white/70 text-sm mb-2">Tổng Gross</p>
-            <div className="text-3xl font-bold text-white">
+            <p className="text-black/70 text-sm mb-2">Tổng Gross</p>
+            <div className="text-3xl font-bold text-black">
               <AnimatedNumber
                 value={result.totalGrossYearly}
                 formatFn={formatCurrency}
               />
             </div>
-            <p className="text-white/60 text-xs mt-1">
+            <p className="text-black/60 text-xs mt-1">
               Trung bình: {formatCurrency(result.averageMonthlyGross)}/tháng
             </p>
           </div>
 
           {/* Net Yearly */}
           <div className="text-center">
-            <p className="text-white/70 text-sm mb-2">Thực nhận (Net)</p>
+            <p className="text-black/70 text-sm mb-2">Thực nhận (Net)</p>
             <div className="text-3xl font-bold text-green-400">
               <AnimatedNumber
                 value={result.totalNetYearly}
                 formatFn={formatCurrency}
               />
             </div>
-            <p className="text-white/60 text-xs mt-1">
+            <p className="text-black/60 text-xs mt-1">
               Trung bình: {formatCurrency(result.averageMonthlyNet)}/tháng
             </p>
           </div>
@@ -97,7 +97,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
 
         {/* Tax Rate */}
         <div className="mt-6">
-          <div className="flex justify-between text-white text-sm mb-2">
+          <div className="flex justify-between text-black text-sm mb-2">
             <span>Tỷ lệ thuế hiệu dụng</span>
             <span>{effectiveTaxRate.toFixed(1)}%</span>
           </div>
@@ -107,7 +107,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
 
       {/* Breakdown Chart */}
       <GlassCard variant="default" className="p-6">
-        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <h4 className="text-lg font-semibold text-black mb-4 flex items-center gap-2">
           <PieChart className="h-5 w-5" />
           Phân bổ thu nhập
         </h4>
@@ -149,7 +149,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
             />
             <Legend
               wrapperStyle={{ paddingTop: '20px' }}
-              formatter={(value) => <span className="text-white">{value}</span>}
+              formatter={(value) => <span className="text-black">{value}</span>}
             />
             <Bar dataKey="gross" name="Thu nhập Gross" radius={[8, 8, 0, 0]}>
               {chartData.map((entry, index) => {
@@ -178,19 +178,19 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="text-center">
             <div className="w-full h-2 bg-green-500 rounded mb-2"></div>
-            <p className="text-xs text-white/70">Lương tháng</p>
+            <p className="text-xs text-black/70">Lương tháng</p>
           </div>
           <div className="text-center">
             <div className="w-full h-2 bg-blue-500 rounded mb-2"></div>
-            <p className="text-xs text-white/70">Tháng 13</p>
+            <p className="text-xs text-black/70">Tháng 13</p>
           </div>
           <div className="text-center">
             <div className="w-full h-2 bg-orange-500 rounded mb-2"></div>
-            <p className="text-xs text-white/70">Thưởng KPI</p>
+            <p className="text-xs text-black/70">Thưởng KPI</p>
           </div>
           <div className="text-center">
             <div className="w-full h-2 bg-purple-500 rounded mb-2"></div>
-            <p className="text-xs text-white/70">Thưởng khác</p>
+            <p className="text-xs text-black/70">Thưởng khác</p>
           </div>
         </div>
       </GlassCard>
@@ -199,14 +199,14 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
       <div className="grid md:grid-cols-2 gap-4">
         {/* Monthly Salary */}
         <GlassCard variant="subtle" className="p-4">
-          <h5 className="text-white font-semibold mb-3">Lương tháng (12 tháng)</h5>
+          <h5 className="text-black font-semibold mb-3">Lương tháng (12 tháng)</h5>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-white/70">Gross:</span>
-              <span className="text-white">{formatCurrency(result.regularGrossYearly)}</span>
+              <span className="text-black/70">Gross:</span>
+              <span className="text-black">{formatCurrency(result.regularGrossYearly)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-white/70">Net:</span>
+              <span className="text-black/70">Net:</span>
               <span className="text-green-400">{formatCurrency(result.regularNetYearly)}</span>
             </div>
           </div>
@@ -215,18 +215,18 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         {/* Month 13 */}
         {result.month13.gross > 0 && (
           <GlassCard variant="subtle" className="p-4">
-            <h5 className="text-white font-semibold mb-3">Tháng 13</h5>
+            <h5 className="text-black font-semibold mb-3">Tháng 13</h5>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Gross:</span>
-                <span className="text-white">{formatCurrency(result.month13.gross)}</span>
+                <span className="text-black/70">Gross:</span>
+                <span className="text-black">{formatCurrency(result.month13.gross)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Thuế:</span>
+                <span className="text-black/70">Thuế:</span>
                 <span className="text-orange-400">-{formatCurrency(result.month13.tax)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Net:</span>
+                <span className="text-black/70">Net:</span>
                 <span className="text-green-400">{formatCurrency(result.month13.net)}</span>
               </div>
             </div>
@@ -236,18 +236,18 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         {/* KPI Bonus */}
         {result.kpiBonus.gross > 0 && (
           <GlassCard variant="subtle" className="p-4">
-            <h5 className="text-white font-semibold mb-3">Thưởng KPI</h5>
+            <h5 className="text-black font-semibold mb-3">Thưởng KPI</h5>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Gross:</span>
-                <span className="text-white">{formatCurrency(result.kpiBonus.gross)}</span>
+                <span className="text-black/70">Gross:</span>
+                <span className="text-black">{formatCurrency(result.kpiBonus.gross)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Thuế (10%):</span>
+                <span className="text-black/70">Thuế (10%):</span>
                 <span className="text-orange-400">-{formatCurrency(result.kpiBonus.tax)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Net:</span>
+                <span className="text-black/70">Net:</span>
                 <span className="text-green-400">{formatCurrency(result.kpiBonus.net)}</span>
               </div>
             </div>
@@ -257,18 +257,18 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         {/* Other Bonuses */}
         {result.otherBonuses.total.gross > 0 && (
           <GlassCard variant="subtle" className="p-4">
-            <h5 className="text-white font-semibold mb-3">Thưởng khác</h5>
+            <h5 className="text-black font-semibold mb-3">Thưởng khác</h5>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Gross:</span>
-                <span className="text-white">{formatCurrency(result.otherBonuses.total.gross)}</span>
+                <span className="text-black/70">Gross:</span>
+                <span className="text-black">{formatCurrency(result.otherBonuses.total.gross)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Thuế (10%):</span>
+                <span className="text-black/70">Thuế (10%):</span>
                 <span className="text-orange-400">-{formatCurrency(result.otherBonuses.total.tax)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Net:</span>
+                <span className="text-black/70">Net:</span>
                 <span className="text-green-400">{formatCurrency(result.otherBonuses.total.net)}</span>
               </div>
             </div>
@@ -278,7 +278,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
 
       {/* Financial Advice */}
       <GlassCard variant="default" className="p-6">
-        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <h4 className="text-lg font-semibold text-black mb-4 flex items-center gap-2">
           <PiggyBank className="h-5 w-5" />
           Gợi ý phân tích tài chính (Quy tắc 50-30-20)
         </h4>
@@ -289,10 +289,10 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
               <CardTitle className="text-sm text-green-400">50% Nhu cầu thiết yếu</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-white">
+              <p className="text-2xl font-bold text-black">
                 {formatCurrency(result.financialAdvice.savings50)}
               </p>
-              <p className="text-xs text-white/60 mt-1">
+              <p className="text-xs text-black/60 mt-1">
                 {formatCurrency(result.financialAdvice.savings50 / 12)}/tháng
               </p>
             </CardContent>
@@ -303,10 +303,10 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
               <CardTitle className="text-sm text-blue-400">30% Mong muốn</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-white">
+              <p className="text-2xl font-bold text-black">
                 {formatCurrency(result.financialAdvice.savings30)}
               </p>
-              <p className="text-xs text-white/60 mt-1">
+              <p className="text-xs text-black/60 mt-1">
                 {formatCurrency(result.financialAdvice.savings30 / 12)}/tháng
               </p>
             </CardContent>
@@ -317,10 +317,10 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
               <CardTitle className="text-sm text-purple-400">20% Tiết kiệm & Đầu tư</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-white">
+              <p className="text-2xl font-bold text-black">
                 {formatCurrency(result.financialAdvice.savings20)}
               </p>
-              <p className="text-xs text-white/60 mt-1">
+              <p className="text-xs text-black/60 mt-1">
                 {formatCurrency(result.financialAdvice.savings20 / 12)}/tháng
               </p>
             </CardContent>

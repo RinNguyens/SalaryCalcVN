@@ -73,10 +73,10 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
           <div className="flex items-center gap-4 mb-4">
             <Trophy className="h-8 w-8 text-yellow-400" />
             <div>
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-2xl font-bold text-black">
                 Lựa chọn tốt nhất
               </h2>
-              <p className="text-white/70">
+              <p className="text-black/70">
                 Dựa trên phân tích toàn diện
               </p>
             </div>
@@ -84,14 +84,14 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="glass-subtle rounded-xl p-6">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 {recommendation.bestOverall.companyName}
               </h3>
-              <p className="text-white/80 mb-4">{recommendation.bestOverall.position}</p>
+              <p className="text-black/80 mb-4">{recommendation.bestOverall.position}</p>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-white/60">Điểm tổng hợp</span>
-                  <span className="text-white font-semibold">
+                  <span className="text-black/60">Điểm tổng hợp</span>
+                  <span className="text-black font-semibold">
                     {rankings.overall[0].score.toFixed(1)}/100
                   </span>
                 </div>
@@ -103,10 +103,10 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
             </div>
 
             <div className="space-y-3">
-              <h4 className="text-white font-semibold">Điểm mạnh nổi bật:</h4>
+              <h4 className="text-black font-semibold">Điểm mạnh nổi bật:</h4>
               {recommendation.reasoning.split('\n').slice(1, 4).map((point, index) => (
                 point && (
-                  <p key={index} className="text-white/80 text-sm flex items-start gap-2">
+                  <p key={index} className="text-black/80 text-sm flex items-start gap-2">
                     <span className="text-yellow-400">•</span>
                     {point.replace(/^- /, '')}
                   </p>
@@ -120,7 +120,7 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
       {/* Detailed Comparison Table */}
       <motion.div variants={itemVariants}>
         <GlassCard className="p-6">
-          <h3 className="text-xl font-semibold text-white mb-6">
+          <h3 className="text-xl font-semibold text-black mb-6">
             So sánh chi tiết
           </h3>
 
@@ -128,24 +128,24 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/20">
-                  <th className="text-left text-white font-semibold p-3">Công ty</th>
-                  <th className="text-center text-white font-semibold p-3">Tổng điểm</th>
-                  <th className="text-center text-white font-semibold p-3">
+                  <th className="text-left text-black font-semibold p-3">Công ty</th>
+                  <th className="text-center text-black font-semibold p-3">Tổng điểm</th>
+                  <th className="text-center text-black font-semibold p-3">
                     <DollarSign className="h-4 w-4 inline" />
                     {' '}
                     Tài chính
                   </th>
-                  <th className="text-center text-white font-semibold p-3">
+                  <th className="text-center text-black font-semibold p-3">
                     <Heart className="h-4 w-4 inline" />
                     {' '}
                     Phúc lợi
                   </th>
-                  <th className="text-center text-white font-semibold p-3">
+                  <th className="text-center text-black font-semibold p-3">
                     <Clock className="h-4 w-4 inline" />
                     {' '}
                     WLB
                   </th>
-                  <th className="text-center text-white font-semibold p-3">
+                  <th className="text-center text-black font-semibold p-3">
                     <TrendingUp className="h-4 w-4 inline" />
                     {' '}
                     Sự nghiệp
@@ -162,15 +162,15 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
                   >
                     <td className="p-3">
                       <div>
-                        <div className="text-white font-medium flex items-center gap-2">
+                        <div className="text-black font-medium flex items-center gap-2">
                           {ranking.offer.companyName}
                           {ranking.rank === 1 && (
-                            <Badge className="bg-yellow-400 text-gray-900 text-xs">
+                            <Badge className="bg-yellow-400 text-slate-900 text-xs">
                               #1
                             </Badge>
                           )}
                         </div>
-                        <div className="text-white/60 text-sm">
+                        <div className="text-black/60 text-sm">
                           {formatCurrency(ranking.offer.baseSalary, ranking.offer.currency)}/tháng
                         </div>
                       </div>
@@ -262,20 +262,20 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
       {recommendation.alternatives.length > 0 && (
         <motion.div variants={itemVariants}>
           <GlassCard className="p-6">
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-xl font-semibold text-black mb-4">
               Các lựa chọn thay thế đáng cân nhắc
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {recommendation.alternatives.map((alt, index) => (
                 <div key={alt.id} className="glass-subtle rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-white font-medium">{alt.companyName}</h4>
-                    <Badge variant="outline" className="bg-white/10 text-white">
+                    <h4 className="text-black font-medium">{alt.companyName}</h4>
+                    <Badge variant="outline" className="bg-white/10 text-black">
                       #{rankings.overall.find(r => r.offer.id === alt.id)?.rank}
                     </Badge>
                   </div>
-                  <p className="text-white/60 text-sm mb-2">{alt.position}</p>
-                  <div className="flex items-center gap-4 text-sm text-white/70">
+                  <p className="text-black/60 text-sm mb-2">{alt.position}</p>
+                  <div className="flex items-center gap-4 text-sm text-black/70">
                     <span>{formatCurrency(alt.baseSalary, alt.currency)}/tháng</span>
                     <span>{alt.workLife.remote.daysPerWeek} ngày remote</span>
                   </div>
@@ -307,12 +307,12 @@ function CategoryWinnerCard({ title, icon, winner, color }: CategoryWinnerCardPr
   return (
     <GlassCard className={`p-4 bg-gradient-to-br ${colorClasses[color as keyof typeof colorClasses]}/20`}>
       <div className="flex items-center gap-3 mb-3">
-        <div className="text-white/80">{icon}</div>
-        <h4 className="text-white font-semibold">{title}</h4>
+        <div className="text-black/80">{icon}</div>
+        <h4 className="text-black font-semibold">{title}</h4>
       </div>
       <div>
-        <p className="text-white font-medium">{winner.offer.companyName}</p>
-        <p className="text-white/70 text-sm">{winner.score.toFixed(1)} điểm</p>
+        <p className="text-black font-medium">{winner.offer.companyName}</p>
+        <p className="text-black/70 text-sm">{winner.score.toFixed(1)} điểm</p>
       </div>
     </GlassCard>
   );

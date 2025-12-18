@@ -879,7 +879,7 @@ export default function RootLayout({
     <html lang="vi">
       <body className="
         min-h-screen
-        bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400
+        
         overflow-x-hidden
       ">
         <Header />

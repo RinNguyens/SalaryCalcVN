@@ -174,8 +174,8 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
             {chartData.slice(0, 8).map((item, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-white text-sm font-medium">{item.name}</span>
-                  <span className="text-white font-bold">
+                  <span className="text-black text-sm font-medium">{item.name}</span>
+                  <span className="text-black font-bold">
                     {formatCurrency('average' in item ? item.average : 0)}
                   </span>
                 </div>
@@ -183,7 +183,7 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
                   value={('average' in item ? item.average : 0) / maxValue * 100}
                   className="h-2"
                 />
-                <div className="flex justify-between text-xs text-white/60">
+                <div className="flex justify-between text-xs text-black/60">
                   <span>{'count' in item ? item.count : 0} data points</span>
                   {'maxSalary' in item && (
                     <span>Max: {formatCurrency(item.maxSalary as number)}</span>
@@ -201,20 +201,20 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
               {chartData.slice(0, 4).map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="relative inline-flex items-center justify-center w-24 h-24 mb-2">
-                    <div className="text-2xl font-bold text-white">
+                    <div className="text-2xl font-bold text-black">
                       {String('percentage' in item ? item.percentage : 0)}%
                     </div>
                   </div>
-                  <p className="text-white text-sm font-medium">{item.name}</p>
-                  <p className="text-white/60 text-xs">{'count' in item ? item.count : 0} shares</p>
+                  <p className="text-black text-sm font-medium">{item.name}</p>
+                  <p className="text-black/60 text-xs">{'count' in item ? item.count : 0} shares</p>
                 </div>
               ))}
             </div>
             <div className="space-y-3">
               {chartData.slice(0, 5).map((item, index) => (
                 <div key={index} className="flex items-center justify-between">
-                  <span className="text-white text-sm">{item.name}</span>
-                  <span className="text-white font-semibold">
+                  <span className="text-black text-sm">{item.name}</span>
+                  <span className="text-black font-semibold">
                     {formatCurrency('average' in item ? item.average : 0)}
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
             {chartData.map((item, index) => (
               <div key={index} className="p-4 bg-white/5 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-white font-medium">{item.name}</span>
+                  <span className="text-black font-medium">{item.name}</span>
                   <span className="text-green-300 font-bold">
                     {formatCurrency('average' in item ? item.average : 0)}
                   </span>
@@ -238,7 +238,7 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
                   value={('average' in item ? item.average : 0) / maxValue * 100}
                   className="h-3 mb-2"
                 />
-                <p className="text-white/60 text-sm">{'count' in item ? item.count : 0} professionals</p>
+                <p className="text-black/60 text-sm">{'count' in item ? item.count : 0} professionals</p>
               </div>
             ))}
           </div>
@@ -250,7 +250,7 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
             {chartData.map((item, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-white text-sm">{item.name}</span>
+                  <span className="text-black text-sm">{item.name}</span>
                   <span className="text-yellow-300 font-bold">
                     {formatCurrency('value' in item ? item.value : 0)}/month
                   </span>
@@ -306,19 +306,19 @@ export function SalaryComparisonChart({ shares, type }: SalaryComparisonChartPro
   return (
     <Card className="bg-white/5 border-white/10">
       <CardHeader>
-        <CardTitle className="text-white flex items-center justify-between">
+        <CardTitle className="text-black flex items-center justify-between">
           {getChartTitle()}
-          <Badge variant="outline" className="bg-white/10 text-white border-white/20">
+          <Badge variant="outline" className="bg-white/10 text-black border-white/20">
             {shares.length} data points
           </Badge>
         </CardTitle>
-        <p className="text-white/60 text-sm">{getChartDescription()}</p>
+        <p className="text-black/60 text-sm">{getChartDescription()}</p>
       </CardHeader>
       <CardContent>
         {shares.length > 0 ? (
           renderChart()
         ) : (
-          <div className="flex items-center justify-center h-64 text-white/40">
+          <div className="flex items-center justify-center h-64 text-black/40">
             No data available for this view
           </div>
         )}

@@ -93,7 +93,7 @@ export function TestimonialsSection() {
   const featuredTestimonials = testimonials.slice(0, 3);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-slate-900 to-slate-800">
+    <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -102,11 +102,11 @@ export function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Quote className="h-12 w-12 text-white mx-auto mb-4" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <Quote className="h-12 w-12 text-black mx-auto mb-4" />
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             💬 Người dùng nói gì về chúng tôi?
           </h2>
-          <p className="text-xl text-white/80">
+          <p className="text-xl text-black/80">
             Đánh giá thật từ 50,000+ người dùng tin tưởng
           </p>
 
@@ -120,8 +120,8 @@ export function TestimonialsSection() {
                 />
               ))}
             </div>
-            <span className="text-2xl font-bold text-white">5.0</span>
-            <span className="text-white/60">/ 5.0</span>
+            <span className="text-2xl font-bold text-black">5.0</span>
+            <span className="text-black/60">/ 5.0</span>
             <Badge className="ml-2 bg-green-500/20 text-green-400 border-green-400/30">
               <CheckCircle2 className="h-3 w-3 mr-1" />
               Verified Reviews
@@ -152,7 +152,7 @@ export function TestimonialsSection() {
           transition={{ delay: 0.4 }}
         >
           <GlassCard variant="strong" className="p-8">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+            <h3 className="text-2xl font-bold text-black mb-6 text-center">
               Tất cả đánh giá ({testimonials.length})
             </h3>
 
@@ -208,7 +208,7 @@ function TestimonialCard({
       <div className="flex items-start gap-3 mb-4">
         {/* Avatar */}
         <div className="flex-shrink-0">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-black font-bold text-lg">
             {testimonial.name.charAt(0)}
           </div>
         </div>
@@ -216,17 +216,17 @@ function TestimonialCard({
         {/* Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-bold text-white truncate">
+            <h4 className="font-bold text-black truncate">
               {testimonial.name}
             </h4>
             {testimonial.verified && (
               <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
             )}
           </div>
-          <p className="text-sm text-white/70 truncate">
+          <p className="text-sm text-black/70 truncate">
             {testimonial.role}
           </p>
-          <p className="text-xs text-white/50 truncate">
+          <p className="text-xs text-black/50 truncate">
             {testimonial.company}
           </p>
         </div>
@@ -240,20 +240,20 @@ function TestimonialCard({
             className={`h-4 w-4 ${
               star <= testimonial.rating
                 ? 'fill-yellow-400 text-yellow-400'
-                : 'text-white/20'
+                : 'text-black/20'
             }`}
           />
         ))}
       </div>
 
       {/* Content */}
-      <p className={`text-white/80 leading-relaxed flex-1 ${compact ? 'text-sm' : 'text-base'}`}>
+      <p className={`text-black/80 leading-relaxed flex-1 ${compact ? 'text-sm' : 'text-base'}`}>
         &ldquo;{testimonial.content}&rdquo;
       </p>
 
       {/* Date */}
       <div className="mt-4 pt-4 border-t border-white/10">
-        <p className="text-xs text-white/50">
+        <p className="text-xs text-black/50">
           {new Date(testimonial.date).toLocaleDateString('vi-VN', {
             year: 'numeric',
             month: 'long',
@@ -269,10 +269,10 @@ function TestimonialCard({
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <GlassCard variant="default" className="p-6 text-center">
-      <div className="text-3xl font-bold text-white mb-2">
+      <div className="text-3xl font-bold text-black mb-2">
         {value}
       </div>
-      <div className="text-sm text-white/70">
+      <div className="text-sm text-black/70">
         {label}
       </div>
     </GlassCard>

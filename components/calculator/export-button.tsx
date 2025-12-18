@@ -42,7 +42,7 @@ export function ExportButton({ result, mode }: ExportButtonProps) {
       onClick={handleExport}
       disabled={isExporting}
       variant="outline"
-      className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+      className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
     >
       {isExporting ? (
         <>

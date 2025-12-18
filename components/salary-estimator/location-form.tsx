@@ -117,18 +117,18 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
     <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
       {/* Location Preferences */}
       <GlassCard className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
           <MapPin className="h-5 w-5" />
           Địa điểm làm việc
         </h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <Label className="text-white mb-2 block">Thành phố</Label>
+            <Label className="text-black mb-2 block">Thành phố</Label>
             <Select
               value={location.city}
               onValueChange={(value) => updateLocation('city', value)}
             >
-              <SelectTrigger className="bg-white/10 border-white/20 text-white">
+              <SelectTrigger className="bg-white/10 border-white/20 text-black">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -144,11 +144,11 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
             </Select>
           </div>
           <div>
-            <Label className="text-white mb-2 block">Quốc gia</Label>
+            <Label className="text-black mb-2 block">Quốc gia</Label>
             <Input
               value={location.country}
               onChange={(e) => updateLocation('country', e.target.value)}
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/10 border-white/20 text-black"
               placeholder="Vietnam"
             />
           </div>
@@ -157,7 +157,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
 
       {/* Remote Work Preference */}
       <GlassCard className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
           <Home className="h-5 w-5" />
           Lựa chọn làm việc từ xa
         </h3>
@@ -182,8 +182,8 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
                 }`}
                 onClick={() => updateLocation('remoteWorkPreference', option.value)}
               >
-                <p className="text-white font-medium">{option.label}</p>
-                <p className="text-white/60 text-sm">{option.desc}</p>
+                <p className="text-black font-medium">{option.label}</p>
+                <p className="text-black/60 text-sm">{option.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -192,18 +192,18 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
 
       {/* Work Preferences */}
       <GlassCard className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
           <Briefcase className="h-5 w-5" />
           Sở thích công việc
         </h3>
         <div className="space-y-6">
           <div>
-            <Label className="text-white mb-2 block">Loại hình công việc</Label>
+            <Label className="text-black mb-2 block">Loại hình công việc</Label>
             <Select
               value={preferences.workType}
               onValueChange={(value: any) => updatePreferences('workType', value)}
             >
-              <SelectTrigger className="bg-white/10 border-white/20 text-white">
+              <SelectTrigger className="bg-white/10 border-white/20 text-black">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -216,7 +216,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
           </div>
 
           <div>
-            <Label className="text-white mb-2 block">Quy mô công ty</Label>
+            <Label className="text-black mb-2 block">Quy mô công ty</Label>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 { value: CompanySize.STARTUP, label: 'Startup', desc: '1-50 người' },
@@ -239,8 +239,8 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
                     }`}
                     onClick={() => updatePreferences('companySize', option.value)}
                   >
-                    <p className="text-white font-medium text-sm">{option.label}</p>
-                    <p className="text-white/60 text-xs">{option.desc}</p>
+                    <p className="text-black font-medium text-sm">{option.label}</p>
+                    <p className="text-black/60 text-xs">{option.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -248,7 +248,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
           </div>
 
           <div>
-            <Label className="text-white mb-3 block">Ngành nghề quan tâm</Label>
+            <Label className="text-black mb-3 block">Ngành nghề quan tâm</Label>
             <div className="flex flex-wrap gap-2 mb-4">
               {allIndustries.map((industry) => (
                 <Badge
@@ -256,8 +256,8 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
                   variant={preferences.industry.includes(industry.value) ? "default" : "outline"}
                   className={`cursor-pointer transition-all ${
                     preferences.industry.includes(industry.value)
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-white/10 text-white/80 border-white/20 hover:bg-white/20'
+                      ? 'bg-purple-500 text-black'
+                      : 'bg-white/10 text-black/80 border-white/20 hover:bg-white/20'
                   }`}
                   onClick={() => toggleIndustry(industry.value)}
                 >
@@ -269,7 +269,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
               ))}
             </div>
             {preferences.industry.length === 0 && (
-              <p className="text-white/60 text-sm">Chưa chọn ngành nào</p>
+              <p className="text-black/60 text-sm">Chưa chọn ngành nào</p>
             )}
           </div>
         </div>
@@ -277,13 +277,13 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
 
       {/* Priority Settings */}
       <GlassCard className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
           <Scale className="h-5 w-5" />
           Ưu tiên của bạn
         </h3>
         <div className="space-y-6">
           <div>
-            <Label className="text-white mb-2 block flex items-center gap-2">
+            <Label className="text-black mb-2 block flex items-center gap-2">
               <Users className="h-4 w-4" />
               Cân bằng công việc-cuộc sống: {preferences.workLifeBalancePriority}/10
             </Label>
@@ -295,13 +295,13 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
               step={1}
               className="w-full"
             />
-            <p className="text-white/60 text-sm mt-1">
+            <p className="text-black/60 text-sm mt-1">
               1 = Không quan trọng, 10 = Rất quan trọng
             </p>
           </div>
 
           <div>
-            <Label className="text-white mb-2 block flex items-center gap-2">
+            <Label className="text-black mb-2 block flex items-center gap-2">
               <Users className="h-4 w-4" />
               Phát triển sự nghiệp: {preferences.careerGrowthPriority}/10
             </Label>
@@ -313,7 +313,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
               step={1}
               className="w-full"
             />
-            <p className="text-white/60 text-sm mt-1">
+            <p className="text-black/60 text-sm mt-1">
               1 = Không quan trọng, 10 = Rất quan trọng
             </p>
           </div>
@@ -326,7 +326,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
                 updatePreferences('salaryNegotiable', checked)
               }
             />
-            <Label htmlFor="salary-negotiable" className="text-white">
+            <Label htmlFor="salary-negotiable" className="text-black">
               Tôi sẵn sàng đàm phán lương
             </Label>
           </div>
@@ -340,7 +340,7 @@ export function LocationForm({ data, onUpdate }: LocationFormProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <p className="text-white/80 text-sm">
+        <p className="text-black/80 text-sm">
           <span className="font-semibold">💡 Mẹo:</span> Các ngành được đánh dấu (+%) có xu hướng trả lương cao hơn.
           Việc làm việc từ xa cũng có thể giúp bạn có mức lương cao hơn.
         </p>

@@ -42,13 +42,13 @@ export function UserAvatars({ users, count }: UserAvatarsProps) {
               />
             </div>
             {/* Tooltip */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-20">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-black text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-20">
               {user.name}
             </div>
           </motion.div>
         ))}
       </div>
-      <span className="text-white/80 text-sm">{count.toLocaleString('vi-VN')}+ đánh giá 5 sao</span>
+      <span className="text-black/80 text-sm">{count.toLocaleString('vi-VN')}+ đánh giá 5 sao</span>
     </div>
   );
 }

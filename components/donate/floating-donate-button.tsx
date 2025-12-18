@@ -31,7 +31,7 @@ export function FloatingDonateButton() {
             border-2 border-amber-400/30
             shadow-xl hover:shadow-2xl
             flex items-center gap-2
-            text-white font-medium
+            text-black font-medium
             transition-all duration-300
             hover:scale-105 hover:border-amber-400/50
           "
@@ -69,7 +69,7 @@ export function FloatingDonateButton() {
           </motion.div>
 
           {/* Text */}
-          <span className="hidden sm:inline">Buy me a coffee</span>
+          <span className="hidden sm:inline text-black/70">Buy me a coffee</span>
 
           {/* Heart icon on hover */}
           <motion.div

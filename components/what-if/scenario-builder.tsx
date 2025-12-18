@@ -136,12 +136,12 @@ export function ScenarioBuilder({
       <GlassCard variant="strong" className="p-6">
         <div className="flex items-center gap-2 mb-6">
           <Sparkles className="h-5 w-5 text-purple-400" />
-          <h3 className="text-lg font-semibold text-white">Base Scenario</h3>
+          <h3 className="text-lg font-semibold text-black">Base Scenario</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label className="text-white">Gross Salary (VND)</Label>
+            <Label className="text-black">Gross Salary (VND)</Label>
             <Input
               type="number"
               value={baseScenario.salary}
@@ -151,12 +151,12 @@ export function ScenarioBuilder({
                   salary: Number(e.target.value),
                 })
               }
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/10 border-white/20 text-black"
             />
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">Dependents</Label>
+            <Label className="text-black">Dependents</Label>
             <Input
               type="number"
               value={baseScenario.dependents}
@@ -166,21 +166,21 @@ export function ScenarioBuilder({
                   dependents: Number(e.target.value),
                 })
               }
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/10 border-white/20 text-black"
               min={0}
               max={10}
             />
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">Region</Label>
+            <Label className="text-black">Region</Label>
             <Select
               value={baseScenario.region}
               onValueChange={(value: Region) =>
                 setBaseScenario({ ...baseScenario, region: value })
               }
             >
-              <SelectTrigger className="bg-white/10 border-white/20 text-white">
+              <SelectTrigger className="bg-white/10 border-white/20 text-black">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -194,7 +194,7 @@ export function ScenarioBuilder({
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">Tax Exemptions (VND)</Label>
+            <Label className="text-black">Tax Exemptions (VND)</Label>
             <Input
               type="number"
               value={baseScenario.exemptions || 0}
@@ -204,7 +204,7 @@ export function ScenarioBuilder({
                   exemptions: Number(e.target.value),
                 })
               }
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/10 border-white/20 text-black"
               min={0}
             />
           </div>
@@ -214,13 +214,13 @@ export function ScenarioBuilder({
       {/* Variations */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-white">Variations</h3>
+          <h3 className="text-lg font-semibold text-black">Variations</h3>
           <Button
             onClick={handleAddVariation}
             disabled={variations.length >= 4}
             variant="outline"
             size="sm"
-            className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="gap-2 bg-white/10 border-white/20 text-black hover:bg-white/20"
           >
             <Plus className="h-4 w-4" />
             Add Variation (Max 4)
@@ -229,7 +229,7 @@ export function ScenarioBuilder({
 
         {variations.length === 0 && (
           <GlassCard className="p-8 text-center">
-            <p className="text-white/70 text-sm">
+            <p className="text-black/70 text-sm">
               No variations yet. Click &quot;Add Variation&quot; to compare different scenarios.
             </p>
           </GlassCard>
@@ -259,13 +259,13 @@ export function ScenarioBuilder({
                     className="w-3 h-3 rounded-full"
                     style={{ backgroundColor: getScenarioColor(index + 1) }}
                   />
-                  <h4 className="font-semibold text-white">{variation.label}</h4>
+                  <h4 className="font-semibold text-black">{variation.label}</h4>
                 </div>
                 <Button
                   onClick={() => handleRemoveVariation(variation.id)}
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:text-red-400 hover:bg-white/10"
+                  className="text-black hover:text-red-400 hover:bg-white/10"
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -275,10 +275,10 @@ export function ScenarioBuilder({
                 {/* Salary Multiplier */}
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <Label className="text-white text-sm">
+                    <Label className="text-black text-sm">
                       Salary Adjustment
                     </Label>
-                    <span className="text-white/80 text-sm font-mono">
+                    <span className="text-black/80 text-sm font-mono">
                       {(variation.salaryMultiplier * 100).toFixed(0)}% (
                       {formatCurrency(estimatedSalary)})
                     </span>
@@ -293,7 +293,7 @@ export function ScenarioBuilder({
                     step={0.05}
                     className="w-full"
                   />
-                  <div className="flex justify-between text-xs text-white/60">
+                  <div className="flex justify-between text-xs text-black/60">
                     <span>50%</span>
                     <span>100%</span>
                     <span>150%</span>
@@ -303,10 +303,10 @@ export function ScenarioBuilder({
                 {/* Dependents Adjustment */}
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <Label className="text-white text-sm">
+                    <Label className="text-black text-sm">
                       Dependents Adjustment
                     </Label>
-                    <span className="text-white/80 text-sm font-mono">
+                    <span className="text-black/80 text-sm font-mono">
                       {variation.dependentsAdjustment >= 0 ? '+' : ''}
                       {variation.dependentsAdjustment} ({estimatedDependents} total)
                     </span>
@@ -325,7 +325,7 @@ export function ScenarioBuilder({
 
                 {/* Region Override */}
                 <div className="space-y-2">
-                  <Label className="text-white text-sm">Region Override (Optional)</Label>
+                  <Label className="text-black text-sm">Region Override (Optional)</Label>
                   <div className="flex gap-2">
                     <Select
                       value={variation.regionOverride || baseScenario.region}
@@ -333,7 +333,7 @@ export function ScenarioBuilder({
                         handleVariationRegionChange(variation.id, value)
                       }
                     >
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -351,7 +351,7 @@ export function ScenarioBuilder({
                         }
                         variant="outline"
                         size="icon"
-                        className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        className="bg-white/10 border-white/20 text-black hover:bg-white/20"
                       >
                         <X className="h-4 w-4" />
                       </Button>

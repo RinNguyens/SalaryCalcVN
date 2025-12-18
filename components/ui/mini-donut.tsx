@@ -38,8 +38,8 @@ export function MiniDonut({
         </ResponsiveContainer>
       </div>
       <div className="flex-1">
-        <div className="text-xs text-white/60 mb-1">Completion</div>
-        <div className="text-sm font-bold text-white">{data[0]}%</div>
+        <div className="text-xs text-black/60 mb-1">Completion</div>
+        <div className="text-sm font-bold text-black">{data[0]}%</div>
       </div>
     </div>
   );

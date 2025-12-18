@@ -29,7 +29,7 @@ function ContentRenderer({ content }: { content: string }) {
       elements.push(
         <ul key={`list-${elements.length}`} className="list-disc list-inside space-y-2 my-4 ">
           {currentList.map((item, idx) => (
-            <li key={idx} className="text-white">{item}</li>
+            <li key={idx} className="text-black">{item}</li>
           ))}
         </ul>
       );
@@ -45,7 +45,7 @@ function ContentRenderer({ content }: { content: string }) {
             <thead className="bg-gradient-to-r from-blue-50 to-emerald-50">
               <tr>
                 {currentTable[0].map((cell, idx) => (
-                  <th key={idx} className="px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                  <th key={idx} className="px-4 py-3 text-left text-sm font-semibold text-slate-900">
                     {cell.trim()}
                   </th>
                 ))}
@@ -55,7 +55,7 @@ function ContentRenderer({ content }: { content: string }) {
               {currentTable.slice(2).map((row, rowIdx) => (
                 <tr key={rowIdx} className="hover:bg-blue-50/50 transition">
                   {row.map((cell, cellIdx) => (
-                    <td key={cellIdx} className="px-4 py-3 text-sm text-white border-t border-blue-50">
+                    <td key={cellIdx} className="px-4 py-3 text-sm text-black border-t border-blue-50">
                       <code className="text-xs bg-blue-100/70 text-blue-900 px-2 py-1 rounded font-medium">{cell.trim()}</code>
                     </td>
                   ))}
@@ -101,9 +101,9 @@ function ContentRenderer({ content }: { content: string }) {
       flushList();
       const parts = line.split('**');
       elements.push(
-        <p key={idx} className="text-gray-200 leading-relaxed my-2">
+        <p key={idx} className="text-slate-200 leading-relaxed my-2">
           {parts.map((part, i) =>
-            i % 2 === 1 ? <strong key={i} className="text-gray-900 font-semibold">{part}</strong> : part
+            i % 2 === 1 ? <strong key={i} className="text-slate-900 font-semibold">{part}</strong> : part
           )}
         </p>
       );
@@ -115,9 +115,9 @@ function ContentRenderer({ content }: { content: string }) {
       if (linkMatch) {
         const [, text, url] = linkMatch;
         elements.push(
-          <p key={idx} className="text-gray-200 leading-relaxed my-2">
+          <p key={idx} className="text-slate-200 leading-relaxed my-2">
             Xem thêm:{' '}
-            <a href={url} className="text-blue-600 hover:text-blue-700 underline font-medium hover:underline-offset-4 transition">
+            <a href={url} className="text-indigo-600 hover:text-indigo-700 underline font-medium hover:underline-offset-4 transition">
               {text}
             </a>
           </p>
@@ -128,7 +128,7 @@ function ContentRenderer({ content }: { content: string }) {
     else if (line.trim()) {
       flushList();
       elements.push(
-        <p key={idx} className="text-gray-200 leading-relaxed my-2">
+        <p key={idx} className="text-slate-200 leading-relaxed my-2">
           {line}
         </p>
       );
@@ -150,19 +150,19 @@ export function LegalPage({ content }: { content: LegalContent }) {
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/30 to-emerald-500/30 backdrop-blur-sm border border-blue-200/50 rounded-full text-sm mb-4">
           <FileText className="w-4 h-4 text-blue-600" />
-          <span className="font-semibold text-blue-800">Legal Document</span>
+          <span className="font-semibold text-indigo-600">Legal Document</span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl text-white bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl md:text-5xl text-black bg-clip-text text-transparent mb-4">
           {content.title}
         </h1>
 
-        <p className="text-lg text-gray-200 mb-6 font-medium">
+        <p className="text-lg text-slate-200 mb-6 font-medium">
           {content.subtitle}
         </p>
 
-        <div className="inline-flex items-center gap-2 text-sm text-gray-200">
-          <Calendar className="w-4 h-4 text-gray-200" />
+        <div className="inline-flex items-center gap-2 text-sm text-slate-200">
+          <Calendar className="w-4 h-4 text-slate-200" />
           <span className="font-medium">Cập nhật lần cuối: {content.lastUpdated}</span>
         </div>
       </div>
@@ -174,7 +174,7 @@ export function LegalPage({ content }: { content: LegalContent }) {
             onClick={() => setActiveSection(activeSection ? null : 'toc')}
             className="flex items-center justify-between w-full"
           >
-            <span className="font-semibold text-gray-900">Mục lục</span>
+            <span className="font-semibold text-slate-900">Mục lục</span>
             <ChevronRight
               className={`w-5 h-5 text-blue-600 transition-transform ${
                 activeSection === 'toc' ? 'rotate-90' : ''
@@ -188,7 +188,7 @@ export function LegalPage({ content }: { content: LegalContent }) {
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block py-2 px-3 text-sm text-white hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 rounded-lg transition font-medium"
+                  className="block py-2 px-3 text-sm text-black hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 rounded-lg transition font-medium"
                   onClick={() => setActiveSection(null)}
                 >
                   {section.title}
@@ -203,13 +203,13 @@ export function LegalPage({ content }: { content: LegalContent }) {
         {/* Sidebar TOC (Desktop) */}
         <aside className="hidden lg:block lg:col-span-3">
           <GlassCard variant="subtle" className="sticky top-24 p-6">
-            <h2 className="font-bold text-gray-900 mb-4 text-lg">Mục lục</h2>
+            <h2 className="font-bold text-slate-900 mb-4 text-lg">Mục lục</h2>
             <nav className="space-y-2">
               {content.sections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block py-2 px-3 text-sm text-white hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 rounded-lg transition font-medium"
+                  className="block py-2 px-3 text-sm text-black hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-emerald-50 rounded-lg transition font-medium"
                 >
                   {section.title}
                 </a>
@@ -242,12 +242,12 @@ export function LegalPage({ content }: { content: LegalContent }) {
                 <h3 className="text-xl font-bold bg-gradient-to-r from-blue-900 to-emerald-900 bg-clip-text text-transparent mb-2">
                   Có câu hỏi?
                 </h3>
-                <p className="text-gray-700 mb-4 font-medium">
+                <p className="text-slate-700 mb-4 font-medium">
                   Liên hệ với chúng tôi nếu bạn cần hỗ trợ hoặc làm rõ
                 </p>
                 <a
                   href="mailto:support@salarylens.com"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white/95 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:text-white transition shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-black/95 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:text-black transition shadow-lg hover:shadow-xl"
                 >
                   <FileText className="w-5 h-5" />
                   <span className="font-medium">Gửi email cho chúng tôi</span>
@@ -265,7 +265,7 @@ export function LegalPage({ content }: { content: LegalContent }) {
           >
             <motion.a
               href="#"
-              className="inline-flex items-center gap-2 text-blue-800 hover:text-blue-700 transition font-medium group"
+              className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition font-medium group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -280,7 +280,7 @@ export function LegalPage({ content }: { content: LegalContent }) {
                 }}
                 className="relative"
               >
-                <ArrowUp className="w-5 h-5 group-hover:text-blue-700 transition" />
+                <ArrowUp className="w-5 h-5 group-hover:text-indigo-700 transition" />
               </motion.div>
               <span>Về đầu trang</span>
             </motion.a>

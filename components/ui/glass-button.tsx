@@ -23,10 +23,10 @@ export function GlassButton({
   ...props
 }: GlassButtonProps) {
   const variants = {
-    primary: 'bg-blue-500/80 hover:bg-blue-600/80 text-white border-blue-400/30',
-    secondary: 'bg-white/70 hover:bg-white/90 text-gray-900 border-white/30',
-    ghost: 'bg-transparent hover:bg-white/10 text-gray-700 border-transparent',
-    gradient: 'bg-gradient-to-r from-blue-500/80 to-purple-500/80 hover:from-blue-600/80 hover:to-purple-600/80 text-white border-white/30',
+    primary: 'bg-blue-500/80 hover:bg-blue-600/80 text-black border-blue-400/30',
+    secondary: 'bg-white/70 hover:bg-white/90 text-slate-900 border-white/30',
+    ghost: 'bg-transparent hover:bg-white/10 text-slate-700 border-transparent',
+    gradient: 'bg-gradient-to-r from-blue-500/80 to-purple-500/80 hover:from-blue-600/80 hover:to-purple-600/80 text-black border-white/30',
   };
 
   const sizes = {

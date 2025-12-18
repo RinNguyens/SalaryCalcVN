@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingDonateButton } from "@/components/donate/floating-donate-button";
+import { PastelBackground } from "@/components/layout/pastel-background";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
@@ -41,7 +42,8 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={inter.className}>
-        <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+        <PastelBackground />
+        <div className="min-h-screen relative z-10">
           <Header />
           <main className="relative z-10">
             {children}

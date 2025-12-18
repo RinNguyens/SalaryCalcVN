@@ -138,7 +138,7 @@ export default function RoadmapPage() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-lg capitalize transition-colors ${
                     selectedCategory === cat
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-blue-500 text-black'
                       : 'bg-white text-slate-700 hover:bg-slate-100'
                   }`}
                 >

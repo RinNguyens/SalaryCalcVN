@@ -4,6 +4,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { submitContactForm } from '@/app/contact/actions';
+import { PastelGlassCard } from '@/components/ui/pastel-glass-card';
+import { PastelGlassButton } from '@/components/ui/pastel-glass-button';
+import { DarkInput } from '@/components/ui/dark-input';
+import { DarkSelect } from '@/components/ui/dark-select';
+import { DarkTextarea } from '@/components/ui/dark-textarea';
 
 interface FormData {
   name: string;
@@ -69,87 +74,71 @@ export function ContactForm() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100"
-    >
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Gửi Tin Nhắn</h2>
+    <PastelGlassCard glow="purple">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className='p-10'
+      >
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">Gửi Tin Nhắn</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-            Họ và Tên <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Nguyễn Văn A"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-          />
-        </div>
+        <DarkInput
+          type="text"
+          id="name"
+          name="name"
+          label="Họ và Tên"
+          required
+          placeholder="Nguyễn Văn A"
+          value={formData.name}
+          onChange={handleChange}
+        />
 
         {/* Email */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="example@email.com"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-          />
-        </div>
+        <DarkInput
+          type="email"
+          id="email"
+          name="email"
+          label="Email"
+          required
+          placeholder="example@email.com"
+          value={formData.email}
+          onChange={handleChange}
+        />
 
         {/* Subject */}
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-            Chủ Đề <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
-          >
-            <option value="">-- Chọn chủ đề --</option>
-            <option value="support">Hỗ trợ kỹ thuật</option>
-            <option value="feedback">Góp ý / Đề xuất</option>
-            <option value="bug">Báo lỗi</option>
-            <option value="business">Hợp tác kinh doanh</option>
-            <option value="press">Báo chí / Truyền thông</option>
-            <option value="other">Khác</option>
-          </select>
-        </div>
+        <DarkSelect
+          id="subject"
+          name="subject"
+          label="Chủ Đề"
+          required
+          value={formData.subject}
+          onChange={handleChange}
+          className='w-full'
+        >
+          <option value="">-- Chọn chủ đề --</option>
+          <option value="support">Hỗ trợ kỹ thuật</option>
+          <option value="feedback">Góp ý / Đề xuất</option>
+          <option value="bug">Báo lỗi</option>
+          <option value="business">Hợp tác kinh doanh</option>
+          <option value="press">Báo chí / Truyền thông</option>
+          <option value="other">Khác</option>
+        </DarkSelect>
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-            Nội Dung <span className="text-red-500">*</span>
-          </label>
-          <textarea
+          <DarkTextarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleChange}
+            label="Nội Dung"
             required
             rows={6}
             placeholder="Nhập nội dung tin nhắn của bạn..."
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none"
+            value={formData.message}
+            onChange={handleChange}
           />
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-slate-500">
             Tối thiểu 10 ký tự • {formData.message.length} ký tự
           </p>
         </div>
@@ -163,8 +152,8 @@ export function ContactForm() {
           >
             <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="text-sm font-medium text-green-900">Thành công!</p>
-              <p className="text-sm text-green-700 mt-1">{state.message}</p>
+              <p className="text-sm font-medium text-green-600">Thành công!</p>
+              <p className="text-sm text-slate-600 mt-1">{state.message}</p>
             </div>
           </motion.div>
         )}
@@ -177,40 +166,35 @@ export function ContactForm() {
           >
             <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="text-sm font-medium text-red-900">Lỗi!</p>
-              <p className="text-sm text-red-700 mt-1">{state.message}</p>
+              <p className="text-sm font-medium text-red-600">Lỗi!</p>
+              <p className="text-sm text-slate-600 mt-1">{state.message}</p>
             </div>
           </motion.div>
         )}
 
         {/* Submit Button */}
-        <button
+        <PastelGlassButton
           type="submit"
+          variant="primary"
+          size="lg"
           disabled={state.status === 'loading'}
-          className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 px-6 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+          isLoading={state.status === 'loading'}
+          icon={<Send className="w-5 h-5" />}
+          className="w-full text-white"
         >
-          {state.status === 'loading' ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              <span>Đang gửi...</span>
-            </>
-          ) : (
-            <>
-              <Send className="w-5 h-5" />
-              <span>Gửi Tin Nhắn</span>
-            </>
-          )}
-        </button>
+          Gửi Tin Nhắn
+        </PastelGlassButton>
 
         {/* Privacy Note */}
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-slate-400 text-center">
           Bằng cách gửi form này, bạn đồng ý với{' '}
-          <a href="/privacy" className="text-blue-600 hover:underline">
+          <a href="/privacy" className="text-indigo-600 hover:underline">
             Chính sách Bảo mật
           </a>{' '}
           của chúng tôi.
         </p>
       </form>
-    </motion.div>
+      </motion.div>
+    </PastelGlassCard>
   );
 }

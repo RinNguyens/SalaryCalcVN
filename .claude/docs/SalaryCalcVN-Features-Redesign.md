@@ -703,7 +703,7 @@ import { FeaturesSection } from '@/components/landing/features-section';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+    <div className="min-h-screen ">
       {/* Hero section */}
       
       <FeaturesSection />
