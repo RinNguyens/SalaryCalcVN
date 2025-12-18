@@ -15,7 +15,7 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
         onClick={() => onCategoryChange(null)}
         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
           selectedCategory === null
-            ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-black'
+            ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
             : 'bg-white/10 text-slate-300 hover:bg-white/20 hover:text-black'
         }`}
       >

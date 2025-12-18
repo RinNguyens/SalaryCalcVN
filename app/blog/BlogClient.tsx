@@ -7,6 +7,7 @@ import { SearchBar } from '@/components/blog/search-bar';
 import { BlogHeader } from './BlogHeader';
 import { Post } from '@/lib/mdx';
 import { MagnifyingGlassIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { BackgroundElements } from '@/components/ui/background-elements';
 
 interface BlogClientProps {
   allPosts: Post[];
@@ -47,27 +48,32 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
       {/* Header */}
       <BlogHeader />
 
-      <div className="min-h-screen bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-cyan-900/20">
+      <div className="min-h-screen">
+        <BackgroundElements />
         {/* Hero Section */}
         <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10" />
         <div className="relative container mx-auto px-4 py-16 lg:py-24">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-full text-purple-300 text-sm font-medium mb-6">
-              <SparklesIcon className="w-4 h-4" />
-              5+ bài viết chuyên sâu về tài chính
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                       bg-white/70 backdrop-blur-md border border-white/70 mb-6
+                       text-center">
+              <SparklesIcon className="w-4 h-4 text-yellow-400" />
+              <span className="text-slate-700 text-sm font-medium">
+                5+ bài viết chuyên sâu về tài chính
+              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Blog <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">SalaryLens</span>
             </h1>
 
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto leading-relaxed">
               Cẩm nang toàn diện về tính lương, đàm phán, và tối ưu thuế cho người đi làm Việt Nam
             </p>
 
             {/* Quick Stats */}
-            <div className="flex flex-wrap justify-center gap-8 text-slate-400">
+            <div className="flex flex-wrap justify-center gap-8 text-black/80">
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold text-black">{allPosts.length}</span>
                 <span>Bài viết</span>
@@ -92,7 +98,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
           <div className="max-w-2xl mx-auto">
             <SearchBar onSearch={(query) => setSearchQuery(query)} />
             {(searchQuery || selectedCategory) && (
-              <p className="text-center text-slate-400 mt-4">
+              <p className="text-center text-black/60 mt-4">
                 Tìm thấy <span className="text-black font-semibold">{postCount}</span> bài viết
                 {selectedCategory && (
                   <> trong chủ đề <span className="text-black font-semibold">{selectedCategory}</span></>
@@ -143,7 +149,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
               {searchQuery || selectedCategory ? 'Kết quả' : 'Tất cả bài viết'}
             </h2>
             {postCount > 0 && (
-              <span className="text-sm text-slate-400">
+              <span className="text-sm text-black/60">
                 {postCount} bài viết
               </span>
             )}
@@ -162,7 +168,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                 <h3 className="text-xl font-semibold text-black mb-2">
                   Không tìm thấy bài viết
                 </h3>
-                <p className="text-slate-400 mb-6">
+                <p className="text-black/60 mb-6">
                   Thử tìm kiếm với từ khóa khác hoặc chọn chủ đề khác nhé
                 </p>
                 <button
@@ -192,7 +198,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                 Đăng ký nhận bài viết mới
               </h2>
 
-              <p className="text-slate-300 mb-8 text-lg">
+              <p className="text-black/80 mb-8 text-lg">
                 Nhận ngay cẩm nang tài chính và các tips đàm phán lương hiệu quả qua email hàng tuần
               </p>
 
@@ -208,17 +214,17 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                   type="email"
                   placeholder="Nhập email của bạn"
                   required
-                  className="flex-1 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-black placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="flex-1 px-6 py-3 bg-white/10 border border-black/50 rounded-full text-black placeholder-black/60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-black font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+                  className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
                 >
                   Đăng ký
                 </button>
               </form>
 
-              <p className="text-slate-300 text-sm mt-4">
+              <p className="text-black/60 text-sm mt-4">
                 Cam kết không spam. Hủy đăng ký bất cứ lúc nào.
               </p>
             </div>

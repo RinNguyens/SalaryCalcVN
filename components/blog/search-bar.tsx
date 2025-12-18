@@ -16,7 +16,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit} className="relative max-w-2xl mx-auto my-5">
       <div className="relative">
         <input
           type="text"
@@ -26,7 +26,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
             onSearch(e.target.value);
           }}
           placeholder="Tìm kiếm bài viết..."
-          className="w-full px-12 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-black placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full px-12 py-3 bg-white/5 backdrop-blur-sm border border-black/60 rounded-full text-black placeholder-black-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
         />
         <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
         {query && (

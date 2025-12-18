@@ -118,7 +118,7 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập lương tháng 13"
-                    className="bg-white/10 border-white/20 text-black"
+                    className="bg-white/10 border-white/20 text-black border-slate-300"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
@@ -145,7 +145,7 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập thưởng KPI"
-                    className="bg-white/10 border-white/20 text-black"
+                    className="bg-white/10 border-white/20 text-black border-slate-300"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
@@ -172,7 +172,7 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập thưởng hiệu suất"
-                    className="bg-white/10 border-white/20 text-black"
+                    className="bg-white/10 border-white/20 text-black border-slate-300"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
@@ -199,7 +199,7 @@ export function AnnualInputForm({
                   <Input
                     type="number"
                     placeholder="Nhập các khoản thưởng khác"
-                    className="bg-white/10 border-white/20 text-black"
+                    className="bg-white/10 border-white/20 text-black border-slate-300"
                     {...field}
                     onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />

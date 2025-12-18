@@ -69,7 +69,7 @@ export function HistoryList() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-dark-text">
+        <h2 className="text-2xl font-bold text-slate-800">
           Lịch sử ({history.length})
         </h2>
         <PastelGlassButton
@@ -77,6 +77,7 @@ export function HistoryList() {
           variant="danger"
           size="sm"
           icon={<Trash2 className="h-4 w-4" />}
+          className='text-white'
         >
           Xóa tất cả
         </PastelGlassButton>
@@ -88,7 +89,7 @@ export function HistoryList() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <Badge
-                  variant={item.mode === 'gross-to-net' ? 'default' : 'secondary'}
+                  variant={item.mode === 'gross-to-net' ? 'destructive' : 'secondary'}
                   className="bg-chart-purple/20 text-chart-purple border-chart-purple/30"
                 >
                   {item.mode === 'gross-to-net' ? 'Gross → Net' : 'Net → Gross'}
@@ -133,7 +134,7 @@ export function HistoryList() {
                 onClick={() => handleExport(item)}
                 variant="ghost"
                 size="icon"
-                className="text-dark-secondary-text hover:text-chart-green"
+                className="text-dark-secondary-text hover:text-chart-green border-gray-300 hover:border-chart-green"
               >
                 <Download className="h-4 w-4" />
               </PastelGlassButton>
@@ -141,7 +142,7 @@ export function HistoryList() {
                 onClick={() => handleDelete(item.id)}
                 variant="ghost"
                 size="icon"
-                className="text-dark-secondary-text hover:text-red-600"
+                className="text-dark-secondary-text hover:text-red-600 border-gray-300 hover:border-red-600"
               >
                 <Trash2 className="h-4 w-4" />
               </PastelGlassButton>

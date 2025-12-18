@@ -85,7 +85,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="20,000,000"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
@@ -109,7 +109,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
@@ -132,7 +132,7 @@ export function SalaryInputForm({
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black border-slate-300">
                           <SelectValue />
                         </SelectTrigger>
                       </FormControl>
@@ -161,7 +161,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
@@ -204,7 +204,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="15,000,000"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
@@ -228,7 +228,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>
@@ -251,7 +251,7 @@ export function SalaryInputForm({
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-white/10 border-white/20 text-black">
+                        <SelectTrigger className="bg-white/10 border-white/20 text-black border-slate-300">
                           <SelectValue />
                         </SelectTrigger>
                       </FormControl>
@@ -280,7 +280,7 @@ export function SalaryInputForm({
                       <Input
                         type="number"
                         placeholder="0"
-                        className="bg-white/10 border-white/20 text-black placeholder:text-black/50"
+                        className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                         {...field}
                       />
                     </FormControl>

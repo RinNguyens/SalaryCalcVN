@@ -101,7 +101,7 @@ function ContentRenderer({ content }: { content: string }) {
       flushList();
       const parts = line.split('**');
       elements.push(
-        <p key={idx} className="text-slate-200 leading-relaxed my-2">
+        <p key={idx} className="text-slate-800 leading-relaxed my-2">
           {parts.map((part, i) =>
             i % 2 === 1 ? <strong key={i} className="text-slate-900 font-semibold">{part}</strong> : part
           )}
@@ -115,7 +115,7 @@ function ContentRenderer({ content }: { content: string }) {
       if (linkMatch) {
         const [, text, url] = linkMatch;
         elements.push(
-          <p key={idx} className="text-slate-200 leading-relaxed my-2">
+          <p key={idx} className="text-slate-800 leading-relaxed my-2">
             Xem thêm:{' '}
             <a href={url} className="text-indigo-600 hover:text-indigo-700 underline font-medium hover:underline-offset-4 transition">
               {text}
@@ -128,7 +128,7 @@ function ContentRenderer({ content }: { content: string }) {
     else if (line.trim()) {
       flushList();
       elements.push(
-        <p key={idx} className="text-slate-200 leading-relaxed my-2">
+        <p key={idx} className="text-slate-800 leading-relaxed my-2">
           {line}
         </p>
       );
@@ -153,16 +153,16 @@ export function LegalPage({ content }: { content: LegalContent }) {
           <span className="font-semibold text-indigo-600">Legal Document</span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl text-black bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl md:text-5xl text-slate-800 bg-clip-text text-transparent mb-4">
           {content.title}
         </h1>
 
-        <p className="text-lg text-slate-200 mb-6 font-medium">
+        <p className="text-lg text-slate-800 mb-6 font-medium">
           {content.subtitle}
         </p>
 
-        <div className="inline-flex items-center gap-2 text-sm text-slate-200">
-          <Calendar className="w-4 h-4 text-slate-200" />
+        <div className="inline-flex items-center gap-2 text-sm text-slate-800">
+          <Calendar className="w-4 h-4 text-slate-800" />
           <span className="font-medium">Cập nhật lần cuối: {content.lastUpdated}</span>
         </div>
       </div>
@@ -228,7 +228,7 @@ export function LegalPage({ content }: { content: LegalContent }) {
                   id={section.id}
                   className={index > 0 ? 'mt-12' : ''}
                 >
-                  <h2 className="text-2xl text-black bg-clip-text text-transparent mb-4">
+                  <h2 className="text-2xl text-slate-800 bg-clip-text text-transparent mb-4">
                     {section.title}
                   </h2>
                   <ContentRenderer content={section.content} />
@@ -249,8 +249,8 @@ export function LegalPage({ content }: { content: LegalContent }) {
                   href="mailto:support@salarylens.com"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-black/95 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:text-black transition shadow-lg hover:shadow-xl"
                 >
-                  <FileText className="w-5 h-5" />
-                  <span className="font-medium">Gửi email cho chúng tôi</span>
+                  <FileText className="w-5 h-5 text-white" />
+                  <span className="font-medium text-white">Gửi email cho chúng tôi</span>
                 </a>
               </div>
             </div>

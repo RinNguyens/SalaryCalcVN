@@ -126,7 +126,7 @@ export function GrowthInputForm({
                     <Input
                       type="number"
                       placeholder="20,000,000"
-                      className="bg-white/10 border-white/20 text-black"
+                      className="bg-white/10 border-white/20 text-black border-slate-300"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
@@ -150,7 +150,7 @@ export function GrowthInputForm({
                     <Input
                       type="number"
                       placeholder="3"
-                      className="bg-white/10 border-white/20 text-black"
+                      className="bg-white/10 border-white/20 text-black border-slate-300"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
@@ -239,7 +239,7 @@ export function GrowthInputForm({
                     <Input
                       type="number"
                       placeholder="0"
-                      className="bg-white/10 border-white/20 text-black"
+                      className="bg-white/10 border-white/20 text-black border-slate-300"
                       {...field}
                       onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                     />
@@ -261,7 +261,7 @@ export function GrowthInputForm({
                   <FormLabel className="text-black">Vùng</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black border-slate-300">
                         <SelectValue />
                       </SelectTrigger>
                     </FormControl>
@@ -292,7 +292,7 @@ export function GrowthInputForm({
                   </FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black border-slate-300">
                         <SelectValue placeholder="Chọn ngành nghề" />
                       </SelectTrigger>
                     </FormControl>
@@ -322,7 +322,7 @@ export function GrowthInputForm({
                   <FormLabel className="text-black">Vị trí</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-black">
+                      <SelectTrigger className="bg-white/10 border-white/20 text-black border-slate-300">
                         <SelectValue placeholder="Chọn vị trí" />
                       </SelectTrigger>
                     </FormControl>

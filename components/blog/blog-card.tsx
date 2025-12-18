@@ -49,7 +49,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
         {/* Category badge */}
         <div className="absolute top-4 left-4">
-          <span className="inline-block px-3 py-1.5 bg-purple-500/90 text-black text-xs font-medium rounded-full backdrop-blur-sm">
+          <span className="inline-block px-3 py-1.5 bg-purple-500/90 text-white text-xs font-medium rounded-full backdrop-blur-sm">
             {post.category}
           </span>
         </div>
@@ -57,7 +57,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         {/* Featured badge */}
         {post.featured && (
           <div className="absolute top-4 right-4">
-            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-xs font-medium rounded-full backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium rounded-full backdrop-blur-sm">
               <span>⭐</span> Nổi bật
             </span>
           </div>

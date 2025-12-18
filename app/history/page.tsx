@@ -33,7 +33,7 @@ export default function HistoryPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-chart-purple via-chart-blue to-chart-pink bg-clip-text text-transparent">
             Lịch sử tính toán
           </h1>
-          <p className="text-dark-secondary-text">
+          <p className="text-slate-600">
             Xem lại các tính toán đã thực hiện
           </p>
         </motion.div>

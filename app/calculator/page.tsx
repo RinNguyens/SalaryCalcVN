@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { History, Calculator, Calendar, TrendingUp } from 'lucide-react';
-import { PastelBackground } from '@/components/layout/pastel-background';
+import { History, Calculator, Calendar, TrendingUp, BarChart3, PiggyBank, Target, Zap, Type } from 'lucide-react';
 import { PastelGlassCard } from '@/components/ui/pastel-glass-card';
 import { PastelGlassButton } from '@/components/ui/pastel-glass-button';
 import { SalaryInputForm } from '@/components/calculator/salary-input-form';
@@ -17,7 +15,6 @@ import { InsuranceBreakdown } from '@/components/calculator/insurance-breakdown'
 import { ResultSkeleton } from '@/components/shared/result-skeleton';
 import { TaxBreakdown } from '@/components/calculator/tax-breakdown';
 import { TaxComparison } from '@/components/calculator/tax-comparison';
-import { InteractiveTaxSlider } from '@/components/calculator/interactive-tax-slider';
 import { AnnualInputForm } from '@/components/annual-compensation/annual-input-form';
 import { AnnualResultCard } from '@/components/annual-compensation/annual-result-card';
 import { GrowthInputForm } from '@/components/salary-growth/growth-input-form';
@@ -27,11 +24,12 @@ import { calculateGrossFromNet } from '@/lib/calculations/net-to-gross';
 import { calculateAnnualCompensation } from '@/lib/calculations/annual-compensation';
 import { calculateSalaryGrowth } from '@/lib/calculations/salary-growth';
 import { saveCalculation } from '@/lib/storage/local-storage';
-import { generateSalaryInsights } from '@/lib/insights/salary-insights';
 import { AIAssistant } from '@/components/calculator/ai-assistant';
 import { convertToCalculatorResult } from '@/lib/utils/ai-helper';
 import type { SalaryResult, AnnualCompensation, SalaryGrowthProjection, BonusInput, SalaryGrowthInput } from '@/types/salary';
 import type { SalaryFormValues } from '@/lib/validators/salary-schema';
+import { BackgroundElements } from '@/components/ui/background-elements';
+import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 
 export default function CalculatorPage() {
   const [activeTab, setActiveTab] = useState('monthly');
@@ -92,8 +90,7 @@ export default function CalculatorPage() {
 
   return (
     <div className="min-h-screen relative">
-      <PastelBackground />
-
+      <BackgroundElements />
       <div className="max-w-7xl mx-auto relative z-10 p-4 md:p-8">
         {/* Header */}
         <motion.div
@@ -102,7 +99,8 @@ export default function CalculatorPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-end gap-3 mb-4">
+            
             <Link href="/history">
               <PastelGlassButton
                 variant="secondary"
@@ -115,33 +113,33 @@ export default function CalculatorPage() {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            SalaryLens
+            Tia Sáng Tài Chính
           </h1>
           <p className="text-slate-700 text-lg md:text-xl">
-            Crystal Clear Salary Insights
+            Hiểu rõ thu nhập, tối ưu tài chính
           </p>
         </motion.div>
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6 bg-dark-bg-secondary/80 backdrop-blur-xl border border-dark-border rounded-2xl shadow-2xl p-1">
+          <TabsList className="grid w-full grid-cols-3 mb-6 bg-white/70 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl p-1">
             <TabsTrigger
               value="monthly"
-              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=inactive]:text-black transition-all"
             >
               <Calculator className="h-4 w-4" />
               Lương tháng
             </TabsTrigger>
             <TabsTrigger
               value="annual"
-              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=inactive]:text-black transition-all"
             >
               <Calendar className="h-4 w-4" />
               Thu nhập năm
             </TabsTrigger>
             <TabsTrigger
               value="growth"
-              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-chart-purple data-[state=active]:to-chart-blue data-[state=active]:text-black data-[state=inactive]:text-dark-secondary-text transition-all"
+              className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=inactive]:text-black transition-all"
             >
               <TrendingUp className="h-4 w-4" />
               Tăng trưởng
@@ -195,10 +193,82 @@ export default function CalculatorPage() {
                     exit={{ opacity: 0 }}
                     className="flex items-center justify-center"
                   >
-                    <PastelGlassCard className="text-center">
-                      <p className="text-dark-secondary-text text-lg">
-                        Nhập thông tin và nhấn tính toán để xem kết quả
-                      </p>
+                    <PastelGlassCard className="text-center p-8">
+                      <div className="space-y-6">
+                        {/* Icon Grid */}
+                        <div className="flex justify-center gap-4 mb-6">
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-3 bg-purple-100 rounded-full"
+                          >
+                            <Calculator className="h-6 w-6 text-purple-600" />
+                          </motion.div>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-3 bg-blue-100 rounded-full"
+                          >
+                            <BarChart3 className="h-6 w-6 text-blue-600" />
+                          </motion.div>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-3 bg-green-100 rounded-full"
+                          >
+                            <PiggyBank className="h-6 w-6 text-green-600" />
+                          </motion.div>
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-3 bg-yellow-100 rounded-full"
+                          >
+                            <Target className="h-6 w-6 text-yellow-600" />
+                          </motion.div>
+                        </div>
+
+                        {/* Typewriter Effect */}
+                        <div className="h-8 flex items-center justify-center">
+                          <TypewriterEffect
+                            words={[
+                              { text: "Nhập thông tin và nhấn tính toán để xem kết quả" },
+                              { text: "Tính toán lương Gross, Net và các loại thuế" },
+                              { text: "Tối ưu hóa thu nhập của bạn ngay hôm nay" },
+                              { text: "Công cụ tính lương chính xác nhất Việt Nam" }
+                            ]}
+                            className="text-xl font-medium"
+                            isOn={false}
+                          />
+                        </div>
+
+                        {/* Quick Stats */}
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-gradient-to-br from-purple-50 to-pink-50 p-3 rounded-lg"
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <Zap className="h-4 w-4 text-purple-600" />
+                              <span className="text-black/60">Nhanh chóng</span>
+                            </div>
+                            <p className="text-black font-semibold">Tính trong 0.3s</p>
+                          </motion.div>
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-gradient-to-br from-blue-50 to-cyan-50 p-3 rounded-lg"
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <TrendingUp className="h-4 w-4 text-blue-600" />
+                              <span className="text-black/60">Chính xác</span>
+                            </div>
+                            <p className="text-black font-semibold">99.9% độ chính xác</p>
+                          </motion.div>
+                        </div>
+                      </div>
                     </PastelGlassCard>
                   </motion.div>
                 )}
@@ -234,7 +304,7 @@ export default function CalculatorPage() {
                   <InsuranceBreakdown result={result} />
 
                   {/* AI Assistant */}
-                  {lastInput && (
+                  {/* {lastInput && (
                     <motion.div
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -246,7 +316,7 @@ export default function CalculatorPage() {
                         className="h-[600px]"
                       />
                     </motion.div>
-                  )}
+                  )} */}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -290,11 +360,18 @@ export default function CalculatorPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <PastelGlassCard className="p-12 text-center">
-                  <Calendar className="h-16 w-16 text-dark-muted-text mx-auto mb-4" />
-                  <p className="text-dark-secondary-text text-lg">
-                    Vui lòng tính lương tháng trước để xem thu nhập năm
-                  </p>
+                <PastelGlassCard className="p-12 flex items-center justify-center flex-col">
+                  <Calendar className="h-16 w-16 text-black/40 mx-auto mb-4" />
+                  <div className="text-black/60 text-lg">
+                    <TypewriterEffect
+                      words={[
+                        { text: "Vui lòng tính lương tháng trước để xem thu nhập năm" },
+                        { text: "Tính lương tháng để tiếp tục tính thu nhập năm" },
+                        { text: "Chuyển sang tab Lương tháng để bắt đầu" }
+                      ]}
+                      isOn={false}
+                    />
+                  </div>
                 </PastelGlassCard>
               </motion.div>
             )}

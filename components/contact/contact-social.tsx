@@ -10,6 +10,8 @@ export function ContactSocial() {
       icon: Facebook,
       url: 'https://facebook.com/salarylens',
       color: 'bg-[#1877F2]',
+      colorText: 'text-white',
+      bg: 'bg-gradient-to-br from-blue-50 to-blue-100',
       followers: '2.5K',
     },
     {
@@ -17,6 +19,8 @@ export function ContactSocial() {
       icon: Linkedin,
       url: 'https://linkedin.com/company/salarylens',
       color: 'bg-[#0A66C2]',
+      colorText: 'text-white',
+      bg: 'bg-gradient-to-br from-blue-50 to-blue-100',
       followers: '1.2K',
     },
     {
@@ -24,6 +28,8 @@ export function ContactSocial() {
       icon: Twitter,
       url: 'https://twitter.com/salarylens',
       color: 'bg-[#1DA1F2]',
+      colorText: 'text-white',
+      bg: 'bg-gradient-to-br from-sky-50 to-sky-100',
       followers: '800',
     },
     {
@@ -31,6 +37,8 @@ export function ContactSocial() {
       icon: Youtube,
       url: 'https://youtube.com/@salarylens',
       color: 'bg-[#FF0000]',
+      colorText: 'text-white',
+      bg: 'bg-gradient-to-br from-red-50 to-red-100',
       followers: '500',
     },
     {
@@ -38,6 +46,8 @@ export function ContactSocial() {
       icon: Github,
       url: 'https://github.com/salarylens',
       color: 'bg-[#181717]',
+      colorText: 'text-white',
+      bg: 'bg-gradient-to-br from-gray-50 to-gray-100',
       followers: '300',
     },
   ];
@@ -60,10 +70,10 @@ export function ContactSocial() {
             transition={{ delay: index * 0.05 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-transparent hover:shadow-lg transition-all text-center"
+            className={`group ${social.bg} rounded-xl p-6 border border-slate-200 hover:border-transparent hover:shadow-lg transition-all text-center`}
           >
             <div className={`w-12 h-12 ${social.color} rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-              <social.icon className="w-6 h-6 text-black" />
+              <social.icon className={`w-6 h-6 ${social.colorText}`} />
             </div>
 
             <h3 className="font-semibold text-slate-900 mb-1">

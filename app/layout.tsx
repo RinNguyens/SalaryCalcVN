@@ -31,6 +31,47 @@ export const metadata: Metadata = {
     description: "Công cụ tính lương thông minh với AI cho người lao động Việt Nam",
     type: "website",
     locale: "vi_VN",
+    siteName: "SalaryLens",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SalaryLens - Công cụ tính lương thông minh",
+      },
+      {
+        url: "/og-image-square.jpg",
+        width: 800,
+        height: 800,
+        alt: "SalaryLens Logo",
+      },
+    ],
+  },
+  icons: {
+    icon: [
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/favicon.ico",
   },
 };
 
