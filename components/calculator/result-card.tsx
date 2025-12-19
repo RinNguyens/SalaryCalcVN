@@ -17,27 +17,26 @@ interface ResultCardProps {
 export function ResultCard({ result, mode }: ResultCardProps) {
   return (
     <div className="space-y-4">
-      {/* Export Button */}
-      <div className="flex justify-end">
-        <ExportButton result={result} mode={mode} />
-      </div>
-
       {/* Main Result */}
-      <GlassCard variant="strong" className="p-6" glow>
+      <GlassCard variant="default" className="p-6" glow>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Wallet className="h-5 w-5 text-black" />
             <h3 className="text-lg font-semibold text-black">
               {mode === 'gross-to-net' ? 'Lương thực nhận' : 'Lương Gross'}
             </h3>
+            <Badge variant='completed'>
+              {mode === 'gross-to-net' ? 'Net' : 'Gross'}
+            </Badge>
           </div>
-          <Badge variant="secondary" className="bg-white/20 text-black border-white/30">
-            {mode === 'gross-to-net' ? 'Net' : 'Gross'}
-          </Badge>
+
+          <div className="flex justify-end">
+            <ExportButton result={result} mode={mode} />
+          </div>
         </div>
 
         <div className="text-center py-6">
-          <div className="text-5xl font-bold text-black">
+          <div className="text-5xl font-bold text-green-600">
             <AnimatedNumber
               value={mode === 'gross-to-net' ? result.net : result.gross}
               formatFn={(val) => formatCurrency(val)}
@@ -117,7 +116,7 @@ export function ResultCard({ result, mode }: ResultCardProps) {
 
           <div className="flex justify-between text-black font-bold">
             <span>Lương Net</span>
-            <span className="text-lg text-green-400">
+            <span className="text-lg text-green-600">
               {formatCurrency(result.net)}
             </span>
           </div>
@@ -135,7 +134,7 @@ export function ResultCard({ result, mode }: ResultCardProps) {
             </div>
             <div className="flex justify-between text-black/90">
               <span>Net/năm</span>
-              <span className="text-green-400 font-semibold">
+              <span className="text-green-600 font-semibold">
                 {formatCurrency(result.yearlyProjection.netYearly)}
               </span>
             </div>

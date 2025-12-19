@@ -86,17 +86,17 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
           >
             <div className="flex items-center gap-2 mb-3">
               <div className="w-8 h-8 rounded-md bg-green-500/30 flex items-center justify-center">
-                <span className="text-green-400 font-bold text-sm">5</span>
+                <span className="text-white font-bold text-sm">5</span>
               </div>
               <div>
-                <div className="text-xs text-green-400 font-medium">Biểu thuế 2026</div>
-                <div className="text-xs text-green-400/70">5 bậc (mới)</div>
+                <div className="text-xs text-green-800 font-medium">Biểu thuế 2026</div>
+                <div className="text-xs text-green-600">5 bậc (mới)</div>
               </div>
             </div>
             <div className="text-3xl font-bold text-black mb-1">
               {formatCurrency(comparison.tax2026)}
             </div>
-            <div className="text-xs text-green-400">Thuế/tháng</div>
+            <div className="text-xs text-green-700">Thuế/tháng</div>
           </motion.div>
         </div>
 
@@ -112,7 +112,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
               <div className="text-sm font-medium text-black/80 mb-1">
                 💰 Tiết kiệm mỗi tháng
               </div>
-              <div className="text-3xl font-bold text-green-400">
+              <div className="text-3xl font-bold text-green-600">
                 {formatCurrency(comparison.savings)}
               </div>
             </div>
@@ -129,7 +129,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
           <div className="pt-4 border-t border-white/10">
             <div className="flex items-center justify-between">
               <span className="text-sm text-black/70">Giảm so với biểu cũ</span>
-              <span className="text-sm font-bold text-green-400">
+              <span className="text-sm font-bold text-green-700">
                 -{formatPercentage(comparison.savingsPercentage)}
               </span>
             </div>

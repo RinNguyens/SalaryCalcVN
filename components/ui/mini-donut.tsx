@@ -1,6 +1,6 @@
 'use client';
 
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 
 interface MiniDonutProps {
   data: number[];
@@ -19,23 +19,21 @@ export function MiniDonut({
   return (
     <div className="flex items-center gap-3">
       <div className="w-12 h-12">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={chartData}
-              dataKey="value"
-              innerRadius={14}
-              outerRadius={20}
-              startAngle={90}
-              endAngle={-270}
-              animationDuration={1000}
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
+        <PieChart width={48} height={48}>
+          <Pie
+            data={chartData}
+            dataKey="value"
+            innerRadius={14}
+            outerRadius={20}
+            startAngle={90}
+            endAngle={-270}
+            animationDuration={1000}
+          >
+            {chartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+            ))}
+          </Pie>
+        </PieChart>
       </div>
       <div className="flex-1">
         <div className="text-xs text-black/60 mb-1">Completion</div>

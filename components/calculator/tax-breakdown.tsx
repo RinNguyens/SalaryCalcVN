@@ -185,7 +185,7 @@ export function TaxBreakdown({
         {/* 2026 Benefit Note */}
         {calculateSavings2026(taxableIncome) > 0 && (
           <div className="p-3 rounded-lg bg-green-500/10 border border-green-400/30">
-            <div className="flex items-center gap-2 text-sm text-green-400">
+            <div className="flex items-center gap-2 text-sm text-green-600">
               <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
               <span>
                 <strong>Tin tốt:</strong> Từ 2026, thuế cao nhất giảm từ 35% → 25%,

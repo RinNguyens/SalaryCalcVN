@@ -16,7 +16,7 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-black/90 border border-white/20 rounded-lg p-3 shadow-xl">
+      <div className="bg-white border border-white/20 rounded-lg p-3 shadow-xl">
         <p className="text-black font-semibold mb-2">{label}</p>
         {payload.map((entry: any, index: number) => {
           const colors: Record<string, string> = {
@@ -27,8 +27,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
           };
 
           return (
-            <p key={index} className="text-sm" style={{ color: colors[entry.dataKey] }}>
-              <span className="font-medium">{entry.name}:</span> {formatCurrency(entry.value)}
+            <p key={index} className="text-sm text-black" style={{ color: colors[entry.dataKey] }}>
+              <span className="font-medium text-black">{entry.name}:</span> {formatCurrency(entry.value)}
             </p>
           );
         })}
@@ -70,7 +70,7 @@ export function SalaryBreakdownChart({ result }: SalaryBreakdownChartProps) {
         Phân bổ lương Gross
       </h3>
 
-      <ResponsiveContainer width="100%" height={350}>
+      <ResponsiveContainer width="100%" aspect={2}>
         <BarChart
           data={data}
           margin={{

@@ -213,26 +213,9 @@ export const CookieConsent = () => {
             <Button
               onClick={acceptEssential}
               variant="outline"
-              className="border-white/20 hover:bg-white/10 text-white px-6 py-3 font-semibold"
+              className="border-white/20 hover:bg-white/10 text-black px-6 py-3 font-semibold"
             >
               Essential Only
-            </Button>
-            <Button
-              onClick={handleCustomize}
-              variant="ghost"
-              className="text-gray-300 hover:text-white px-6 py-3 flex items-center gap-2"
-            >
-              {showDetails ? (
-                <>
-                  <ChevronUp className="h-4 w-4" />
-                  Hide Details
-                </>
-              ) : (
-                <>
-                  <ChevronDown className="h-4 w-4" />
-                  Customize
-                </>
-              )}
             </Button>
           </div>
 

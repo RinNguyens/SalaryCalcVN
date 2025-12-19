@@ -114,7 +114,7 @@ export function SalaryInputForm({
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
-                      4.4 triệu/người/tháng
+                      6.2 triệu/người/tháng (Luật 2026)
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -233,7 +233,7 @@ export function SalaryInputForm({
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
-                      4.4 triệu/người/tháng
+                      6.2 triệu/người/tháng (Luật 2026)
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

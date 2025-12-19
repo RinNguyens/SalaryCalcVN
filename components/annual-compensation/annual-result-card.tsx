@@ -112,7 +112,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
           Phân bổ thu nhập
         </h4>
 
-        <ResponsiveContainer width="100%" height={350}>
+        <ResponsiveContainer width="100%" aspect={2}>
           <BarChart
             data={chartData}
             margin={{
@@ -125,23 +125,21 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
             <XAxis
               dataKey="name"
-              tick={{ fill: 'white', fontSize: 12 }}
+              tick={{ fill: 'black', fontSize: 12 }}
               angle={-45}
               textAnchor="end"
               height={80}
             />
             <YAxis
-              tick={{ fill: 'white' }}
+              tick={{ fill: 'black' }}
               tickFormatter={(value) => `${(value / 1_000_000).toFixed(0)}M`}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 borderRadius: '8px',
-                color: 'white'
               }}
-              labelStyle={{ color: 'white' }}
+              labelStyle={{ color: 'black' }}
               formatter={(value: number, name: string) => [
                 formatCurrency(value),
                 name === 'gross' ? 'Gross' : 'Net'
@@ -207,7 +205,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-black/70">Net:</span>
-              <span className="text-green-400">{formatCurrency(result.regularNetYearly)}</span>
+              <span className="text-green-600">{formatCurrency(result.regularNetYearly)}</span>
             </div>
           </div>
         </GlassCard>
@@ -227,7 +225,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-black/70">Net:</span>
-                <span className="text-green-400">{formatCurrency(result.month13.net)}</span>
+                <span className="text-green-600">{formatCurrency(result.month13.net)}</span>
               </div>
             </div>
           </GlassCard>
@@ -286,7 +284,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
         <div className="grid md:grid-cols-3 gap-4">
           <Card className="bg-green-500/10 border-green-500/20">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-green-400">50% Nhu cầu thiết yếu</CardTitle>
+              <CardTitle className="text-sm text-green-600">50% Nhu cầu thiết yếu</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-black">
@@ -300,7 +298,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
 
           <Card className="bg-blue-500/10 border-blue-500/20">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-blue-400">30% Mong muốn</CardTitle>
+              <CardTitle className="text-sm text-blue-500">30% Mong muốn</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-black">
@@ -314,7 +312,7 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
 
           <Card className="bg-purple-500/10 border-purple-500/20">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-purple-400">20% Tiết kiệm & Đầu tư</CardTitle>
+              <CardTitle className="text-sm text-purple-500">20% Tiết kiệm & Đầu tư</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-black">
@@ -327,8 +325,8 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
           </Card>
         </div>
 
-        <div className="mt-4 p-3 bg-blue-500/10 rounded-lg">
-          <p className="text-sm text-blue-300">
+        <div className="mt-4 p-3 bg-blue-600/10 rounded-lg">
+          <p className="text-sm text-blue-600">
             💡 <strong>Lời khuyên:</strong> Ưu tiên xây dựng quỹ khẩn cấp 3-6 tháng chi tiêu trước khi đầu tư.
             Cân nhắc các kênh đầu tư diversified: chứng chỉ quỹ, bất động sản, vàng...
           </p>

@@ -76,7 +76,7 @@ export function ScenarioComparisonChart({
         Scenario Comparison
       </h3>
 
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" aspect={1.5}>
         <BarChart
           data={chartData}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}

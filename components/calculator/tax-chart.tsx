@@ -53,7 +53,7 @@ export function TaxChart({ result }: TaxChartProps) {
         fill="white"
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
-        className="text-sm font-semibold"
+        className="text-sm font-semibold text-white"
       >
         {`${(percent * 100).toFixed(1)}%`}
       </text>
@@ -66,7 +66,7 @@ export function TaxChart({ result }: TaxChartProps) {
         Phân bổ lương Gross
       </h3>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" aspect={2}>
         <PieChart>
           <Pie
             data={data}

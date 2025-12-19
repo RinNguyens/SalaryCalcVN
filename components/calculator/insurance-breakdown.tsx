@@ -58,8 +58,8 @@ export function InsuranceBreakdown({ result }: InsuranceBreakdownProps) {
       {isCapped && (
         <div className="mb-4 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
           <div className="flex items-start gap-2">
-            <Info className="h-4 w-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-            <div className="text-xs text-yellow-200">
+            <Info className="h-4 w-4 text-yellow-700 mt-0.5 flex-shrink-0" />
+            <div className="text-xs text-yellow-700">
               <p className="font-semibold mb-1">Lương vượt trần đóng bảo hiểm</p>
               <p>
                 Lương tính BH: {formatCurrency(cappedSalary)} (trần: 46.8M cho BHXH/BHYT)

@@ -8,7 +8,7 @@ const glassCardVariants = cva(
     variants: {
       variant: {
         default: [
-          'backdrop-blur-lg bg-white/10',
+          'backdrop-blur-lg bg-white/50',
           'border border-white/20',
           'shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]',
         ],

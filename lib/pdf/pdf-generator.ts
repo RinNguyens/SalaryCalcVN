@@ -217,6 +217,15 @@ export async function downloadPDF(
   const link = document.createElement('a');
   link.href = url;
   link.download = `salary-calculation-${Date.now()}.pdf`;
+  link.style.display = 'none';
+
+  // Add to document body to ensure click works in all browsers
+  document.body.appendChild(link);
   link.click();
-  URL.revokeObjectURL(url);
+
+  // Clean up after a short delay
+  setTimeout(() => {
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, 100);
 }
