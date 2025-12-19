@@ -8,6 +8,14 @@ import { BlogHeader } from './BlogHeader';
 import { Post } from '@/lib/mdx';
 import { MagnifyingGlassIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import { BackgroundElements } from '@/components/ui/background-elements';
+import {
+  trackBlogPostView,
+  trackBlogEngagement,
+  trackSearch,
+  trackFormSubmission,
+  trackContentSharing,
+  trackUserInteraction
+} from '@/lib/analytics';
 
 interface BlogClientProps {
   allPosts: Post[];
@@ -20,12 +28,19 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Track blog page view
+  useEffect(() => {
+    trackBlogPostView('blog_index', 'blog_list', allPosts.length * 5); // Estimate 5 minutes per post
+  }, [allPosts.length]);
+
   useEffect(() => {
     let filtered = allPosts;
 
     // Filter by category
     if (selectedCategory) {
       filtered = filtered.filter(post => post.category === selectedCategory);
+      // Track category filter usage
+      trackUserInteraction(`category_${selectedCategory}`, 'blog_filter');
     }
 
     // Filter by search query
@@ -35,6 +50,8 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
         post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
       );
+      // Track search usage
+      trackSearch(searchQuery, filtered.length);
     }
 
     setFilteredPosts(filtered);
@@ -175,6 +192,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory(null);
+                    trackUserInteraction('clear_filters', 'blog_filter');
                   }}
                   className="px-6 py-2 bg-purple-500 hover:bg-purple-600 text-black font-medium rounded-full transition-colors"
                 >
@@ -205,6 +223,13 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const email = formData.get('email') as string;
+
+                  // Track newsletter signup
+                  trackFormSubmission('newsletter_signup', true);
+                  trackUserInteraction('newsletter_signup_blog', 'engagement');
+
                   // Handle newsletter signup
                   alert('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ gửi email xác nhận.');
                 }}
@@ -212,6 +237,7 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
               >
                 <input
                   type="email"
+                  name="email"
                   placeholder="Nhập email của bạn"
                   required
                   className="flex-1 px-6 py-3 bg-white/10 border border-black/50 rounded-full text-black placeholder-black/60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"

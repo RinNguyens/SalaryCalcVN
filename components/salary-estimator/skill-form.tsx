@@ -151,7 +151,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
             Kỹ năng đã chọn ({skills.length})
           </h3>
           {skills.length === 0 ? (
-            <div className="glass-subtle rounded-xl p-8 text-center">
+            <div className="bg-white/70 backdrop-blur-md border border-slate-200 shadow-md rounded-xl p-8 text-center">
               <Code className="h-12 w-12 text-black/50 mx-auto mb-3" />
               <p className="text-black/60">
                 Chưa có kỹ năng nào được chọn. Hãy bắt đầu thêm kỹ năng bên dưới.
@@ -160,10 +160,9 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
           ) : (
             <div className="space-y-3">
               {skills.map((skill, index) => (
-                <motion.div
+                <div
                   key={skill.id}
-                  variants={itemVariants}
-                  className="glass-subtle rounded-xl p-4"
+                  className="bg-white/80 backdrop-blur-md border border-slate-300 shadow-lg rounded-xl p-4"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -173,7 +172,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                       })()}
                       <div>
                         <h4 className="text-black font-medium">{skill.name}</h4>
-                        <p className="text-black/60 text-sm">
+                        <p className="text-black/70 text-sm">
                           {categoryLabels[skill.category]} • {skill.yearsExperience} năm kinh nghiệm
                         </p>
                       </div>
@@ -230,7 +229,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                       className="mt-1"
                     />
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
@@ -244,7 +243,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
               placeholder="Tìm kiếm kỹ năng..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-black placeholder:text-black/50"
+              className="pl-10 bg-white/10 border-slate-300 text-black placeholder:text-black/50"
             />
           </div>
 
@@ -253,7 +252,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
               variant={selectedCategory === 'all' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setSelectedCategory('all')}
-              className={selectedCategory === 'all' ? 'bg-purple-500 text-black' : 'bg-white/10 border-white/20 text-black hover:bg-white/20'}
+              className={selectedCategory === 'all' ? 'bg-purple-500 text-white' : 'bg-white/40 border-white/40 text-black hover:bg-white/20'}
             >
               Tất cả
             </Button>
@@ -263,7 +262,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                 variant={selectedCategory === category ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedCategory(category as SkillCategory)}
-                className={selectedCategory === category ? 'bg-purple-500 text-black' : 'bg-white/10 border-white/20 text-black hover:bg-white/20'}
+                className={selectedCategory === category ? 'bg-purple-500 text-white' : 'bg-white/40 border-white/40 text-black hover:bg-white/20'}
               >
                 {label}
               </Button>
@@ -289,11 +288,10 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
               };
 
               return (
-                <motion.div
+                <div
                   key={skill.id}
-                  variants={itemVariants}
-                  className={`glass-subtle rounded-xl p-4 cursor-pointer transition-all ${
-                    isAdded ? 'opacity-50' : 'hover:bg-white/10'
+                  className={`bg-white/70 backdrop-blur-md border border-slate-200 shadow-md rounded-xl p-4 cursor-pointer transition-all ${
+                    isAdded ? 'opacity-50' : 'hover:bg-white/90 hover:border-slate-300'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -323,10 +321,13 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                       }}
                       disabled={isAdded}
                     >
-                      <SelectTrigger className="w-40 bg-white/10 border-white/20 text-black">
+                      <SelectTrigger className="w-40 bg-white/10 border-slate-300 text-black">
                         <SelectValue placeholder="Thêm kỹ năng" />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="added" disabled>
+                          Đã thêm
+                        </SelectItem>
                         <SelectItem value="not_added" disabled>
                           Chọn trình độ
                         </SelectItem>
@@ -345,7 +346,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
                       </SelectContent>
                     </Select>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -353,7 +354,7 @@ export function SkillForm({ skills, onUpdate }: SkillFormProps) {
 
         {/* Tips */}
         <motion.div
-          className="mt-6 p-4 glass-subtle rounded-xl"
+          className="mt-6 p-4 bg-white/70 backdrop-blur-md border border-slate-200 shadow-md rounded-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}

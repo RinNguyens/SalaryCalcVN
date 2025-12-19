@@ -30,6 +30,14 @@ import type { SalaryResult, AnnualCompensation, SalaryGrowthProjection, BonusInp
 import type { SalaryFormValues } from '@/lib/validators/salary-schema';
 import { BackgroundElements } from '@/components/ui/background-elements';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
+import {
+  trackSalaryCalculation,
+  trackTaxCalculation,
+  trackFeatureUsage,
+  trackUserInteraction,
+  trackFormSubmission,
+  trackHistoryAccess
+} from '@/lib/analytics';
 
 export default function CalculatorPage() {
   const [activeTab, setActiveTab] = useState('monthly');
@@ -58,6 +66,27 @@ export default function CalculatorPage() {
 
     setResult(newResult);
 
+    // Track salary calculation
+    trackSalaryCalculation(
+      calculationMode === 'gross-to-net' ? values.salary : newResult.gross,
+      calculationMode === 'gross-to-net' ? newResult.net : values.salary,
+      values.region
+    );
+
+    // Track tax calculation details
+    trackTaxCalculation(
+      newResult.monthlyBreakdown.tax,
+      newResult.insurance.bhxh,
+      newResult.insurance.bhyt,
+      newResult.insurance.bhtn
+    );
+
+    // Track calculation mode
+    trackFeatureUsage('calculator', calculationMode);
+
+    // Track form submission success
+    trackFormSubmission('salary_calculation', true);
+
     // Auto-save to history
     saveCalculation(values, newResult, calculationMode);
 
@@ -74,6 +103,15 @@ export default function CalculatorPage() {
     const newAnnualResult = calculateAnnualCompensation(lastInput, bonuses);
     setAnnualResult(newAnnualResult);
 
+    // Track annual compensation calculation
+    trackFeatureUsage('annual_compensation', 'calculate_annual');
+
+    // Track bonuses calculation
+    const totalBonuses = (bonuses.month13Salary || 0) + (bonuses.kpiBonus || 0) + (bonuses.performanceBonus || 0) + (bonuses.otherBonus || 0);
+    if (totalBonuses > 0) {
+      trackFeatureUsage('bonus_calculation', 'include_bonuses');
+    }
+
     setIsCalculating(false);
   };
 
@@ -84,6 +122,12 @@ export default function CalculatorPage() {
 
     const newGrowthResult = calculateSalaryGrowth(input);
     setGrowthResult(newGrowthResult);
+
+    // Track salary growth calculation
+    trackFeatureUsage('salary_growth', 'calculate_growth_projection');
+
+    // Track growth calculation
+    trackUserInteraction(`projection_${input.yearsOfExperience}_years`, 'growth_calculator');
 
     setIsCalculating(false);
   };
@@ -100,8 +144,8 @@ export default function CalculatorPage() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex justify-end gap-3 mb-4">
-            
-            <Link href="/history">
+
+            <Link href="/history" onClick={() => trackHistoryAccess()}>
               <PastelGlassButton
                 variant="secondary"
                 size="sm"
@@ -121,7 +165,14 @@ export default function CalculatorPage() {
         </motion.div>
 
         {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) => {
+            setActiveTab(value);
+            trackFeatureUsage('calculator', `tab_switch_to_${value}`);
+          }}
+          className="w-full"
+        >
           <TabsList className="grid w-full grid-cols-3 mb-6 bg-white/70 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl p-1">
             <TabsTrigger
               value="monthly"
