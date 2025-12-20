@@ -27,15 +27,10 @@ export async function generatePDF(
   result: SalaryResult,
   mode: 'gross-to-net' | 'net-to-gross'
 ): Promise<Blob> {
-  console.log('📄 generatePDF called');
-  console.log('📊 Result:', result);
-  console.log('🎯 Mode:', mode);
-
   const pdf = new jsPDF('p', 'mm', 'a4');
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
 
-  console.log('📐 PDF page dimensions:', { pageWidth, pageHeight });
 
   // Add header
   pdf.setFontSize(24);
@@ -220,30 +215,21 @@ export async function downloadPDF(
   result: SalaryResult,
   mode: 'gross-to-net' | 'net-to-gross'
 ) {
-  console.log('💾 downloadPDF called');
-
   const blob = await generatePDF(result, mode);
-  console.log('🔗 Creating object URL from blob...');
 
   const url = URL.createObjectURL(blob);
-  console.log('🔗 Object URL created:', url);
 
   const fileName = `salary-calculation-${Date.now()}.pdf`;
-  console.log('📝 File name:', fileName);
 
   const link = document.createElement('a');
   link.href = url;
   link.download = fileName;
   link.style.display = 'none';
 
-  console.log('🔗 Link element created, appending to body...');
 
   // Add to document body to ensure click works in all browsers
   document.body.appendChild(link);
-  console.log('👆 Triggering click...');
   link.click();
-
-  console.log('✅ Click triggered, cleaning up...');
 
   // Clean up after a short delay
   setTimeout(() => {

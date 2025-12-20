@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 interface GlassButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost' | 'gradient';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'gradient' | 'success' | 'danger' | 'warning' | 'info' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   icon?: React.ReactNode;
@@ -27,6 +27,11 @@ export function GlassButton({
     secondary: 'bg-white/70 hover:bg-white/90 text-slate-900 border-white/30',
     ghost: 'bg-transparent hover:bg-white/10 text-slate-700 border-transparent',
     gradient: 'bg-gradient-to-r from-blue-500/80 to-purple-500/80 hover:from-blue-600/80 hover:to-purple-600/80 text-black border-white/30',
+    success: 'bg-green-500/80 hover:bg-green-600/80 text-white border-green-400/30',
+    danger: 'bg-red-500/80 hover:bg-red-600/80 text-white border-red-400/30',
+    warning: 'bg-yellow-500/80 hover:bg-yellow-600/80 text-black border-yellow-400/30',
+    info: 'bg-cyan-500/80 hover:bg-cyan-600/80 text-white border-cyan-400/30',
+    outline: 'bg-transparent hover:bg-white/10 text-slate-900 border-slate-300/50 hover:border-slate-400/70',
   };
 
   const sizes = {

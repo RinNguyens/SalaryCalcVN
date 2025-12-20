@@ -43,7 +43,7 @@ export function ExportButton({ result, mode }: ExportButtonProps) {
       onClick={handleExport}
       disabled={isExporting}
       variant='gradient'
-      className='cursor-pointer px-3 py-1.5 text-sm text-white'
+      className='cursor-pointer px-1 py-1 text-sm text-white'
     >
       {isExporting ? (
         <div className='flex gap-2'>

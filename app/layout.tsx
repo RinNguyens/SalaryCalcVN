@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -87,53 +88,55 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
-      <head>
-        {GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}', {
-                  page_title: document.title,
-                  page_location: window.location.href,
-                  content_group1: 'salary-calculator',
-                  custom_map: {
-                    custom_parameter_1: 'metric_name',
-                    custom_parameter_2: 'metric_value',
-                    custom_parameter_3: 'metric_rating',
-                  },
-                  debug_mode: ${GA_DEBUG},
-                  anonymize_ip: true,
-                  send_page_view: false, // We'll handle page views manually
-                });
-              `}
-            </Script>
-          </>
-        )}
-      </head>
-      <body className={inter.className}>
-        <Suspense fallback={null}>
-          <AnalyticsProvider />
-        </Suspense>
-        <PastelBackground />
-        <div className="min-h-screen relative z-10">
-          <Header />
-          <main className="relative z-10">
-            {children}
-          </main>
-          <Footer />
-          <FloatingDonateButton />
-        </div>
-        <Toaster />
-        <CookieConsent />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="vi">
+        <head>
+          {GA_MEASUREMENT_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    content_group1: 'salary-calculator',
+                    custom_map: {
+                      custom_parameter_1: 'metric_name',
+                      custom_parameter_2: 'metric_value',
+                      custom_parameter_3: 'metric_rating',
+                    },
+                    debug_mode: ${GA_DEBUG},
+                    anonymize_ip: true,
+                    send_page_view: false, // We'll handle page views manually
+                  });
+                `}
+              </Script>
+            </>
+          )}
+        </head>
+        <body className={inter.className}>
+          <Suspense fallback={null}>
+            <AnalyticsProvider />
+          </Suspense>
+          <PastelBackground />
+          <div className="min-h-screen relative z-10">
+            <Header />
+            <main className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+            <FloatingDonateButton />
+          </div>
+          <Toaster />
+          <CookieConsent />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
