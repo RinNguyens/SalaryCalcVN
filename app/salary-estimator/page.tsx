@@ -30,12 +30,58 @@ export default function SalaryEstimatorPage() {
   const [estimate, setEstimate] = useState<SalaryEstimate | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
+  // Function to check if a tab is enabled based on data availability
+  const isTabEnabled = (tabId: string): boolean => {
+    switch (tabId) {
+      case 'skills':
+        return true; // Always enabled (starting point)
+      case 'experience':
+        return !!(formData.skills && formData.skills.length > 0);
+      case 'location':
+        return !!(
+          formData.skills &&
+          formData.skills.length > 0 &&
+          formData.experience !== undefined
+        );
+      case 'results':
+        return !!estimate; // Only enabled after calculation
+      default:
+        return false;
+    }
+  };
+
+  // Function to get the next available tab
+  const getNextEnabledTab = (currentTab: string): string => {
+    const tabs = ['skills', 'experience', 'location', 'results'];
+    const currentIndex = tabs.indexOf(currentTab);
+
+    for (let i = currentIndex + 1; i < tabs.length; i++) {
+      if (isTabEnabled(tabs[i])) {
+        return tabs[i];
+      }
+    }
+    return currentTab;
+  };
+
+  // Function to get the previous available tab
+  const getPreviousEnabledTab = (currentTab: string): string => {
+    const tabs = ['skills', 'experience', 'location', 'results'];
+    const currentIndex = tabs.indexOf(currentTab);
+
+    for (let i = currentIndex - 1; i >= 0; i--) {
+      if (isTabEnabled(tabs[i])) {
+        return tabs[i];
+      }
+    }
+    return currentTab;
+  };
+
   const handleSkillsUpdate = (skills: any) => {
     setFormData(prev => ({ ...prev, skills }));
   };
 
-  const handleExperienceUpdate = (experience: any) => {
-    setFormData(prev => ({ ...prev, experience }));
+  const handleExperienceUpdate = (updates: any) => {
+    setFormData(prev => ({ ...prev, ...updates }));
   };
 
   const handleLocationUpdate = (location: any) => {
@@ -175,35 +221,63 @@ export default function SalaryEstimatorPage() {
               { id: 'experience', label: 'Kinh nghiệm', icon: Briefcase },
               { id: 'location', label: 'Địa điểm', icon: MapPin },
               { id: 'results', label: 'Kết quả', icon: Target },
-            ].map((step, index) => (
-              <div key={step.id} className="flex items-center gap-2">
-                <motion.div
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-                    activeTab === step.id
-                      ? 'bg-white/20 text-black'
-                      : 'bg-white/10 text-black/60'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    if (step.id !== 'results' || estimate) {
-                      setActiveTab(step.id);
-                    }
-                  }}
-                >
-                  <step.icon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{step.label}</span>
-                </motion.div>
-                {index < 3 && (
-                  <div className="hidden sm:block text-black/40">→</div>
-                )}
-              </div>
-            ))}
+            ].map((step, index) => {
+              const enabled = isTabEnabled(step.id);
+              const isActive = activeTab === step.id;
+
+              return (
+                <div key={step.id} className="flex items-center gap-2">
+                  <motion.div
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-white/20 text-black shadow-lg scale-105'
+                        : enabled
+                        ? 'bg-white/10 text-black/80 hover:bg-white/15'
+                        : 'bg-white/5 text-black/40 cursor-not-allowed opacity-50'
+                    }`}
+                    whileHover={enabled ? { scale: 1.05 } : { scale: 1 }}
+                    whileTap={enabled ? { scale: 0.95 } : { scale: 1 }}
+                    onClick={() => {
+                      if (enabled) {
+                        setActiveTab(step.id);
+                      }
+                    }}
+                  >
+                    <step.icon className={`h-4 w-4 ${enabled ? '' : 'opacity-50'}`} />
+                    <span className="hidden sm:inline">{step.label}</span>
+                    {!enabled && step.id !== 'results' && (
+                      <span className="text-xs ml-1 opacity-60">(chưa có dữ liệu)</span>
+                    )}
+                    {step.id === 'results' && !estimate && (
+                      <span className="text-xs ml-1 opacity-60">(chưa tính toán)</span>
+                    )}
+                  </motion.div>
+                  {index < 3 && (
+                    <div className={`hidden sm:block transition-colors ${
+                      enabled && isTabEnabled(['experience', 'location', 'results'][index])
+                        ? 'text-black/60'
+                        : 'text-black/20'
+                    }`}>
+                      →
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </motion.div>
 
         {/* Main Content */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) => {
+            // Only allow tab change if the tab is enabled
+            if (isTabEnabled(value)) {
+              setActiveTab(value);
+            }
+          }}
+          className="w-full"
+        >
           <TabsContent value="skills">
             <motion.div
               variants={containerVariants}
@@ -273,10 +347,9 @@ export default function SalaryEstimatorPage() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  const tabs = ['skills', 'experience', 'location'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  if (currentIndex > 0) {
-                    setActiveTab(tabs[currentIndex - 1]);
+                  const previousTab = getPreviousEnabledTab(activeTab);
+                  if (previousTab !== activeTab) {
+                    setActiveTab(previousTab);
                   }
                 }}
                 className="bg-white/10 border-white/20 text-black hover:bg-white/20"
@@ -310,10 +383,9 @@ export default function SalaryEstimatorPage() {
             ) : (
               <Button
                 onClick={() => {
-                  const tabs = ['skills', 'experience', 'location'];
-                  const currentIndex = tabs.indexOf(activeTab);
-                  if (currentIndex < tabs.length - 1) {
-                    setActiveTab(tabs[currentIndex + 1]);
+                  const nextTab = getNextEnabledTab(activeTab);
+                  if (nextTab !== activeTab) {
+                    setActiveTab(nextTab);
                   }
                 }}
                 className="gap-2 bg-white/20 border-white/30 text-black hover:bg-white/30"

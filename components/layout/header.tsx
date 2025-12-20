@@ -36,7 +36,7 @@ export function Header() {
 
   const navItems = [
     { href: '/calculator', label: 'Tính lương', icon: Calculator },
-    { href: '/insights', label: 'Phân tích', icon: TrendingUp },
+    { href: '/salary-estimator', label: 'Ước tính lương', icon: TrendingUp },
     { href: '/blog', label: 'Blog', icon: BookOpen },
   ];
 

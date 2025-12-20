@@ -30,7 +30,7 @@ export function ResultCard({ result, mode }: ResultCardProps) {
             </Badge>
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end items-center">
             <ExportButton result={result} mode={mode} />
           </div>
         </div>

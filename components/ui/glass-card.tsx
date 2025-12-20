@@ -17,10 +17,11 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-xl transition-all duration-300",
+          "rounded-xl transition-all duration-300 relative",
           variants[variant],
           className
         )}
+        style={{ isolation: 'isolate' }}
         {...props}
       />
     );

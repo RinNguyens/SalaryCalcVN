@@ -64,7 +64,7 @@ export function AIAssistant({
 
         setMessages([{
           id: Date.now().toString(),
-          role: 'assistant',
+          role: 'user',
           content,
           timestamp: new Date(),
           suggestions,
@@ -78,7 +78,7 @@ export function AIAssistant({
         // Show error message
         setMessages([{
           id: Date.now().toString(),
-          role: 'assistant',
+          role: 'user',
           content: '⚠️ Xin lỗi, mình gặp lỗi khi khởi tạo. Vui lòng thử lại! 🙏',
           timestamp: new Date(),
         }]);

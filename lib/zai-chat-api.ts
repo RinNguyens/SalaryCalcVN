@@ -21,9 +21,18 @@ interface ZAIChatMessage {
 interface ZAIChatRequest {
   model: string;
   messages: ZAIChatMessage[];
+  do_sample?: boolean;
   stream?: boolean;
+  thinking?: {
+    type: 'enabled' | 'disabled';
+  };
   temperature?: number;
+  top_p?: number;
   max_tokens?: number;
+  tool_stream?: boolean;
+  response_format?: {
+    type: 'text' | 'json_object';
+  };
 }
 
 interface ZAIChatResponse {
@@ -75,48 +84,21 @@ export class ZAIChatAPI {
   }
 
   /**
-   * Vietnamese Salary Assistant System Prompt
-   * Optimized cho SalaryLens
+   * Vietnamese Salary Assistant System Prompt (Shortened)
    */
-  private readonly SYSTEM_PROMPT = `Bạn là trợ lý AI chuyên nghiệp về lương và tài chính cá nhân cho người lao động Việt Nam.
+  private readonly SYSTEM_PROMPT = `Bạn là trợ lý AI về lương và thuế TNCN cho người Việt Nam.
 
-🎯 VAI TRÒ CỦA BẠN:
-- Phân tích kết quả tính lương chi tiết và chính xác
-- Tư vấn tài chính cá nhân phù hợp với người Việt
-- Giải thích rõ ràng các khoản thuế và bảo hiểm (BHXH, BHYT, BHTN)
-- Đưa ra chiến lược tối ưu thuế hợp pháp
-- Hỗ trợ đàm phán lương hiệu quả
-- Tư vấn phát triển sự nghiệp
+VAI TRÒ: Phân tích lương, tư vấn tài chính, giải thích thuế và bảo hiểm, tối ưu thuế hợp pháp.
 
-📋 NGUYÊN TẮC GIAO TIẾP:
-1. LUÔN LUÔN trả lời bằng tiếng Việt
-2. Thân thiện, hữu ích và chuyên nghiệp
-3. Sử dụng emoji phù hợp (không quá nhiều)
-4. Cung cấp số liệu cụ thể và tính toán chính xác
-5. Đưa ra lời khuyên có thể hành động ngay
-6. KHÔNG BAO GIỜ bịa đặt thông tin pháp lý
-7. Trích dẫn luật thuế Việt Nam khi thảo luận về thuế
-8. Thừa nhận khi không chắc chắn về thông tin
+NGUYÊN TẮC:
+- Trả lời bằng tiếng Việt, thân thiện và chuyên nghiệp
+- Số liệu chính xác, format theo chuẩn VN
+- Đưa lời khuyên hành động cụ thể
 
-📊 THÔNG TIN QUAN TRỌNG (Luật Thuế TNCN 2026):
-• Giảm trừ bản thân: 15,500,000 VND/tháng (186M/năm)
-• Giảm trừ người phụ thuộc: 6,200,000 VND/tháng (74.4M/năm)
-• Bảo hiểm bắt buộc:
-  - BHXH: 8% (người lao động)
-  - BHYT: 1.5%
-  - BHTN: 1%
-• Bậc thuế lũy tiến (5 bậc):
-  - Bậc 1 (≤10M): 5%
-  - Bậc 2 (10-30M): 10%
-  - Bậc 3 (30-50M): 20%
-  - Bậc 4 (50-100M): 30%
-  - Bậc 5 (>100M): 35%
-
-⚠️ LƯU Ý QUAN TRỌNG:
-- Luôn chính xác với tính toán số học
-- Format số theo chuẩn Việt Nam (dấu chấm ngăn cách hàng nghìn)
-- Giải thích rõ ràng, dễ hiểu cho người không chuyên
-- Đưa ra ví dụ cụ thể khi cần thiết`;
+THÔNG TIN THUẾ 2026:
+• Giảm trừ: Bản thân 15.5M/tháng, Người phụ thuộc 6.2M/tháng
+• BHXH 8%, BHYT 1.5%, BHTN 1%
+• Bậc thuế: ≤10M (5%), 10-30M (10%), 30-50M (20%), 50-100M (30%), >100M (35%)`;
 
   /**
    * Send message to Z.AI
@@ -131,36 +113,50 @@ export class ZAIChatAPI {
     stream?: boolean;
   }): Promise<{ content: string; suggestions: string[]; usage?: any }> {
     try {
-      // Build context from result
-      const context = this.buildContext(result);
+      // Check if this is the first message
+      const isFirstMessage = messages.length === 1;
 
       // Format messages for Z.AI
-      const zaiMessages: ZAIChatMessage[] = [
-        {
-          role: 'system',
-          content: this.SYSTEM_PROMPT,
-        },
-        {
-          role: 'system',
-          content: `Context hiện tại:\n${context}`,
-        },
-        ...messages.map(msg => ({
+      let zaiMessages: ZAIChatMessage[];
+
+      if (isFirstMessage) {
+        // First time: Send concise prompt with essential context
+        const userMessage = messages[0];
+        zaiMessages = [
+          {
+            role: 'user',
+            content: `${this.SYSTEM_PROMPT}\n\n📊 Lương Gross: ${result.gross.toLocaleString('vi-VN')} VND\n💰 Lương Net: ${result.net.toLocaleString('vi-VN')} VND\n📝 Thuế: ${result.tax.toLocaleString('vi-VN')} VND\n👥 Người phụ thuộc: ${result.dependents}\n\n${userMessage.content}`
+          },
+        ];
+      } else {
+        // Continue chat: Just send conversation messages
+        zaiMessages = messages.map(msg => ({
           role: msg.role === 'user' ? 'user' as const : 'assistant' as const,
           content: msg.content,
-        })),
-      ];
+        }));
+      }
 
       // Call our API route (which calls Z.AI server-side)
       const response = await axios.post<ZAIChatResponse>(
         '/api/ai-chat',
         {
+          model: this.model,
           messages: zaiMessages,
+          stream: true,
+          thinking: {
+            type: 'enabled',
+          },
+          temperature: ZAI_TEMPERATURE,
+          top_p: 0.95,
+          tool_stream: false,
+          response_format: {
+            type: 'text',
+          },
         },
         {
           headers: {
             'Content-Type': 'application/json',
           },
-          timeout: 30000, // 30s timeout
         }
       );
 

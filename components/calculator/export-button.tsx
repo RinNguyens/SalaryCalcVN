@@ -6,6 +6,7 @@ import { Download, Loader2 } from 'lucide-react';
 import { downloadPDF } from '@/lib/pdf/pdf-generator';
 import type { SalaryResult } from '@/types/salary';
 import { useToast } from '@/hooks/use-toast';
+import { GlassButton } from '../ui/glass-button';
 
 interface ExportButtonProps {
   result: SalaryResult;
@@ -38,23 +39,23 @@ export function ExportButton({ result, mode }: ExportButtonProps) {
   };
 
   return (
-    <Button
+    <GlassButton
       onClick={handleExport}
       disabled={isExporting}
-      variant="outline"
-      className="gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-2 border-blue-400/50 text-black font-semibold hover:from-blue-500/20 hover:to-purple-500/20 hover:border-blue-500 hover:shadow-lg hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+      variant='gradient'
+      className='cursor-pointer px-3 py-1.5 text-sm text-white'
     >
       {isExporting ? (
-        <>
+        <div className='flex gap-2'>
           <Loader2 className="h-4 w-4 animate-spin" />
           Đang xuất...
-        </>
+        </div>
       ) : (
-        <>
+        <div className='flex gap-2 p-1 items-center'>
           <Download className="h-4 w-4" />
           Xuất PDF
-        </>
+        </div>
       )}
-    </Button>
+    </GlassButton>
   );
 }

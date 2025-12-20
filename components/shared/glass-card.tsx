@@ -45,11 +45,12 @@ export interface GlassCardProps
     VariantProps<typeof glassCardVariants> {}
 
 const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
-  ({ className, variant, hover, glow, children, ...props }, ref) => {
+  ({ className, variant, hover, glow, children, style, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(glassCardVariants({ variant, hover, glow }), className)}
+        style={{ isolation: 'isolate', ...style }}
         {...props}
       >
         {children}

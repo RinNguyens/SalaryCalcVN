@@ -88,7 +88,7 @@ export default function Home() {
                 asChild
               >
                 <Link href="/calculator">
-                  🚀 Bắt đầu tính toán
+                   Bắt đầu tính toán
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>

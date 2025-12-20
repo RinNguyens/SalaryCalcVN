@@ -1,9 +1,16 @@
 import { onCLS, onINP, onFCP, onLCP, onTTFB, Metric } from 'web-vitals';
 import { GA_MEASUREMENT_ID, GA_DEBUG } from './analytics';
 
+// Safe gtag helper to prevent errors when gtag is not loaded
+function safeGtag(command: string, eventName: string, params?: any) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag(command, eventName, params);
+  }
+}
+
 export function sendToAnalytics(metric: Metric) {
   if (GA_MEASUREMENT_ID && typeof window !== 'undefined') {
-    window.gtag('event', metric.name, {
+    safeGtag('event', metric.name, {
       event_category: 'Web Vitals',
       event_label: metric.id,
       value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
@@ -67,7 +74,7 @@ export function trackPageLoadTime(pageName: string) {
           // Send individual metrics
           Object.entries(metrics).forEach(([metricName, value]) => {
             if (value > 0) {
-              window.gtag('event', `performance_${metricName}`, {
+              safeGtag('event', `performance_${metricName}`, {
                 event_category: 'performance',
                 event_label: pageName,
                 value: Math.round(value),
@@ -78,7 +85,7 @@ export function trackPageLoadTime(pageName: string) {
           });
 
           // Overall page load performance
-          window.gtag('event', 'page_load_time', {
+          safeGtag('event', 'page_load_time', {
             event_category: 'performance',
             event_label: pageName,
             value: Math.round(metrics.totalTime),
@@ -126,7 +133,7 @@ export function trackResourceLoading() {
         if (metrics.count > 0) {
           const avgTime = metrics.totalTime / metrics.count;
 
-          window.gtag('event', 'resource_loading', {
+          safeGtag('event', 'resource_loading', {
             event_category: 'performance',
             event_label: `${type}_avg_load_time`,
             value: Math.round(avgTime),
@@ -134,7 +141,7 @@ export function trackResourceLoading() {
             debug_mode: GA_DEBUG,
           });
 
-          window.gtag('event', 'resource_count', {
+          safeGtag('event', 'resource_count', {
             event_category: 'performance',
             event_label: type,
             value: metrics.count,
@@ -143,7 +150,7 @@ export function trackResourceLoading() {
           });
 
           if (metrics.size !== undefined && metrics.size > 0) {
-            window.gtag('event', 'resource_size', {
+            safeGtag('event', 'resource_size', {
               event_category: 'performance',
               event_label: type,
               value: Math.round(metrics.size / 1024), // Convert to KB
@@ -167,7 +174,7 @@ export function trackInteractionPerformance(element: string, action: string) {
       const endTime = performance.now();
       const responseTime = endTime - startTime;
 
-      window.gtag('event', 'interaction_performance', {
+      safeGtag('event', 'interaction_performance', {
         event_category: 'performance',
         event_label: `${element}_${action}`,
         value: Math.round(responseTime),
@@ -184,7 +191,7 @@ export function trackLongTasks() {
     const observer = new PerformanceObserver((list) => {
       list.getEntries().forEach((entry) => {
         if (entry.duration > 50) { // Tasks longer than 50ms
-          window.gtag('event', 'long_task', {
+          safeGtag('event', 'long_task', {
             event_category: 'performance',
             event_label: 'main_thread_block',
             value: Math.round(entry.duration),
@@ -208,7 +215,7 @@ export function trackMemoryUsage() {
   if (typeof window !== 'undefined' && 'memory' in performance && GA_MEASUREMENT_ID) {
     const memory = (performance as any).memory;
 
-    window.gtag('event', 'memory_usage', {
+    safeGtag('event', 'memory_usage', {
       event_category: 'performance',
       event_label: 'used_js_heap_size',
       value: Math.round(memory.usedJSHeapSize / 1048576), // Convert to MB
@@ -216,7 +223,7 @@ export function trackMemoryUsage() {
       debug_mode: GA_DEBUG,
     });
 
-    window.gtag('event', 'memory_usage', {
+    safeGtag('event', 'memory_usage', {
       event_category: 'performance',
       event_label: 'total_js_heap_size',
       value: Math.round(memory.totalJSHeapSize / 1048576), // Convert to MB
@@ -232,7 +239,7 @@ export function trackNetworkQuality() {
     const connection = (navigator as any).connection;
 
     if (connection) {
-      window.gtag('event', 'network_info', {
+      safeGtag('event', 'network_info', {
         event_category: 'technical',
         event_label: 'effective_type',
         non_interaction: true,
