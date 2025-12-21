@@ -1,9 +1,0 @@
-packages:
-  - .
-
-onlyBuiltDependencies:
-  - '@clerk/shared'
-  - core-js
-  - esbuild
-  - sharp
-  - unrs-resolver
