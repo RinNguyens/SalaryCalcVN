@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
-import { AuthControls } from '@/components/auth-controls';
 import {
   Calculator,
   TrendingUp,
@@ -114,8 +113,6 @@ export function Header() {
                 )}
               </Button>
 
-              {/* Authentication */}
-              <AuthControls />
             </div>
 
             {/* Mobile Menu Button */}
@@ -182,11 +179,6 @@ export function Header() {
                       <Moon className="h-5 w-5" />
                     )}
                   </Button>
-                </div>
-
-                {/* Mobile Authentication */}
-                <div className="mt-2 pt-2 border-t border-white/10">
-                  <AuthControls mobile />
                 </div>
               </nav>
             </motion.div>

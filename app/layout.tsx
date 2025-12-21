@@ -11,7 +11,6 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { Suspense } from "react";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
@@ -87,38 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
       <html lang="vi">
-        <head>
-          {GA_MEASUREMENT_ID && (
-            <>
-              <Script
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-                strategy="afterInteractive"
-              />
-              <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_MEASUREMENT_ID}', {
-                    page_title: document.title,
-                    page_location: window.location.href,
-                    content_group1: 'salary-calculator',
-                    custom_map: {
-                      custom_parameter_1: 'metric_name',
-                      custom_parameter_2: 'metric_value',
-                      custom_parameter_3: 'metric_rating',
-                    },
-                    debug_mode: ${GA_DEBUG},
-                    anonymize_ip: true,
-                    send_page_view: false, // We'll handle page views manually
-                  });
-                `}
-              </Script>
-            </>
-          )}
-        </head>
         <body className={inter.className}>
           <Suspense fallback={null}>
             <AnalyticsProvider />
@@ -136,6 +104,5 @@ export default function RootLayout({
           <CookieConsent />
         </body>
       </html>
-    </ClerkProvider>
   );
 }
