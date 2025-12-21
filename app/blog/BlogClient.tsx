@@ -6,14 +6,12 @@ import { CategoryFilter } from '@/components/blog/category-filter';
 import { SearchBar } from '@/components/blog/search-bar';
 import { BlogHeader } from './BlogHeader';
 import { Post } from '@/lib/mdx';
-import { MagnifyingGlassIcon, SparklesIcon, FilterIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, SparklesIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { BackgroundElements } from '@/components/ui/background-elements';
 import {
   trackBlogPostView,
-  trackBlogEngagement,
   trackSearch,
   trackFormSubmission,
-  trackContentSharing,
   trackUserInteraction
 } from '@/lib/analytics';
 
