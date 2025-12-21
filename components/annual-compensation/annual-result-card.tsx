@@ -140,9 +140,9 @@ export function AnnualResultCard({ result }: AnnualResultCardProps) {
                 borderRadius: '8px',
               }}
               labelStyle={{ color: 'black' }}
-              formatter={(value: number, name: string) => [
-                formatCurrency(value),
-                name === 'gross' ? 'Gross' : 'Net'
+              formatter={(value: number | undefined, name: string | undefined) => [
+                formatCurrency(value || 0),
+                name === 'gross' ? 'Gross' : (name === 'net' ? 'Net' : name || 'Unknown')
               ]}
             />
             <Legend

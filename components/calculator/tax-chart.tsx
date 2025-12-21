@@ -83,7 +83,7 @@ export function TaxChart({ result }: TaxChartProps) {
             ))}
           </Pie>
           <Tooltip
-            formatter={(value: number) => formatCurrency(value)}
+            formatter={(value: number | undefined) => formatCurrency(value || 0)}
             contentStyle={{
               border: '1px solid rgba(255, 255, 255, 0.2)',
               borderRadius: '8px',

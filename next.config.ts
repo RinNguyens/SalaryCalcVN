@@ -34,7 +34,9 @@ const nextConfig: NextConfig = {
   },
 
   // Turbopack configuration
-  turbopack: {},
+  turbopack: {
+    root: process.cwd(),
+  },
 
   // Webpack configuration
   webpack: (config, { dev, isServer }) => {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -12,7 +11,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { Suspense } from "react";
 import "./globals.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {

@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { UserButton, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
 import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
+import { AuthControls } from '@/components/auth-controls';
 import {
   Calculator,
   TrendingUp,
@@ -115,33 +115,7 @@ export function Header() {
               </Button>
 
               {/* Authentication */}
-              <SignedOut>
-                <SignInButton mode="modal">
-                  <Button
-                    className="
-                      bg-gradient-to-r from-purple-400 to-pink-400
-                      hover:from-purple-500 hover:to-pink-500
-                      text-white font-medium
-                      shadow-lg hover:shadow-xl
-                      transition-all duration-200
-                    "
-                  >
-                    <User className="h-4 w-4 mr-2" />
-                    Đăng nhập
-                  </Button>
-                </SignInButton>
-              </SignedOut>
-
-              <SignedIn>
-                <UserButton
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: "w-10 h-10 rounded-full border-2 border-purple-400/30 hover:border-purple-400/50 transition-all"
-                    }
-                  }}
-                />
-              </SignedIn>
+              <AuthControls />
             </div>
 
             {/* Mobile Menu Button */}
@@ -211,35 +185,9 @@ export function Header() {
                 </div>
 
                 {/* Mobile Authentication */}
-                <SignedOut>
-                  <SignInButton mode="modal">
-                    <Button
-                      className="
-                        w-full mt-2
-                        bg-gradient-to-r from-purple-500 to-pink-600
-                        hover:from-purple-600 hover:to-pink-700
-                        text-white font-medium
-                      "
-                    >
-                      <User className="h-4 w-4 mr-2" />
-                      Đăng nhập
-                    </Button>
-                  </SignInButton>
-                </SignedOut>
-
-                <SignedIn>
-                  <div className="mt-2 pt-2 border-t border-white/10">
-                    <UserButton
-                      afterSignOutUrl="/"
-                      appearance={{
-                        elements: {
-                          rootBox: "w-full",
-                          avatarBox: "w-10 h-10 mx-auto"
-                        }
-                      }}
-                    />
-                  </div>
-                </SignedIn>
+                <div className="mt-2 pt-2 border-t border-white/10">
+                  <AuthControls mobile />
+                </div>
               </nav>
             </motion.div>
           )}
