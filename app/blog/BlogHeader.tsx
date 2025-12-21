@@ -86,8 +86,9 @@ export function BlogHeader() {
                 size="icon"
                 className="rounded-full bg-white/10 hover:bg-white/20 text-black"
                 onClick={() => {
-                  const searchInput = document.querySelector('input[placeholder="Tìm kiếm bài viết..."]') as HTMLInputElement;
+                  const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
                   searchInput?.focus();
+                  searchInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }}
               >
                 <Search className="h-5 w-5" />
@@ -160,8 +161,9 @@ export function BlogHeader() {
                       size="icon"
                       className="flex-1 bg-white/10 hover:bg-white/20 text-black"
                       onClick={() => {
-                        const searchInput = document.querySelector('input[placeholder="Tìm kiếm bài viết..."]') as HTMLInputElement;
+                        const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
                         searchInput?.focus();
+                        searchInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         setMobileMenuOpen(false);
                       }}
                     >

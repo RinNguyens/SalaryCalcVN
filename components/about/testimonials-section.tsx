@@ -226,9 +226,9 @@ function TestimonialCard({
           <p className="text-sm text-black/70 truncate">
             {testimonial.role}
           </p>
-          <p className="text-xs text-black/50 truncate">
+          {/* <p className="text-xs text-black/50 truncate">
             {testimonial.company}
-          </p>
+          </p> */}
         </div>
       </div>
 

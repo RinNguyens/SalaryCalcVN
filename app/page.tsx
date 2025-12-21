@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FeaturesSection } from '@/components/landing/features-section';
@@ -10,6 +11,13 @@ import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { BackgroundElements } from '@/components/ui/background-elements';
 import { StatsCard } from '@/components/ui/stats-card';
 import { UserAvatars } from '@/components/ui/user-avatars';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import {
   ArrowRight,
   Play,
@@ -23,6 +31,8 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   // Real user avatars data - using reliable avatar service
   const userReviews = [
     { name: 'Minh Anh', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=minh-anh&backgroundColor=b6e3f4' },
@@ -103,12 +113,10 @@ export default function Home() {
                   px-10 py-6
                   transform hover:scale-105 transition-all duration-300
                 "
-                asChild
+                onClick={() => setIsVideoOpen(true)}
               >
-                <Link href="/calculator?demo=true">
-                  <Play className="mr-2 h-5 w-5" />
-                  Xem demo
-                </Link>
+                <Play className="mr-2 h-5 w-5" />
+                Xem demo
               </Button>
             </div>
           </motion.div>
@@ -165,6 +173,28 @@ export default function Home() {
 
       {/* Features Section */}
       <FeaturesSection />
+
+      {/* Video Demo Dialog */}
+      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>Demo - SalaryCalcVN</DialogTitle>
+            <DialogDescription>
+              Xem video hướng dẫn sử dụng công cụ tính lương
+            </DialogDescription>
+          </DialogHeader>
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
+            <video
+              className="h-full w-full"
+              controls
+              autoPlay
+              src="/video/Millennial_Woman_Working_In_Co_working_Space.mp4"
+            >
+              Trình duyệt của bạn không hỗ trợ video.
+            </video>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Additional sections can be added here */}
     </div>

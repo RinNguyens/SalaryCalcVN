@@ -6,7 +6,7 @@ import { CategoryFilter } from '@/components/blog/category-filter';
 import { SearchBar } from '@/components/blog/search-bar';
 import { BlogHeader } from './BlogHeader';
 import { Post } from '@/lib/mdx';
-import { MagnifyingGlassIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, SparklesIcon, FilterIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { BackgroundElements } from '@/components/ui/background-elements';
 import {
   trackBlogPostView,
@@ -27,6 +27,9 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
   const [filteredPosts, setFilteredPosts] = useState(allPosts);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState<'all' | 'featured' | 'recent'>('all');
+  const [sortBy, setSortBy] = useState<'date' | 'title' | 'readTime'>('date');
+  const [showFilters, setShowFilters] = useState(false);
 
   // Track blog page view
   useEffect(() => {
@@ -35,6 +38,13 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
 
   useEffect(() => {
     let filtered = allPosts;
+
+    // Apply tab filter
+    if (activeTab === 'featured') {
+      filtered = filtered.filter(post => post.featured);
+    } else if (activeTab === 'recent') {
+      filtered = filtered.slice(0, 6); // Show 6 most recent posts
+    }
 
     // Filter by category
     if (selectedCategory) {
@@ -54,8 +64,20 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
       trackSearch(searchQuery, filtered.length);
     }
 
+    // Apply sorting
+    filtered = [...filtered].sort((a, b) => {
+      if (sortBy === 'date') {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      } else if (sortBy === 'title') {
+        return a.title.localeCompare(b.title);
+      } else if (sortBy === 'readTime') {
+        return parseInt(a.readTime) - parseInt(b.readTime);
+      }
+      return 0;
+    });
+
     setFilteredPosts(filtered);
-  }, [allPosts, selectedCategory, searchQuery]);
+  }, [allPosts, selectedCategory, searchQuery, activeTab, sortBy]);
 
   const postCount = filteredPosts.length;
   const featuredCount = filteredPosts.filter(p => p.featured).length;
@@ -110,68 +132,150 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
 
       {/* Main Content */}
       <div className="container mx-auto px-4 pb-20">
-        {/* Search Section */}
-        <div className="mb-12">
-          <div className="max-w-2xl mx-auto">
+        {/* Enhanced Search Section */}
+        <div className="mb-8">
+          <div className="max-w-4xl mx-auto">
             <SearchBar onSearch={(query) => setSearchQuery(query)} />
-            {(searchQuery || selectedCategory) && (
-              <p className="text-center text-black/60 mt-4">
-                Tìm thấy <span className="text-black font-semibold">{postCount}</span> bài viết
-                {selectedCategory && (
-                  <> trong chủ đề <span className="text-black font-semibold">{selectedCategory}</span></>
-                )}
-              </p>
+
+            {/* Search Results Summary */}
+            {(searchQuery || selectedCategory || activeTab !== 'all') && (
+              <div className="mt-4 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <p className="text-black/80">
+                    Tìm thấy <span className="font-bold text-purple-400">{postCount}</span> bài viết
+                    {selectedCategory && (
+                      <> trong chủ đề <span className="font-bold text-purple-400">{selectedCategory}</span></>
+                    )}
+                    {activeTab === 'featured' && (
+                      <> nổi bật</>
+                    )}
+                    {activeTab === 'recent' && (
+                      <> gần đây</>
+                    )}
+                    {searchQuery && (
+                      <> cho "<span className="font-bold text-purple-400">{searchQuery}</span>"</>
+                    )}
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSelectedCategory(null);
+                      setActiveTab('all');
+                      trackUserInteraction('clear_filters', 'blog_filter');
+                    }}
+                    className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm rounded-full transition-colors"
+                  >
+                    Xóa tất cả
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         </div>
 
-        {/* Category Filter */}
-        <div className="mb-12">
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-          />
-        </div>
-
-        {/* Featured Posts */}
-        {featuredCount > 0 && !searchQuery && !selectedCategory && (
-          <section className="mb-20">
-            <div className="max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <SparklesIcon className="w-6 h-6 text-yellow-500" />
-                <h2 className="text-2xl md:text-3xl font-bold text-black">
-                  Bài viết nổi bật
-                </h2>
-                <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-sm rounded-full">
-                  {featuredCount}
+        {/* Tabs and Filter Controls */}
+        <div className="mb-8">
+          {/* Navigation Tabs */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div className="flex bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-1">
+              <button
+                onClick={() => setActiveTab('all')}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                  activeTab === 'all'
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-black shadow-lg'
+                    : 'text-black/60 hover:text-black hover:bg-white/5'
+                }`}
+              >
+                Tất cả bài viết
+                <span className="ml-2 px-2 py-0.5 bg-black/10 rounded-full text-xs">
+                  {allPosts.length}
                 </span>
-              </div>
+              </button>
+              <button
+                onClick={() => setActiveTab('featured')}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                  activeTab === 'featured'
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-black shadow-lg'
+                    : 'text-black/60 hover:text-black hover:bg-white/5'
+                }`}
+              >
+                Nổi bật
+                <span className="ml-2 px-2 py-0.5 bg-black/10 rounded-full text-xs">
+                  {featuredPosts.length}
+                </span>
+              </button>
+              <button
+                onClick={() => setActiveTab('recent')}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                  activeTab === 'recent'
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-black shadow-lg'
+                    : 'text-black/60 hover:text-black hover:bg-white/5'
+                }`}
+              >
+                Gần đây
+                <span className="ml-2 px-2 py-0.5 bg-black/10 rounded-full text-xs">
+                  {Math.min(6, allPosts.length)}
+                </span>
+              </button>
+            </div>
 
-              <div className="grid gap-6 md:grid-cols-2  place-items-center">
-                {featuredPosts.slice(0, 2).map((post) => (
-                  <div key={post.slug} className="w-full max-w-md">
-                    <BlogCard post={post} featured={post.featured} />
+            {/* Filter Toggle */}
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2 px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-200"
+            >
+              <AdjustmentsHorizontalIcon className="w-5 h-5 text-black" />
+              <span className="font-medium text-black">Bộ lọc</span>
+              {(selectedCategory || sortBy !== 'date') && (
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+              )}
+            </button>
+          </div>
+
+          {/* Expandable Filters */}
+          {showFilters && (
+            <div className="mb-6 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Category Filter */}
+                <div>
+                  <h3 className="text-sm font-medium text-black/60 mb-3">Danh mục</h3>
+                  <CategoryFilter
+                    categories={categories}
+                    selectedCategory={selectedCategory}
+                    onCategoryChange={setSelectedCategory}
+                  />
+                </div>
+
+                {/* Sort Options */}
+                <div>
+                  <h3 className="text-sm font-medium text-black/60 mb-3">Sắp xếp theo</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { value: 'date', label: 'Mới nhất' },
+                      { value: 'title', label: 'Tiêu đề' },
+                      { value: 'readTime', label: 'Thời gian đọc' }
+                    ].map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => setSortBy(option.value as any)}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                          sortBy === option.value
+                            ? 'bg-purple-500 text-black'
+                            : 'bg-white/10 text-black/60 hover:bg-white/20 hover:text-black'
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
-          </section>
-        )}
+          )}
+        </div>
 
-        {/* All Posts */}
+        {/* Posts Grid */}
         <section>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-black">
-              {searchQuery || selectedCategory ? 'Kết quả' : 'Tất cả bài viết'}
-            </h2>
-            {postCount > 0 && (
-              <span className="text-sm text-black/60">
-                {postCount} bài viết
-              </span>
-            )}
-          </div>
-
           {postCount > 0 ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredPosts.map((post) => (
@@ -181,23 +285,32 @@ export function BlogClient({ allPosts, featuredPosts, categories }: BlogClientPr
           ) : (
             <div className="text-center py-20">
               <div className="max-w-md mx-auto">
-                <MagnifyingGlassIcon className="w-16 h-16 text-slate-500 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  Không tìm thấy bài viết
+                <MagnifyingGlassIcon className="w-20 h-20 text-black/30 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-black mb-3">
+                  Không tìm thấy bài viết nào
                 </h3>
-                <p className="text-black/60 mb-6">
-                  Thử tìm kiếm với từ khóa khác hoặc chọn chủ đề khác nhé
+                <p className="text-black/60 mb-8 leading-relaxed">
+                  Hãy thử điều chỉnh bộ lọc hoặc tìm kiếm với từ khóa khác để tìm thấy bài viết bạn quan tâm.
                 </p>
-                <button
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedCategory(null);
-                    trackUserInteraction('clear_filters', 'blog_filter');
-                  }}
-                  className="px-6 py-2 bg-purple-500 hover:bg-purple-600 text-black font-medium rounded-full transition-colors"
-                >
-                  Xóa bộ lọc
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSelectedCategory(null);
+                      setActiveTab('all');
+                      trackUserInteraction('clear_filters', 'blog_filter');
+                    }}
+                    className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-black font-medium rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+                  >
+                    Đặt lại bộ lọc
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('all')}
+                    className="px-6 py-3 bg-white/10 hover:bg-white/20 text-black font-medium rounded-full transition-all duration-200 border border-white/20"
+                  >
+                    Xem tất cả bài viết
+                  </button>
+                </div>
               </div>
             </div>
           )}

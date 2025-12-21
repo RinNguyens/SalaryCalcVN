@@ -208,10 +208,9 @@ export function FeaturesSection() {
         <VideoDemoModal
           isOpen={isDemoOpen}
           onClose={() => setIsDemoOpen(false)}
-          videoUrl="/videos/salary-calc-demo.mp4"
-          title="SalaryLens - Demo Overview"
-          description="Tìm hiểu cách sử dụng công cụ tính lương trong 2 phút"
-          thumbnail="/videos/demo-thumbnail.jpg"
+          videoUrl="/video/Millennial_Woman_Working_In_Co_working_Space.mp4"
+          title="SalaryCalcVN - Demo Overview"
+          description="Xem video hướng dẫn sử dụng công cụ tính lương"
           autoPlay
         />
       </div>
