@@ -21,7 +21,8 @@ import {
   DollarSign,
   Award,
   Calculator,
-  RefreshCw
+  RefreshCw,
+  BadgeDollarSign
 } from 'lucide-react';
 import type { EnhancedAnnualCompensation } from '@/lib/calculations/enhanced-annual-compensation';
 import { formatCurrency } from '@/lib/calculations/gross-to-net';
@@ -272,7 +273,7 @@ export function EnhancedAnnualResultCard({ result }: EnhancedAnnualResultCardPro
           {/* Quick Stats */}
           <div className="grid md:grid-cols-4 gap-4">
             <Card className="p-4 text-center">
-              <DollarSign className="h-8 w-8 text-green-600 mx-auto mb-2" />
+              <BadgeDollarSign className="h-8 w-8 text-green-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-black">
                 {formatCurrency(result.totalNetYearly / 12)}
               </p>
@@ -332,7 +333,7 @@ export function EnhancedAnnualResultCard({ result }: EnhancedAnnualResultCardPro
                   labelStyle={{ color: 'black' }}
                   formatter={(value: number | undefined, name: string | undefined) => [
                     formatCurrency((value || 0) * 1000000),
-                    name === 'gross' ? 'Gross' : (name === 'net' ? 'Net' : 'Thuế')
+                    name === 'Thu nhập Gross' ? 'Thu nhập Gross' : (name === 'Thực nhận' ? 'Thực nhận' : 'Thuế')
                   ]}
                 />
                 <Legend />
@@ -489,35 +490,70 @@ export function EnhancedAnnualResultCard({ result }: EnhancedAnnualResultCardPro
 
               <div className="space-y-4">
                 {/* Tax Bracket Distribution */}
-                {[...new Set(result.monthlyBreakdown.map(m => m.taxBracket))].map(bracket => {
-                  const monthsInBracket = result.monthlyBreakdown.filter(m => m.taxBracket === bracket);
-                  const bracketInfo = {
-                    0: { rate: '0%', color: 'bg-gray-100', label: 'Miễn thuế' },
-                    1: { rate: '5%', color: 'bg-green-100', label: 'Bậc 1' },
-                    2: { rate: '10%', color: 'bg-blue-100', label: 'Bậc 2' },
-                    3: { rate: '20%', color: 'bg-yellow-100', label: 'Bậc 3' },
-                    4: { rate: '30%', color: 'bg-orange-100', label: 'Bậc 4' },
-                    5: { rate: '35%', color: 'bg-red-100', label: 'Bậc 5' },
-                  }[bracket];
+                {(() => {
+                  const allBrackets = [...new Set(result.monthlyBreakdown.map(m => m.taxBracket))];
+                  const minBracket = Math.min(...allBrackets.filter(b => b > 0), 0);
+                  const maxBracket = Math.max(...allBrackets);
 
-                  if (!bracketInfo) return null;
+                  return allBrackets.map(bracket => {
+                    const monthsInBracket = result.monthlyBreakdown.filter(m => m.taxBracket === bracket);
+                    const monthNumbers = monthsInBracket.map(m => `T${m.month}`).sort();
+                    const isLowest = bracket > 0 && bracket === minBracket;
+                    const isHighest = bracket === maxBracket && bracket > 0;
 
-                  return (
-                    <div key={bracket} className="flex items-center justify-between p-3 rounded-lg bg-white/50">
-                      <div className="flex items-center gap-3">
-                        <div className={`px-2 py-1 rounded text-xs font-medium ${bracketInfo.color}`}>
-                          {bracketInfo.label}
+                    const bracketInfo = {
+                      0: { rate: '0%', color: 'bg-gray-100', label: 'Miễn thuế' },
+                      1: { rate: '5%', color: 'bg-green-100', label: 'Bậc 1' },
+                      2: { rate: '10%', color: 'bg-blue-100', label: 'Bậc 2' },
+                      3: { rate: '20%', color: 'bg-yellow-100', label: 'Bậc 3' },
+                      4: { rate: '30%', color: 'bg-orange-100', label: 'Bậc 4' },
+                      5: { rate: '35%', color: 'bg-red-100', label: 'Bậc 5' },
+                    }[bracket];
+
+                    if (!bracketInfo) return null;
+
+                    return (
+                      <div key={bracket} className={`flex items-center justify-between p-3 rounded-lg bg-white/50 ${
+                        isLowest ? 'ring-2 ring-green-300' : ''
+                      } ${isHighest ? 'ring-2 ring-red-300' : ''}`}>
+                        <div className="flex items-center gap-3">
+                          <div className={`px-2 py-1 rounded text-xs font-medium ${bracketInfo.color} relative`}>
+                            {bracketInfo.label}
+                            {isLowest && (
+                              <span className="absolute -top-1 -right-1 text-green-600" title="Thấp nhất">
+                                ↓
+                              </span>
+                            )}
+                            {isHighest && (
+                              <span className="absolute -top-1 -right-1 text-red-600" title="Cao nhất">
+                                ↑
+                              </span>
+                            )}
+                          </div>
+                          <div>
+                            <span className="text-sm text-black/70">
+                              {monthsInBracket.length} tháng
+                            </span>
+                            {monthNumbers.length > 0 && (
+                              <span className="text-xs text-black/50 ml-1">
+                                ({monthNumbers.join(', ')})
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <span className="text-sm text-black/70">
-                          {monthsInBracket.length} tháng
-                        </span>
+                        <div className="text-right">
+                          <span className="text-sm font-medium">{bracketInfo.rate}</span>
+                          {isLowest && (
+                            <span className="block text-xs text-green-600">Thấp nhất</span>
+                          )}
+                          {isHighest && (
+                            <span className="block text-xs text-red-600">Cao nhất</span>
+                          )}
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <span className="text-sm font-medium">{bracketInfo.rate}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  });
+                })()}
 
                 {/* Tax Insights */}
                 <Alert className="mt-4">

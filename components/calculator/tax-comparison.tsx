@@ -41,7 +41,7 @@ export function TaxComparison({ taxableIncome, className = '' }: TaxComparisonPr
                 <h3 className="text-lg font-bold text-black">
                   Tiết kiệm với biểu thuế mới 2026
                 </h3>
-                <Badge className="bg-green-500/20 text-green-400 border-green-400/30 text-xs">
+                <Badge className="bg-green-500 text-white border-green-400/30 text-xs">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Mới
                 </Badge>

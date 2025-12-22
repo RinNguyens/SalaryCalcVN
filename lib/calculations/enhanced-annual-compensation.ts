@@ -128,7 +128,7 @@ export function calculateEnhancedAnnualCompensation(
   );
 
   // Create enhanced breakdown
-  const enhancedBreakdown = createEnhancedBreakdown(bonuses, monthlyBreakdown);
+  const enhancedBreakdown = createEnhancedBreakdown(bonuses, monthlyBreakdown, monthlyInput);
 
   // Total calculations
   const totalGrossYearly = regularGrossYearly + totalBonuses;
@@ -381,27 +381,27 @@ function createMonthlyBreakdown(
       salary: month.gross,
       dependents: monthlyInput.dependents,
       region: monthlyInput.region,
+      year: monthlyInput.year,
     });
     month.net = monthResult.net;
     month.tax = monthResult.tax.tax;
     month.taxBracket = monthResult.tax.bracket;
 
-    // Calculate tax for each bonus
-    month.bonuses.forEach(bonus => {
-      const bonusResult = calculateNetFromGross({
-        salary: bonus.amount,
-        dependents: 0, // No deductions for bonuses
-        region: monthlyInput.region,
+    // Assign tax to each bonus proportionally (not calculate separately)
+    if (month.bonuses.length > 0) {
+      const totalBonusAmount = month.bonuses.reduce((sum, b) => sum + b.amount, 0);
+      month.bonuses.forEach(bonus => {
+        // Proportionally distribute tax based on bonus amount
+        bonus.tax = Math.round((bonus.amount / totalBonusAmount) * month.tax);
       });
-      bonus.tax = bonusResult.tax.tax;
-    });
+    }
   });
 
   return monthlyBreakdown;
 }
 
 /**
- * Calculate year-end reconciliation
+ * Calculate year-end reconciliation according to official 2026 tax methodology
  */
 function calculateYearEndReconciliation(
   monthlyBreakdown: any[],
@@ -409,20 +409,31 @@ function calculateYearEndReconciliation(
 ) {
   const taxPaidMonthly = monthlyBreakdown.reduce((sum, month) => sum + month.tax, 0);
 
-  // Calculate yearly tax properly
+  // Calculate total gross income for the year (includes all bonuses and salaries)
   const totalGrossYearly = monthlyBreakdown.reduce((sum, month) => sum + month.gross, 0);
-  const totalInsuranceYearly = monthlyBreakdown.reduce((sum, month) => {
-    const insurance = calculateInsurance(month.gross, monthlyInput.region);
-    return sum + insurance.total;
-  }, 0);
 
-  const deductionRates = getDeductions(2026);
+  // Calculate total insurance for the year
+  // IMPORTANT: Insurance is only calculated on base salary (basic monthly salary), not bonuses
+  // This is according to Vietnamese tax law
+  const baseSalary = monthlyInput.salary;
+  const monthlyInsurance = calculateInsurance(baseSalary, monthlyInput.region);
+  const totalInsuranceYearly = monthlyInsurance.total * 12;
+
+  // Get correct deduction rates for the year
+  const year = monthlyInput.year || 2026;
+  const deductionRates = getDeductions(year);
   const totalDeductionsYearly = (deductionRates.PERSONAL + (monthlyInput.dependents * deductionRates.DEPENDENT)) * 12;
 
+  // Calculate yearly taxable income according to 2026 tax law
+  // Formula: Total Gross - Total Insurance (on base salary only) - Total Deductions
   const yearlyTaxableIncome = Math.max(0, totalGrossYearly - totalInsuranceYearly - totalDeductionsYearly);
-  const taxDueYearly = calculateTax(yearlyTaxableIncome).tax;
 
-  const taxRefund = taxPaidMonthly - taxDueYearly; // Positive = refund, Negative = owe more
+  // Calculate tax due for the year using 2026 progressive rates
+  const taxDueYearly = calculateTax(yearlyTaxableIncome, year).tax;
+
+  // Calculate refund amount
+  // Positive = tax refund, Negative = owe additional tax
+  const taxRefund = taxPaidMonthly - taxDueYearly;
 
   return {
     taxPaidMonthly,
@@ -497,7 +508,9 @@ function analyzeTaxOptimization(
 /**
  * Create enhanced bonus breakdown
  */
-function createEnhancedBreakdown(bonuses: Record<string, number>, monthlyBreakdown: Array<{
+function createEnhancedBreakdown(
+  bonuses: Record<string, number>,
+  monthlyBreakdown: Array<{
     month: number;
     gross: number;
     bonuses: Array<{
@@ -508,7 +521,9 @@ function createEnhancedBreakdown(bonuses: Record<string, number>, monthlyBreakdo
     net: number;
     tax: number;
     taxBracket: number;
-  }>) {
+  }>,
+  monthlyInput: SalaryInput
+) {
   // Find month 13 calculation
   const month13Calc = monthlyBreakdown.find(m =>
     m.bonuses.some(b => b.type === 'Lương tháng 13')
@@ -517,7 +532,7 @@ function createEnhancedBreakdown(bonuses: Record<string, number>, monthlyBreakdo
   return {
     month13: {
       gross: bonuses.month13,
-      net: month13Calc ? month13Calc.net - calculateNetFromGross({ salary: monthlyBreakdown[0].gross - (bonuses.month13 || 0), dependents: 0, region: 'I' }).net : 0,
+      net: month13Calc ? month13Calc.net - calculateNetFromGross({ salary: monthlyBreakdown[0].gross - (bonuses.month13 || 0), dependents: 0, region: monthlyInput.region, year: monthlyInput.year }).net : 0,
       tax: month13Calc?.bonuses.find(b => b.type === 'Lương tháng 13')?.tax || 0,
     },
     tet: {
