@@ -1,16 +1,36 @@
 import * as z from 'zod';
 
 export const salaryFormSchema = z.object({
-  salary: z.coerce
-    .number()
-    .min(1_000_000, 'Lương tối thiểu 1 triệu đồng')
-    .max(500_000_000, 'Vui lòng kiểm tra lại số tiền'),
+  salary: z
+    .union([z.number(), z.string(), z.undefined()])
+    .transform((val) => {
+      if (val === '' || val === undefined || val === null) return 0;
+      const num = typeof val === 'string' ? parseInt(val.replace(/[^\d]/g, '')) : val;
+      return isNaN(num) ? 0 : num;
+    })
+    .refine((val) => val >= 1_000_000, {
+      message: 'Lương tối thiểu 1 triệu đồng'
+    })
+    .refine((val) => val <= 500_000_000, {
+      message: 'Vui lòng kiểm tra lại số tiền'
+    }),
 
-  dependents: z.coerce
-    .number()
-    .int('Số người phụ thuộc phải là số nguyên')
-    .min(0, 'Số người phụ thuộc không thể âm')
-    .max(20, 'Vui lòng kiểm tra lại số người phụ thuộc'),
+  dependents: z
+    .union([z.number(), z.string()])
+    .transform((val) => {
+      if (val === '' || val === undefined || val === null) return 0;
+      const num = typeof val === 'string' ? parseInt(val) : val;
+      return isNaN(num) ? 0 : num;
+    })
+    .refine((val) => Number.isInteger(val), {
+      message: 'Số người phụ thuộc phải là số nguyên'
+    })
+    .refine((val) => val >= 0, {
+      message: 'Số người phụ thuộc không thể âm'
+    })
+    .refine((val) => val <= 20, {
+      message: 'Vui lòng kiểm tra lại số người phụ thuộc'
+    }),
 
   region: z.enum(['I', 'II', 'III', 'IV']),
 
@@ -22,11 +42,16 @@ export const salaryFormSchema = z.object({
     .optional()
     .default(2026), // Default to 2026 for the new tax rates
 
-  exemptions: z.coerce
-    .number()
-    .min(0, 'Các khoản miễn thuế không thể âm')
-    .optional()
-    .default(0),
+  exemptions: z
+    .union([z.number(), z.string()])
+    .transform((val) => {
+      if (val === '' || val === undefined || val === null) return 0;
+      const num = typeof val === 'string' ? parseInt(val.replace(/[^\d]/g, '')) : val;
+      return isNaN(num) ? 0 : num;
+    })
+    .refine((val) => val >= 0, {
+      message: 'Các khoản miễn thuế không thể âm'
+    }),
 });
 
 export type SalaryFormValues = z.infer<typeof salaryFormSchema>;

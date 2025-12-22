@@ -57,21 +57,21 @@ export const TAX_BRACKETS_2026 = [
     label: 'Bậc 2: 10-30 triệu'
   },
   {
-    max: 50_000_000,
+    max: 60_000_000,
     rate: 0.20,
     deduction: 3_500_000,
-    label: 'Bậc 3: 30-50 triệu'
+    label: 'Bậc 3: 30-60 triệu'
   },
   {
     max: 100_000_000,
     rate: 0.30,
-    deduction: 8_500_000,
-    label: 'Bậc 4: 50-100 triệu'
+    deduction: 9_500_000,
+    label: 'Bậc 4: 60-100 triệu'
   },
   {
     max: Infinity,
     rate: 0.35,
-    deduction: 13_500_000,
+    deduction: 14_500_000,
     label: 'Bậc 5: >100 triệu'
   },
 ] as const;

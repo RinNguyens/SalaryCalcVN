@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
 import {
@@ -113,6 +114,27 @@ export function Header() {
                 )}
               </Button>
 
+              {/* Authentication */}
+              <SignedOut>
+                <Link href="/sign-in">
+                  <Button
+                    variant="ghost"
+                    className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 hover:text-white"
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    Đăng nhập
+                  </Button>
+                </Link>
+              </SignedOut>
+              <SignedIn>
+                <UserButton
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-10 h-10"
+                    }
+                  }}
+                />
+              </SignedIn>
             </div>
 
             {/* Mobile Menu Button */}
@@ -179,6 +201,32 @@ export function Header() {
                       <Moon className="h-5 w-5" />
                     )}
                   </Button>
+                </div>
+
+                {/* Mobile Authentication */}
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <SignedOut>
+                    <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                      <Button
+                        className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
+                      >
+                        <User className="h-4 w-4 mr-2" />
+                        Đăng nhập
+                      </Button>
+                    </Link>
+                  </SignedOut>
+                  <SignedIn>
+                    <div className="flex items-center justify-between px-4 py-3 bg-white/5 rounded-lg">
+                      <span className="text-black/80 font-medium">Tài khoản</span>
+                      <UserButton
+                        appearance={{
+                          elements: {
+                            avatarBox: "w-10 h-10"
+                          }
+                        }}
+                      />
+                    </div>
+                  </SignedIn>
                 </div>
               </nav>
             </motion.div>

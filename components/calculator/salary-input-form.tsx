@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { FormattedCurrencyInput } from '@/components/ui/formatted-currency-input';
 import {
   Select,
   SelectContent,
@@ -43,8 +44,9 @@ export function SalaryInputForm({
 }: SalaryInputFormProps) {
   const form = useForm<SalaryFormValues>({
     resolver: zodResolver(salaryFormSchema) as any,
+    mode: 'onSubmit', // Ensure validation runs on submit
     defaultValues: {
-      salary: 20_000_000,
+      salary: 0, // Start with 0, will be validated on submit
       dependents: 0,
       region: 'I' as const,
       exemptions: 0,
@@ -68,9 +70,22 @@ export function SalaryInputForm({
         <TabsContent value="gross-to-net">
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit((data) =>
-                onCalculate(data, 'gross-to-net')
-              )}
+              onSubmit={form.handleSubmit((data) => {
+                // Additional validation to ensure salary is a valid number
+                if (!data.salary || data.salary === 0) {
+                  form.setError('salary', {
+                    message: 'Vui lòng nhập mức lương'
+                  });
+                  return;
+                }
+                if (data.salary < 1000000) {
+                  form.setError('salary', {
+                    message: 'Lương tối thiểu 1 triệu đồng'
+                  });
+                  return;
+                }
+                onCalculate(data, 'gross-to-net');
+              })}
               className="space-y-6"
             >
               <FormField
@@ -79,14 +94,18 @@ export function SalaryInputForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-black">
-                      Lương Gross (VNĐ)
+                      Lương Gross (VND)
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
+                      <FormattedCurrencyInput
+                        value={field.value}
+                        onChange={(value) => {
+                          field.onChange(value);
+                          // Trigger validation when value changes
+                          field.onBlur();
+                        }}
                         placeholder="20,000,000"
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
-                        {...field}
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
@@ -106,11 +125,11 @@ export function SalaryInputForm({
                       Số người phụ thuộc
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
+                      <FormattedCurrencyInput
+                        value={field.value}
+                        onChange={field.onChange}
                         placeholder="0"
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
-                        {...field}
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
@@ -155,14 +174,14 @@ export function SalaryInputForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-black">
-                      Miễn thuế (VNĐ)
+                      Phụ cấp (VND)
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
+                      <FormattedCurrencyInput
+                        value={field.value}
+                        onChange={field.onChange}
                         placeholder="0"
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
-                        {...field}
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
@@ -187,9 +206,22 @@ export function SalaryInputForm({
         <TabsContent value="net-to-gross">
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit((data) =>
-                onCalculate(data, 'net-to-gross')
-              )}
+              onSubmit={form.handleSubmit((data) => {
+                // Additional validation to ensure salary is a valid number
+                if (!data.salary || data.salary === 0) {
+                  form.setError('salary', {
+                    message: 'Vui lòng nhập mức lương'
+                  });
+                  return;
+                }
+                if (data.salary < 1000000) {
+                  form.setError('salary', {
+                    message: 'Lương tối thiểu 1 triệu đồng'
+                  });
+                  return;
+                }
+                onCalculate(data, 'net-to-gross');
+              })}
               className="space-y-6"
             >
               <FormField
@@ -198,14 +230,18 @@ export function SalaryInputForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-black">
-                      Lương Net mong muốn (VNĐ)
+                      Lương Net (VND)
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
+                      <FormattedCurrencyInput
+                        value={field.value}
+                        onChange={(value) => {
+                          field.onChange(value);
+                          // Trigger validation when value changes
+                          field.onBlur();
+                        }}
                         placeholder="15,000,000"
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
-                        {...field}
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">
@@ -274,14 +310,14 @@ export function SalaryInputForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-black">
-                      Miễn thuế (VNĐ)
+                      Miễn thuế (VND)
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
+                      <FormattedCurrencyInput
+                        value={field.value}
+                        onChange={field.onChange}
                         placeholder="0"
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
-                        {...field}
                       />
                     </FormControl>
                     <FormDescription className="text-black/70">

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
@@ -86,6 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="vi">
       <head>
         {GA_MEASUREMENT_ID && (
@@ -134,5 +138,6 @@ export default function RootLayout({
         <CookieConsent />
       </body>
     </html>
+    </ClerkProvider>
   );
 }

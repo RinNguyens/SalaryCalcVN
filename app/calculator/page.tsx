@@ -17,6 +17,10 @@ import { TaxBreakdown } from '@/components/calculator/tax-breakdown';
 import { TaxComparison } from '@/components/calculator/tax-comparison';
 import { AnnualInputForm } from '@/components/annual-compensation/annual-input-form';
 import { AnnualResultCard } from '@/components/annual-compensation/annual-result-card';
+import { EnhancedAnnualInputForm } from '@/components/annual-compensation/enhanced-annual-input-form';
+import { EnhancedAnnualResultCard } from '@/components/annual-compensation/enhanced-annual-result-card';
+import { SimplifiedAnnualInputForm } from '@/components/annual-compensation/simplified-annual-input-form';
+import { calculateEnhancedAnnualCompensation, type EnhancedAnnualCompensation, type EnhancedBonusInput } from '@/lib/calculations/enhanced-annual-compensation';
 import { GrowthInputForm } from '@/components/salary-growth/growth-input-form';
 import { GrowthResultCard } from '@/components/salary-growth/growth-result-card';
 import { calculateNetFromGross } from '@/lib/calculations/gross-to-net';
@@ -26,7 +30,7 @@ import { calculateSalaryGrowth } from '@/lib/calculations/salary-growth';
 import { saveCalculation } from '@/lib/storage/local-storage';
 import { AIAssistant } from '@/components/calculator/ai-assistant';
 import { convertToCalculatorResult } from '@/lib/utils/ai-helper';
-import type { SalaryResult, AnnualCompensation, SalaryGrowthProjection, BonusInput, SalaryGrowthInput } from '@/types/salary';
+import type { SalaryResult, AnnualCompensation, SalaryGrowthProjection, BonusInput, SalaryGrowthInput, SalaryInput } from '@/types/salary';
 import type { SalaryFormValues } from '@/lib/validators/salary-schema';
 import { BackgroundElements } from '@/components/ui/background-elements';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
@@ -43,10 +47,11 @@ export default function CalculatorPage() {
   const [activeTab, setActiveTab] = useState('monthly');
   const [result, setResult] = useState<SalaryResult | null>(null);
   const [annualResult, setAnnualResult] = useState<AnnualCompensation | null>(null);
+  const [enhancedAnnualResult, setEnhancedAnnualResult] = useState<EnhancedAnnualCompensation | null>(null);
   const [growthResult, setGrowthResult] = useState<SalaryGrowthProjection | null>(null);
   const [mode, setMode] = useState<'gross-to-net' | 'net-to-gross'>('gross-to-net');
   const [isCalculating, setIsCalculating] = useState(false);
-  const [lastInput, setLastInput] = useState<SalaryFormValues | null>(null);
+  const [lastInput, setLastInput] = useState<SalaryInput | null>(null);
 
   const handleCalculate = async (
     values: SalaryFormValues,
@@ -54,23 +59,30 @@ export default function CalculatorPage() {
   ) => {
     setIsCalculating(true);
     setMode(calculationMode);
-    setLastInput(values);
+
+    // Ensure salary is a number (should already be validated by zod)
+    const validatedValues = {
+      ...values,
+      salary: values.salary || 0, // Fallback, though validation should prevent this
+    };
+
+    setLastInput(validatedValues);
 
     // Simulate a small delay for better UX
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     const newResult =
       calculationMode === 'gross-to-net'
-        ? calculateNetFromGross(values)
-        : calculateGrossFromNet(values);
+        ? calculateNetFromGross(validatedValues)
+        : calculateGrossFromNet(validatedValues);
 
     setResult(newResult);
 
     // Track salary calculation
     trackSalaryCalculation(
-      calculationMode === 'gross-to-net' ? values.salary : newResult.gross,
-      calculationMode === 'gross-to-net' ? newResult.net : values.salary,
-      values.region
+      calculationMode === 'gross-to-net' ? validatedValues.salary : newResult.gross,
+      calculationMode === 'gross-to-net' ? newResult.net : validatedValues.salary,
+      validatedValues.region
     );
 
     // Track tax calculation details
@@ -88,7 +100,7 @@ export default function CalculatorPage() {
     trackFormSubmission('salary_calculation', true);
 
     // Auto-save to history
-    saveCalculation(values, newResult, calculationMode);
+    saveCalculation(validatedValues, newResult, calculationMode);
 
     setIsCalculating(false);
   };
@@ -110,6 +122,27 @@ export default function CalculatorPage() {
     const totalBonuses = (bonuses.month13Salary || 0) + (bonuses.kpiBonus || 0) + (bonuses.performanceBonus || 0) + (bonuses.otherBonus || 0);
     if (totalBonuses > 0) {
       trackFeatureUsage('bonus_calculation', 'include_bonuses');
+    }
+
+    setIsCalculating(false);
+  };
+
+  const handleEnhancedAnnualCalculate = async (enhancedBonuses: EnhancedBonusInput) => {
+    if (!lastInput || !result) return;
+
+    setIsCalculating(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    const newEnhancedResult = calculateEnhancedAnnualCompensation(lastInput, enhancedBonuses);
+    setEnhancedAnnualResult(newEnhancedResult);
+
+    // Track enhanced annual compensation calculation
+    trackFeatureUsage('enhanced_annual_compensation', 'calculate_with_optimization');
+
+    // Track tax optimization
+    if (newEnhancedResult.taxOptimization.optimalStrategy.potentialSavings > 0) {
+      trackFeatureUsage('tax_optimization', 'potential_savings_detected');
     }
 
     setIsCalculating(false);
@@ -354,20 +387,6 @@ export default function CalculatorPage() {
                   {/* Insurance Breakdown */}
                   <InsuranceBreakdown result={result} />
 
-                  {/* AI Assistant */}
-                  {/* {lastInput && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 50 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      <AIAssistant
-                        result={convertToCalculatorResult(result, lastInput.dependents)}
-                        variant="panel"
-                        className="h-[600px]"
-                      />
-                    </motion.div>
-                  )} */}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -383,18 +402,32 @@ export default function CalculatorPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <PastelGlassCard glow="purple">
-                    <AnnualInputForm
-                      monthlySalary={result.gross}
-                      dependents={lastInput?.dependents || 0}
-                      region={lastInput?.region || 'I'}
-                      onCalculate={handleAnnualCalculate}
+                    <SimplifiedAnnualInputForm
+                      monthlyInput={lastInput!}
+                      monthlyNet={result.net}
+                      monthlyGross={result.gross}
+                      onCalculate={handleEnhancedAnnualCalculate}
                       isLoading={isCalculating}
                     />
                   </PastelGlassCard>
                 </motion.div>
 
                 <AnimatePresence>
-                  {annualResult && (
+                  {enhancedAnnualResult && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <EnhancedAnnualResultCard result={enhancedAnnualResult} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Fallback to original if enhanced not available */}
+                <AnimatePresence>
+                  {!enhancedAnnualResult && annualResult && (
                     <motion.div
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -416,8 +449,8 @@ export default function CalculatorPage() {
                   <div className="text-black/60 text-lg">
                     <TypewriterEffect
                       words={[
-                        { text: "Vui lòng tính lương tháng trước để xem thu nhập năm" },
-                        { text: "Tính lương tháng để tiếp tục tính thu nhập năm" },
+                        { text: "Phân tích thu nhập năm 2026 với tối ưu thuế" },
+                        { text: "Tính lương tháng để tiếp tục phân tích thu nhập năm" },
                         { text: "Chuyển sang tab Lương tháng để bắt đầu" }
                       ]}
                       isOn={false}
