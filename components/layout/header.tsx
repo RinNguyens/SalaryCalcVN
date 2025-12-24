@@ -15,7 +15,8 @@ import {
   X,
   Moon,
   Sun,
-  Search
+  Search,
+  FileText
 } from 'lucide-react';
 
 export function Header() {
@@ -38,6 +39,7 @@ export function Header() {
   const navItems = [
     { href: '/calculator', label: 'Tính lương', icon: Calculator },
     { href: '/salary-estimator', label: 'Ước tính lương', icon: TrendingUp },
+    { href: '/tax-settlement', label: 'Quyết toán thuế', icon: FileText },
     { href: '/blog', label: 'Blog', icon: BookOpen },
   ];
 
