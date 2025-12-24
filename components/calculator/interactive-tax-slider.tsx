@@ -105,10 +105,10 @@ export function InteractiveTaxSlider() {
                 width: `${widthPercentage}%`,
                 minWidth: '120px',
               }}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -2 }}
+              transition={{ delay: index * 0.05, duration: 0.2 }}
+              whileHover={isCurrent ? { y: -1 } : {}}
             >
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div className="flex items-center gap-2">
@@ -131,9 +131,9 @@ export function InteractiveTaxSlider() {
                 {isCurrent && (
                   <motion.div
                     className="flex items-center gap-1 text-xs font-bold text-black bg-white/20 px-3 py-1.5 rounded-full"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2, type: 'spring' }}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <Activity className="h-3 w-3" />
                     Bạn ở đây
@@ -153,8 +153,9 @@ export function InteractiveTaxSlider() {
       {/* Current Tier Info */}
       <motion.div
         key={currentTier}
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ opacity: 0.9 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15 }}
         className="p-5 rounded-lg border-2"
         style={{
           backgroundColor: `${currentBracket.color}15`,

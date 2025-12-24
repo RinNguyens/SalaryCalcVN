@@ -31,11 +31,11 @@ export function LayoutTextFlip({
       <AnimatePresence mode="wait">
         <motion.span
           key={currentIndex}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          exit={{ opacity: 0, y: -10 }}
           transition={{
-            duration: 0.4,
+            duration: 0.25,
             ease: 'easeInOut',
           }}
           className={textClassName}

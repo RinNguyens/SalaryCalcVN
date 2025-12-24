@@ -47,7 +47,7 @@ export function GlassModal({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className={cn(
                 'relative w-full rounded-2xl',
-                'bg-white/90 backdrop-blur-2xl backdrop-saturate-[180%]',
+                'bg-white/95 backdrop-blur-sm',
                 'border border-white/30',
                 'shadow-2xl',
                 sizes[size]

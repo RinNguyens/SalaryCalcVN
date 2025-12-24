@@ -27,7 +27,7 @@ export function MiniDonut({
             outerRadius={20}
             startAngle={90}
             endAngle={-270}
-            animationDuration={1000}
+            animationDuration={0}
           >
             {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />

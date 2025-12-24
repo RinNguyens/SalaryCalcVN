@@ -8,9 +8,9 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
   ({ className, variant = "default", ...props }, ref) => {
     const variants = {
-      default: "backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl",
-      subtle: "backdrop-blur-md bg-white/5 border border-white/10 shadow-lg",
-      strong: "backdrop-blur-xl bg-white/20 border border-white/30 shadow-2xl",
+      default: "backdrop-blur-sm bg-white/20 border border-white/20 shadow-2xl",
+      subtle: "backdrop-blur-[2px] bg-white/5 border border-white/10 shadow-lg",
+      strong: "backdrop-blur-sm bg-white/30 border border-white/30 shadow-2xl",
     };
 
     return (

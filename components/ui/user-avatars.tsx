@@ -21,10 +21,10 @@ export function UserAvatars({ users, count }: UserAvatarsProps) {
           <motion.div
             key={index}
             className="relative group"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8 + index * 0.1 }}
-            whileHover={{ zIndex: 10, scale: 1.1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 + index * 0.05, duration: 0.2 }}
+            whileHover={{ zIndex: 10, scale: 1.05 }}
           >
             <div className="w-8 h-8 rounded-full border-2 border-white/20 overflow-hidden bg-gradient-to-br from-purple-400 to-pink-400">
               <Image

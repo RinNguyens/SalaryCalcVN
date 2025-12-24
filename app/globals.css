@@ -59,13 +59,19 @@
 }
 
 @layer utilities {
+  /* GPU Acceleration for Safari performance */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+
   /* Pastel Glass Utilities */
   .glass-pastel {
-    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-glass;
+    @apply bg-white/80 backdrop-blur-sm border border-white/30 shadow-glass;
   }
 
   .glass {
-    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl;
+    @apply backdrop-blur-sm bg-white/20 border border-white/20 shadow-2xl;
   }
 
   .glass-hover {
@@ -73,11 +79,11 @@
   }
 
   .glass-subtle {
-    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-lg;
+    @apply backdrop-blur-[2px] bg-white/5 border border-white/10 shadow-lg;
   }
 
   .glass-strong {
-    @apply backdrop-blur-xl bg-white/20 border border-white/30 shadow-2xl;
+    @apply backdrop-blur-sm bg-white/30 border border-white/30 shadow-2xl;
   }
 
   /* Text Gradients */
@@ -126,7 +132,7 @@
   }
 
   .scrollbar-pastel::-webkit-scrollbar-track {
-    @apply bg-white/30 backdrop-blur-xl rounded-full;
+    @apply bg-white/30 backdrop-blur-md rounded-full;
   }
 
   .scrollbar-pastel::-webkit-scrollbar-thumb {

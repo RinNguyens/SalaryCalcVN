@@ -25,12 +25,12 @@ export function PastelGlassCard({
 
   return (
     <motion.div
-      whileHover={hover ? { y: -4, scale: 1.01 } : {}}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      whileHover={hover ? { y: -2 } : {}}
+      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       className={cn(
         // Base glass styles - Light theme
         'relative rounded-3xl',
-        'bg-white/80 backdrop-blur-xl',
+        'bg-white/90 backdrop-blur-sm',
         'border border-white/40',
         'shadow-xl',
 

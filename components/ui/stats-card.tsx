@@ -33,10 +33,10 @@ export function StatsCard({
 }: StatsCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      whileHover={{ y: -5 }}
+      transition={{ delay, duration: 0.3 }}
+      whileHover={{ y: -2 }}
       className="h-full"
     >
       <GlassCard variant="default" className="p-6 text-center h-full">

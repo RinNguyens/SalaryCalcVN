@@ -18,7 +18,7 @@ export function MiniSparkline({ data, color = '#10b981' }: MiniSparklineProps) {
         stroke={color}
         strokeWidth={2}
         dot={false}
-        animationDuration={1000}
+        animationDuration={0}
       />
     </LineChart>
   );
