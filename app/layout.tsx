@@ -17,69 +17,84 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.com'),
-  title: "SalaryLens - Crystal Clear Salary Insights",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.net'),
+  title: {
+    default: "SalaryLens - Công Cụ Tính Lương Thông Minh Cho Người Việt",
+    template: "%s | SalaryLens"
+  },
   description:
-    "Công cụ tính lương thông minh với AI. Phân tích thu nhập, tối ưu thuế, và tư vấn tài chính cho người Việt Nam.",
+    "Công cụ tính lương chính xác với AI, hỗ trợ tính thuế TNCN, bảo hiểm xã hội, lương gross-net. Phân tích thu nhập, tối ưu thuế, và tư vấn tài chính miễn phí cho người lao động Việt Nam.",
   keywords: [
     "tính lương",
-    "salary calculator",
-    "vietnam salary",
-    "tax calculator",
-    "salarylens",
-    "lương net",
-    "thu nhập",
-    "gross to net",
+    "tính lương online",
+    "máy tính lương",
+    "lương gross to net",
+    "lương net to gross",
+    "tính thuế thu nhập cá nhân",
     "thuế TNCN",
     "bảo hiểm xã hội",
+    "BHXH",
+    "BHYT",
+    "BHTN",
+    "tính lương thực lãnh",
+    "lương net",
+    "lương gross",
+    "thu nhập",
+    "tối ưu thuế",
+    "giảm trừ gia cảnh",
+    "người phụ thuộc",
+    "công cụ tài chính",
+    "tư vấn lương",
+    "SalaryLens",
+    "tính lương Việt Nam",
   ],
   authors: [{ name: "SalaryLens Team" }],
+  creator: "SalaryLens",
+  publisher: "SalaryLens",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "https://salarylens.net",
+  },
   openGraph: {
-    title: "SalaryLens - Crystal Clear Salary Insights",
-    description: "Công cụ tính lương thông minh với AI cho người lao động Việt Nam",
+    title: "SalaryLens - Công Cụ Tính Lương Thông Minh Cho Người Việt",
+    description: "Công cụ tính lương chính xác với AI. Tính thuế TNCN, bảo hiểm xã hội, lương gross-net. Miễn phí cho người lao động Việt Nam.",
     type: "website",
     locale: "vi_VN",
+    url: "https://salarylens.net",
     siteName: "SalaryLens",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SalaryLens - Công cụ tính lương thông minh",
+        alt: "SalaryLens - Công cụ tính lương thông minh với AI cho người Việt",
       },
       {
         url: "/og-image-square.jpg",
         width: 800,
         height: 800,
-        alt: "SalaryLens Logo",
+        alt: "SalaryLens - Biểu tượng ứng dụng",
       },
     ],
   },
-  icons: {
-    icon: [
-      {
-        url: "/favicon-16x16.png",
-        sizes: "16x16",
-        type: "image/png",
-      },
-      {
-        url: "/favicon-32x32.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-      {
-        url: "/favicon.ico",
-        sizes: "any",
-      },
-    ],
-    apple: [
-      {
-        url: "/apple-touch-icon.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
-    shortcut: "/favicon.ico",
+  twitter: {
+    card: "summary_large_image",
+    title: "SalaryLens - Công Cụ Tính Lương Thông Minh Cho Người Việt",
+    description: "Công cụ tính lương chính xác với AI. Tính thuế TNCN, bảo hiểm xã hội, lương gross-net. Miễn phí!",
+    images: ["/og-image.jpg"],
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 
