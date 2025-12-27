@@ -194,6 +194,7 @@ export function GrowthResultCard({ projection }: GrowthResultCardProps) {
                   <div className="flex items-center gap-3">
                     <Badge
                       variant={index === 0 ? 'processing' : 'completed'}
+                      className='w-[65px] text-center'
                     >
                       {index === 0 ? 'Hiện tại' : `Năm ${index}`}
                     </Badge>

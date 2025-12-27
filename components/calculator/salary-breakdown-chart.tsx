@@ -65,106 +65,115 @@ export function SalaryBreakdownChart({ result }: SalaryBreakdownChartProps) {
   ];
 
   return (
-    <GlassCard variant="default" className="p-6">
-      <h3 className="text-lg font-semibold text-black mb-4">
+    <GlassCard variant="default" className="p-3 sm:p-6">
+      <h3 className="text-base sm:text-lg font-semibold text-black mb-3 sm:mb-4">
         Phân bổ lương Gross
       </h3>
 
-      <ResponsiveContainer width="100%" aspect={2}>
-        <BarChart
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 20,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-          <XAxis
-            dataKey="name"
-            stroke="rgba(255,255,255,0.5)"
-            tick={{ fill: 'rgba(255,255,255,0.8)' }}
-          />
-          <YAxis
-            tick={{ fill: 'rgba(255,255,255,0.8)' }}
-            tickFormatter={(value) => `${(value / 1_000_000).toFixed(0)}M`}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend
-            wrapperStyle={{ paddingTop: '20px' }}
-            formatter={(value) => (
-              <span className="text-black text-sm">{value}</span>
-            )}
-            iconType="circle"
-          />
-          <Bar
-            dataKey="Lương Gross"
-            fill={chartColors.gross}
-            radius={[8, 8, 0, 0]}
-          />
-          <Bar
-            dataKey="Bảo hiểm"
-            fill={chartColors.insurance}
-            radius={[8, 8, 0, 0]}
-          />
-          <Bar
-            dataKey="Thuế TNCN"
-            fill={chartColors.tax}
-            radius={[8, 8, 0, 0]}
-          />
-          <Bar
-            dataKey="Lương Net"
-            fill={chartColors.net}
-            radius={[8, 8, 0, 0]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="w-full h-[300px] sm:h-[400px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={data}
+            margin={{
+              top: 10,
+              right: 10,
+              left: 0,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+            <XAxis
+              dataKey="name"
+              stroke="rgba(0,0,0,0.3)"
+              tick={{ fill: '#000000', fontSize: 12 }}
+            />
+            <YAxis
+              tick={{ fill: '#000000', fontSize: 11 }}
+              tickFormatter={(value) => `${(value / 1_000_000).toFixed(0)}M`}
+              width={45}
+              stroke="rgba(0,0,0,0.3)"
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend
+              wrapperStyle={{ paddingTop: '10px' }}
+              formatter={(value) => (
+                <span className="text-black text-xs sm:text-sm">{value}</span>
+              )}
+              iconType="circle"
+              iconSize={8}
+            />
+            <Bar
+              dataKey="Lương Gross"
+              fill={chartColors.gross}
+              radius={[8, 8, 0, 0]}
+              maxBarSize={60}
+            />
+            <Bar
+              dataKey="Bảo hiểm"
+              fill={chartColors.insurance}
+              radius={[8, 8, 0, 0]}
+              maxBarSize={60}
+            />
+            <Bar
+              dataKey="Thuế TNCN"
+              fill={chartColors.tax}
+              radius={[8, 8, 0, 0]}
+              maxBarSize={60}
+            />
+            <Bar
+              dataKey="Lương Net"
+              fill={chartColors.net}
+              radius={[8, 8, 0, 0]}
+              maxBarSize={60}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
 
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="text-center p-3 bg-white/5 rounded-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.gross }}></div>
-            <p className="text-xs text-black/90 font-medium">Lương Gross</p>
+      <div className="mt-4 sm:mt-6 grid grid-cols-2 justify-end gap-2 sm:gap-4">
+        <div className="text-center p-2 sm:p-3 bg-white/5 rounded-lg">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style={{ backgroundColor: chartColors.gross }}></div>
+            <p className="text-[10px] sm:text-xs text-black/90 font-medium">Lương Gross</p>
           </div>
-          <p className="text-sm font-bold text-black">
+          <p className="text-xs sm:text-sm font-bold text-black break-words">
             {formatCurrency(result.gross)}
           </p>
-          <p className="text-xs text-black/60 mt-1">100%</p>
+          <p className="text-[10px] sm:text-xs text-black/60 mt-1">100%</p>
         </div>
-        <div className="text-center p-3 bg-white/5 rounded-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.insurance }}></div>
-            <p className="text-xs text-black/90 font-medium">Bảo hiểm</p>
+        <div className="text-center p-2 sm:p-3 bg-white/5 rounded-lg">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style={{ backgroundColor: chartColors.insurance }}></div>
+            <p className="text-[10px] sm:text-xs text-black/90 font-medium">Bảo hiểm</p>
           </div>
-          <p className="text-sm font-bold text-black">
+          <p className="text-xs sm:text-sm font-bold text-black break-words">
             {formatCurrency(result.insurance.total)}
           </p>
-          <p className="text-xs text-black/60 mt-1">
+          <p className="text-[10px] sm:text-xs text-black/60 mt-1">
             {((result.insurance.total / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
-        <div className="text-center p-3 bg-white/5 rounded-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.tax }}></div>
-            <p className="text-xs text-black/90 font-medium">Thuế TNCN</p>
+        <div className="text-center p-2 sm:p-3 bg-white/5 rounded-lg">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style={{ backgroundColor: chartColors.tax }}></div>
+            <p className="text-[10px] sm:text-xs text-black/90 font-medium">Thuế TNCN</p>
           </div>
-          <p className="text-sm font-bold text-black">
+          <p className="text-xs sm:text-sm font-bold text-black break-words">
             {formatCurrency(result.tax.tax)}
           </p>
-          <p className="text-xs text-black/60 mt-1">
+          <p className="text-[10px] sm:text-xs text-black/60 mt-1">
             {((result.tax.tax / result.gross) * 100).toFixed(1)}%
           </p>
         </div>
-        <div className="text-center p-3 bg-white/5 rounded-lg">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: chartColors.net }}></div>
-            <p className="text-xs text-black/90 font-medium">Lương Net</p>
+        <div className="text-center p-2 sm:p-3 bg-white/5 rounded-lg">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style={{ backgroundColor: chartColors.net }}></div>
+            <p className="text-[10px] sm:text-xs text-black/90 font-medium">Lương Net</p>
           </div>
-          <p className="text-sm font-bold text-green-400">
+          <p className="text-xs sm:text-sm font-bold text-green-400 break-words">
             {formatCurrency(result.net)}
           </p>
-          <p className="text-xs text-black/60 mt-1">
+          <p className="text-[10px] sm:text-xs text-black/60 mt-1">
             {((result.net / result.gross) * 100).toFixed(1)}%
           </p>
         </div>

@@ -143,11 +143,11 @@ export function EnhancedAnnualResultCard({ result }: EnhancedAnnualResultCardPro
 
       {/* Detailed Analysis Tabs */}
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 mb-6">
+        <TabsList className="grid w-full grid-cols-3 mb-6">
           <TabsTrigger value="overview">Tổng Quan</TabsTrigger>
           <TabsTrigger value="monthly">Theo Tháng</TabsTrigger>
           <TabsTrigger value="tax">Thuế & Tối Ưu</TabsTrigger>
-          <TabsTrigger value="reconciliation">Quyết Toán</TabsTrigger>
+          {/* <TabsTrigger value="reconciliation">Quyết Toán</TabsTrigger> */}
         </TabsList>
 
         {/* Overview Tab */}

@@ -108,9 +108,20 @@ export function SalaryInputForm({
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                       />
                     </FormControl>
+                   <div className='flex gap-2 items-center'>
+                    
                     <FormDescription className="text-black/70">
                       Tổng lương trước thuế và bảo hiểm
                     </FormDescription>
+                     {field.value > 0 && (
+                        <p className="text-sm font-semibold text-purple-900">
+                          {new Intl.NumberFormat('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND',
+                          }).format(Number(field.value))}
+                        </p>
+                    )}
+                   </div>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -244,9 +255,20 @@ export function SalaryInputForm({
                         className="bg-white/10 border-white/20 text-black border-slate-300 placeholder:text-black/50"
                       />
                     </FormControl>
+                   <div className='flex flex-row items-center gap-2'>
+                    
                     <FormDescription className="text-black/70">
                       Số tiền thực nhận sau thuế và bảo hiểm
                     </FormDescription>
+                     {field.value > 0 && (
+                        <p className="text-sm font-semibold text-blue-900">
+                          : {new Intl.NumberFormat('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND',
+                          }).format(Number(field.value))}
+                        </p>
+                    )}
+                   </div>
                     <FormMessage />
                   </FormItem>
                 )}

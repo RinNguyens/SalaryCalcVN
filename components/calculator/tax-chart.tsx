@@ -66,7 +66,7 @@ export function TaxChart({ result }: TaxChartProps) {
         Phân bổ lương Gross
       </h3>
 
-      <ResponsiveContainer width="100%" aspect={2}>
+      <ResponsiveContainer width="100%" aspect={1}>
         <PieChart>
           <Pie
             data={data}

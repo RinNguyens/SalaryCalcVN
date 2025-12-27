@@ -85,21 +85,21 @@ export function TaxBreakdown({
     : 0;
 
   return (
-    <GlassCard variant="strong" className={`p-6 ${className}`}>
+    <GlassCard variant="strong" className={`p-3 sm:p-6 ${className}`}>
       {/* Header */}
       <div
-        className="flex items-center justify-between mb-6 cursor-pointer group"
+        className="flex items-center justify-between mb-4 sm:mb-6 cursor-pointer group"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-orange-500 to-red-500">
-            <TrendingUp className="h-5 w-5 text-black" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="p-1.5 sm:p-2 rounded-lg bg-gradient-to-br from-orange-500 to-red-500">
+            <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-black" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-black group-hover:text-yellow-400 transition-colors">
+            <h3 className="text-sm sm:text-lg font-bold text-black group-hover:text-yellow-400 transition-colors">
               Phân tích thuế theo bậc lũy tiến
             </h3>
-            <p className="text-sm text-black/60">
+            <p className="text-xs sm:text-sm text-black/60">
               Biểu thuế 5 bậc năm 2026 (mới)
             </p>
           </div>
@@ -109,7 +109,7 @@ export function TaxBreakdown({
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="h-5 w-5 text-black/60 group-hover:text-black/80 transition-colors" />
+          <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-black/60 group-hover:text-black/80 transition-colors" />
         </motion.div>
       </div>
 
@@ -124,7 +124,7 @@ export function TaxBreakdown({
         className="overflow-hidden"
       >
         {/* Summary Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
           <StatCard
             label="Thu nhập tính thuế"
             value={formatCurrency(taxableIncome)}
@@ -147,7 +147,7 @@ export function TaxBreakdown({
         </div>
 
         {/* Tax Tiers Breakdown */}
-        <div className="space-y-3 mb-6">
+        <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
           {taxPerTier.map((tier, index) => (
             <TaxTierCard
               key={tier.tier}
@@ -160,20 +160,20 @@ export function TaxBreakdown({
 
         {/* Visual Chart */}
         {taxPerTier.some(t => t.amount > 0) && (
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <TaxVisualization taxPerTier={taxPerTier} totalTax={totalTax} />
           </div>
         )}
 
         {/* Explanation */}
-        <div className="mb-4 p-4 rounded-lg bg-blue-500/10 border border-blue-400/30">
-          <div className="flex gap-3">
-            <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+        <div className="mb-3 sm:mb-4 p-3 sm:p-4 rounded-lg bg-blue-500/10 border border-blue-400/30">
+          <div className="flex gap-2 sm:gap-3">
+            <Info className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm text-black/80 mb-2">
+              <p className="text-xs sm:text-sm text-black/80 mb-1 sm:mb-2">
                 <strong className="text-black">Thuế lũy tiến là gì?</strong>
               </p>
-              <p className="text-sm text-black/70 leading-relaxed">
+              <p className="text-xs sm:text-sm text-black/70 leading-relaxed">
                 Thuế TNCN được tính theo từng bậc. Thu nhập càng cao, phần vượt mức
                 mới bị đánh thuế cao hơn. Ví dụ: Thu nhập 15M sẽ chịu 5% cho 5M đầu,
                 10% cho 5M tiếp theo, và 15% cho 5M cuối cùng.
@@ -184,9 +184,9 @@ export function TaxBreakdown({
 
         {/* 2026 Benefit Note */}
         {calculateSavings2026(taxableIncome) > 0 && (
-          <div className="p-3 rounded-lg bg-green-500/10 border border-green-400/30">
-            <div className="flex items-center gap-2 text-sm text-green-600">
-              <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+          <div className="p-2 sm:p-3 rounded-lg bg-green-500/10 border border-green-400/30">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-green-600">
+              <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
               <span>
                 <strong>Tin tốt:</strong> Từ 2026, thuế cao nhất giảm từ 35% → 25%,
                 giúp bạn tiết kiệm <strong>{formatCurrency(calculateSavings2026(taxableIncome))}</strong>/tháng
@@ -257,27 +257,27 @@ function TaxTierCard({ tier, isActive, delay }: TaxTierCardProps) {
     >
       <div
         className={`
-          p-4 rounded-lg border-2 transition-all duration-300
+          p-2 sm:p-4 rounded-lg border-2 transition-all duration-300
           ${isActive
             ? 'bg-white/10 border-white/20 hover:bg-white/15 hover:scale-[1.01]'
             : 'bg-white/5 border-white/10 opacity-50'
           }
         `}
       >
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-2 sm:mb-3">
           {/* Tier Info */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-black text-sm shadow-lg"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center font-bold text-black text-xs sm:text-sm shadow-lg"
               style={{ backgroundColor: tier.color }}
             >
               {tier.tier}
             </div>
             <div>
-              <div className="text-sm font-bold text-black">
+              <div className="text-xs sm:text-sm font-bold text-black">
                 {tier.name}: {(tier.rate * 100).toFixed(0)}%
               </div>
-              <div className="text-xs text-black/60">
+              <div className="text-[10px] sm:text-xs text-black/60">
                 {formatRange(tier.min, tier.max)}
               </div>
             </div>
@@ -287,16 +287,16 @@ function TaxTierCard({ tier, isActive, delay }: TaxTierCardProps) {
           <div className="text-right">
             {isActive ? (
               <>
-                <div className="text-base font-bold text-black">
-                  {formatCurrency(tier.amount)}
+                <div className="text-xs sm:text-base font-bold text-black break-words">
+                  {formatCurrency(tier.amount, true)}
                 </div>
-                <div className="text-xs text-black/60">
+                <div className="text-[10px] sm:text-xs text-black/60 hidden sm:block">
                   trên {formatCurrency(tier.incomeInTier, true)}
                 </div>
               </>
             ) : (
-              <div className="text-xs text-black/40 font-medium">
-                Chưa đạt bậc này
+              <div className="text-[10px] sm:text-xs text-black/40 font-medium">
+                Chưa đạt
               </div>
             )}
           </div>
@@ -341,15 +341,15 @@ function TaxVisualization({ taxPerTier, totalTax }: TaxVisualizationProps) {
   if (activeTiers.length === 0) return null;
 
   return (
-    <div className="p-6 rounded-lg bg-white/5 border border-white/10">
-      <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
-        <TrendingUp className="h-4 w-4" />
+    <div className="p-3 sm:p-6 rounded-lg bg-white/5 border border-white/10">
+      <h4 className="text-xs sm:text-sm font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
+        <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4" />
         Phân bổ thuế theo bậc
       </h4>
 
-      <div className="flex flex-col md:flex-row items-center gap-8">
+      <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-8">
         {/* Donut Chart */}
-        <div className="relative w-48 h-48 flex-shrink-0">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="transform -rotate-90">
             {activeTiers.map((tier, index) => {
               const percentage = (tier.amount / totalTax) * 100;
@@ -370,35 +370,35 @@ function TaxVisualization({ taxPerTier, totalTax }: TaxVisualizationProps) {
 
           {/* Center Text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="text-xs text-black/60 mb-1">Tổng thuế</div>
-            <div className="text-xl font-bold text-black">
+            <div className="text-[10px] sm:text-xs text-black/60 mb-1">Tổng thuế</div>
+            <div className="text-sm sm:text-xl font-bold text-black">
               {formatCurrency(totalTax, true)}
             </div>
           </div>
         </div>
 
         {/* Legend */}
-        <div className="flex-1 space-y-3 w-full">
+        <div className="flex-1 space-y-2 sm:space-y-3 w-full">
           {activeTiers.map((tier) => {
             const percentage = (tier.amount / totalTax) * 100;
             return (
-              <div key={tier.tier} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+              <div key={tier.tier} className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   <div
-                    className="w-4 h-4 rounded-sm flex-shrink-0"
+                    className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm flex-shrink-0"
                     style={{ backgroundColor: tier.color }}
                   />
-                  <div>
-                    <div className="text-sm font-medium text-black">
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-sm font-medium text-black">
                       {tier.name}
                     </div>
-                    <div className="text-xs text-black/60">
+                    <div className="text-[10px] sm:text-xs text-black/60">
                       {percentage.toFixed(1)}% tổng thuế
                     </div>
                   </div>
                 </div>
-                <div className="text-sm font-bold text-black text-right">
-                  {formatCurrency(tier.amount)}
+                <div className="text-xs sm:text-sm font-bold text-black text-right flex-shrink-0">
+                  {formatCurrency(tier.amount, true)}
                 </div>
               </div>
             );
@@ -457,14 +457,14 @@ function StatCard({ label, value, icon, color, tooltip }: StatCardProps) {
   };
 
   return (
-    <div className="p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-      <div className="flex items-center gap-2 mb-2">
-        <div className={`p-1.5 rounded-md bg-gradient-to-br ${colorMap[color]}`}>
+    <div className="p-2 sm:p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+      <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+        <div className={`p-1 sm:p-1.5 rounded-md bg-gradient-to-br ${colorMap[color]}`}>
           {icon}
         </div>
-        <span className="text-xs text-black/60">{label}</span>
+        <span className="text-[10px] sm:text-xs text-black/60">{label}</span>
       </div>
-      <div className="text-lg font-bold text-black">
+      <div className="text-sm sm:text-lg font-bold text-black break-words">
         {value}
       </div>
     </div>
