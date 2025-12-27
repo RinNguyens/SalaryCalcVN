@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -59,7 +60,7 @@ export function Logo({ size = 'md', showText = true, className = '' }: LogoProps
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-4/5 h-4/5 rounded-full bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-lg">
             <span className="text-black font-bold" style={{ fontSize: fontSize * 0.8 }}>
-              🛡️
+              <Image src="/favicon-32x32.png" alt="SalaryLens Logo" width={iconSize * 0.6} height={iconSize * 0.6} />
             </span>
           </div>
         </div>
