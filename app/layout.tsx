@@ -17,7 +17,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.net'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.cc'),
   title: {
     default: "SalaryLens - Công Cụ Tính Lương Thông Minh Cho Người Việt",
     template: "%s | SalaryLens"
@@ -63,14 +63,14 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://salarylens.net",
+    canonical: "https://salarylens.cc",
   },
   openGraph: {
     title: "SalaryLens - Công Cụ Tính Lương Thông Minh Cho Người Việt",
     description: "Công cụ tính lương chính xác với AI. Tính thuế TNCN, bảo hiểm xã hội, lương gross-net. Miễn phí cho người lao động Việt Nam.",
     type: "website",
     locale: "vi_VN",
-    url: "https://salarylens.net",
+    url: "https://salarylens.cc",
     siteName: "SalaryLens",
     images: [
       {

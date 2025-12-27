@@ -157,7 +157,7 @@ Repository:
   "description": "Crystal clear salary insights for Vietnamese workers",
   "author": "SalaryLens Team",
   "license": "MIT",
-  "homepage": "https://salarylens.net",
+  "homepage": "https://salarylens.cc",
   "repository": {
     "type": "git",
     "url": "https://github.com/yourusername/salarylens.git"
@@ -200,7 +200,7 @@ Repository:
 # App Info
 NEXT_PUBLIC_APP_NAME="SalaryLens"
 NEXT_PUBLIC_APP_TAGLINE="Crystal Clear Salary Insights"
-NEXT_PUBLIC_APP_URL="https://salarylens.net"
+NEXT_PUBLIC_APP_URL="https://salarylens.cc"
 NEXT_PUBLIC_APP_DESCRIPTION="Công cụ tính lương và phân tích thu nhập chính xác nhất cho người lao động Việt Nam"
 
 # Meta
@@ -227,7 +227,7 @@ NEXT_PUBLIC_ABOUT_PAGE_ENABLED=true
 # .env.example
 
 NEXT_PUBLIC_APP_NAME="SalaryLens"
-NEXT_PUBLIC_APP_URL="https://salarylens.net"
+NEXT_PUBLIC_APP_URL="https://salarylens.cc"
 ZAI_API_KEY=your_api_key_here
 ```
 
@@ -242,7 +242,7 @@ export const APP_CONFIG = {
   name: 'SalaryLens',
   tagline: 'Crystal Clear Salary Insights',
   description: 'Công cụ tính lương và phân tích thu nhập chính xác nhất cho người lao động Việt Nam',
-  url: 'https://salarylens.net',
+  url: 'https://salarylens.cc',
   domain: 'salarylens.com',
   email: 'support@salarylens.com',
   
@@ -444,7 +444,7 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 ## 📧 Contact
 
-- Website: [salarylens.com](https://salarylens.net)
+- Website: [salarylens.com](https://salarylens.cc)
 - Email: support@salarylens.com
 - Twitter: [@salarylens](https://twitter.com/salarylens)
 
@@ -501,7 +501,7 @@ const nextConfig = {
   // Metadata
   env: {
     NEXT_PUBLIC_APP_NAME: 'SalaryLens',
-    NEXT_PUBLIC_APP_URL: 'https://salarylens.net',
+    NEXT_PUBLIC_APP_URL: 'https://salarylens.cc',
   },
   
   // Image optimization
@@ -536,7 +536,7 @@ const nextConfig = {
       // {
       //   source: '/:path*',
       //   has: [{ type: 'host', value: 'salarycalc.com' }],
-      //   destination: 'https://salarylens.net/:path*',
+      //   destination: 'https://salarylens.cc/:path*',
       //   permanent: true,
       // },
     ];
@@ -788,7 +788,7 @@ Repository Settings:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Name: salarylens
 ✅ Description: "Crystal clear salary insights for Vietnamese workers"
-✅ Website: https://salarylens.net
+✅ Website: https://salarylens.cc
 ✅ Topics: salary, calculator, vietnam, tax, finance, nextjs, typescript
 
 Branch Protection:
@@ -904,11 +904,11 @@ vercel --prod
 ```bash
 # Check these URLs:
 
-✅ https://salarylens.net
+✅ https://salarylens.cc
 ✅ https://www.salarylens.com
-✅ https://salarylens.net/calculator
-✅ https://salarylens.net/blog
-✅ https://salarylens.net/about
+✅ https://salarylens.cc/calculator
+✅ https://salarylens.cc/blog
+✅ https://salarylens.cc/about
 
 # Verify:
 - All pages load ✅
@@ -974,7 +974,7 @@ async redirects() {
           value: 'salarycalcvn.com',
         },
       ],
-      destination: 'https://salarylens.net/:path*',
+      destination: 'https://salarylens.cc/:path*',
       permanent: true,
     },
     {
@@ -985,7 +985,7 @@ async redirects() {
           value: 'www.salarycalcvn.com',
         },
       ],
-      destination: 'https://salarylens.net/:path*',
+      destination: 'https://salarylens.cc/:path*',
       permanent: true,
     },
   ];
@@ -1057,7 +1057,7 @@ find . -type f -name "*.json" -o -name "*.md" | \
 echo "📝 Updating package.json..."
 npm pkg set name="salarylens"
 npm pkg set description="Crystal clear salary insights for Vietnamese workers"
-npm pkg set homepage="https://salarylens.net"
+npm pkg set homepage="https://salarylens.cc"
 
 # 4. Commit changes
 echo "💾 Committing changes..."

@@ -4,7 +4,7 @@ export const APP_CONFIG = {
   name: 'SalaryLens',
   tagline: 'Crystal Clear Salary Insights',
   description: 'Công cụ tính lương và phân tích thu nhập chính xác nhất cho người lao động Việt Nam',
-  url: process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.net',
+  url: process.env.NEXT_PUBLIC_APP_URL || 'https://salarylens.cc',
   domain: 'salarylens.com',
   email: 'support@salarylens.com',
 

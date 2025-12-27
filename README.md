@@ -122,7 +122,7 @@ MIT License - see LICENSE file for details
 
 ## 📧 Contact
 
-- Website: [salarylens.com](https://salarylens.net)
+- Website: [salarylens.com](https://salarylens.cc)
 - Email: support@salarylens.com
 
 ---
